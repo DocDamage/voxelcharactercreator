@@ -50,11 +50,47 @@ try {
         if ($LASTEXITCODE -ne 0) { throw "Blender asset-assembly integration verification failed with exit code $LASTEXITCODE." }
         & $BlenderExe --background --python (Join-Path $Root 'tests/blender/verify_phase3_rig.py')
         if ($LASTEXITCODE -ne 0) { throw "Blender Phase 3 rig integration verification failed with exit code $LASTEXITCODE." }
+        & $BlenderExe --background --python (Join-Path $Root 'tests/blender/verify_phase4_animation.py')
+        if ($LASTEXITCODE -ne 0) { throw "Blender Phase 4 animation/QA verification failed with exit code $LASTEXITCODE." }
     }
-    foreach ($Deferred in @($Godot, $Visual)) {
-        if ($Deferred) {
-            throw 'This verification mode has no implementation yet. It is gated on the Phase 1-4 integration work.'
+    if ($Visual) {
+        & (Join-Path $Root 'tools/build.ps1') -Job 'characters/original/heavy_sword_hero.json'
+        if ($LASTEXITCODE -ne 0) { throw "Phase 4 visual build failed with exit code $LASTEXITCODE." }
+        $VisualFiles = Get-ChildItem (Join-Path $Root 'exports/original/heavy_sword_hero') -Filter 'original_heavy_sword_hero_*.png'
+        if ($VisualFiles.Count -lt 17) { throw "Expected at least 17 Phase 4 preview images; found $($VisualFiles.Count)." }
+    }
+    if ($Godot) {
+        $GodotExe = $env:VCF_GODOT
+        if (-not $GodotExe) {
+            $GodotCommand = Get-Command godot.exe -ErrorAction SilentlyContinue
+            if ($GodotCommand) {
+                $GodotExe = $GodotCommand.Source
+                $ResolvedGodot = (Get-Item -LiteralPath $GodotExe).Target
+                if ($ResolvedGodot) {
+                    $ConsoleGodot = Get-ChildItem -LiteralPath (Split-Path $ResolvedGodot -Parent) -Filter '*console.exe' -ErrorAction SilentlyContinue | Select-Object -First 1
+                    if ($ConsoleGodot) { $GodotExe = $ConsoleGodot.FullName }
+                }
+            }
         }
+        if ($GodotExe -and (Test-Path -LiteralPath $GodotExe -PathType Leaf)) {
+            $GodotItem = Get-Item -LiteralPath $GodotExe
+            $ResolvedGodot = $GodotItem.Target
+            if (-not $ResolvedGodot) { $ResolvedGodot = $GodotItem.FullName }
+            $ConsoleGodot = Get-ChildItem -LiteralPath (Split-Path $ResolvedGodot -Parent) -Filter '*console.exe' -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($ConsoleGodot) { $GodotExe = $ConsoleGodot.FullName }
+        }
+        if (-not $GodotExe -or -not (Test-Path -LiteralPath $GodotExe -PathType Leaf)) { throw 'Set VCF_GODOT to Godot 4.6.2 or newer before running -Godot.' }
+        $Export = Join-Path $Root 'exports/original/heavy_sword_hero/original_heavy_sword_hero.glb'
+        if (-not (Test-Path -LiteralPath $Export -PathType Leaf)) {
+            & (Join-Path $Root 'tools/build.ps1') -Job 'characters/original/heavy_sword_hero.json'
+            if ($LASTEXITCODE -ne 0) { throw "Pilot build failed with exit code $LASTEXITCODE." }
+        }
+        Copy-Item -LiteralPath $Export -Destination (Join-Path $Root 'tests/godot/imported/character.glb') -Force
+        $GodotProject = Join-Path $Root 'tests/godot'
+        & $GodotExe --headless --editor --path $GodotProject --import
+        if ($LASTEXITCODE -ne 0) { throw "Godot GLB import failed with exit code $LASTEXITCODE." }
+        & $GodotExe --headless --path $GodotProject --script (Join-Path $GodotProject 'verify_import.gd')
+        if ($LASTEXITCODE -ne 0) { throw "Godot scene verification failed with exit code $LASTEXITCODE." }
     }
 }
 finally {

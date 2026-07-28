@@ -2,6 +2,11 @@
 
 The LLM edits job specifications. It does not directly control Blender during standard builds.
 
+Job changes remain proposals until they pass canonical Job v2 validation. The LLM
+cannot silently change `source`, asset paths, animation-pack IDs, or export-profile
+IDs. Animation creation, QA, Blender export, and the Godot import gate are entirely
+deterministic and do not invoke an LLM.
+
 ## Ollama
 
 1. Install Ollama.

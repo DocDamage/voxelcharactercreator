@@ -182,6 +182,21 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
         target_height = job.get("target_height_meters")
         if target_height is not None and (isinstance(target_height, bool) or not isinstance(target_height, (int, float)) or target_height <= 0):
             errors.append("target_height_meters must be a positive number")
+        animation_packs = job.get("animation_packs", [])
+        if not isinstance(animation_packs, list) or any(not isinstance(item, str) or not SAFE_ID_PATTERN.fullmatch(item) for item in animation_packs) or len(animation_packs) != len(set(animation_packs)):
+            errors.append("animation_packs must be a unique array of safe catalog IDs")
+        elif project_root:
+            from vcf_core.animation import AnimationPackError, find_animation_pack, load_animation_pack
+            for pack_id in animation_packs:
+                try: load_animation_pack(find_animation_pack(project_root, pack_id))
+                except AnimationPackError as exc: errors.extend(exc.errors)
+        export_profile = job.get("export_profile")
+        if export_profile is not None and (not isinstance(export_profile, str) or not SAFE_ID_PATTERN.fullmatch(export_profile)):
+            errors.append("export_profile must be a safe catalog ID")
+        elif project_root and export_profile:
+            from vcf_core.export_profiles import ExportProfileError, load_export_profile
+            try: load_export_profile(project_root, export_profile)
+            except ExportProfileError as exc: errors.append(str(exc))
         rig_template = job.get("rig_template")
         if isinstance(rig_template, str) and SAFE_ID_PATTERN.fullmatch(rig_template):
             from vcf_core.rigging import PartResolutionError, get_rig_template

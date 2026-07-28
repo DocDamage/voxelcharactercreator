@@ -7,6 +7,8 @@
   "body_template": "male_heroic",
   "rig_template": "humanoid_standard",
   "animation_profile": "heavy_sword",
+  "animation_packs": ["heavy_sword_core"],
+  "export_profile": "godot_character",
   "weapon": "hsh_heavy_sword",
   "source": {
     "mode": "assembly",

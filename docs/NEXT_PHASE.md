@@ -1,20 +1,21 @@
 # Next Phase
 
-Phases 0-3 are implemented and verified on Blender 4.5.5 LTS. The next milestone
-is one real, editable, rigged, animated, Godot-tested voxel character built end
-to end without opening Blender interactively.
+Phases 0-4 and the first vertical slice are implemented and verified on Blender
+4.5.5 LTS and Godot 4.6.2. The original Heavy Sword Hero now builds, animates,
+passes QA, exports, and imports into Godot without opening Blender interactively.
 
 The dependency-ordered backlog, acceptance gates, architecture, estimates, and
 deferred scope are maintained in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
 
-Immediate Phase 4 work:
+Immediate Phase 5 work:
 
-1. Define Animation Pack v1, action naming, frame-rate, loop, event, and root-motion contracts.
-2. Produce and validate `idle`, `walk`, `run`, and `heavy_sword_attack_1` for the fitted rig.
-3. Add stable geometry, rig, animation, artifact, and visual QA diagnostics.
-4. Render the full fixed-camera and skeleton/socket preview set with reviewed baselines.
-5. Add versioned export profiles and a pinned Godot 4.x headless import test.
-6. Gate the vertical slice on deterministic rebuilds and a loadable, correctly scaled, animated GLB.
+1. Add Blender/Godot/Ollama dependency and capability preflight with corrective actions.
+2. Make the queue stage-aware with safe cancellation, retry, resume, and failed-run inspection.
+3. Cache stages by input, configuration, and tool hashes, including an explicit `--no-cache` path.
+4. Add asset selection, semantic mapping, palette/equipment, and undoable job-editing workflows.
+5. Surface previews, QA diagnostics, stage progress, and retry actions in the desktop UI.
+6. Extend the LLM planner with schema-valid asset suggestions and reviewable corrections.
 
-Do not expand the UI, full cast, or image-generation workflow until the
-engine-tested vertical-slice gate passes.
+The broader animation library remains Phase 6 work. Additional attacks, guard,
+damage, death, victory, and archetype-specific movement should use Animation Pack
+v1 rather than introducing pilot-specific Blender code.

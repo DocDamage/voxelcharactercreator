@@ -11,10 +11,10 @@ Windows-first starter for running Blender as an invisible character-processing b
 - Proxy voxel-character generation for pipeline testing and a registry-assembled original Heavy Sword Hero fixture
 - VOX, GLB, GLTF, FBX and OBJ source import
 - Versioned fitted humanoid rig with deterministic semantic part resolution and rigid binding
-- Basic idle animation
-- Transparent preview render
+- Versioned production animation pack (`idle`, `walk`, `run`, `heavy_sword_attack_1`) with events and validation
+- Transparent, fixed-angle diagnostic, and eight-angle turntable previews
 - GLB and FBX export
-- JSON validation report
+- Godot 4.6.2 headless import gate and JSON Build Report v2
 - Pilot jobs for Cecil, Kain, Rydia, Golbez, Terra, Kefka, Cloud, Sephiroth, Squall and Ultimecia
 
 ## Run
@@ -27,7 +27,12 @@ Windows-first starter for running Blender as an invisible character-processing b
 
 ## Source models
 
-Set `source_model` in a character JSON file to a `.glb`, `.gltf`, `.fbx` or `.obj` file. If omitted, the worker builds a proxy figure to test the complete pipeline. The original `characters/original/heavy_sword_hero.json` uses Job v2 `source.mode: assembly` to resolve versioned, CC0 manifests under `assets/manifests/`; its component objects preserve semantic tags, pivots, sockets, palette roles, and origins for later rigging.
+In Job v2, set `source.mode` to `model` and `source.path` to an approved `.vox`,
+`.glb`, `.gltf`, `.fbx`, or `.obj` under `assets/original/` or
+`assets/incoming/`. Use `source.mode: proxy` for compatibility testing. The
+original `characters/original/heavy_sword_hero.json` uses `source.mode: assembly`
+to resolve versioned CC0 manifests under `assets/manifests/`; its component
+objects preserve semantic tags, pivots, sockets, palette roles, and origins.
 
 `.vox` files are decoded with bounded parsing, support multi-model MagicaVoxel scene
 graphs and palette/layer/material metadata, then import as normalized named meshes.
@@ -41,10 +46,10 @@ available diagnostics.
 - processed `.blend`
 - `.glb`
 - `.fbx`
-- transparent preview, color-coded part-map, and joint-pose `.png` files
-- validation report `.json`
+- transparent preview, part-map, joint-pose, six fixed diagnostic views, and eight turntable `.png` files
+- Build Report v2 `.json` with checks, actions/events, stage timings, artifact hashes, tool versions, and semantic content hash
 
-## Advanced-phase additions
+## Additional capabilities
 
 - Built-in minimal MagicaVoxel `.vox` reader.
 - Natural-language job patching through Ollama or OpenAI-compatible APIs.
@@ -79,7 +84,16 @@ To build the original modular pilot, run:
 It assembles 24 tracked CC0 assets, including independently rigged left/right
 gloves, boots, and pauldrons; resolves every part; fits and rigid-binds the
 template-driven production rig; aligns its declared sword sockets; and reports
-`complete`.
+`complete`. Production builds also run the Godot 4.6.2 headless import gate; set
+`VCF_GODOT` if Godot is not discoverable through `PATH`.
+
+The Godot Mono build must be launched from its real installation directory so it
+can locate its `.NET` assemblies. The build and verification wrappers resolve
+WinGet symlinks to the adjacent `*_console.exe` automatically.
+
+The current Phase 4 action set is intentionally small: `idle`, `walk`, `run`, and
+`heavy_sword_attack_1`. Add new clips as versioned Animation Pack v1 data under
+`config/animation_packs/`; incompatible bone requirements fail before export.
 
 For transactional-output regression testing, the worker accepts the test-only
 `--fail-stage <stage>` switch; failed runs are retained under `exports/.runs/` and
@@ -87,4 +101,6 @@ do not replace the last promoted export.
 
 ## Roadmap
 
-See the dependency-ordered [implementation plan](docs/IMPLEMENTATION_PLAN.md) for the next vertical slice, acceptance gates, architecture, and issue-ready backlog.
+Phases 0-4 and the vertical-slice gate are complete. See the dependency-ordered
+[implementation plan](docs/IMPLEMENTATION_PLAN.md) and [next phase](docs/NEXT_PHASE.md)
+for Phase 5 operator workflow work and the deferred Phase 6 animation expansion.

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "asset_id": "heavy_sword_hero",
+  "resolution": 768,
+  "views": ["front", "side", "rear", "three_quarter", "skeleton", "socket", "part_map", "joint_pose"],
+  "turntable_frames": 8,
+  "comparison_policy": "pixel-diff artifacts require human approval; semantic content_hash must remain stable"
+}

@@ -37,8 +37,8 @@
       "propertyNames": {"enum": ["head", "torso", "pelvis", "upper_arm_l", "upper_arm_r", "lower_arm_l", "lower_arm_r", "hand_l", "hand_r", "upper_leg_l", "upper_leg_r", "lower_leg_l", "lower_leg_r", "foot_l", "foot_r", "hair", "coat", "cape", "cloth", "glove_l", "glove_r", "boot_l", "boot_r", "pauldron_l", "pauldron_r", "weapon", "shield", "accessory"]},
       "additionalProperties": {"type": "string", "minLength": 1}
     },
-    "animation_packs": {"type": "array", "items": {"type": "string"}},
-    "export_profile": {"type": "string"},
+    "animation_packs": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"}, "uniqueItems": true},
+    "export_profile": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
     "target_height_meters": {"type": "number", "exclusiveMinimum": 0},
     "settings_overrides": {
       "type": "object",

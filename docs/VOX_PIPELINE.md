@@ -19,3 +19,8 @@ Meshing modes are explicit:
 Run `./tools/verify.ps1 -Performance` for the original 100k-voxel benchmark. It
 records mesh and Blender-import metrics in `logs/` without gating hardware-sensitive
 limits.
+
+VOX metadata remains addressable through part resolution, rigid binding,
+animation, QA, and export. Production completion is gated downstream: a valid VOX
+mesh alone cannot report `complete` unless every visible part is resolved and
+bound and the selected animation/export profile passes.

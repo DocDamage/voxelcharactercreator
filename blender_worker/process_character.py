@@ -20,13 +20,18 @@ PROJECT_DIR = Path(__file__).resolve().parents[1]
 if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
 from blender_worker.pipeline import Pipeline
+from blender_worker.stages.animation import apply_animation_packs
 from blender_worker.stages.asset_assembly import assemble_assets
+from blender_worker.stages.export import export_character
+from blender_worker.stages.godot import verify_godot_import
 from blender_worker.stages.part_resolution import render_part_map_preview, resolve_scene_parts
+from blender_worker.stages.quality import character_content_hash, render_view_set, validate_character
 from blender_worker.stages.rigging import align_weapon_to_primary_grip, create_fitted_rig, render_joint_pose_preview, rigid_bind
 from blender_worker.stages.vox_ingest import VoxImportOptions, import_vox_scene
 from vcf_core.builds import determine_status
 from vcf_core.assets import load_registry
 from vcf_core.jobs import load_job
+from vcf_core.export_profiles import load_export_profile
 
 
 def parse_args() -> argparse.Namespace:
@@ -306,7 +311,27 @@ def main() -> None:
         else:
             raise ValueError("Asset-registry assembly is not implemented by the compatibility worker")
 
-        pipeline.run("animate", lambda: animate(armature))
+        if assembly_objects:
+            actions, animation_checks = pipeline.run("animate", lambda: apply_animation_packs(armature, job, root))
+            report["checks"].update(animation_checks)
+            report["animation"] = {
+                "packs": list(armature.get("vcf.animation_packs", ())),
+                "actions": [
+                    {"name": action.name, "frame_start": action.get("vcf.frame_start"), "frame_end": action.get("vcf.frame_end"), "loop": action.get("vcf.loop"), "root_motion": action.get("vcf.root_motion"), "events": json.loads(action.get("vcf.events", "[]"))}
+                    for action in actions
+                ],
+            }
+        else:
+            pipeline.run("animate", lambda: animate(armature))
+            actions = [armature.animation_data.action]
+        export_profile = load_export_profile(root, job.get("export_profile", "godot_character"))
+        report["export_profile"] = {"id": export_profile.profile_id, "engine": export_profile.engine, "scale": export_profile.scale, "forward_axis": export_profile.forward_axis, "up_axis": export_profile.up_axis}
+        if assembly_objects:
+            qa_checks, qa_diagnostics = pipeline.run("qa", lambda: validate_character(assembly_objects, armature, actions, export_profile))
+            report["checks"].update(qa_checks)
+            report["diagnostics"].extend(qa_diagnostics)
+            if qa_diagnostics:
+                raise ValueError("QA_BLOCKING_FAILURE: " + ", ".join(item["code"] for item in qa_diagnostics))
         preview = output / f"{slug}_preview.png"
         def render_and_save() -> None:
             configure_render(preview, int(job.get("render_resolution", 768)))
@@ -315,28 +340,40 @@ def main() -> None:
             if assembly_objects:
                 render_part_map_preview(assembly_objects, output / f"{slug}_part_map.png")
                 render_joint_pose_preview(armature, output / f"{slug}_joint_pose.png")
+                view_paths = render_view_set(output, slug, armature)
+                report["visual_previews"] = [path.name for path in view_paths]
             bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
         pipeline.run("render", render_and_save)
 
         formats = job.get("export_formats", ["glb"])
         def export() -> None:
-            if "glb" in formats:
-                bpy.ops.export_scene.gltf(filepath=str(output / f"{slug}.glb"), export_format="GLB", export_animations=True)
-            if "fbx" in formats:
-                bpy.ops.export_scene.fbx(
-                    filepath=str(output / f"{slug}.fbx"), use_selection=False, add_leaf_bones=False, bake_anim=True
-                )
+            character_objects = assembly_objects or [obj for obj in bpy.context.scene.objects if obj.type == "MESH"]
+            export_character(output, slug, formats, character_objects, armature, export_profile)
         pipeline.run("export", export)
+        if assembly_objects and export_profile.engine == "godot" and "glb" in formats:
+            godot_checks = pipeline.run("godot_import", lambda: verify_godot_import(root, output / f"{slug}.glb"))
+            report["checks"].update(godot_checks)
+            report["tool_versions"]["godot"] = godot_checks["godot_version"]
         report["checks"].update(
             {
                 "armature_exists": "VCF_Rig" in bpy.data.objects,
                 "preview_rendered": preview.exists(),
                 "part_map_rendered": (output / f"{slug}_part_map.png").exists() if assembly_objects else None,
                 "joint_pose_rendered": (output / f"{slug}_joint_pose.png").exists() if assembly_objects else None,
+                "view_set_rendered": all((output / f"{slug}_{name}.png").exists() for name in ("front", "side", "rear", "three_quarter", "skeleton", "socket")) if assembly_objects else None,
+                "turntable_rendered": all((output / f"{slug}_turntable_{index:02d}.png").exists() for index in range(8)) if assembly_objects else None,
                 "glb_exported": (output / f"{slug}.glb").exists() if "glb" in formats else None,
                 "fbx_exported": (output / f"{slug}.fbx").exists() if "fbx" in formats else None,
             }
         )
+        expected = {f"{slug}_processed.blend", f"{slug}_preview.png", *(f"{slug}.{extension}" for extension in formats)}
+        if assembly_objects:
+            expected.update({f"{slug}_part_map.png", f"{slug}_joint_pose.png", *(f"{slug}_{name}.png" for name in ("front", "side", "rear", "three_quarter", "skeleton", "socket")), *(f"{slug}_turntable_{index:02d}.png" for index in range(8))})
+            report["content_hash"] = character_content_hash(assembly_objects, armature, actions)
+        missing_artifacts = sorted(name for name in expected if not (output / name).is_file())
+        report["checks"]["artifact_completeness"] = not missing_artifacts
+        if missing_artifacts:
+            raise ValueError("QA_ARTIFACT_MISSING: " + ", ".join(missing_artifacts))
         for artifact in sorted(path for path in output.iterdir() if path.is_file()):
             report["artifacts"].append({
                 "name": artifact.name,

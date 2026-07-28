@@ -1,8 +1,8 @@
 # Voxel Character Factory Implementation Plan
 
-Status: Phases 0-3 implemented; Phase 4+ proposed
+Status: Phases 0-4 implemented; Phase 5+ proposed
 Planning baseline: 2026-07-28
-Primary milestone: one real, editable, rigged, animated, Godot-tested voxel character built without opening Blender interactively
+Primary milestone: achieved — one real, editable, rigged, animated, Godot-tested voxel character builds without opening Blender interactively
 
 ## 1. Outcome and scope
 
@@ -32,7 +32,7 @@ The public acceptance fixture will be an original **Heavy Sword Hero**. Its prop
 - Quadruped, flying, multi-arm, and boss rigs
 - A Windows installer or updater
 
-These are deferred until the engine-tested character gate in section 7 passes.
+These remain deferred to later phases now that the engine-tested character gate has passed.
 
 ## 2. Reconciled baseline
 
@@ -40,23 +40,24 @@ The original assessment predates several fixes. Planning starts from the actual 
 
 | Capability | Current state | Next required step |
 | --- | --- | --- |
-| Desktop controller | Builds one/all, saves jobs, cancels, streams logs | Stage-aware progress, retry, overrides, history |
-| Blender detection | Automatic and manual selection work | Version/capability preflight |
-| VOX input | Typed bounded parser; multi-model scene graph, transforms/layers/material metadata, normalized greedy/surface/cubes import | Asset-semantic mapping and production fixture corpus |
+| Desktop controller | Builds one/all, saves jobs, cancels, streams logs | Phase 5 stage-aware progress, retry, overrides, history |
+| Blender detection | Automatic and manual selection work | Phase 5 version/capability preflight |
+| VOX input | Typed bounded parser; multi-model scene graph, transforms/layers/material metadata, normalized greedy/surface/cubes import | Expand production fixture corpus as new exporters are supported |
 | Other input | GLB, GLTF, FBX, OBJ | Normalize units, axes, origins, and part metadata |
-| Geometry | Test proxy or user-supplied source | Versioned modular asset library |
-| Rigging | Fixed test armature and simple bone parenting | Fitted templates, pivots, semantic rigid binding |
-| Animation | One placeholder idle | Versioned action contracts and first production pack |
-| Export | Blend, GLB, FBX, PNG, JSON report | Profiles, atomic outputs, Godot import gate |
-| Job editing | Validated JSON plus Ollama/OpenAI patching | Job v2, asset references, overrides, migrations |
-| Tests | Eight standard-library unit tests | Fixtures, Blender integration, Godot and performance tests |
+| Geometry | Proxy compatibility path plus 24-part original modular pilot | Add archetypes only after Phase 5 operator workflow |
+| Rigging | Versioned fitted humanoid template, semantic rigid binding, pivots, and sockets | Phase 6 secondary-motion and additional archetype rigs |
+| Animation | Animation Pack v1 with four validated production actions and events | Phase 6 combat, reaction, and archetype packs |
+| Export | Versioned Godot/Unity/Unreal profiles, atomic artifacts, semantic hash, and passing Godot gate | Phase 6 optimization and compression |
+| Job editing | Canonical Job v2, v1 migration, asset references, overrides, and validated LLM proposals | Phase 5 operator editors and review UX |
+| Tests | 45 standard-library tests plus Blender, visual, Godot, and performance verification modes | Phase 5 cache/queue/recovery coverage |
 | Repository | Source and draft PR exist | Real CI, policy docs, license decision, release workflow |
 
 Build cancellation, basic Blender detection, direct single-model VOX import, LLM job patching, and initial tests are complete and must not be reopened as unfinished work.
 
 ### Implementation findings — 2026-07-28
 
-Phases 0 and 1 are implemented and verified locally on Blender 4.5.5 LTS. The
+Phases 0 through 4 are implemented and verified locally on Blender 4.5.5 LTS and
+Godot 4.6.2. The
 compatibility worker reports proxy geometry as `prototype`, imported-but-unbound
 geometry as `incomplete`, and retains transactional failed runs. Job v1 remains
 readable through the Job v2 migration boundary.
@@ -247,15 +248,30 @@ Goal: ship the first engine-usable character rather than merely producing files.
 
 | ID | Size | Depends on | Deliverable and acceptance criteria |
 | --- | --- | --- | --- |
-| ANIM-401 | M | RIG-301 | Implement Animation Pack v1, deterministic action loading, naming, frame-rate, loop, event, and root-motion contracts. Incompatible rigs fail before export. |
-| ANIM-402 | L + 4-6 animation days | RIG-303, ANIM-401 | Produce core `idle`, `walk`, and `run` actions. Loop seams, foot sliding, empty curves, and required-bone coverage are checked. |
-| ANIM-403 | M + 2-4 animation days | RIG-304, ANIM-401 | Produce `heavy_sword_attack_1`; action events declare trail and hit windows. Additional attacks, guard, damage, and victory are Phase 6 content. |
-| QA-401 | L | RIG-303 | Add checks for missing/detached parts, invalid pivots, ground penetration, intersections, material limits, object/face counts, animation presence, and artifact completeness. Every failure has a stable code and severity. |
-| QA-402 | M | QA-401 | Render front, side, rear, three-quarter, skeleton, socket, and part-map views plus a turntable. Store visual baselines for the original pilot asset. |
-| EXP-401 | M | ADR-001, ANIM-401 | Add versioned Godot, Unity, and Unreal export profiles for scale, axes, materials, animation splitting, root motion, textures, and compression. Only Godot gates the pilot. |
-| EXP-402 | L | EXP-401, QA-401 | Export only the character collection, excluding preview cameras/lights. Add a minimal Godot test project and headless import verification. Assert skeleton, materials, named actions, bounds, orientation, scale, and a loadable scene. |
+| ANIM-401 | M | RIG-301 | **Implemented.** Animation Pack v1 provides deterministic action loading, naming, frame-rate, loop, event, and root-motion contracts; incompatible rigs fail before export. |
+| ANIM-402 | L + 4-6 animation days | RIG-303, ANIM-401 | **Implemented.** Core `idle`, `walk`, and `run` actions pass loop-seam, in-place/root, empty-curve, event, and required-bone checks. |
+| ANIM-403 | M + 2-4 animation days | RIG-304, ANIM-401 | **Implemented.** `heavy_sword_attack_1` declares validated trail and hit windows. Additional attacks, guard, damage, and victory remain Phase 6 content. |
+| QA-401 | L | RIG-303 | **Implemented.** Stable-code checks cover missing/detached parts, pivots, grounding, intersections, profile budgets, actions, and artifact completeness. |
+| QA-402 | M | QA-401 | **Implemented.** Builds render front, side, rear, three-quarter, skeleton, socket, part-map, joint-pose, and eight turntable views under a versioned baseline policy. |
+| EXP-401 | M | ADR-001, ANIM-401 | **Implemented.** Versioned Godot, Unity, and Unreal profiles define scale, axes, materials, animation, root motion, textures, compression, and budgets. |
+| EXP-402 | L | EXP-401, QA-401 | **Implemented.** Character-only export excludes preview helpers; the Godot 4.6.2 headless gate verifies skeleton, materials, named actions, bounds, orientation, scale, and scene loading. |
+
+Implementation status — 2026-07-28: all Phase 4 items are implemented. The
+versioned `heavy_sword_core` pack supplies `idle`, `walk`, `run`, and
+`heavy_sword_attack_1`, including footstep/trail/hit events and automated seam,
+root-motion, curve, and bone-coverage checks. Stable QA codes and profile budgets
+gate the build; 17 preview/diagnostic/turntable PNGs are produced. Godot, Unity,
+and Unreal profiles are versioned, while the pilot is gated by a minimal Godot
+4.6.2 project. The production export selects only the 24 meshes and armature.
 
 **Vertical-slice release gate:** the Heavy Sword Hero builds from source in one command, passes all QA, imports into Godot without warnings classified as errors, plays every required action, and produces Blend, GLB, previews, and Build Report v2. A second clean build is deterministic apart from documented timestamp fields.
+
+**Gate result — passed locally:** `tools/build.ps1` runs Blender and the pinned
+Godot import verifier in one command. The imported scene contains 22 bones, 24
+meshes/materials, all four required actions, and meter-scale bounds. Build Report
+v2 records a deterministic semantic `content_hash`; binary Blend/FBX containers
+and EEVEE PNG bytes may contain session/render variation and are compared through
+the semantic hash plus visual-regression artifacts.
 
 ### Phase 5 - Operator workflow and robustness
 
@@ -388,10 +404,12 @@ These are person-day ranges, not calendar commitments. Run one VOX scene-graph s
 | Broad UI work hides pipeline defects | Screens exist but builds still need manual repair | UI milestones depend on the vertical-slice gate |
 | Performance targets are guessed | Optimizations do not affect real files | Capture metrics in reports and optimize against a representative fixture corpus |
 
-## 9. Milestone completion statement
+## 9. Milestone completion result
 
-The next milestone is complete only when this statement is true:
+The vertical-slice milestone passed when this statement became true:
 
 > From a clean checkout, one documented command assembles an original modular heavy-sword voxel character, resolves and reports its parts, fits and rigid-binds its rig, attaches its weapon, applies the required animation pack, validates and renders it, exports a correctly scaled GLB, and proves that GLB loads and animates in the pinned Godot test scene—without an interactive Blender session or untracked proprietary input.
 
-Until that statement is demonstrably true, full-cast planning, generative image workflows, advanced rigs, a 3D editor, and installer work remain deferred.
+That statement is demonstrably true for the original Heavy Sword Hero as of
+2026-07-28. Full-cast planning, generative image workflows, advanced rigs, a 3D
+editor, and installer work remain deferred to their dependency-ordered phases.

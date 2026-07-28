@@ -13,6 +13,8 @@ if str(ROOT) not in sys.path:
 from vcf_core.jobs import migrate_job, validate_job
 from vcf_core.assets import AssetValidationError, load_registry
 from vcf_core.rigging import PartResolutionError, load_rig_template
+from vcf_core.animation import AnimationPackError, load_animation_pack
+from vcf_core.export_profiles import ExportProfileError, load_export_profile
 
 
 def main() -> int:
@@ -49,11 +51,19 @@ def main() -> int:
             load_rig_template(path)
         except PartResolutionError as exc:
             failures.extend(f"{path.relative_to(ROOT)}: {error}" for error in exc.errors)
+    animation_packs = sorted((ROOT / "config" / "animation_packs").glob("*.v1.json"))
+    for path in animation_packs:
+        try: load_animation_pack(path)
+        except AnimationPackError as exc: failures.extend(f"{path.relative_to(ROOT)}: {error}" for error in exc.errors)
+    export_profiles = sorted((ROOT / "config" / "export_profiles").glob("*.v1.json"))
+    for path in export_profiles:
+        try: load_export_profile(ROOT, path.name.removesuffix(".v1.json"))
+        except ExportProfileError as exc: failures.append(f"{path.relative_to(ROOT)}: {exc}")
     if failures:
         print("Validation failed:", *failures, sep="\n- ")
         return 1
     asset_count = len(registry.manifests) if registry else 0
-    print(f"Validated {len(jobs)} jobs, {asset_count} registry assets, and {len(rig_templates)} rig templates; v1 jobs are readable and migrate to Job v2.")
+    print(f"Validated {len(jobs)} jobs, {asset_count} registry assets, {len(rig_templates)} rig templates, {len(animation_packs)} animation packs, and {len(export_profiles)} export profiles; v1 jobs are readable and migrate to Job v2.")
     return 0
 
 

@@ -8,4 +8,7 @@ assets/incoming/*
 !assets/incoming/.gitkeep
 assets/generated/*
 !assets/generated/.gitkeep
+tests/godot/imported/*
+!tests/godot/imported/.gitkeep
+tests/godot/.godot/
 

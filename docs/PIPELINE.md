@@ -6,14 +6,16 @@ The LLM acts as the planner. It edits a validated character job. Tested Python s
 2. Resolve a versioned registry assembly, import an approved source, or generate a proxy.
 3. Resolve semantic parts using reviewed overrides, manifests, names/layers, markers, then conservative spatial fallback.
 4. Fit a versioned rig template, rigid-bind every resolved part, and align declared weapon sockets.
-5. Apply animation profile.
-6. Configure camera and lighting.
-7. Render preview.
-8. Export GLB and FBX.
-9. Save processed Blend file.
-10. Write validation report.
+5. Resolve and validate versioned animation packs against the fitted rig.
+6. Create the declared actions and validate curves, seams, foot sliding, events, required bones, and root motion.
+7. Run stable-code geometry, rig, animation, profile-budget, and artifact QA.
+8. Configure camera and lighting and render the fixed views, diagnostic views, and turntable.
+9. Save the editable processed Blend file.
+10. Export only the character meshes and armature through the selected engine profile.
+11. For the production Godot profile, import the GLB into the pinned headless test project and verify its scene, skeleton, materials, actions, bounds, orientation, and scale.
+12. Hash every artifact, record the semantic content hash, write Build Report v2, and atomically promote a successful run.
 
-## Phase 2-3 registry assembly and rigid rig
+## Phase 2-4 production vertical slice
 
 `characters/original/heavy_sword_hero.json` is the first public registry job. Its
 `source.mode` is `assembly`, so validation resolves all declared IDs from
@@ -37,8 +39,25 @@ Reviewed corrections can be persisted
 atomically with `python tools/save_part_mapping.py --job <job> --mapping <mapping.json>`;
 subsequent builds replay that Job v2 `part_overrides` mapping exactly.
 
+`config/animation_packs/heavy_sword_core.v1.json` supplies the Phase 4 actions:
+`idle`, `walk`, `run`, and `heavy_sword_attack_1`. The attack declares trail and
+hit windows; locomotion declares footstep events. Every action remains separately
+addressable in Blender and exports as a named Godot animation.
+
+`config/export_profiles/` holds the Godot, Unity, and Unreal scale, axis,
+material, animation, texture, compression, and content-budget policies. The pilot
+uses `godot_character`; only the 24 editable meshes and fitted armature are
+exported. Preview cameras and lights never enter the GLB/FBX.
+
+The render stage produces the transparent hero preview, part map, joint pose,
+front/side/rear/three-quarter views, skeleton/socket diagnostics, and eight fixed
+turntable frames. The versioned baseline policy is
+`config/visual_baselines/heavy_sword_hero.v1.json`.
+
 Run `python tools/generate_pilot_assets.py --check` to verify the deterministic
 CC0 pilot corpus, and `./tools/verify.ps1 -Blender` for the registry and
-fitted-rig integration tests.
+fitted-rig and Phase 4 animation/QA integration tests. Use
+`./tools/verify.ps1 -Visual` for the complete preview set and
+`./tools/verify.ps1 -Godot` for the engine import gate.
 
 The intended user workflow is select, build, review, approve. Blender never needs to be opened manually.

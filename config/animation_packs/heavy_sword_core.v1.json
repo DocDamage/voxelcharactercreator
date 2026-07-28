@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "pack_id": "heavy_sword_core",
+  "frame_rate": 30,
+  "compatibility_tags": ["humanoid", "heavy_sword"],
+  "required_bones": ["root", "pelvis", "spine", "head", "upper_arm.L", "upper_arm.R", "forearm.L", "forearm.R", "hand.L", "hand.R", "thigh.L", "thigh.R", "shin.L", "shin.R", "foot.L", "foot.R", "weapon_socket.R", "effect_socket"],
+  "actions": [
+    {
+      "name": "idle", "frame_start": 1, "frame_end": 60, "loop": true, "root_motion": "none", "required_bones": ["root", "spine", "head"], "events": [],
+      "poses": [
+        {"frame": 1, "bones": {"spine": [0, -0.025, 0], "head": [0, 0.015, 0]}},
+        {"frame": 30, "bones": {"spine": [0, 0.025, 0], "head": [0, -0.015, 0]}},
+        {"frame": 60, "bones": {"spine": [0, -0.025, 0], "head": [0, 0.015, 0]}}
+      ]
+    },
+    {
+      "name": "walk", "frame_start": 1, "frame_end": 30, "loop": true, "root_motion": "in_place", "required_bones": ["root", "pelvis", "thigh.L", "thigh.R", "shin.L", "shin.R", "foot.L", "foot.R"], "events": [{"name":"footstep_l","frame":8},{"name":"footstep_r","frame":23}],
+      "poses": [
+        {"frame": 1, "bones": {"thigh.L":[0.38,0,0],"shin.L":[-0.18,0,0],"foot.L":[-0.12,0,0],"thigh.R":[-0.38,0,0],"shin.R":[0.42,0,0],"foot.R":[0.18,0,0],"upper_arm.L":[-0.2,0,0],"upper_arm.R":[0.2,0,0]}},
+        {"frame": 15, "bones": {"thigh.L":[-0.38,0,0],"shin.L":[0.42,0,0],"foot.L":[0.18,0,0],"thigh.R":[0.38,0,0],"shin.R":[-0.18,0,0],"foot.R":[-0.12,0,0],"upper_arm.L":[0.2,0,0],"upper_arm.R":[-0.2,0,0]}},
+        {"frame": 30, "bones": {"thigh.L":[0.38,0,0],"shin.L":[-0.18,0,0],"foot.L":[-0.12,0,0],"thigh.R":[-0.38,0,0],"shin.R":[0.42,0,0],"foot.R":[0.18,0,0],"upper_arm.L":[-0.2,0,0],"upper_arm.R":[0.2,0,0]}}
+      ]
+    },
+    {
+      "name": "run", "frame_start": 1, "frame_end": 20, "loop": true, "root_motion": "in_place", "required_bones": ["root", "pelvis", "thigh.L", "thigh.R", "shin.L", "shin.R", "foot.L", "foot.R"], "events": [{"name":"footstep_l","frame":5},{"name":"footstep_r","frame":15}],
+      "poses": [
+        {"frame":1,"bones":{"pelvis":[0.12,0,0],"thigh.L":[0.65,0,0],"shin.L":[-0.25,0,0],"foot.L":[-0.2,0,0],"thigh.R":[-0.65,0,0],"shin.R":[0.75,0,0],"foot.R":[0.25,0,0],"upper_arm.L":[-0.45,0,0],"upper_arm.R":[0.45,0,0]}},
+        {"frame":10,"bones":{"pelvis":[0.12,0,0],"thigh.L":[-0.65,0,0],"shin.L":[0.75,0,0],"foot.L":[0.25,0,0],"thigh.R":[0.65,0,0],"shin.R":[-0.25,0,0],"foot.R":[-0.2,0,0],"upper_arm.L":[0.45,0,0],"upper_arm.R":[-0.45,0,0]}},
+        {"frame":20,"bones":{"pelvis":[0.12,0,0],"thigh.L":[0.65,0,0],"shin.L":[-0.25,0,0],"foot.L":[-0.2,0,0],"thigh.R":[-0.65,0,0],"shin.R":[0.75,0,0],"foot.R":[0.25,0,0],"upper_arm.L":[-0.45,0,0],"upper_arm.R":[0.45,0,0]}}
+      ]
+    },
+    {
+      "name": "heavy_sword_attack_1", "frame_start": 1, "frame_end": 36, "loop": false, "root_motion": "none", "required_bones": ["root", "pelvis", "spine", "upper_arm.L", "upper_arm.R", "forearm.L", "forearm.R", "hand.L", "hand.R", "weapon_socket.R", "effect_socket"], "events": [{"name":"trail_start","frame":13},{"name":"hit_start","frame":18},{"name":"hit_end","frame":23},{"name":"trail_end","frame":27}],
+      "poses": [
+        {"frame":1,"bones":{"spine":[0,0,0],"upper_arm.R":[0,0,0.15],"forearm.R":[0,0,0.2],"upper_arm.L":[0,0,-0.1]}},
+        {"frame":12,"bones":{"spine":[0,-0.22,-0.25],"upper_arm.R":[-0.65,0.15,0.55],"forearm.R":[-0.55,0,0.35],"upper_arm.L":[-0.35,0,-0.35]}},
+        {"frame":21,"bones":{"spine":[0,0.3,0.35],"upper_arm.R":[0.7,-0.1,-0.65],"forearm.R":[0.25,0,-0.4],"upper_arm.L":[0.45,0,0.3]}},
+        {"frame":36,"bones":{"spine":[0,0,0],"upper_arm.R":[0,0,0.15],"forearm.R":[0,0,0.2],"upper_arm.L":[0,0,-0.1]}}
+      ]
+    }
+  ]
+}
