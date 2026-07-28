@@ -2,7 +2,10 @@
 param(
     [Parameter(Mandatory = $true)]
     [string]$Job,
-    [string]$Blender = $env:VCF_BLENDER
+    [string]$Blender = $env:VCF_BLENDER,
+    [switch]$NoCache,
+    [ValidateSet('prepare','ingest','assemble_proxy','assemble_assets','resolve_parts','rig','align_sockets','rigid_bind','animate','qa','render','export','godot_import')]
+    [string]$RetryStage
 )
 
 $ErrorActionPreference = 'Stop'
@@ -16,5 +19,8 @@ if (-not $Blender) { throw 'Install Blender under C:\Program Files\Blender Found
 if (-not (Test-Path -LiteralPath $Blender -PathType Leaf)) { throw "Blender executable not found: $Blender" }
 $JobPath = Join-Path $Root $Job
 if (-not (Test-Path -LiteralPath $JobPath -PathType Leaf)) { throw "Job not found: $Job" }
-& $Blender --background --python (Join-Path $Root 'blender_worker/process_character.py') -- --job $JobPath --project-root $Root
+$WorkerArgs = @('--background', '--python', (Join-Path $Root 'blender_worker/process_character.py'), '--', '--job', $JobPath, '--project-root', $Root)
+if ($NoCache) { $WorkerArgs += '--no-cache' }
+if ($RetryStage) { $WorkerArgs += @('--retry-stage', $RetryStage) }
+& $Blender @WorkerArgs
 exit $LASTEXITCODE

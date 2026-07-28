@@ -11,3 +11,8 @@ not commit generated outputs, caches, logs, Godot imports, or proprietary inputs
 New tracked assets require the provenance record described in
 `docs/ASSET_PROVENANCE.md`. Animation and engine behavior belong in versioned
 packs/profiles under `config/`, not hard-coded pilot branches.
+
+Operator changes must preserve atomic job/queue writes, transactional promotion,
+cache-key coverage, and structured `VCF_EVENT` stage output. Add normal-Python
+tests for preflight, queue recovery, cache invalidation, and proposal validation;
+use `-NoCache` when verifying a Blender change that might otherwise reuse output.

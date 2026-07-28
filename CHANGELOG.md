@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+Version: `0.3.0-operator`
+
+- Completed Phase 5 with Blender/Godot/Ollama/OpenAI/path/input preflight and actionable corrective diagnostics.
+- Added a durable stage-aware desktop build queue with structured progress events, cancellation, interrupted-batch resume, failed-stage retry provenance, and failed-run inspection.
+- Added content-addressed completed-build caching over jobs, source assets, manifests, versioned configuration, and tool versions; Build Report v2 records per-stage hits, misses, and bypasses, and `-NoCache` forces a full build.
+- Added compatible asset/equipment selection, semantic mapping and palette editing, undo/redo, atomic saves, and schema-valid variant duplication.
+- Added current/before rendered-preview browsing and a validation dashboard for QA diagnostics and stage failures.
+- Expanded LLM planning to reviewable registry-asset, palette, mapping, animation, export, and correction proposals; unsafe fields and source paths are rejected and validated diffs require explicit approval.
+
 - Added the Phase 0 contract foundation: Job v2 migration and validation, build-report types, and safety policies.
 - Added Phase 2 Asset Manifest v1, registry validation and lookup, and the original CC0 Heavy Sword Hero assembly job.
 - Added 24 modular VOX source assets, including side-specific gloves, boots, and pauldrons, with per-asset thumbnails, provenance, source hashes, and headless Blender assembly verification.

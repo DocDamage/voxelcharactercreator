@@ -15,6 +15,11 @@ Windows-first starter for running Blender as an invisible character-processing b
 - Transparent, fixed-angle diagnostic, and eight-angle turntable previews
 - GLB and FBX export
 - Godot 4.6.2 headless import gate and JSON Build Report v2
+- Dependency/capability preflight with actionable corrections
+- Durable stage-aware queue with safe cancellation, retry, resume, and failed-run inspection
+- Content-addressed completed-build cache with per-stage decisions and `-NoCache`
+- Asset/equipment, semantic mapping, palette, variant, preview, and validation UI workflows
+- Reviewable LLM asset/palette/correction proposals with validated field-level diffs
 - Pilot jobs for Cecil, Kain, Rydia, Golbez, Terra, Kefka, Cloud, Sephiroth, Squall and Ultimecia
 
 ## Run
@@ -24,6 +29,12 @@ Windows-first starter for running Blender as an invisible character-processing b
 3. Double-click `launch_windows.bat`.
 4. Open Settings and choose `blender.exe` if it is not found automatically.
 5. Select a character and click **Build Character**.
+
+The app runs preflight before enqueueing. Use **Asset & Equipment Editor** and
+**Part & Palette Overrides** for routine corrections, **Preview & Validation**
+to inspect renders and QA, and **Retry Failed Stage** or **Resume Batch** for
+recovery. Full instructions are in
+[docs/OPERATOR_WORKFLOW.md](docs/OPERATOR_WORKFLOW.md).
 
 ## Source models
 
@@ -41,7 +52,9 @@ available diagnostics.
 
 ## Output
 
-`exports/<game>/<character>/`
+Successful artifacts remain in `exports/<game>/<character>/`. Operator metadata
+is stored in ignored `exports/.queue/`, `exports/.cache/`, `exports/.history/`,
+and `exports/.runs/` directories.
 
 - processed `.blend`
 - `.glb`
@@ -99,8 +112,16 @@ For transactional-output regression testing, the worker accepts the test-only
 `--fail-stage <stage>` switch; failed runs are retained under `exports/.runs/` and
 do not replace the last promoted export.
 
+Unchanged completed builds are reused by default. The cache key covers the job,
+referenced inputs, manifests, configuration, and tool versions; Build Report v2
+records every hit, miss, or bypass. Force a full build with:
+
+```powershell
+./tools/build.ps1 -Job characters/original/heavy_sword_hero.json -NoCache
+```
+
 ## Roadmap
 
-Phases 0-4 and the vertical-slice gate are complete. See the dependency-ordered
+Phases 0-5 and the operator-workflow gate are complete. See the dependency-ordered
 [implementation plan](docs/IMPLEMENTATION_PLAN.md) and [next phase](docs/NEXT_PHASE.md)
-for Phase 5 operator workflow work and the deferred Phase 6 animation expansion.
+for Phase 6 reusable-factory work.

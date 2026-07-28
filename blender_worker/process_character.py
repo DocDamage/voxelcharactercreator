@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import shutil
+import subprocess
 import sys
 import traceback
 from datetime import UTC, datetime
@@ -23,7 +24,7 @@ from blender_worker.pipeline import Pipeline
 from blender_worker.stages.animation import apply_animation_packs
 from blender_worker.stages.asset_assembly import assemble_assets
 from blender_worker.stages.export import export_character
-from blender_worker.stages.godot import verify_godot_import
+from blender_worker.stages.godot import _find_godot, verify_godot_import
 from blender_worker.stages.part_resolution import render_part_map_preview, resolve_scene_parts
 from blender_worker.stages.quality import character_content_hash, render_view_set, validate_character
 from blender_worker.stages.rigging import align_weapon_to_primary_grip, create_fitted_rig, render_joint_pose_preview, rigid_bind
@@ -32,6 +33,7 @@ from vcf_core.builds import determine_status
 from vcf_core.assets import load_registry
 from vcf_core.jobs import load_job
 from vcf_core.export_profiles import load_export_profile
+from vcf_core.operator import BuildCache, STAGES
 
 
 def parse_args() -> argparse.Namespace:
@@ -40,6 +42,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--job", required=True)
     parser.add_argument("--project-root", required=True)
     parser.add_argument("--fail-stage", help="Test-only: force a named stage to fail before it runs.")
+    parser.add_argument("--retry-stage", choices=STAGES, help="Record the failed stage being retried; deterministic prerequisites are replayed.")
+    parser.add_argument("--no-cache", action="store_true", help="Bypass the content-addressed completed-build cache.")
     return parser.parse_args(blender_args)
 
 
@@ -236,8 +240,37 @@ def main() -> None:
         "checks": {},
         "diagnostics": [],
         "artifacts": [],
+        "retry_from_stage": arguments.retry_stage,
     }
-    pipeline = Pipeline(report, fail_stage=arguments.fail_stage)
+    cache = BuildCache(root)
+    cache_versions = {"blender": bpy.app.version_string}
+    godot_executable = _find_godot()
+    if godot_executable:
+        version_result = subprocess.run([str(godot_executable), "--version"], capture_output=True, text=True, timeout=15, check=False)
+        if version_result.returncode == 0:
+            cache_versions["godot"] = version_result.stdout.strip().splitlines()[0]
+    cache_key = cache.key(job_path, cache_versions)
+    cache_read_enabled = not arguments.no_cache and not arguments.retry_stage
+    bypass_reason = "retry" if arguments.retry_stage else "no_cache"
+    report["cache"] = {"enabled": cache_read_enabled, "key": cache_key, "decision": f"bypass_{bypass_reason}" if not cache_read_enabled else "miss"}
+    cached = cache.get(cache_key) if cache_read_enabled else None
+    if cached:
+        cached_stages = [stage.get("name") for stage in cached.get("stages", []) if stage.get("name")]
+        report.update({
+            "status": cached.get("status", "complete"),
+            "cache": {"enabled": True, "key": cache_key, "decision": "hit", "source_run_id": cached.get("run_id")},
+            "stages": [{"name": name, "status": "cached", "cache": "hit", "duration_seconds": 0.0} for name in cached_stages],
+            "checks": cached.get("checks", {}), "artifacts": cached.get("artifacts", []),
+            "content_hash": cached.get("content_hash"), "promoted_output": cached.get("promoted_output"),
+        })
+        (run_dir / "build_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        cached_output = root / str(report.get("promoted_output", ""))
+        if cached_output.is_dir():
+            (cached_output / f"{slug}_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print("VCF_EVENT " + json.dumps({"type": "cache", "status": "hit", "source_run_id": cached.get("run_id")}), flush=True)
+        print(json.dumps(report, indent=2))
+        return
+    pipeline = Pipeline(report, fail_stage=arguments.fail_stage, cache_enabled=cache_read_enabled)
     try:
         pipeline.run("prepare", clear_scene)
         source = job["source"]
@@ -394,6 +427,7 @@ def main() -> None:
             if backup.exists():
                 shutil.rmtree(backup)
             report["promoted_output"] = str(final_output.relative_to(root))
+            cache.put(cache_key, report)
     except Exception as exc:
         report["status"] = "failed"
         report["error"] = str(exc)

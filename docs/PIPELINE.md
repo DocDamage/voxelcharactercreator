@@ -1,6 +1,14 @@
 # Pipeline
 
-The LLM acts as the planner. It edits a validated character job. Tested Python scripts perform Blender operations deterministically.
+The LLM acts as an optional planner. It proposes a validated character-job diff;
+an operator must approve that diff. Tested Python scripts perform Blender
+operations deterministically.
+
+Before Blender starts, the controller validates dependencies/capabilities,
+writable paths, the canonical job, and VOX integrity. It persists the item in a
+stage-aware queue and computes a cache key from jobs, sources, manifests,
+configuration, and tool versions. A completed cache hit records every reused
+stage in a new report; `-NoCache` performs a full evaluation.
 
 1. Load job.
 2. Resolve a versioned registry assembly, import an approved source, or generate a proxy.
@@ -61,3 +69,9 @@ fitted-rig and Phase 4 animation/QA integration tests. Use
 `./tools/verify.ps1 -Godot` for the engine import gate.
 
 The intended user workflow is select, build, review, approve. Blender never needs to be opened manually.
+
+Phase 5 adds structured asset/equipment and part/palette editors, atomic undoable
+job changes, variant duplication, determinate stage progress, failed-run
+diagnostics, current/before-preview browsing, cancellation, deterministic retry,
+and batch resume. See [OPERATOR_WORKFLOW.md](OPERATOR_WORKFLOW.md) for the operator
+contract and recovery semantics.

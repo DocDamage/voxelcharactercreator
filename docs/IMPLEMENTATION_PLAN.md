@@ -1,6 +1,6 @@
 # Voxel Character Factory Implementation Plan
 
-Status: Phases 0-4 implemented; Phase 5+ proposed
+Status: Phases 0-5 implemented; Phase 6+ proposed
 Planning baseline: 2026-07-28
 Primary milestone: achieved — one real, editable, rigged, animated, Godot-tested voxel character builds without opening Blender interactively
 
@@ -40,23 +40,23 @@ The original assessment predates several fixes. Planning starts from the actual 
 
 | Capability | Current state | Next required step |
 | --- | --- | --- |
-| Desktop controller | Builds one/all, saves jobs, cancels, streams logs | Phase 5 stage-aware progress, retry, overrides, history |
-| Blender detection | Automatic and manual selection work | Phase 5 version/capability preflight |
+| Desktop controller | Preflight, durable stage queue, cancellation/retry/resume, editors, previews, validation dashboard | Phase 6 measured queue parallelism and optional viewer research |
+| Blender detection | Automatic/manual selection plus Blender/Godot version and capability preflight | Maintain supported-version policy as tools evolve |
 | VOX input | Typed bounded parser; multi-model scene graph, transforms/layers/material metadata, normalized greedy/surface/cubes import | Expand production fixture corpus as new exporters are supported |
 | Other input | GLB, GLTF, FBX, OBJ | Normalize units, axes, origins, and part metadata |
 | Geometry | Proxy compatibility path plus 24-part original modular pilot | Add archetypes only after Phase 5 operator workflow |
 | Rigging | Versioned fitted humanoid template, semantic rigid binding, pivots, and sockets | Phase 6 secondary-motion and additional archetype rigs |
 | Animation | Animation Pack v1 with four validated production actions and events | Phase 6 combat, reaction, and archetype packs |
 | Export | Versioned Godot/Unity/Unreal profiles, atomic artifacts, semantic hash, and passing Godot gate | Phase 6 optimization and compression |
-| Job editing | Canonical Job v2, v1 migration, asset references, overrides, and validated LLM proposals | Phase 5 operator editors and review UX |
-| Tests | 45 standard-library tests plus Blender, visual, Godot, and performance verification modes | Phase 5 cache/queue/recovery coverage |
+| Job editing | Canonical Job v2, atomic undoable operator editors, variants, and validated review-before-apply LLM proposals | Expand only as new archetypes prove contract needs |
+| Tests | 54 standard-library tests plus Blender, visual, Godot, and performance verification modes | Phase 6 archetype, compression, and measured parallelism coverage |
 | Repository | Source and draft PR exist | Real CI, policy docs, license decision, release workflow |
 
 Build cancellation, basic Blender detection, direct single-model VOX import, LLM job patching, and initial tests are complete and must not be reopened as unfinished work.
 
 ### Implementation findings — 2026-07-28
 
-Phases 0 through 4 are implemented and verified locally on Blender 4.5.5 LTS and
+Phases 0 through 5 are implemented and verified locally on Blender 4.5.5 LTS and
 Godot 4.6.2. The
 compatibility worker reports proxy geometry as `prototype`, imported-but-unbound
 geometry as `incomplete`, and retains transactional failed runs. Job v1 remains
@@ -279,14 +279,22 @@ Goal: expose the proven pipeline safely without making users edit JSON for routi
 
 | ID | Size | Depends on | Deliverable and acceptance criteria |
 | --- | --- | --- | --- |
-| OPS-501 | M | PIPE-002 | Add dependency/version preflight for Blender, optional Godot/Ollama, writable paths, and corrupt inputs. The UI offers corrective actions before a build starts. |
-| OPS-502 | L | PIPE-002 | Make the queue stage-aware with cancellation, stage retry, batch resume, and failed-run inspection. Cancelling never promotes partial output. |
-| OPS-503 | L | PIPE-002 | Cache stages by tool/input/config hashes and skip unchanged work. The report states every cache decision; `--no-cache` reproduces a full build. |
-| UI-501 | M | ASSET-201, PART-304 | Add asset selectors, part mapping/override, palette and equipment editors, duplicate/variant actions, and undoable job edits. All writes remain schema-valid and atomic. |
-| UI-502 | M | QA-402 | Add thumbnail browser, staged progress, validation dashboard, retry actions, and before/after rendered views. Use generated renders before considering an embedded 3D engine. |
-| LLM-501 | M | CORE-002, ASSET-201 | Extend planning to asset selection, palette suggestions, missing-asset diagnosis, and structured correction proposals. Validate and preview diffs before applying them. |
+| OPS-501 | M | PIPE-002 | **Implemented.** Blender/Godot version and capability checks, optional LLM-provider checks, writable paths, canonical jobs, and corrupt VOX inputs produce structured corrective actions before enqueue. |
+| OPS-502 | L | PIPE-002 | **Implemented.** The durable queue records stage events and supports cancellation, deterministic failed-stage retry, interrupted/failed batch resume, and latest failed-run inspection. Partial output is never promoted. |
+| OPS-503 | L | PIPE-002 | **Implemented.** Completed builds are keyed by canonical job, tool, source, manifest, and config hashes. Reports state every stage hit/miss/bypass; `-NoCache` evaluates the full pipeline. |
+| UI-501 | M | ASSET-201, PART-304 | **Implemented.** Compatible asset/equipment selection, part/palette overrides, atomic undoable edits, and schema-valid variant duplication cover routine pilot corrections. |
+| UI-502 | M | QA-402 | **Implemented.** The desktop app shows determinate stage progress, validation diagnostics, retry/resume actions, current render thumbnails, and captured before-build previews. |
+| LLM-501 | M | CORE-002, ASSET-201 | **Implemented.** Structured asset, palette, mapping, animation/export, and correction proposals reject unsafe fields, pass canonical validation, show a field-level diff, and require explicit approval. |
 
 **Exit gate:** a new user can assemble, correct, rebuild, inspect, and recover the pilot through the desktop app without hand-editing JSON or opening Blender.
+
+**Gate result — passed locally:** the desktop controller preflights the pinned
+Blender/Godot toolchain, persists stage-aware queue state, exposes schema-valid
+pilot editors and rendered QA, and recovers cancelled/interrupted/failed work.
+An uncached production build passed all 11 executed Blender/Godot stages; the
+immediate repeat reported all 11 as content-addressed cache hits. Fifty-four
+normal-Python tests cover contracts including queue recovery, cache invalidation,
+atomic edits, variants, preflight, and reviewable LLM proposals.
 
 ### Phase 6 - Reusable factory
 
