@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Voxel Character Factory Job",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "game",
+    "role",
+    "body_template",
+    "rig_template",
+    "animation_profile"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "game": { "type": "string", "minLength": 1 },
+    "role": { "enum": ["hero", "villain", "support", "boss"] },
+    "body_template": { "type": "string", "minLength": 1 },
+    "rig_template": { "type": "string", "minLength": 1 },
+    "animation_profile": { "type": "string", "minLength": 1 },
+    "weapon": { "type": ["string", "null"] },
+    "source_model": { "type": ["string", "null"] },
+    "height_voxels": { "type": "integer", "minimum": 16, "maximum": 128 },
+    "palette_profile": { "type": "string" },
+    "accent_colors": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+    },
+    "export_formats": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["glb", "fbx"] }
+    },
+    "render_profile": { "type": "string" },
+    "render_resolution": { "type": "integer", "minimum": 64, "maximum": 4096 },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

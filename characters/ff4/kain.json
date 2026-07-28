@@ -1,0 +1,24 @@
+{
+  "id": "ff4_kain",
+  "name": "Kain Highwind",
+  "game": "ff4",
+  "role": "hero",
+  "body_template": "dragoon",
+  "rig_template": "humanoid_heavy",
+  "animation_profile": "spear",
+  "weapon": "dragoon_lance",
+  "source_model": null,
+  "height_voxels": 44,
+  "palette_profile": "purple_gold",
+  "accent_colors": [
+    "#25204F",
+    "#B89A39",
+    "#BFC6CE"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}

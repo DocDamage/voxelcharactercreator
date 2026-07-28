@@ -1,0 +1,24 @@
+{
+  "id": "ff4_rydia",
+  "name": "Rydia",
+  "game": "ff4",
+  "role": "hero",
+  "body_template": "female_mage",
+  "rig_template": "humanoid_standard",
+  "animation_profile": "caster",
+  "weapon": "summoner_staff",
+  "source_model": null,
+  "height_voxels": 44,
+  "palette_profile": "green_gold",
+  "accent_colors": [
+    "#1FA34A",
+    "#E3B745",
+    "#E5EFE7"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}

@@ -1,0 +1,24 @@
+{
+  "id": "ff8_squall",
+  "name": "Squall Leonhart",
+  "game": "ff8",
+  "role": "hero",
+  "body_template": "male_heroic",
+  "rig_template": "humanoid_standard",
+  "animation_profile": "gunblade",
+  "weapon": "gunblade",
+  "source_model": null,
+  "height_voxels": 44,
+  "palette_profile": "brown_black_white",
+  "accent_colors": [
+    "#493221",
+    "#151619",
+    "#D8D8D2"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}

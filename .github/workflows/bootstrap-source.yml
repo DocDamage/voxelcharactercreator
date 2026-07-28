@@ -1,0 +1,101 @@
+name: Bootstrap source tree
+
+on:
+  push:
+    branches:
+      - agent/publish-voxel-character-factory
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    if: ${{ hashFiles('bootstrap/parts/*') != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/publish-voxel-character-factory
+      - name: Decode source archive
+        run: |
+          mkdir -p /tmp/vcf
+          cat bootstrap/parts/* | base64 --decode > /tmp/vcf.zip
+          unzip -q /tmp/vcf.zip -d /tmp/vcf
+      - name: Install source tree
+        run: |
+          cp -a /tmp/vcf/VoxelCharacterFactory/. ./
+          rm -rf bootstrap
+          rm -f .github/workflows/bootstrap-source.yml
+      - name: Add repository files
+        run: |
+          cat > .gitignore <<'EOF'
+          __pycache__/
+          *.py[cod]
+          .venv/
+          venv/
+          .env
+          *.blend1
+          *.blend2
+          exports/**
+          !exports/.gitkeep
+          logs/**
+          !logs/.gitkeep
+          assets/incoming/**
+          !assets/incoming/.gitkeep
+          .DS_Store
+          Thumbs.db
+          .vscode/
+          .idea/
+          EOF
+          mkdir -p exports logs assets/incoming .github/workflows
+          touch exports/.gitkeep logs/.gitkeep assets/incoming/.gitkeep
+          cat > .github/workflows/validate.yml <<'EOF'
+          name: Validate
+
+          on:
+            push:
+            pull_request:
+
+          jobs:
+            validate:
+              runs-on: ubuntu-latest
+              steps:
+                - uses: actions/checkout@v4
+                - uses: actions/setup-python@v5
+                  with:
+                    python-version: '3.11'
+                - name: Compile Python
+                  run: python -m compileall app blender_worker tools
+                - name: Validate character jobs
+                  run: |
+                    python - <<'PY'
+                    import json
+                    from pathlib import Path
+                    required = {'id','name','game','role','body_template','rig_template','animation_profile'}
+                    jobs = sorted(Path('characters').glob('*/*.json'))
+                    assert jobs, 'No character jobs found'
+                    for path in jobs:
+                        data = json.loads(path.read_text(encoding='utf-8'))
+                        missing = sorted(required - data.keys())
+                        assert not missing, f'{path}: missing {missing}'
+                        assert data['role'] in {'hero','villain','support','boss'}, f'{path}: invalid role'
+                    print(f'Validated {len(jobs)} character jobs')
+                    PY
+                - name: Validate JSON files
+                  run: |
+                    python - <<'PY'
+                    import json
+                    from pathlib import Path
+                    files = list(Path('.').rglob('*.json'))
+                    for path in files:
+                        json.loads(path.read_text(encoding='utf-8'))
+                    print(f'Validated {len(files)} JSON files')
+                    PY
+          EOF
+      - name: Commit unpacked project
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m "Publish Voxel Character Factory v0.2"
+          git push origin HEAD:agent/publish-voxel-character-factory
