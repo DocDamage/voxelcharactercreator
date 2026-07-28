@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "sockets": {
+    "hand_r": {
+      "bone": "forearm.R",
+      "offset": [
+        -2.25,
+        0.0,
+        1.75
+      ]
+    },
+    "hand_l": {
+      "bone": "forearm.L",
+      "offset": [
+        2.25,
+        0.0,
+        1.75
+      ]
+    },
+    "back": {
+      "bone": "spine",
+      "offset": [
+        0.0,
+        0.4,
+        2.0
+      ]
+    },
+    "waist": {
+      "bone": "pelvis",
+      "offset": [
+        0.0,
+        0.45,
+        0.8
+      ]
+    },
+    "head": {
+      "bone": "head",
+      "offset": [
+        0.0,
+        0.0,
+        3.8
+      ]
+    },
+    "cape": {
+      "bone": "spine",
+      "offset": [
+        0.0,
+        0.65,
+        2.2
+      ]
+    }
+  }
+}

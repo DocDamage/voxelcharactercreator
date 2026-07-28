@@ -1,0 +1,24 @@
+{
+  "id": "ff6_terra",
+  "name": "Terra Branford",
+  "game": "ff6",
+  "role": "hero",
+  "body_template": "female_heroic",
+  "rig_template": "humanoid_standard",
+  "animation_profile": "spellblade",
+  "weapon": "short_sword",
+  "source_model": null,
+  "height_voxels": 44,
+  "palette_profile": "red_green_gold",
+  "accent_colors": [
+    "#B92A3C",
+    "#63B87A",
+    "#D3A43A"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}

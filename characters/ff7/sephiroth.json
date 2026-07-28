@@ -1,0 +1,24 @@
+{
+  "id": "ff7_sephiroth",
+  "name": "Sephiroth",
+  "game": "ff7",
+  "role": "villain",
+  "body_template": "lanky_villain",
+  "rig_template": "humanoid_standard",
+  "animation_profile": "katana",
+  "weapon": "masamune",
+  "source_model": null,
+  "height_voxels": 44,
+  "palette_profile": "silver_black",
+  "accent_colors": [
+    "#D9DEE4",
+    "#111318",
+    "#A5AAB1"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}

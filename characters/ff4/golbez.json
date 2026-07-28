@@ -1,0 +1,24 @@
+{
+  "id": "ff4_golbez",
+  "name": "Golbez",
+  "game": "ff4",
+  "role": "villain",
+  "body_template": "large_villain",
+  "rig_template": "humanoid_heavy",
+  "animation_profile": "dark_caster",
+  "weapon": null,
+  "source_model": null,
+  "height_voxels": 52,
+  "palette_profile": "dark_purple_gold",
+  "accent_colors": [
+    "#101327",
+    "#6B2EB7",
+    "#C5A13A"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}

@@ -1,0 +1,24 @@
+{
+  "id": "ff8_ultimecia",
+  "name": "Ultimecia",
+  "game": "ff8",
+  "role": "villain",
+  "body_template": "regal_sorceress",
+  "rig_template": "humanoid_standard",
+  "animation_profile": "dark_caster",
+  "weapon": null,
+  "source_model": null,
+  "height_voxels": 44,
+  "palette_profile": "black_red_purple",
+  "accent_colors": [
+    "#131016",
+    "#8A1738",
+    "#563071"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}

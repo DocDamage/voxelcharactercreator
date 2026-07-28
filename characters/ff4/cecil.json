@@ -1,0 +1,24 @@
+{
+  "id": "ff4_cecil",
+  "name": "Cecil Harvey",
+  "game": "ff4",
+  "role": "hero",
+  "body_template": "heavy_armor",
+  "rig_template": "humanoid_heavy",
+  "animation_profile": "sword_shield",
+  "weapon": "paladin_sword",
+  "source_model": null,
+  "height_voxels": 44,
+  "palette_profile": "silver_blue",
+  "accent_colors": [
+    "#DDE4EA",
+    "#2355C8",
+    "#E5B52A"
+  ],
+  "export_formats": [
+    "glb",
+    "fbx"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 768
+}
