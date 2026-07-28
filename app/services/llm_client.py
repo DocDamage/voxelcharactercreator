@@ -2,7 +2,7 @@ from __future__ import annotations
 import json
 import os
 import urllib.request
-from pathlib import Path
+from copy import deepcopy
 
 SYSTEM_PROMPT = """You convert natural-language voxel character build requests into strict JSON job patches.
 Return JSON only. Allowed keys:
@@ -50,11 +50,14 @@ def run_openai(prompt: str, base_url: str, model: str) -> dict:
     return json.loads(result["choices"][0]["message"]["content"])
 
 def apply_patch(job: dict, patch: dict) -> dict:
+    if not isinstance(job, dict) or not isinstance(patch, dict):
+        raise TypeError("job and patch must be JSON objects")
     allowed = {
         "body_template","rig_template","animation_profile","weapon","source_model",
         "height_voxels","palette_profile","accent_colors","export_formats","render_profile","notes"
     }
+    updated = deepcopy(job)
     for key, value in patch.items():
         if key in allowed:
-            job[key] = value
-    return job
+            updated[key] = value
+    return updated

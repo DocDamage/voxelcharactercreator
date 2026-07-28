@@ -9,7 +9,7 @@ Windows-first starter for running Blender as an invisible character-processing b
 - Character JSON jobs
 - Headless Blender processing
 - Proxy voxel-character generation for pipeline testing
-- GLB, GLTF, FBX and OBJ source import
+- VOX, GLB, GLTF, FBX and OBJ source import
 - Standard rigid humanoid armature
 - Basic idle animation
 - Transparent preview render
@@ -29,7 +29,7 @@ Windows-first starter for running Blender as an invisible character-processing b
 
 Set `source_model` in a character JSON file to a `.glb`, `.gltf`, `.fbx` or `.obj` file. If omitted, the worker builds a proxy figure to test the complete pipeline.
 
-Direct `.vox` import is the next adapter. Blender does not include a universal MagicaVoxel importer, so the production version should bundle a tested importer or automatic VOX-to-GLB converter.
+`.vox` files are imported directly as a single optimized surface mesh. The built-in reader supports standard single-model `SIZE`, `XYZI`, and `RGBA` chunks; multi-model scene graphs are not yet supported.
 
 ## Output
 
@@ -49,3 +49,12 @@ Direct `.vox` import is the next adapter. Blender does not include a universal M
 - Shared palette definition.
 - Standard attachment socket specification.
 - Clear separation between LLM planning and deterministic Blender execution.
+
+## Validate the project
+
+The non-Blender components use the standard-library test runner:
+
+```powershell
+python -m unittest discover -v
+python -m compileall -q app blender_worker tools tests
+```

@@ -13,7 +13,7 @@ Current limits:
 
 - Does not yet process multi-model scene graphs.
 - Does not yet merge adjacent voxels into optimized meshes.
-- Imports one cube per voxel, which is reliable but inefficient.
+- Builds one mesh containing only exposed voxel faces, avoiding hidden interior geometry.
 - Does not yet classify limbs automatically.
 
-Production optimization will add greedy meshing, scene-graph support, part tags, and modular rigid-body assignment.
+Production optimization can add greedy meshing, scene-graph support, part tags, and modular rigid-body assignment.
