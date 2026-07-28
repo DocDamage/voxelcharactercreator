@@ -48,6 +48,32 @@
           "type": "object",
           "propertyNames": {"enum": ["upper_arm.L", "upper_arm.R", "forearm.L", "forearm.R", "hand.L", "hand.R", "thigh.L", "thigh.R", "shin.L", "shin.R", "foot.L", "foot.R"]},
           "additionalProperties": {"type": "number", "minimum": 0.5, "maximum": 1.5}
+        },
+        "secondary_motion": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["chain_id", "kind", "segments", "parent_bone", "stiffness", "damping", "max_angle_degrees", "fallback"],
+            "properties": {
+              "chain_id": {"type": "string", "minLength": 1},
+              "kind": {"enum": ["hair", "cape", "coat_tail", "skirt", "robe"]},
+              "segments": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+              "parent_bone": {"type": "string", "minLength": 1},
+              "stiffness": {"type": "number", "minimum": 0, "maximum": 1},
+              "damping": {"type": "number", "minimum": 0, "maximum": 1},
+              "max_angle_degrees": {"type": "number", "exclusiveMinimum": 0, "maximum": 90},
+              "fallback": {"const": "rigid"}
+            }
+          }
+        },
+        "optimization": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "lod_ratios": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}},
+            "material_batching": {"enum": ["none", "palette_atlas"]},
+            "compression": {"enum": ["none", "engine", "meshopt"]},
+            "incremental_previews": {"type": "boolean"}
+          }
         }
       },
       "additionalProperties": true

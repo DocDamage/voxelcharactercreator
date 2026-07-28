@@ -14,6 +14,7 @@ try {
     if (-not ($Blender -or $Godot -or $Visual -or $Performance) -or $Unit) {
         python -m compileall -q app blender_worker tools tests vcf_core
         python tools/generate_pilot_assets.py --check
+        python tools/generate_phase6_assets.py --check
         python tools/validate.py
         python tools/scan_secrets.py
         python -m unittest discover -v
@@ -86,6 +87,7 @@ try {
             if ($LASTEXITCODE -ne 0) { throw "Pilot build failed with exit code $LASTEXITCODE." }
         }
         Copy-Item -LiteralPath $Export -Destination (Join-Path $Root 'tests/godot/imported/character.glb') -Force
+        '{"required_actions":["idle","walk","run","heavy_sword_attack_1"],"min_extent":2.0,"max_extent":14.0}' | Set-Content -LiteralPath (Join-Path $Root 'tests/godot/imported/gate_config.json') -Encoding utf8
         $GodotProject = Join-Path $Root 'tests/godot'
         & $GodotExe --headless --editor --path $GodotProject --import
         if ($LASTEXITCODE -ne 0) { throw "Godot GLB import failed with exit code $LASTEXITCODE." }

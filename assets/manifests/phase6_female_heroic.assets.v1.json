@@ -1,0 +1,683 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_head",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_head.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "592464714a99c1b98ec9c5722988ca5482ecf852a07df485c0f8c0b64a792a24",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_head.svg",
+      "placement_voxels": [
+        -4,
+        -3,
+        21
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_torso",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_torso.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "torso"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "05aaa540cf1ab817f220b4dcff905a106eb3b94147150f8b2fb8136a4e166045",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_torso.svg",
+      "placement_voxels": [
+        -6,
+        -3,
+        12
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_pelvis",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_pelvis.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "pelvis"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "4582895fa40388eade86c7b9c7f62aa4dc906488dd7ecf94a80bbe836a43e5b3",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_pelvis.svg",
+      "placement_voxels": [
+        -5,
+        -3,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_upper_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_upper_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_l"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "1b83cedf044b89a6136e9d2e08963a3f7e527cbfa24da98d23b67ae120c2d581",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_upper_arm_l.svg",
+      "placement_voxels": [
+        5,
+        -2,
+        14
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_upper_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_upper_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_r"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "09676335c2d6004fd21d409785c8a3a3d45af922f892a17b0580e569b091c886",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_upper_arm_r.svg",
+      "placement_voxels": [
+        -9,
+        -2,
+        14
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_lower_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_lower_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_l"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "be760942b26c6c0f9719ffd682219bbafab783798f06d6e04eed97dfd6b2cdcf",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_lower_arm_l.svg",
+      "placement_voxels": [
+        7,
+        -2,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_lower_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_lower_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_r"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "ca73bfbc566621670aced0c2badc2dd37d38518cf06dbe3ebed2d336952edbb0",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_lower_arm_r.svg",
+      "placement_voxels": [
+        -11,
+        -2,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_hand_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_hand_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_l"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "c3317a6198e615f6202bf493be95fc92dd24d611eec82be3107c96de2e9e7e54",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_hand_l.svg",
+      "placement_voxels": [
+        7,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_hand_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_hand_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_r"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "2bfbcff5ffde6c2ef98e2c2a7ea2dfcbffb4ab592d2668b01f456ee3576b0386",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_hand_r.svg",
+      "placement_voxels": [
+        -11,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_upper_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_upper_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_l"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "b19901fa1285293153d19f6e66afabf98ae4a66fe21560485c66594729f48330",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_upper_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -3,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_upper_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_upper_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_r"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "ee822dc066822f4b4fffe3c426e92935da6b834962164a75d2de601b6ba199fa",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_upper_leg_r.svg",
+      "placement_voxels": [
+        -5,
+        -3,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_lower_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_lower_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_l"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "114a44b4096b2686c4eff4132e737ba7a139c81c73e9cf44fe9781323e04d634",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_lower_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -3,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_lower_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_lower_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_r"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "473b31f18e194571434e412b73ea3196ea91892e436347ace398edea0e4c6ff5",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_lower_leg_r.svg",
+      "placement_voxels": [
+        -5,
+        -3,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_foot_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_foot_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_l"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "4901a4052e11fd8c8661c2adb0a6e41e8a7f3135e4652cec8dce5f89b3716674",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_foot_l.svg",
+      "placement_voxels": [
+        1,
+        -4,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_foot_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/female_heroic/fhr_foot_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_r"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "92d3b98c14be5d26e910aca9b3c9cdc45fb7a93a99d1655ffbca1d3221318354",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_foot_r.svg",
+      "placement_voxels": [
+        -5,
+        -4,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_sword_shield",
+      "version": "1.0.0",
+      "kind": "weapon",
+      "source_path": "assets/original/phase6/female_heroic/fhr_sword_shield.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "weapon"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "blade"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "912949fdba4e3d55eae7d2880a82a3058bac5d3d8f979842b5a6ad9bccd206c4",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_sword_shield.svg",
+      "placement_voxels": [
+        -14,
+        -1,
+        3
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      },
+      "sockets": {
+        "primary_grip": [
+          1,
+          1,
+          2
+        ],
+        "secondary_grip": [
+          1,
+          1,
+          4
+        ],
+        "back_carry": [
+          1,
+          1,
+          8
+        ],
+        "waist_carry": [
+          1,
+          1,
+          5
+        ],
+        "trail_base": [
+          1,
+          1,
+          3
+        ],
+        "trail_tip": [
+          1,
+          1,
+          14
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "fhr_shield",
+      "version": "1.0.0",
+      "kind": "weapon",
+      "source_path": "assets/original/phase6/female_heroic/fhr_shield.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "shield"
+      ],
+      "compatible_bases": [
+        "female_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "7cfdb35a8e1953ca8b695241650bf231ee5e4cab078841150d63e796c280c123",
+      "thumbnail_path": "assets/original/phase6/female_heroic/thumbnails/fhr_shield.svg",
+      "placement_voxels": [
+        10,
+        -1,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    }
+  ]
+}

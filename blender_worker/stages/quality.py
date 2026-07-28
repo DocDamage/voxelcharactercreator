@@ -11,14 +11,14 @@ import bpy
 from mathutils import Vector
 
 
-def validate_character(objects: list[bpy.types.Object], armature: bpy.types.Object, actions: list[bpy.types.Action], profile) -> tuple[dict[str, Any], list[dict[str, str]]]:
+def validate_character(objects: list[bpy.types.Object], armature: bpy.types.Object, actions: list[bpy.types.Action], profile, required_actions: set[str] | None = None) -> tuple[dict[str, Any], list[dict[str, str]]]:
     meshes = [obj for obj in objects if obj.type == "MESH"]
     materials = {material.name for obj in meshes for material in obj.data.materials if material}
     faces = sum(len(obj.data.polygons) for obj in meshes)
     detached = [obj.name for obj in meshes if obj.parent != armature or obj.parent_type != "BONE" or obj.parent_bone not in armature.data.bones]
     invalid_pivots = [obj.name for obj in meshes if not all(abs(float(axis)) < 1_000_000 for axis in obj.location)]
     lowest = min((obj.matrix_world @ Vector(corner)).z for obj in meshes for corner in obj.bound_box)
-    required_actions = {"idle", "walk", "run", "heavy_sword_attack_1"}
+    required_actions = required_actions or {"idle", "walk", "run"}
     checks: dict[str, Any] = {
         "qa_no_missing_or_detached_parts": not detached,
         "qa_valid_pivots": not invalid_pivots,

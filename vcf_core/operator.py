@@ -25,7 +25,7 @@ from vcf_core.jobs import load_job
 
 STAGES = (
     "prepare", "ingest", "assemble_proxy", "assemble_assets", "resolve_parts", "rig", "align_sockets",
-    "rigid_bind", "animate", "qa", "render", "export", "godot_import",
+    "rigid_bind", "secondary_motion", "animate", "qa", "render", "optimize", "export", "godot_import",
 )
 
 
@@ -212,6 +212,19 @@ class BuildQueue:
 
     def next_pending(self) -> QueueItem | None:
         return next((item for item in self.items if item.status == "pending"), None)
+
+    def claim_pending(self, limit: int) -> list[QueueItem]:
+        """Atomically claim up to ``limit`` jobs for a measured worker pool."""
+        if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 4:
+            raise ValueError("queue claim limit must be an integer from 1 to 4")
+        with self._lock:
+            claimed = [item for item in self.items if item.status == "pending"][:limit]
+            for item in claimed:
+                item.status = "running"
+                item.stage = "prepare"
+                item.updated_at = datetime.now(timezone.utc).isoformat()
+            self._save()
+            return claimed
 
     def retry(self, item_id: str, stage: str | None = None) -> QueueItem:
         if stage is not None and stage not in STAGES:

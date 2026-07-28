@@ -1,20 +1,20 @@
 # Next Phase
 
-Phases 0-5, the first vertical slice, and its operator workflow are implemented and verified on Blender
-4.5.5 LTS and Godot 4.6.2. The original Heavy Sword Hero now builds, animates,
-passes QA, exports, and imports into Godot without opening Blender interactively.
+Phases 0-6 are implemented and verified on Blender 4.5.5 LTS and Godot 4.6.2.
+Five Phase 6 archetypes build through the same registry, rig, animation, QA,
+optimization, export, and engine-import path.
 
 The dependency-ordered backlog, acceptance gates, architecture, estimates, and
 deferred scope are maintained in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
 
-Immediate Phase 6 work:
+Immediate Phase 7 work:
 
-1. Add female, heavy, mage/robe, large-villain, and child/small base archetypes.
-2. Add engine-safe secondary-motion segment rigs with rigid fallbacks.
-3. Add sword/shield, spear, staff, katana, gunblade, firearm, and caster packs.
-4. Measure and add LOD, atlas/material batching, compression, incremental previews, and safe queue parallelism.
-5. Evaluate an out-of-process Godot viewer only if rendered previews prove insufficient.
+1. Convert the ten metadata profiles one at a time using original or user-supplied assets.
+2. Measure content-production time and promote only proven variant/schema needs.
+3. Keep reference analysis and similarity scoring advisory and reviewable.
+4. Define packaging, signing, migration, update, and rollback strategy.
 
-The broader animation library is Phase 6 work. Additional attacks, guard,
-damage, death, victory, and archetype-specific movement should use Animation Pack
-v1 rather than introducing pilot-specific Blender code.
+Additional attacks, guard, damage, death, victory, and archetype-specific
+movement should continue to use Animation Pack v1. Rendered previews remain
+sufficient for mapping/approval, so Phase 6 intentionally did not add an embedded
+viewer; Godot stays an out-of-process automated gate.

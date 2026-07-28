@@ -1,6 +1,6 @@
 # Voxel Character Factory Implementation Plan
 
-Status: Phases 0-5 implemented; Phase 6+ proposed
+Status: Phases 0-6 implemented; Phase 7 proposed
 Planning baseline: 2026-07-28
 Primary milestone: achieved — one real, editable, rigged, animated, Godot-tested voxel character builds without opening Blender interactively
 
@@ -40,23 +40,23 @@ The original assessment predates several fixes. Planning starts from the actual 
 
 | Capability | Current state | Next required step |
 | --- | --- | --- |
-| Desktop controller | Preflight, durable stage queue, cancellation/retry/resume, editors, previews, validation dashboard | Phase 6 measured queue parallelism and optional viewer research |
+| Desktop controller | Preflight, durable stage queue, cancellation/retry/resume, editors, previews, validation dashboard, atomic bounded parallel claims | Phase 7 production-scale scheduling after representative measurements |
 | Blender detection | Automatic/manual selection plus Blender/Godot version and capability preflight | Maintain supported-version policy as tools evolve |
 | VOX input | Typed bounded parser; multi-model scene graph, transforms/layers/material metadata, normalized greedy/surface/cubes import | Expand production fixture corpus as new exporters are supported |
 | Other input | GLB, GLTF, FBX, OBJ | Normalize units, axes, origins, and part metadata |
-| Geometry | Proxy compatibility path plus 24-part original modular pilot | Add archetypes only after Phase 5 operator workflow |
-| Rigging | Versioned fitted humanoid template, semantic rigid binding, pivots, and sockets | Phase 6 secondary-motion and additional archetype rigs |
-| Animation | Animation Pack v1 with four validated production actions and events | Phase 6 combat, reaction, and archetype packs |
-| Export | Versioned Godot/Unity/Unreal profiles, atomic artifacts, semantic hash, and passing Godot gate | Phase 6 optimization and compression |
+| Geometry | Proxy path, 24-part pilot, five reusable archetypes, generated LODs, and palette batching | Expand the original fixture corpus during Phase 7 conversions |
+| Rigging | Fitted humanoid aliases across five proportions, semantic rigid binding, sockets, baked segment chains, and rigid fallback | Add new topology only when a converted character proves it necessary |
+| Animation | Animation Pack v1 with core pilot actions plus seven weapon-family packs | Phase 7 reaction and archetype-specific content |
+| Export | Versioned profiles, atomic artifacts, semantic hash, LOD/material batching, compression policy, and generic Godot gate | Phase 7 platform packaging and converted-character tuning |
 | Job editing | Canonical Job v2, atomic undoable operator editors, variants, and validated review-before-apply LLM proposals | Expand only as new archetypes prove contract needs |
-| Tests | 54 standard-library tests plus Blender, visual, Godot, and performance verification modes | Phase 6 archetype, compression, and measured parallelism coverage |
+| Tests | 61 standard-library tests plus five Phase 6 Blender/Godot builds and visual/performance modes | Phase 7 converted-character completion matrices |
 | Repository | Source and draft PR exist | Real CI, policy docs, license decision, release workflow |
 
 Build cancellation, basic Blender detection, direct single-model VOX import, LLM job patching, and initial tests are complete and must not be reopened as unfinished work.
 
 ### Implementation findings — 2026-07-28
 
-Phases 0 through 5 are implemented and verified locally on Blender 4.5.5 LTS and
+Phases 0 through 6 are implemented and verified locally on Blender 4.5.5 LTS and
 Godot 4.6.2. The
 compatibility worker reports proxy geometry as `prototype`, imported-but-unbound
 geometry as `incomplete`, and retains transactional failed runs. Job v1 remains
@@ -250,7 +250,7 @@ Goal: ship the first engine-usable character rather than merely producing files.
 | --- | --- | --- | --- |
 | ANIM-401 | M | RIG-301 | **Implemented.** Animation Pack v1 provides deterministic action loading, naming, frame-rate, loop, event, and root-motion contracts; incompatible rigs fail before export. |
 | ANIM-402 | L + 4-6 animation days | RIG-303, ANIM-401 | **Implemented.** Core `idle`, `walk`, and `run` actions pass loop-seam, in-place/root, empty-curve, event, and required-bone checks. |
-| ANIM-403 | M + 2-4 animation days | RIG-304, ANIM-401 | **Implemented.** `heavy_sword_attack_1` declares validated trail and hit windows. Additional attacks, guard, damage, and victory remain Phase 6 content. |
+| ANIM-403 | M + 2-4 animation days | RIG-304, ANIM-401 | **Implemented.** `heavy_sword_attack_1` declares validated trail and hit windows. Seven Phase 6 weapon families add family attacks; guard, damage, and victory remain Phase 7 content. |
 | QA-401 | L | RIG-303 | **Implemented.** Stable-code checks cover missing/detached parts, pivots, grounding, intersections, profile budgets, actions, and artifact completeness. |
 | QA-402 | M | QA-401 | **Implemented.** Builds render front, side, rear, three-quarter, skeleton, socket, part-map, joint-pose, and eight turntable views under a versioned baseline policy. |
 | EXP-401 | M | ADR-001, ANIM-401 | **Implemented.** Versioned Godot, Unity, and Unreal profiles define scale, axes, materials, animation, root motion, textures, compression, and budgets. |
@@ -298,15 +298,15 @@ atomic edits, variants, preflight, and reviewable LLM proposals.
 
 ### Phase 6 - Reusable factory
 
-Begin only after the vertical-slice release gate passes.
+**Implemented.** The vertical-slice release gate passed before this work began.
 
-1. Add female, heavy, mage/robe, large-villain, and child/small bases using the same manifest and rig contracts.
-2. Add hair, cape, coat-tail, skirt, and robe segment rigs with engine-safe baked motion and a rigid fallback.
-3. Add sword/shield, spear, staff, katana, gunblade, firearm, and caster weapon/animation packs.
-4. Add LOD, atlas/material batching, export compression, incremental previews, and queue parallelism based on measured bottlenecks.
-5. Add an embedded viewer only if rendered previews cannot support mapping and approval tasks; prototype Godot out of process before embedding it.
+1. Female heroic, male heavy, mage/robe, large-villain, and child/small original CC0 bases use the same Job v2, Asset Manifest v1, resolver, fitted-rig, QA, export, and Godot path.
+2. Hair, cape, coat-tail, skirt, and robe chains validate as bounded segment rigs, export deterministic baked curves, and always declare a rigid fallback.
+3. Sword/shield, spear, staff, katana, gunblade, firearm, and caster Animation Pack v1 families provide locomotion, combat events, and family attacks.
+4. Export optimization generates reviewed descending LODs, batches palette-equivalent materials, records engine compression policy, reuses content-addressed previews, and exposes atomic queue claims with a conservative memory/CPU-based recommendation capped at four.
+5. Fixed rendered views continue to support mapping and approval. The viewer gate therefore resolved to **no embedded viewer**; Godot remains an out-of-process import verifier.
 
-Exit when at least four body archetypes and three weapon packs build through the same code path without pilot-specific branches.
+**Exit gate — passed locally:** all five archetype jobs completed the same headless Blender 4.5.5 LTS and Godot 4.6.2 path, exceeding the four-archetype requirement. Five weapon families build in those jobs and all seven packs pass normal-Python contract validation. No archetype-specific Blender branch is present.
 
 ### Phase 7 - Pilot ten, automation, and scale
 
@@ -390,7 +390,7 @@ Do not open all later-phase tasks as active work. Create them as roadmap items a
 | Phases 0-1: foundation and VOX | 20-30 days | 0-3 days for fixtures | Medium |
 | Phases 2-4: one engine-tested character | 35-55 days | 20-35 days | Low-medium until asset and animation spikes finish |
 | Phase 5: operator workflow | 15-25 days | Minimal | Medium after contracts stabilize |
-| Phase 6: reusable factory | 50-80 days | 50-100 days | Low; depends on archetype breadth |
+| Phase 6: reusable factory | Implemented | Five original archetypes and seven pack contracts | Gate passed locally |
 | Phase 7: pilot ten | 20-40 days of shared engineering | Measure from pilot throughput | Low |
 
 These are person-day ranges, not calendar commitments. Run one VOX scene-graph spike, one greedy-meshing benchmark, one fitted-rig spike, and one Godot-import spike before turning the vertical slice into a dated schedule.
@@ -402,7 +402,7 @@ These are person-day ranges, not calendar commitments. Run one VOX scene-graph s
 | Content becomes the bottleneck | Engineering waits for production assets | Begin original pilot asset work during Phase 0; track content separately |
 | VOX scene semantics vary by exporter | Golden fixtures pass but user files fail | Keep exporter/version provenance, unknown-chunk diagnostics, and a fixture intake process |
 | Heuristic part mapping looks plausible but is wrong | Animation failures appear downstream | Confidence threshold, explanation trace, mandatory manual override for ambiguity |
-| Rig is tuned only to one body | Per-character coordinate constants appear | Normalized rig templates and a second-proportion fixture before Phase 6 |
+| Rig is tuned only to one body | Per-character coordinate constants appear | Mitigated in Phase 6 by five proportion fixtures using the normalized template path |
 | Animation/export contract drifts | Godot action names or axes change | Pin tool versions and make headless engine import a release gate |
 | Blender API changes | Nightly integration starts failing | Pin supported Blender LTS versions; add compatibility shims and capability preflight |
 | LLM changes deterministic output | Same prompt creates different executable behavior | Treat LLM output as an untrusted proposal; schema validation and user approval remain mandatory |
@@ -418,6 +418,7 @@ The vertical-slice milestone passed when this statement became true:
 
 > From a clean checkout, one documented command assembles an original modular heavy-sword voxel character, resolves and reports its parts, fits and rigid-binds its rig, attaches its weapon, applies the required animation pack, validates and renders it, exports a correctly scaled GLB, and proves that GLB loads and animates in the pinned Godot test scene—without an interactive Blender session or untracked proprietary input.
 
-That statement is demonstrably true for the original Heavy Sword Hero as of
-2026-07-28. Full-cast planning, generative image workflows, advanced rigs, a 3D
-editor, and installer work remain deferred to their dependency-ordered phases.
+That statement is demonstrably true for the original Heavy Sword Hero and the
+five reusable Phase 6 fixtures as of 2026-07-28. Full-cast planning, generative
+image workflows, nonhuman rigs, a 3D editor, and installer work remain deferred
+to their dependency-ordered phases.

@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "id": "phase6_male_heavy",
+  "name": "Heavy Spear Vanguard",
+  "game": "original",
+  "role": "hero",
+  "body_template": "male_heavy",
+  "rig_template": "humanoid_heavy",
+  "animation_profile": "spear",
+  "animation_packs": [
+    "spear_core"
+  ],
+  "export_profile": "godot_character",
+  "weapon": "mhy_spear",
+  "source": {
+    "mode": "assembly",
+    "asset_ids": [
+      "mhy_head",
+      "mhy_torso",
+      "mhy_pelvis",
+      "mhy_upper_arm_l",
+      "mhy_upper_arm_r",
+      "mhy_lower_arm_l",
+      "mhy_lower_arm_r",
+      "mhy_hand_l",
+      "mhy_hand_r",
+      "mhy_upper_leg_l",
+      "mhy_upper_leg_r",
+      "mhy_lower_leg_l",
+      "mhy_lower_leg_r",
+      "mhy_foot_l",
+      "mhy_foot_r",
+      "mhy_spear"
+    ]
+  },
+  "asset_assembly": "phase6_male_heavy",
+  "height_voxels": 44,
+  "palette_profile": "phase6_factory",
+  "accent_colors": [
+    "#445B70",
+    "#C7CDD4"
+  ],
+  "export_formats": [
+    "glb"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 512,
+  "target_height_meters": 2.05,
+  "settings_overrides": {
+    "secondary_motion": [],
+    "optimization": {
+      "lod_ratios": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    }
+  },
+  "notes": "Original CC0 Phase 6 reusable-factory acceptance fixture."
+}

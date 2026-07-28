@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "pack_id": "firearm_core",
+  "frame_rate": 30,
+  "compatibility_tags": [
+    "humanoid",
+    "firearm"
+  ],
+  "required_bones": [
+    "root",
+    "pelvis",
+    "spine",
+    "head",
+    "upper_arm.L",
+    "upper_arm.R",
+    "forearm.L",
+    "forearm.R",
+    "hand.L",
+    "hand.R",
+    "thigh.L",
+    "thigh.R",
+    "shin.L",
+    "shin.R",
+    "foot.L",
+    "foot.R",
+    "weapon_socket.R",
+    "effect_socket"
+  ],
+  "actions": [
+    {
+      "name": "idle",
+      "frame_start": 1,
+      "frame_end": 40,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "spine",
+        "head"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              -0.02,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 20,
+          "bones": {
+            "spine": [
+              0,
+              0.02,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 40,
+          "bones": {
+            "spine": [
+              0,
+              -0.02,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "walk",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": true,
+      "root_motion": "in_place",
+      "required_bones": [
+        "root",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "footstep_l",
+          "frame": 6
+        },
+        {
+          "name": "footstep_r",
+          "frame": 18
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "thigh.L": [
+              0.35,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.35,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "thigh.L": [
+              -0.35,
+              0,
+              0
+            ],
+            "thigh.R": [
+              0.35,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "thigh.L": [
+              0.35,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.35,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "run",
+      "frame_start": 1,
+      "frame_end": 18,
+      "loop": true,
+      "root_motion": "in_place",
+      "required_bones": [
+        "root",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "footstep_l",
+          "frame": 5
+        },
+        {
+          "name": "footstep_r",
+          "frame": 14
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "thigh.L": [
+              0.6,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.6,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 9,
+          "bones": {
+            "thigh.L": [
+              -0.6,
+              0,
+              0
+            ],
+            "thigh.R": [
+              0.6,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 18,
+          "bones": {
+            "thigh.L": [
+              0.6,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.6,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "firearm_attack_1",
+      "frame_start": 1,
+      "frame_end": 30,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "spine",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.R",
+        "hand.R",
+        "weapon_socket.R",
+        "effect_socket"
+      ],
+      "events": [
+        {
+          "name": "trail_start",
+          "frame": 9
+        },
+        {
+          "name": "hit_start",
+          "frame": 14
+        },
+        {
+          "name": "hit_end",
+          "frame": 19
+        },
+        {
+          "name": "trail_end",
+          "frame": 22
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 10,
+          "bones": {
+            "spine": [
+              0,
+              -0.2,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.5,
+              0,
+              0.5
+            ]
+          }
+        },
+        {
+          "frame": 18,
+          "bones": {
+            "spine": [
+              0,
+              0.25,
+              0.3
+            ],
+            "upper_arm.R": [
+              0.6,
+              0,
+              -0.6
+            ]
+          }
+        },
+        {
+          "frame": 30,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

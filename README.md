@@ -20,6 +20,9 @@ Windows-first starter for running Blender as an invisible character-processing b
 - Content-addressed completed-build cache with per-stage decisions and `-NoCache`
 - Asset/equipment, semantic mapping, palette, variant, preview, and validation UI workflows
 - Reviewable LLM asset/palette/correction proposals with validated field-level diffs
+- Five reusable body archetypes (female, heavy, mage/robe, large villain, and child/small)
+- Seven versioned weapon/animation families with engine-safe baked secondary motion and rigid fallback
+- Three-level LOD generation, palette material batching, engine compression policy, incremental preview reuse, and measured queue-concurrency contracts
 - Pilot jobs for Cecil, Kain, Rydia, Golbez, Terra, Kefka, Cloud, Sephiroth, Squall and Ultimecia
 
 ## Run
@@ -94,6 +97,13 @@ To build the original modular pilot, run:
 ./tools/build.ps1 -Job characters/original/heavy_sword_hero.json
 ```
 
+To create another character at any time, copy one of the
+`characters/original/phase6_*.json` jobs, give it a new safe ID, and select
+compatible versioned assets from the registry. New original `.vox` components
+need Asset Manifest v1 records with hashes/provenance; proportions, rig,
+secondary motion, animation family, LODs, and export behavior remain data-driven.
+See [docs/ADDING_CHARACTERS.md](docs/ADDING_CHARACTERS.md).
+
 It assembles 24 tracked CC0 assets, including independently rigged left/right
 gloves, boots, and pauldrons; resolves every part; fits and rigid-binds the
 template-driven production rig; aligns its declared sword sockets; and reports
@@ -122,6 +132,6 @@ records every hit, miss, or bypass. Force a full build with:
 
 ## Roadmap
 
-Phases 0-5 and the operator-workflow gate are complete. See the dependency-ordered
+Phases 0-6 and the reusable-factory gate are complete. See the
 [implementation plan](docs/IMPLEMENTATION_PLAN.md) and [next phase](docs/NEXT_PHASE.md)
-for Phase 6 reusable-factory work.
+for Phase 7 pilot-ten and production-scale work.

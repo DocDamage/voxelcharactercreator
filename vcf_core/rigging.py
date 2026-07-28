@@ -212,7 +212,7 @@ def get_rig_template(template_id: str) -> RigTemplate:
     # Heavy is intentionally an alias until a distinct body topology requires a
     # new template.  This keeps legacy jobs valid while preserving a single v1
     # humanoid contract.
-    if template_id in {"humanoid_standard", "humanoid_heavy"}:
+    if template_id in {"humanoid_standard", "humanoid_heavy", "humanoid_female", "humanoid_mage", "humanoid_large", "humanoid_small"}:
         source = Path(__file__).resolve().parents[1] / "config" / "rig_templates" / "humanoid_standard.v1.json"
         template = load_rig_template(source) if source.is_file() else standard_male_template()
         if template_id != template.template_id:

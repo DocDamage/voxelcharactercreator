@@ -172,6 +172,13 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
             errors.append("settings_overrides must be an object")
         elif "vox_meshing_mode" in settings and settings["vox_meshing_mode"] not in {"greedy", "surface", "cubes"}:
             errors.append("settings_overrides.vox_meshing_mode must be greedy, surface, or cubes")
+        if isinstance(settings, dict):
+            from vcf_core.factory import FactoryValidationError, parse_optimization, validate_secondary_motion
+            errors.extend(validate_secondary_motion(settings.get("secondary_motion")))
+            try:
+                parse_optimization(settings)
+            except FactoryValidationError as exc:
+                errors.extend(exc.errors)
         limb_overrides = settings.get("limb_length_overrides") if isinstance(settings, dict) else None
         if limb_overrides is not None:
             if not isinstance(limb_overrides, dict) or any(

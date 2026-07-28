@@ -16,7 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 class AssetRegistryTests(unittest.TestCase):
     def test_heavy_sword_hero_registry_is_complete_and_resolvable(self) -> None:
         registry = load_registry(ROOT)
-        self.assertEqual(24, len(registry.manifests))
+        pilot_assets = [manifest for manifest in registry.manifests if "male_heroic" in manifest.compatible_bases]
+        self.assertEqual(24, len(pilot_assets))
         sword = registry.get("hsh_heavy_sword", "1.0.0")
         self.assertEqual("weapon", sword.kind)
         self.assertIn("primary_grip", sword.sockets)

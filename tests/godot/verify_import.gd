@@ -1,12 +1,15 @@
 extends SceneTree
 
-const REQUIRED_ACTIONS = ["idle", "walk", "run", "heavy_sword_attack_1"]
-
 func _initialize() -> void:
 	call_deferred("verify")
 
 func verify() -> void:
 	var resource = ResourceLoader.load("res://imported/character.glb")
+	var config := {"required_actions":["idle","walk","run"], "min_extent":0.25, "max_extent":20.0}
+	var config_file := FileAccess.open("res://imported/gate_config.json", FileAccess.READ)
+	if config_file != null:
+		var parsed = JSON.parse_string(config_file.get_as_text())
+		if parsed is Dictionary: config = parsed
 	if resource == null or not resource is PackedScene:
 		fail("GODOT_GLTF_NOT_LOADABLE", "Imported GLB is not a loadable PackedScene")
 		return
@@ -22,7 +25,7 @@ func verify() -> void:
 	var actions: Dictionary = {}
 	for player in players:
 		for action in player.get_animation_list(): actions[String(action).get_file()] = true
-	for required in REQUIRED_ACTIONS:
+	for required in config["required_actions"]:
 		if not actions.has(required):
 			fail("GODOT_ACTION_MISSING", "Missing action: " + required)
 			return
@@ -40,7 +43,7 @@ func verify() -> void:
 		fail("GODOT_MESH_OR_MATERIAL_MISSING", "No imported mesh materials were found")
 		return
 	var largest := maxf(bounds.size.x, maxf(bounds.size.y, bounds.size.z))
-	if largest < 4.0 or largest > 12.0:
+	if largest < float(config["min_extent"]) or largest > float(config["max_extent"]):
 		fail("GODOT_SCALE_INVALID", "Imported bounds are outside the meter-scale pilot profile: " + str(bounds))
 		return
 	print(JSON.stringify({"status":"passed","skeleton_bones":skeletons[0].get_bone_count(),"actions":actions.keys(),"mesh_count":meshes.size(),"material_count":material_count,"bounds_position":bounds.position,"bounds_size":bounds.size}))

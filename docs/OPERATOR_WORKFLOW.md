@@ -67,3 +67,17 @@ Report v2.
 
 Raw JSON remains available as an expert editor, but routine pilot correction no
 longer requires it or an interactive Blender session.
+
+## Reusable factory workflow
+
+The character list includes five Phase 6 examples. Duplicate the closest job,
+replace its compatible registry assets, and select a weapon animation family.
+`secondary_motion` chains always declare a rigid fallback. `optimization`
+defaults to 100/50/25-percent LODs, palette batching, engine compression, and
+incremental preview reuse. A preview-only change rerenders; animation-only work
+can reuse unchanged diagnostic images even during an uncached build.
+
+Parallel claims are atomic and limited to four. Keep concurrency at one until
+representative performance reports contain peak-memory measurements; the
+factory recommendation uses half the logical CPUs, available memory after a
+2 GB reserve, and a hard four-worker ceiling.

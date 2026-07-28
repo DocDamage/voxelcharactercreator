@@ -25,13 +25,14 @@ except ModuleNotFoundError:  # Support launching with ``python app/main.py``.
 from vcf_core.assets import load_registry
 from vcf_core.editing import JobEditor, duplicate_variant
 from vcf_core.operator import BuildQueue, STAGES, atomic_write_json, run_preflight
+from vcf_core.factory import measured_parallelism
 
 
 SETTINGS = ROOT / "config" / "settings.json"
 
 
 def load_settings() -> dict:
-    defaults = {"blender_path": "", "godot_path": "", "render_resolution": 768, "llm_provider": "none", "cache_enabled": True}
+    defaults = {"blender_path": "", "godot_path": "", "render_resolution": 768, "llm_provider": "none", "cache_enabled": True, "performance_metrics": [], "available_memory_gb": None}
     try:
         loaded = json.loads(SETTINGS.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -71,6 +72,10 @@ class App(tk.Tk):
         self.build_queue = BuildQueue(ROOT / "exports" / ".queue" / "queue.json")
         self.active_item_id: str | None = None
         self.proc: subprocess.Popen[str] | None = None
+        self.procs: dict[str, subprocess.Popen[str]] = {}
+        self.worker_lock = threading.RLock()
+        self.workers_remaining = 0
+        self.worker_errors: list[str] = []
         self.building = False
 
         self.columnconfigure(1, weight=1)
@@ -201,14 +206,25 @@ class App(tk.Tk):
             self.build_queue.add(path)
         self.building = True
         self.bar["value"] = 0
-        threading.Thread(target=self.worker, daemon=True).start()
+        self._start_workers()
+
+    def _start_workers(self) -> None:
+        worker_count = measured_parallelism(
+            self.settings.get("performance_metrics", []),
+            memory_gb=self.settings.get("available_memory_gb"),
+        )
+        self.workers_remaining = worker_count
+        self.worker_errors = []
+        self.events.put(("log", f"\nStarting {worker_count} measured queue worker(s).\n"))
+        for _index in range(worker_count):
+            threading.Thread(target=self.worker, daemon=True).start()
 
     def worker(self) -> None:
         try:
-            while (item := self.build_queue.next_pending()) is not None:
+            while claimed := self.build_queue.claim_pending(1):
+                item = claimed[0]
                 path = Path(item.job_path)
                 self.active_item_id = item.id
-                self.build_queue.update(item.id, status="running")
                 self.events.put(("log", f"\n=== {path.stem} ===\n"))
                 command = [
                     self.settings["blender_path"],
@@ -229,7 +245,7 @@ class App(tk.Tk):
                 child_environment = os.environ.copy()
                 if self.settings.get("godot_path"):
                     child_environment["VCF_GODOT"] = self.settings["godot_path"]
-                self.proc = subprocess.Popen(
+                process = subprocess.Popen(
                     command,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
@@ -240,8 +256,11 @@ class App(tk.Tk):
                     creationflags=flags,
                     env=child_environment,
                 )
-                if self.proc.stdout:
-                    for line in self.proc.stdout:
+                self.proc = process
+                with self.worker_lock:
+                    self.procs[item.id] = process
+                if process.stdout:
+                    for line in process.stdout:
                         if line.startswith("VCF_EVENT "):
                             try:
                                 event = json.loads(line[len("VCF_EVENT "):])
@@ -252,27 +271,39 @@ class App(tk.Tk):
                             except (ValueError, KeyError):
                                 pass
                         self.events.put(("log", line))
-                code = self.proc.wait()
+                code = process.wait()
                 if code:
                     current = next(entry for entry in self.build_queue.items if entry.id == item.id)
                     if current.status == "cancelling":
                         self.build_queue.update(item.id, status="cancelled", error="Cancelled by operator; no output was promoted.")
-                        raise RuntimeError(f"{path.name}: build cancelled")
-                    self.build_queue.update(item.id, status="failed", error=f"Blender exited with code {code}")
-                    raise RuntimeError(f"{path.name}: Blender exited with code {code}")
-                self.build_queue.update(item.id, status="complete")
-            self.events.put(("done", "Builds completed."))
+                        self.worker_errors.append(f"{path.name}: build cancelled")
+                    else:
+                        self.build_queue.update(item.id, status="failed", error=f"Blender exited with code {code}")
+                        self.worker_errors.append(f"{path.name}: Blender exited with code {code}")
+                else:
+                    self.build_queue.update(item.id, status="complete")
+                with self.worker_lock:
+                    self.procs.pop(item.id, None)
         except Exception as exc:
-            self.events.put(("failed", str(exc)))
+            self.worker_errors.append(str(exc))
         finally:
             self.proc = None
             self.active_item_id = None
+            with self.worker_lock:
+                self.workers_remaining -= 1
+                if self.workers_remaining == 0:
+                    if self.worker_errors:
+                        self.events.put(("failed", "\n".join(self.worker_errors)))
+                    else:
+                        self.events.put(("done", "Builds completed."))
 
     def cancel_build(self) -> None:
-        if self.proc and self.proc.poll() is None:
-            if self.active_item_id:
-                self.build_queue.update(self.active_item_id, status="cancelling")
-            self.proc.terminate()
+        active = list(self.procs.items())
+        if active:
+            for item_id, process in active:
+                if process.poll() is None:
+                    self.build_queue.update(item_id, status="cancelling")
+                    process.terminate()
             self.events.put(("log", "\nCancellation requested.\n"))
 
     def drain_events(self) -> None:
@@ -351,7 +382,7 @@ class App(tk.Tk):
         self.build_queue.retry(item.id, stage)
         if not self.building:
             self.building = True
-            threading.Thread(target=self.worker, daemon=True).start()
+            self._start_workers()
 
     def resume_batch(self) -> None:
         count = self.build_queue.resume()
@@ -360,7 +391,7 @@ class App(tk.Tk):
             return
         if not self.building:
             self.building = True
-            threading.Thread(target=self.worker, daemon=True).start()
+            self._start_workers()
 
     def _replace_editor(self, job: dict) -> None:
         self.editor.delete("1.0", tk.END)

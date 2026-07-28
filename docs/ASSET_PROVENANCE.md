@@ -9,4 +9,10 @@ and generated previews contain no third-party character, texture, or audio data.
 Generated build artifacts remain ignored under `exports/`, and the temporary GLB
 copied into `tests/godot/imported/` is ignored as well.
 
+The Phase 6 corpus is also original CC0 content. It contains five generated body
+archetypes, their weapon fixtures, a sword/shield pair, and shared gunblade and
+firearm fixtures under `assets/original/phase6/`. Versioned records live in
+`assets/manifests/phase6_*.assets.v1.json`. Regenerate and verify the complete
+corpus with `python tools/generate_phase6_assets.py --check`.
+
 Do not commit official artwork, ripped models, game textures, audio, or other proprietary game assets. Fan-character jobs are metadata examples only until a licensing decision authorizes their packaging.

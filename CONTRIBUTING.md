@@ -16,3 +16,8 @@ Operator changes must preserve atomic job/queue writes, transactional promotion,
 cache-key coverage, and structured `VCF_EVENT` stage output. Add normal-Python
 tests for preflight, queue recovery, cache invalidation, and proposal validation;
 use `-NoCache` when verifying a Blender change that might otherwise reuse output.
+
+Reusable-factory changes must also run
+`python tools/generate_phase6_assets.py --check` and the Phase 6 unit tests.
+Changes to archetype placement, secondary rigs, optimization, or generic Godot
+gating should be exercised by at least four `phase6_*.json` headless builds.

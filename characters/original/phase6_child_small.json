@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "id": "phase6_child_small",
+  "name": "Small Caster",
+  "game": "original",
+  "role": "hero",
+  "body_template": "child_small",
+  "rig_template": "humanoid_small",
+  "animation_profile": "caster",
+  "animation_packs": [
+    "caster_core"
+  ],
+  "export_profile": "godot_character",
+  "weapon": "csm_caster",
+  "source": {
+    "mode": "assembly",
+    "asset_ids": [
+      "csm_head",
+      "csm_torso",
+      "csm_pelvis",
+      "csm_upper_arm_l",
+      "csm_upper_arm_r",
+      "csm_lower_arm_l",
+      "csm_lower_arm_r",
+      "csm_hand_l",
+      "csm_hand_r",
+      "csm_upper_leg_l",
+      "csm_upper_leg_r",
+      "csm_lower_leg_l",
+      "csm_lower_leg_r",
+      "csm_foot_l",
+      "csm_foot_r",
+      "csm_caster"
+    ]
+  },
+  "asset_assembly": "phase6_child_small",
+  "height_voxels": 44,
+  "palette_profile": "phase6_factory",
+  "accent_colors": [
+    "#3A7C70",
+    "#C7CDD4"
+  ],
+  "export_formats": [
+    "glb"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 512,
+  "target_height_meters": 1.25,
+  "settings_overrides": {
+    "secondary_motion": [],
+    "optimization": {
+      "lod_ratios": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    }
+  },
+  "notes": "Original CC0 Phase 6 reusable-factory acceptance fixture."
+}

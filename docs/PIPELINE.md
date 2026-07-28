@@ -14,12 +14,12 @@ stage in a new report; `-NoCache` performs a full evaluation.
 2. Resolve a versioned registry assembly, import an approved source, or generate a proxy.
 3. Resolve semantic parts using reviewed overrides, manifests, names/layers, markers, then conservative spatial fallback.
 4. Fit a versioned rig template, rigid-bind every resolved part, and align declared weapon sockets.
-5. Resolve and validate versioned animation packs against the fitted rig.
-6. Create the declared actions and validate curves, seams, foot sliding, events, required bones, and root motion.
+5. Create optional secondary-motion segment bones with an explicit rigid fallback.
+6. Resolve, validate, and bake versioned animation packs and secondary follow-through against the fitted rig.
 7. Run stable-code geometry, rig, animation, profile-budget, and artifact QA.
 8. Configure camera and lighting and render the fixed views, diagnostic views, and turntable.
 9. Save the editable processed Blend file.
-10. Export only the character meshes and armature through the selected engine profile.
+10. Batch palette-equivalent materials, create declared LOD meshes, and export only character/LOD meshes and the armature through the selected engine profile.
 11. For the production Godot profile, import the GLB into the pinned headless test project and verify its scene, skeleton, materials, actions, bounds, orientation, and scale.
 12. Hash every artifact, record the semantic content hash, write Build Report v2, and atomically promote a successful run.
 
@@ -75,3 +75,19 @@ job changes, variant duplication, determinate stage progress, failed-run
 diagnostics, current/before-preview browsing, cancellation, deterministic retry,
 and batch resume. See [OPERATOR_WORKFLOW.md](OPERATOR_WORKFLOW.md) for the operator
 contract and recovery semantics.
+
+## Phase 6 reusable factory
+
+The five `characters/original/phase6_*.json` fixtures cover female heroic,
+heavy, mage/robe, large-villain, and child/small proportions without branching
+the Blender worker. Seven Animation Pack v1 families cover sword/shield, spear,
+staff, katana, gunblade, firearm, and caster combat. Optional hair/cape/coat-tail/
+skirt/robe chains are deterministic exported bones with baked curves and a
+declared rigid fallback.
+
+`settings_overrides.optimization` controls descending LOD ratios, palette-atlas
+material batching, compression policy, and incremental previews. Preview hashes
+cover render-affecting job data, sources, and manifests. Queue concurrency stays
+at one without measurements and is bounded at four based on CPU and measured
+peak Blender memory. Rendered diagnostics met mapping/approval needs, so no
+embedded viewer was added.

@@ -28,6 +28,9 @@ from blender_worker.stages.godot import _find_godot, verify_godot_import
 from blender_worker.stages.part_resolution import render_part_map_preview, resolve_scene_parts
 from blender_worker.stages.quality import character_content_hash, render_view_set, validate_character
 from blender_worker.stages.rigging import align_weapon_to_primary_grip, create_fitted_rig, render_joint_pose_preview, rigid_bind
+from blender_worker.stages.secondary_motion import bake_secondary_motion, create_secondary_motion_rig
+from blender_worker.stages.optimization import optimize_for_export
+from vcf_core.factory import parse_optimization, preview_fingerprint
 from blender_worker.stages.vox_ingest import VoxImportOptions, import_vox_scene
 from vcf_core.builds import determine_status
 from vcf_core.assets import load_registry
@@ -312,6 +315,7 @@ def main() -> None:
             armature, rig_checks = pipeline.run("rig", lambda: create_fitted_rig(assembly_objects, resolutions, job))
             socket_checks = pipeline.run("align_sockets", lambda: align_weapon_to_primary_grip(assembly_objects, armature, resolutions))
             pipeline.run("rigid_bind", lambda: rigid_bind(assembly_objects, armature, resolutions))
+            secondary_chains = pipeline.run("secondary_motion", lambda: create_secondary_motion_rig(armature, job.get("settings_overrides", {})))
             bound = all(
                 obj.parent == armature and obj.parent_type == "BONE" and obj.get("vcf.bind_mode") == "rigid"
                 for obj in assembly_objects
@@ -346,6 +350,7 @@ def main() -> None:
 
         if assembly_objects:
             actions, animation_checks = pipeline.run("animate", lambda: apply_animation_packs(armature, job, root))
+            report["checks"].update(bake_secondary_motion(armature, actions, secondary_chains))
             report["checks"].update(animation_checks)
             report["animation"] = {
                 "packs": list(armature.get("vcf.animation_packs", ())),
@@ -360,13 +365,34 @@ def main() -> None:
         export_profile = load_export_profile(root, job.get("export_profile", "godot_character"))
         report["export_profile"] = {"id": export_profile.profile_id, "engine": export_profile.engine, "scale": export_profile.scale, "forward_axis": export_profile.forward_axis, "up_axis": export_profile.up_axis}
         if assembly_objects:
-            qa_checks, qa_diagnostics = pipeline.run("qa", lambda: validate_character(assembly_objects, armature, actions, export_profile))
+            qa_checks, qa_diagnostics = pipeline.run("qa", lambda: validate_character(assembly_objects, armature, actions, export_profile, {action.name for action in actions}))
             report["checks"].update(qa_checks)
             report["diagnostics"].extend(qa_diagnostics)
             if qa_diagnostics:
                 raise ValueError("QA_BLOCKING_FAILURE: " + ", ".join(item["code"] for item in qa_diagnostics))
         preview = output / f"{slug}_preview.png"
         def render_and_save() -> None:
+            preview_inputs = []
+            if assembly_objects:
+                preview_inputs = [root / manifest.source_path for manifest in registry.resolve(source["asset_ids"], body_template=job["body_template"])]
+                preview_inputs.extend(sorted((root / "assets" / "manifests").glob("*.json")))
+            fingerprint = preview_fingerprint(job, preview_inputs)
+            previous_fingerprint = final_output / ".preview_fingerprint"
+            reusable = bool(
+                assembly_objects and parse_optimization(job.get("settings_overrides", {})).incremental_previews
+                and previous_fingerprint.is_file() and previous_fingerprint.read_text(encoding="utf-8").strip() == fingerprint
+            )
+            if reusable:
+                previous = sorted(final_output.glob(f"{slug}*.png"))
+                for path in previous:
+                    shutil.copy2(path, output / path.name)
+                reusable = bool(previous)
+            report["incremental_previews"] = {"fingerprint": fingerprint, "reused": reusable}
+            (output / ".preview_fingerprint").write_text(fingerprint + "\n", encoding="utf-8")
+            if reusable:
+                bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
+                report["visual_previews"] = [path.name for path in sorted(output.glob(f"{slug}*.png")) if path.name != preview.name]
+                return
             configure_render(preview, int(job.get("render_resolution", 768)))
             bpy.context.scene.frame_set(1)
             bpy.ops.render.render(write_still=True)
@@ -379,12 +405,16 @@ def main() -> None:
         pipeline.run("render", render_and_save)
 
         formats = job.get("export_formats", ["glb"])
+        export_objects = assembly_objects or [obj for obj in bpy.context.scene.objects if obj.type == "MESH"]
+        if assembly_objects:
+            optimization = parse_optimization(job.get("settings_overrides", {}))
+            export_objects, optimization_metrics = pipeline.run("optimize", lambda: optimize_for_export(assembly_objects, optimization))
+            report["optimization"] = optimization_metrics
         def export() -> None:
-            character_objects = assembly_objects or [obj for obj in bpy.context.scene.objects if obj.type == "MESH"]
-            export_character(output, slug, formats, character_objects, armature, export_profile)
+            export_character(output, slug, formats, export_objects, armature, export_profile)
         pipeline.run("export", export)
         if assembly_objects and export_profile.engine == "godot" and "glb" in formats:
-            godot_checks = pipeline.run("godot_import", lambda: verify_godot_import(root, output / f"{slug}.glb"))
+            godot_checks = pipeline.run("godot_import", lambda: verify_godot_import(root, output / f"{slug}.glb", [action.name for action in actions], job.get("target_height_meters")))
             report["checks"].update(godot_checks)
             report["tool_versions"]["godot"] = godot_checks["godot_version"]
         report["checks"].update(

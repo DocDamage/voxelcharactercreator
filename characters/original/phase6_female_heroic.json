@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "id": "phase6_female_heroic",
+  "name": "Female Sword Guardian",
+  "game": "original",
+  "role": "hero",
+  "body_template": "female_heroic",
+  "rig_template": "humanoid_female",
+  "animation_profile": "sword_shield",
+  "animation_packs": [
+    "sword_shield_core"
+  ],
+  "export_profile": "godot_character",
+  "weapon": "fhr_sword_shield",
+  "source": {
+    "mode": "assembly",
+    "asset_ids": [
+      "fhr_head",
+      "fhr_torso",
+      "fhr_pelvis",
+      "fhr_upper_arm_l",
+      "fhr_upper_arm_r",
+      "fhr_lower_arm_l",
+      "fhr_lower_arm_r",
+      "fhr_hand_l",
+      "fhr_hand_r",
+      "fhr_upper_leg_l",
+      "fhr_upper_leg_r",
+      "fhr_lower_leg_l",
+      "fhr_lower_leg_r",
+      "fhr_foot_l",
+      "fhr_foot_r",
+      "fhr_sword_shield",
+      "fhr_shield"
+    ]
+  },
+  "asset_assembly": "phase6_female_heroic",
+  "height_voxels": 44,
+  "palette_profile": "phase6_factory",
+  "accent_colors": [
+    "#8C4E78",
+    "#C7CDD4"
+  ],
+  "export_formats": [
+    "glb"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 512,
+  "target_height_meters": 1.76,
+  "settings_overrides": {
+    "secondary_motion": [],
+    "optimization": {
+      "lod_ratios": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    }
+  },
+  "notes": "Original CC0 Phase 6 reusable-factory acceptance fixture."
+}

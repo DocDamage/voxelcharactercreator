@@ -11,5 +11,7 @@
   "openai_base_url": "https://api.openai.com/v1",
   "openai_model": "gpt-5-mini",
   "auto_validate_jobs": true,
+  "performance_metrics": [],
+  "available_memory_gb": null,
   "vox_adapter": "builtin_minimal"
 }

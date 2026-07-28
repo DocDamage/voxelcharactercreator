@@ -2,7 +2,14 @@
 
 ## Unreleased
 
-Version: `0.3.0-operator`
+Version: `0.4.0-factory`
+
+- Completed Phase 6 with five original CC0 body archetypes and a shared registry/rig/build path.
+- Added sword/shield, spear, staff, katana, gunblade, firearm, and caster Animation Pack v1 families.
+- Added engine-safe baked hair/cape/coat-tail/skirt/robe chain contracts with rigid fallback.
+- Added 100/50/25-percent LOD generation, palette material batching, engine compression policy, and content-addressed incremental previews.
+- Added atomic bounded queue claims and conservative measured-concurrency recommendations.
+- Generalized the Godot import gate to validate each job's declared actions and scale instead of pilot-specific constants.
 
 - Completed Phase 5 with Blender/Godot/Ollama/OpenAI/path/input preflight and actionable corrective diagnostics.
 - Added a durable stage-aware desktop build queue with structured progress events, cancellation, interrupted-batch resume, failed-stage retry provenance, and failed-run inspection.
