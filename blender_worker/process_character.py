@@ -21,6 +21,8 @@ if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
 from blender_worker.pipeline import Pipeline
 from blender_worker.stages.asset_assembly import assemble_assets
+from blender_worker.stages.part_resolution import render_part_map_preview, resolve_scene_parts
+from blender_worker.stages.rigging import align_weapon_to_primary_grip, create_fitted_rig, render_joint_pose_preview, rigid_bind
 from blender_worker.stages.vox_ingest import VoxImportOptions, import_vox_scene
 from vcf_core.builds import determine_status
 from vcf_core.assets import load_registry
@@ -164,7 +166,8 @@ def animate(armature) -> None:
     bpy.context.view_layer.objects.active = armature
     bpy.ops.object.mode_set(mode="POSE")
     for frame, value in ((1, -0.025), (20, 0.025), (40, -0.025)):
-        bone = armature.pose.bones["spine"]
+        bone_by_role = armature.get("vcf.bone_by_role", {})
+        bone = armature.pose.bones[str(bone_by_role.get("torso", "spine"))]
         bone.rotation_mode = "XYZ"
         bone.rotation_euler[1] = value
         bone.keyframe_insert("rotation_euler", frame=frame)
@@ -182,10 +185,18 @@ def configure_render(path: Path, resolution: int) -> None:
     scene.render.film_transparent = True
     scene.render.image_settings.file_format = "PNG"
     scene.render.filepath = str(path)
-    bpy.ops.object.camera_add(location=(8.5, -11, 5.5))
+    visible_meshes = [obj for obj in bpy.context.scene.objects if obj.type == "MESH" and not obj.hide_render]
+    if not visible_meshes:
+        raise ValueError("RENDER_MISSING_GEOMETRY: no visible mesh objects are available for preview")
+    corners = [obj.matrix_world @ Vector(corner) for obj in visible_meshes for corner in obj.bound_box]
+    minimum = Vector(tuple(min(corner[index] for corner in corners) for index in range(3)))
+    maximum = Vector(tuple(max(corner[index] for corner in corners) for index in range(3)))
+    target = (minimum + maximum) / 2
+    extent = max(maximum[index] - minimum[index] for index in range(3))
+    bpy.ops.object.camera_add(location=target + Vector((extent * 1.6, -extent * 2.2, extent * 0.8)))
     camera = bpy.context.object
     scene.camera = camera
-    camera.rotation_euler = (Vector((0, 0, 0.7)) - camera.location).to_track_quat("-Z", "Y").to_euler()
+    camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
     camera.data.lens = 56
     for location, energy, size in [((4, -5, 8), 1200, 5), ((-4, -2, 4), 700, 4), ((0, 4, 6), 900, 3)]:
         bpy.ops.object.light_add(type="AREA", location=location)
@@ -224,9 +235,10 @@ def main() -> None:
     pipeline = Pipeline(report, fail_stage=arguments.fail_stage)
     try:
         pipeline.run("prepare", clear_scene)
-        armature = pipeline.run("rig", create_rig)
         source = job["source"]
+        assembly_objects: list[bpy.types.Object] = []
         if source["mode"] == "model":
+            armature = pipeline.run("rig", create_rig)
             source_path = root / source["path"]
             overrides = job.get("settings_overrides", {})
             vox_meshing_mode = overrides.get("vox_meshing_mode", "greedy") if isinstance(overrides, dict) else "greedy"
@@ -243,6 +255,7 @@ def main() -> None:
                 uses_proxy=False, has_unbound_geometry=True, blocking_checks_passed=True
             ).value
         elif source["mode"] == "proxy":
+            armature = pipeline.run("rig", create_rig)
             pipeline.run("assemble_proxy", lambda: build_proxy(job, armature))
             report["checks"]["proxy_generated"] = True
             report["diagnostics"].append({
@@ -255,19 +268,40 @@ def main() -> None:
             ).value
         elif source["mode"] == "assembly":
             registry = load_registry(root)
-            assembled = pipeline.run("assemble_assets", lambda: assemble_assets(job, registry, root, material))
+            assembly_objects = pipeline.run("assemble_assets", lambda: assemble_assets(job, registry, root, material))
+            resolutions, trace = pipeline.run("resolve_parts", lambda: resolve_scene_parts(assembly_objects, job))
+            report["part_resolution"] = trace
+            armature, rig_checks = pipeline.run("rig", lambda: create_fitted_rig(assembly_objects, resolutions, job))
+            socket_checks = pipeline.run("align_sockets", lambda: align_weapon_to_primary_grip(assembly_objects, armature, resolutions))
+            pipeline.run("rigid_bind", lambda: rigid_bind(assembly_objects, armature, resolutions))
+            bound = all(
+                obj.parent == armature and obj.parent_type == "BONE" and obj.get("vcf.bind_mode") == "rigid"
+                for obj in assembly_objects
+            )
             report["checks"].update({
-                "registry_assets_resolved": len(assembled) == len(source["asset_ids"]),
-                "registry_asset_count": len(assembled),
-                "registry_editable_objects": all("vcf.asset_id" in obj for obj in assembled),
+                "registry_assets_resolved": {obj.get("vcf.asset_id") for obj in assembly_objects} == set(source["asset_ids"]),
+                "registry_asset_count": len(assembly_objects),
+                "registry_editable_objects": all("vcf.asset_id" in obj for obj in assembly_objects),
+                "part_resolution_complete": len(resolutions) == len(assembly_objects),
+                "rigid_binding_complete": bound,
+                **rig_checks,
+                **socket_checks,
             })
-            report["diagnostics"].append({
-                "code": "RIG_UNBOUND_ASSEMBLY", "severity": "warning", "stage": "rig",
-                "message": "Registry assets are assembled and editable but await Phase 3 rigid binding.",
-                "corrective_action": "Run the semantic part-resolution and rigid-bind stages before a production export.",
-            })
+            weapon_checks_required = bool(job.get("weapon"))
+            blocking_socket_checks = not weapon_checks_required or (
+                bool(socket_checks.get("weapon_present"))
+                and all(bool(socket_checks.get(key)) for key in (
+                    "weapon_socket_metadata_complete", "weapon_socket_bones_present", "primary_grip_aligned",
+                    "carry_alignment_declared", "carry_alignment_valid", "weapon_body_clear",
+                ))
+            )
+            blocking_assembly_checks = all(bool(report["checks"][key]) for key in (
+                "registry_assets_resolved", "registry_editable_objects", "part_resolution_complete", "rigid_binding_complete",
+            ))
             report["status"] = determine_status(
-                uses_proxy=False, has_unbound_geometry=True, blocking_checks_passed=True
+                uses_proxy=False,
+                has_unbound_geometry=not bound,
+                blocking_checks_passed=blocking_assembly_checks and all(rig_checks.values()) and blocking_socket_checks,
             ).value
         else:
             raise ValueError("Asset-registry assembly is not implemented by the compatibility worker")
@@ -278,6 +312,9 @@ def main() -> None:
             configure_render(preview, int(job.get("render_resolution", 768)))
             bpy.context.scene.frame_set(1)
             bpy.ops.render.render(write_still=True)
+            if assembly_objects:
+                render_part_map_preview(assembly_objects, output / f"{slug}_part_map.png")
+                render_joint_pose_preview(armature, output / f"{slug}_joint_pose.png")
             bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
         pipeline.run("render", render_and_save)
 
@@ -294,6 +331,8 @@ def main() -> None:
             {
                 "armature_exists": "VCF_Rig" in bpy.data.objects,
                 "preview_rendered": preview.exists(),
+                "part_map_rendered": (output / f"{slug}_part_map.png").exists() if assembly_objects else None,
+                "joint_pose_rendered": (output / f"{slug}_joint_pose.png").exists() if assembly_objects else None,
                 "glb_exported": (output / f"{slug}.glb").exists() if "glb" in formats else None,
                 "fbx_exported": (output / f"{slug}.fbx").exists() if "fbx" in formats else None,
             }
@@ -304,7 +343,7 @@ def main() -> None:
                 "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
                 "size_bytes": artifact.stat().st_size,
             })
-        if report["status"] == "prototype":
+        if report["status"] in {"prototype", "complete"}:
             final_output.parent.mkdir(parents=True, exist_ok=True)
             backup = final_output.with_name(f".{final_output.name}.previous-{run_id}")
             if final_output.exists():
@@ -325,7 +364,7 @@ def main() -> None:
         raise
     finally:
         (run_dir / "build_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-        if report["status"] == "prototype" and final_output.exists():
+        if report["status"] in {"prototype", "complete"} and final_output.exists():
             (final_output / f"{slug}_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(report, indent=2))
 

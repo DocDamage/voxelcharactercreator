@@ -35,11 +35,16 @@ SPECS = [
     ("hsh_foot_r", "body_part", "foot_r", (5, 8, 3), (-6, -5, -9), "171C26"),
     ("hsh_hair", "hair", "hair", (10, 8, 5), (-5, -4, 28), "D6A935"),
     ("hsh_coat", "garment", "coat", (14, 8, 9), (-7, -4, 11), "5E2936"),
-    ("hsh_gloves", "garment", "gloves", (4, 4, 3), (-12, -2, 4), "171C26"),
-    ("hsh_boots", "garment", "boots", (12, 8, 3), (-6, -5, -10), "171C26"),
-    ("hsh_pauldrons", "accessory", "pauldrons", (20, 8, 3), (-10, -4, 21), "8A919C"),
+    ("hsh_glove_l", "garment", "glove_l", (4, 4, 3), (8, -2, 4), "171C26"),
+    ("hsh_glove_r", "garment", "glove_r", (4, 4, 3), (-12, -2, 4), "171C26"),
+    ("hsh_boot_l", "garment", "boot_l", (5, 8, 3), (1, -5, -10), "171C26"),
+    ("hsh_boot_r", "garment", "boot_r", (5, 8, 3), (-6, -5, -10), "171C26"),
+    ("hsh_pauldron_l", "accessory", "pauldron_l", (6, 8, 3), (4, -4, 21), "8A919C"),
+    ("hsh_pauldron_r", "accessory", "pauldron_r", (6, 8, 3), (-10, -4, 21), "8A919C"),
     ("hsh_heavy_sword", "weapon", "heavy_sword", (4, 2, 17), (-18, -1, 3), "C8D1D8"),
 ]
+
+LEGACY_COMBINED_ASSETS = ("hsh_gloves", "hsh_boots", "hsh_pauldrons")
 
 
 def _chunk(chunk_id: bytes, content: bytes) -> bytes:
@@ -89,6 +94,14 @@ def main() -> int:
     parser.add_argument("--check", action="store_true")
     arguments = parser.parse_args()
     valid = True
+    for asset_id in LEGACY_COMBINED_ASSETS:
+        for path in (ASSET_ROOT / f"{asset_id}.vox", ASSET_ROOT / "thumbnails" / f"{asset_id}.svg"):
+            if path.exists():
+                if arguments.check:
+                    print(f"obsolete paired asset: {path.relative_to(ROOT)}")
+                    valid = False
+                else:
+                    path.unlink()
     for asset_id, _kind, semantic, size, _placement, color in SPECS:
         valid &= write_or_check(ASSET_ROOT / f"{asset_id}.vox", vox_bytes(semantic, size, color), arguments.check)
         valid &= write_or_check(ASSET_ROOT / "thumbnails" / f"{asset_id}.svg", thumbnail_svg(asset_id, color), arguments.check)

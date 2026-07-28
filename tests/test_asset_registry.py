@@ -16,11 +16,12 @@ ROOT = Path(__file__).resolve().parents[1]
 class AssetRegistryTests(unittest.TestCase):
     def test_heavy_sword_hero_registry_is_complete_and_resolvable(self) -> None:
         registry = load_registry(ROOT)
-        self.assertEqual(21, len(registry.manifests))
+        self.assertEqual(24, len(registry.manifests))
         sword = registry.get("hsh_heavy_sword", "1.0.0")
         self.assertEqual("weapon", sword.kind)
         self.assertIn("primary_grip", sword.sockets)
         self.assertEqual(["hsh_head"], [item.asset_id for item in registry.find_by_tags({"head"}, body_template="male_heroic")])
+        self.assertEqual(["hsh_boot_l"], [item.asset_id for item in registry.find_by_tags({"boot_l"}, body_template="male_heroic")])
         assembly = registry.resolve(["hsh_head", "hsh_torso", "hsh_heavy_sword"], body_template="male_heroic")
         self.assertEqual(["hsh_head", "hsh_torso", "hsh_heavy_sword"], [item.asset_id for item in assembly])
 

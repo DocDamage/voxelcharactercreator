@@ -41,6 +41,7 @@ def assemble_assets(job: dict, registry: AssetRegistry, root: Path, make_materia
             obj["vcf.asset_sockets"] = {name: list(value) for name, value in manifest.sockets.items()}
             obj["vcf.palette_roles"] = list(manifest.palette_roles)
             obj["vcf.declared_placement_voxels"] = list(manifest.placement_voxels)
+            obj["vcf.voxel_unit_meters"] = float(unit)
             created.append(obj)
     _ground(created)
     return created
@@ -48,6 +49,10 @@ def assemble_assets(job: dict, registry: AssetRegistry, root: Path, make_materia
 
 def _ground(objects: list[bpy.types.Object]) -> None:
     """Ground the visible assembled character while preserving per-part metadata."""
+    bpy.context.view_layer.update()
     lowest = min((obj.matrix_world @ Vector(corner)).z for obj in objects for corner in obj.bound_box)
     for obj in objects:
         obj.location.z -= lowest
+    # Matrix-world bounds are consumed immediately by Phase 3 fitting. Ensure
+    # the dependency graph exposes the declared placements and grounding shift.
+    bpy.context.view_layer.update()

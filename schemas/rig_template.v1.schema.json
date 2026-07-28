@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://voxelcharacterfactory.dev/schemas/rig_template.v1.schema.json",
+  "title": "Voxel Character Factory Rig Template v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "template_id", "required_roles", "bone_by_role", "normalized_joints", "sockets", "tolerances", "bind_modes", "scale_policy"],
+  "$defs": {
+    "semantic_role": {
+      "enum": ["head", "torso", "pelvis", "upper_arm_l", "upper_arm_r", "lower_arm_l", "lower_arm_r", "hand_l", "hand_r", "upper_leg_l", "upper_leg_r", "lower_leg_l", "lower_leg_r", "foot_l", "foot_r", "hair", "coat", "cape", "cloth", "glove_l", "glove_r", "boot_l", "boot_r", "pauldron_l", "pauldron_r", "weapon", "shield", "accessory"]
+    },
+    "vector3": {
+      "type": "array",
+      "items": {"type": "number"},
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "socket": {
+      "type": "object",
+      "required": ["bone", "offset"],
+      "additionalProperties": false,
+      "properties": {
+        "bone": {"type": "string", "minLength": 1},
+        "offset": {"$ref": "#/$defs/vector3"}
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {"const": 1},
+    "template_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "required_roles": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/semantic_role"}},
+    "bone_by_role": {
+      "type": "object",
+      "required": ["head", "torso", "pelvis", "upper_arm_l", "upper_arm_r", "lower_arm_l", "lower_arm_r", "hand_l", "hand_r", "upper_leg_l", "upper_leg_r", "lower_leg_l", "lower_leg_r", "foot_l", "foot_r", "hair", "coat", "cape", "cloth", "glove_l", "glove_r", "boot_l", "boot_r", "pauldron_l", "pauldron_r", "weapon", "shield", "accessory"],
+      "propertyNames": {"$ref": "#/$defs/semantic_role"},
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "normalized_joints": {
+      "type": "object",
+      "required": ["root", "pelvis", "spine", "neck", "head", "shoulder.L", "elbow.L", "wrist.L", "shoulder.R", "elbow.R", "wrist.R", "hip.L", "knee.L", "ankle.L", "hip.R", "knee.R", "ankle.R"],
+      "additionalProperties": {"$ref": "#/$defs/vector3"}
+    },
+    "sockets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["weapon_socket.R", "off_hand_socket.L", "back_socket", "waist_socket", "effect_socket", "projectile_socket"],
+      "properties": {
+        "weapon_socket.R": {"$ref": "#/$defs/socket"},
+        "off_hand_socket.L": {"$ref": "#/$defs/socket"},
+        "back_socket": {"$ref": "#/$defs/socket"},
+        "waist_socket": {"$ref": "#/$defs/socket"},
+        "effect_socket": {"$ref": "#/$defs/socket"},
+        "projectile_socket": {"$ref": "#/$defs/socket"}
+      }
+    },
+    "tolerances": {"type": "object", "additionalProperties": false, "required": ["ground_meters", "symmetry_meters", "socket_alignment_meters", "min_limb_scale", "max_limb_scale"], "properties": {"ground_meters": {"type": "number", "exclusiveMinimum": 0}, "symmetry_meters": {"type": "number", "exclusiveMinimum": 0}, "socket_alignment_meters": {"type": "number", "exclusiveMinimum": 0}, "min_limb_scale": {"type": "number", "exclusiveMinimum": 0}, "max_limb_scale": {"type": "number", "exclusiveMinimum": 0}}},
+    "bind_modes": {"type": "array", "items": {"type": "string"}, "contains": {"const": "rigid"}, "uniqueItems": true},
+    "scale_policy": {"const": "target_height"}
+  }
+}

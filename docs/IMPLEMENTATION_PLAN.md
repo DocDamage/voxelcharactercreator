@@ -1,6 +1,6 @@
 # Voxel Character Factory Implementation Plan
 
-Status: Phases 0-2 implemented; Phase 3+ proposed
+Status: Phases 0-3 implemented; Phase 4+ proposed
 Planning baseline: 2026-07-28
 Primary milestone: one real, editable, rigged, animated, Godot-tested voxel character built without opening Blender interactively
 
@@ -210,11 +210,11 @@ Goal: assemble one redistributable, editable heavy-sword character from modular 
 | --- | --- | --- | --- |
 | ASSET-201 | M | CORE-002, ADR-001 | **Implemented.** Asset Manifest v1 and a Blender-independent registry resolve latest assets by ID, version, and semantic tags. Duplicate ID/version pairs, missing sources, incompatible bases, invalid hashes, and unapproved licenses fail validation. |
 | ASSET-202 | M + 8-12 content days | ASSET-201, VOX-104 | **Implemented.** The original CC0 male base is split into head, torso, pelvis, limbs, hands, and feet. Source validation checks declared semantic names, zero-based origins, and disconnected voxel islands; placement and pivot metadata remain addressable. |
-| ASSET-203 | M + 4-8 content days | ASSET-202 | **Implemented.** Modular hair, coat, gloves, boots, and pauldrons assemble from a Job v2 registry list while remaining separate editable Blender objects. |
+| ASSET-203 | M + 4-8 content days | ASSET-202 | **Implemented.** Modular hair and coat plus side-specific gloves, boots, and pauldrons assemble from a Job v2 registry list while remaining separate editable Blender objects. |
 | WEAPON-201 | M + 3-5 content days | ASSET-201 | **Implemented.** The original heavy sword declares primary/secondary grips, back/waist carry locations, trail endpoints, and voxel-scale metadata. Phase 3 consumes these sockets for alignment checks. |
 | ASSET-204 | S | ASSET-202, ASSET-203, WEAPON-201 | **Implemented.** Every tracked pilot source has an individual SVG thumbnail, CC0 authorship/provenance record, and SHA-256 hash. `tools/validate.py` rejects incomplete or changed records. |
 
-**Exit gate:** passed locally on Blender 4.5.5 LTS. The Job v2 pilot contains no `source_model` and assembles 21 recognizable, editable registry objects with preserved manifests and weapon sockets; no proxy geometry or proprietary input is used. Its build remains `incomplete` until the Phase 3 rigid-bind gate passes.
+**Exit gate:** passed locally on Blender 4.5.5 LTS. The Job v2 pilot contains no `source_model` and assembles 24 recognizable, editable registry objects with preserved manifests and weapon sockets; no proxy geometry or proprietary input is used. Phase 3 promotes it to `complete` after rigid binding.
 
 ### Phase 3 - Part resolution and production rigid rigging
 
@@ -230,16 +230,16 @@ Resolution precedence is mandatory:
 
 | ID | Size | Depends on | Deliverable and acceptance criteria |
 | --- | --- | --- | --- |
-| PART-301 | S | CORE-002 | Define the semantic taxonomy and requirements by rig template: head, hair, torso, pelvis, paired limb segments, hands, feet, cape/cloth groups, weapons, shields, and accessories. |
-| PART-302 | M | PART-301, VOX-104, ASSET-201 | Resolve explicit overrides, manifests, names, layers, and marker colors with an explanation trace. Conflicts and missing required parts stop the build. |
-| PART-303 | L | PART-302 | Add connected-component and spatial fallback classification with confidence scores. Below-threshold results are `needs_mapping`, never silently accepted. |
-| PART-304 | M | PART-302, CORE-002 | Persist manual mappings to the job and render a color-coded part-map preview. Rebuilds reuse the override deterministically. |
-| RIG-301 | M | ADR-001, PART-301 | Implement Rig Template v1 and a standard male template with normalized joints, required bones, sockets, and validation rules. |
-| RIG-302 | L | RIG-301, PART-302 | Fit joints from semantic-part bounds and declared pivots; support target height and limb-length overrides. Left/right symmetry and ground placement are checked. |
-| RIG-303 | L | RIG-302 | Rigid-bind each part to the intended bone while preserving voxel shape. Add optional deformation as a future bind mode, not in the pilot. |
-| RIG-304 | M | RIG-303, WEAPON-201 | Build hand, off-hand, back, waist, effect, and projectile sockets from metadata. Automated checks cover grip distance, weapon/body intersection, and carry alignment. |
+| PART-301 | S | CORE-002 | **Implemented.** Semantic taxonomy and humanoid required roles cover body, garments, weapons, shields, and accessories. |
+| PART-302 | M | PART-301, VOX-104, ASSET-201 | **Implemented.** Overrides, manifest tags, names/layers, markers, and explanation traces resolve deterministically; conflicts and missing required parts fail closed. |
+| PART-303 | L | PART-302 | **Implemented.** Mesh-island diagnostics and conservative spatial fallback emit confidence scores; below-threshold results require reviewed mapping. |
+| PART-304 | M | PART-302, CORE-002 | **Implemented.** Reviewed mappings persist atomically to Job v2 and rebuild deterministically; a color-coded part-map preview is rendered. |
+| RIG-301 | M | ADR-001, PART-301 | **Implemented.** Rig Template v1 schema/config validates and drives normalized joint guides, semantic bone mappings, exported sockets, rigid bind mode, and profile tolerances. |
+| RIG-302 | L | RIG-301, PART-302 | **Implemented.** Normalized guides are fitted to semantic-part boundaries, target height excludes equipment, bounded limb-length overrides preserve child chains, and symmetry/ground placement are checked. |
+| RIG-303 | L | RIG-302 | **Implemented.** Every resolved pilot object rigid-parents to its intended bone while retaining editable separate meshes; paired garments are side-specific and verified to move independently. |
+| RIG-304 | M | RIG-303, WEAPON-201 | **Implemented.** Hand, off-hand, back, waist, effect, and projectile sockets are exported from the template; actual mesh-space grip distance, deterministic carry transforms, and world-space BVH clearance gate completion. |
 
-**Exit gate:** every pilot part has one declared semantic role and expected parent; posed screenshots show correct pivots at shoulders, elbows, hips, knees, wrists, and ankles; no manual Blender changes are needed.
+**Exit gate:** passed locally on Blender 4.5.5 LTS. All 24 pilot parts have one declared semantic role and expected parent; rendered joint-pose previews and headless verification confirm independent left/right rigid motion, a correctly scaled/aligned weapon, and no manual Blender changes.
 
 ### Phase 4 - Animation, QA, and Godot export
 

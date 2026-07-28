@@ -12,6 +12,7 @@ if str(ROOT) not in sys.path:
 
 from vcf_core.jobs import migrate_job, validate_job
 from vcf_core.assets import AssetValidationError, load_registry
+from vcf_core.rigging import PartResolutionError, load_rig_template
 
 
 def main() -> int:
@@ -40,11 +41,19 @@ def main() -> int:
             json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             failures.append(f"{path.relative_to(ROOT)}: invalid JSON: {exc}")
+    rig_templates = sorted((ROOT / "config" / "rig_templates").glob("*.v1.json"))
+    if not rig_templates:
+        failures.append("no rig templates found")
+    for path in rig_templates:
+        try:
+            load_rig_template(path)
+        except PartResolutionError as exc:
+            failures.extend(f"{path.relative_to(ROOT)}: {error}" for error in exc.errors)
     if failures:
         print("Validation failed:", *failures, sep="\n- ")
         return 1
     asset_count = len(registry.manifests) if registry else 0
-    print(f"Validated {len(jobs)} jobs and {asset_count} registry assets; v1 jobs are readable and migrate to Job v2.")
+    print(f"Validated {len(jobs)} jobs, {asset_count} registry assets, and {len(rig_templates)} rig templates; v1 jobs are readable and migrate to Job v2.")
     return 0
 
 

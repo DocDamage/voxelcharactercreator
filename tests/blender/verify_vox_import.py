@@ -13,7 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from blender_worker.stages.vox_ingest import VoxImportOptions, import_vox_scene
-from tests.vox_fixture import scene_graph_fixture
+from tests.vox_fixture import marker_fixture, scene_graph_fixture
 
 
 def material(name: str, color: str):
@@ -43,6 +43,10 @@ def main() -> None:
     assert abs(minimum_z) < 1e-6, minimum_z
     assert maximum_x > 2.0, maximum_x
     expected_bounds = (minimum_z, maximum_x)
+    marker_path = Path(temporary.name) / "marker.vox"
+    marker_path.write_bytes(marker_fixture())
+    marker_objects = import_vox_scene(marker_path, material, VoxImportOptions(meshing_mode="greedy", target_extent_meters=1.0))
+    assert list(marker_objects[0]["vcf.marker_colors"]) == ["head"]
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
     bpy.ops.import_scene.gltf(filepath=str(export_path))

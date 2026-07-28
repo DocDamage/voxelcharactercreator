@@ -13,6 +13,7 @@ Push-Location $Root
 try {
     if (-not ($Blender -or $Godot -or $Visual -or $Performance) -or $Unit) {
         python -m compileall -q app blender_worker tools tests vcf_core
+        python tools/generate_pilot_assets.py --check
         python tools/validate.py
         python tools/scan_secrets.py
         python -m unittest discover -v
@@ -47,6 +48,8 @@ try {
         if ($LASTEXITCODE -ne 0) { throw "Blender VOX integration verification failed with exit code $LASTEXITCODE." }
         & $BlenderExe --background --python (Join-Path $Root 'tests/blender/verify_asset_assembly.py')
         if ($LASTEXITCODE -ne 0) { throw "Blender asset-assembly integration verification failed with exit code $LASTEXITCODE." }
+        & $BlenderExe --background --python (Join-Path $Root 'tests/blender/verify_phase3_rig.py')
+        if ($LASTEXITCODE -ne 0) { throw "Blender Phase 3 rig integration verification failed with exit code $LASTEXITCODE." }
     }
     foreach ($Deferred in @($Godot, $Visual)) {
         if ($Deferred) {

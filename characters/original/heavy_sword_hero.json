@@ -14,7 +14,8 @@
       "hsh_head", "hsh_torso", "hsh_pelvis", "hsh_upper_arm_l", "hsh_upper_arm_r",
       "hsh_lower_arm_l", "hsh_lower_arm_r", "hsh_hand_l", "hsh_hand_r", "hsh_upper_leg_l",
       "hsh_upper_leg_r", "hsh_lower_leg_l", "hsh_lower_leg_r", "hsh_foot_l", "hsh_foot_r",
-      "hsh_hair", "hsh_coat", "hsh_gloves", "hsh_boots", "hsh_pauldrons", "hsh_heavy_sword"
+      "hsh_hair", "hsh_coat", "hsh_glove_l", "hsh_glove_r", "hsh_boot_l", "hsh_boot_r",
+      "hsh_pauldron_l", "hsh_pauldron_r", "hsh_heavy_sword"
     ]
   },
   "asset_assembly": "heavy_sword_hero",

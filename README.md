@@ -10,7 +10,7 @@ Windows-first starter for running Blender as an invisible character-processing b
 - Headless Blender processing
 - Proxy voxel-character generation for pipeline testing and a registry-assembled original Heavy Sword Hero fixture
 - VOX, GLB, GLTF, FBX and OBJ source import
-- Standard rigid humanoid armature
+- Versioned fitted humanoid rig with deterministic semantic part resolution and rigid binding
 - Basic idle animation
 - Transparent preview render
 - GLB and FBX export
@@ -41,7 +41,7 @@ available diagnostics.
 - processed `.blend`
 - `.glb`
 - `.fbx`
-- transparent preview `.png`
+- transparent preview, color-coded part-map, and joint-pose `.png` files
 - validation report `.json`
 
 ## Advanced-phase additions
@@ -61,21 +61,25 @@ The non-Blender components use the standard-library test runner:
 ./tools/verify.ps1 -Unit
 ```
 
-`tools/validate.ps1` validates the versioned job and asset-manifest contracts without Blender. `python tools/generate_pilot_assets.py --check` verifies the deterministic public pilot source corpus.
-`tools/build.ps1 -Job characters/ff7/cloud.json -Blender C:/path/to/blender.exe`
+`tools/validate.ps1` validates the versioned job and asset-manifest contracts without Blender. `tools/verify.ps1 -Unit` also verifies the deterministic public pilot source corpus.
+`tools/build.ps1 -Job characters/ff7/cloud.json`
 runs the compatibility worker. Proxy jobs deliberately report `prototype`; an
 imported but unbound model reports `incomplete` and never `complete`. Build outputs
-are staged under `exports/.runs/` and only a successful proxy compatibility build is
-atomically promoted to the public export location.
+are staged under `exports/.runs/` and successful `prototype` or `complete` builds are
+atomically promoted to the public export location. The build wrapper discovers a
+standard Windows Blender installation; use `-Blender C:/path/to/blender.exe` or
+`VCF_BLENDER` to override it.
 
 To build the original modular pilot, run:
 
 ```powershell
-./tools/build.ps1 -Job characters/original/heavy_sword_hero.json -Blender C:/path/to/blender.exe
+./tools/build.ps1 -Job characters/original/heavy_sword_hero.json
 ```
 
-It assembles 21 tracked CC0 assets and exports editable artifacts, but intentionally
-reports `incomplete` until Phase 3 provides semantic resolution and rigid binding.
+It assembles 24 tracked CC0 assets, including independently rigged left/right
+gloves, boots, and pauldrons; resolves every part; fits and rigid-binds the
+template-driven production rig; aligns its declared sword sockets; and reports
+`complete`.
 
 For transactional-output regression testing, the worker accepts the test-only
 `--fail-stage <stage>` switch; failed runs are retained under `exports/.runs/` and

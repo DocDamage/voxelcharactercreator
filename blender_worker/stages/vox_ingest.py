@@ -11,6 +11,7 @@ import bpy
 from blender_worker.adapters.vox_reader import VoxDocument, read_vox
 from blender_worker.adapters.vox_scene import ResolvedVoxel, resolve_scene_voxels, voxel_bounds
 from blender_worker.geometry.vox_mesher import MeshingVoxel, mesh_voxels
+from vcf_core.rigging import MARKER_ROLE_BY_RGB
 
 
 @dataclass(frozen=True)
@@ -69,14 +70,20 @@ def import_vox_scene(path: Path, make_material, options: VoxImportOptions | None
         obj["vcf.vox_world_translation"] = list(transform.translation)
         obj["vcf.vox_world_rotation"] = [value for row in transform.rotation for value in row]
         material_slots = {}
+        marker_roles: set[str] = set()
         for color_index in sorted(set(mesh_data.material_indices)):
             red, green, blue, alpha = document.palette[(color_index - 1) % 256]
+            marker_role = MARKER_ROLE_BY_RGB.get((red, green, blue))
+            if marker_role:
+                marker_roles.add(marker_role)
             voxel_material = make_material(f"VOX_{color_index:03d}", f"#{red:02X}{green:02X}{blue:02X}")
             voxel_material.diffuse_color = (red / 255, green / 255, blue / 255, alpha / 255)
             obj.data.materials.append(voxel_material)
             material_slots[color_index] = len(obj.data.materials) - 1
         for polygon, color_index in zip(mesh.polygons, mesh_data.material_indices):
             polygon.material_index = material_slots[color_index]
+        if marker_roles:
+            obj["vcf.marker_colors"] = sorted(marker_roles)
         created.append(obj)
     return created
 

@@ -33,6 +33,12 @@ def scene_graph_fixture() -> bytes:
     return b"VOX " + struct.pack("<I", 150) + chunk(b"MAIN", b"", children)
 
 
+def marker_fixture() -> bytes:
+    palette = bytes((255, 0, 1, 255)) + bytes((0, 0, 255, 255)) * 255
+    children = model((1, 1, 1), [(0, 0, 0, 1)]) + chunk(b"RGBA", palette)
+    return b"VOX " + struct.pack("<I", 150) + chunk(b"MAIN", b"", children)
+
+
 def _transform(node_id: int, child_id: int, name: str, translation: str) -> bytes:
     content = struct.pack("<i", node_id) + dictionary({"_name": name}) + struct.pack("<iiii", child_id, -1, 0, 1) + dictionary({"_t": translation})
     return chunk(b"nTRN", content)

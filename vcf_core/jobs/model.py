@@ -16,6 +16,10 @@ SOURCE_FORMATS = {".vox", ".glb", ".gltf", ".fbx", ".obj"}
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:_[a-z0-9]+)*$")
 COLOR_PATTERN = re.compile(r"^#[0-9a-fA-F]{6}$")
 SAFE_ID_PATTERN = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
+LIMB_BONES = {
+    "upper_arm.L", "upper_arm.R", "forearm.L", "forearm.R", "hand.L", "hand.R",
+    "thigh.L", "thigh.R", "shin.L", "shin.R", "foot.L", "foot.R",
+}
 
 V1_KEYS = V1_REQUIRED | {
     "weapon", "source_model", "height_voxels", "palette_profile", "accent_colors",
@@ -133,27 +137,58 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
         elif source.get("mode") not in {"proxy", "model", "assembly"}:
             errors.append("source.mode must be one of: proxy, model, assembly")
         elif source.get("mode") == "model":
-            _safe_path(source.get("path"), "source.path", project_root, errors)
+            if "asset_ids" in source:
+                errors.append("model source must not declare asset_ids")
+            if not source.get("path"):
+                errors.append("model source must declare path")
+            else:
+                _safe_path(source.get("path"), "source.path", project_root, errors)
         elif source.get("mode") == "assembly":
+            if "path" in source:
+                errors.append("assembly source must not declare path")
             asset_ids = source.get("asset_ids")
             if not isinstance(asset_ids, list) or not asset_ids or any(not isinstance(item, str) or not SAFE_ID_PATTERN.fullmatch(item) for item in asset_ids):
                 errors.append("source.asset_ids must be a non-empty array of safe catalog IDs")
+            elif len(asset_ids) != len(set(asset_ids)):
+                errors.append("source.asset_ids must not contain duplicates")
             elif project_root:
                 from vcf_core.assets import AssetValidationError, load_registry
                 try:
                     load_registry(project_root).resolve(asset_ids, body_template=job.get("body_template", ""))
                 except AssetValidationError as exc:
                     errors.extend(exc.errors)
-        elif source.get("mode") == "proxy" and (source.get("path") or source.get("asset_ids")):
+        elif source.get("mode") == "proxy" and set(source) != {"mode"}:
             errors.append("proxy source must not declare path or asset_ids")
         overrides = job.get("part_overrides", {})
-        if not isinstance(overrides, dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in overrides.items()):
-            errors.append("part_overrides must map semantic names to source part names")
+        if not isinstance(overrides, dict) or any(not isinstance(k, str) or not isinstance(v, str) or not v.strip() for k, v in overrides.items()):
+            errors.append("part_overrides must map semantic names to non-empty source part names")
+        elif overrides:
+            from vcf_core.rigging import SEMANTIC_ROLES
+            unknown_roles = sorted(set(overrides) - SEMANTIC_ROLES)
+            if unknown_roles:
+                errors.append(f"part_overrides use unknown semantic roles: {', '.join(unknown_roles)}")
         settings = job.get("settings_overrides", {})
         if not isinstance(settings, dict):
             errors.append("settings_overrides must be an object")
         elif "vox_meshing_mode" in settings and settings["vox_meshing_mode"] not in {"greedy", "surface", "cubes"}:
             errors.append("settings_overrides.vox_meshing_mode must be greedy, surface, or cubes")
+        limb_overrides = settings.get("limb_length_overrides") if isinstance(settings, dict) else None
+        if limb_overrides is not None:
+            if not isinstance(limb_overrides, dict) or any(
+                name not in LIMB_BONES or isinstance(scale, bool) or not isinstance(scale, (int, float)) or not 0.5 <= scale <= 1.5
+                for name, scale in limb_overrides.items()
+            ):
+                errors.append("settings_overrides.limb_length_overrides must map supported limb bone names to scales from 0.5 to 1.5")
+        target_height = job.get("target_height_meters")
+        if target_height is not None and (isinstance(target_height, bool) or not isinstance(target_height, (int, float)) or target_height <= 0):
+            errors.append("target_height_meters must be a positive number")
+        rig_template = job.get("rig_template")
+        if isinstance(rig_template, str) and SAFE_ID_PATTERN.fullmatch(rig_template):
+            from vcf_core.rigging import PartResolutionError, get_rig_template
+            try:
+                get_rig_template(rig_template)
+            except PartResolutionError as exc:
+                errors.extend(exc.errors)
     return errors
 
 
