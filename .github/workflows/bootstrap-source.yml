@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   unpack:
-    if: ${{ hashFiles('bootstrap/VoxelCharacterFactory_Advanced_v0.2.zip.b64') != '' }}
+    if: ${{ hashFiles('bootstrap/parts/*') != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
       - name: Decode source archive
         run: |
           mkdir -p /tmp/vcf
-          base64 --decode bootstrap/VoxelCharacterFactory_Advanced_v0.2.zip.b64 > /tmp/vcf.zip
+          cat bootstrap/parts/* | base64 --decode > /tmp/vcf.zip
           unzip -q /tmp/vcf.zip -d /tmp/vcf
       - name: Install source tree
         run: |
