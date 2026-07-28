@@ -20,8 +20,10 @@ PROJECT_DIR = Path(__file__).resolve().parents[1]
 if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
 from blender_worker.pipeline import Pipeline
+from blender_worker.stages.asset_assembly import assemble_assets
 from blender_worker.stages.vox_ingest import VoxImportOptions, import_vox_scene
 from vcf_core.builds import determine_status
+from vcf_core.assets import load_registry
 from vcf_core.jobs import load_job
 
 
@@ -250,6 +252,22 @@ def main() -> None:
             })
             report["status"] = determine_status(
                 uses_proxy=True, has_unbound_geometry=False, blocking_checks_passed=True
+            ).value
+        elif source["mode"] == "assembly":
+            registry = load_registry(root)
+            assembled = pipeline.run("assemble_assets", lambda: assemble_assets(job, registry, root, material))
+            report["checks"].update({
+                "registry_assets_resolved": len(assembled) == len(source["asset_ids"]),
+                "registry_asset_count": len(assembled),
+                "registry_editable_objects": all("vcf.asset_id" in obj for obj in assembled),
+            })
+            report["diagnostics"].append({
+                "code": "RIG_UNBOUND_ASSEMBLY", "severity": "warning", "stage": "rig",
+                "message": "Registry assets are assembled and editable but await Phase 3 rigid binding.",
+                "corrective_action": "Run the semantic part-resolution and rigid-bind stages before a production export.",
+            })
+            report["status"] = determine_status(
+                uses_proxy=False, has_unbound_geometry=True, blocking_checks_passed=True
             ).value
         else:
             raise ValueError("Asset-registry assembly is not implemented by the compatibility worker")

@@ -11,6 +11,6 @@ Immediate work:
 3. Extract versioned build/stage contracts from the Blender worker.
 4. Add Job v2 migrations and transactional build outputs.
 5. Complete MagicaVoxel scene-graph support and greedy meshing.
-6. Define the asset registry and begin the original Heavy Sword Hero fixture.
+6. Asset Manifest v1 and the original Heavy Sword Hero registry fixture are implemented; Phase 3 begins semantic part resolution and rigid rigging.
 
 Do not expand the UI, full cast, or image-generation workflow until the engine-tested vertical-slice gate passes.

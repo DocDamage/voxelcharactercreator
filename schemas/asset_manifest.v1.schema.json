@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://voxelcharacterfactory.dev/schemas/asset_manifest.v1.schema.json",
+  "title": "Voxel Character Factory Asset Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "asset_id", "version", "kind", "source_path", "format", "semantic_tags", "compatible_bases", "pivots", "palette_roles", "author", "license", "provenance", "source_sha256", "thumbnail_path"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "asset_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "kind": {"enum": ["body_part", "hair", "garment", "accessory", "weapon"]},
+    "source_path": {"type": "string"}, "format": {"enum": ["vox", "glb", "gltf", "fbx", "obj"]},
+    "semantic_tags": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "compatible_bases": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "pivots": {"type": "object", "minProperties": 1}, "sockets": {"type": "object"},
+    "palette_roles": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "author": {"type": "string", "minLength": 1}, "license": {"enum": ["CC0-1.0", "CC-BY-4.0"]},
+    "provenance": {"type": "string", "minLength": 1}, "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "thumbnail_path": {"type": "string"}, "placement_voxels": {"type": "array", "minItems": 3, "maxItems": 3},
+    "scale_metadata": {"type": "object"}, "notes": {"type": "string"}
+  }
+}

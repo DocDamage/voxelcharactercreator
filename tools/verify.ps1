@@ -45,6 +45,8 @@ try {
         }
         & $BlenderExe --background --python (Join-Path $Root 'tests/blender/verify_vox_import.py')
         if ($LASTEXITCODE -ne 0) { throw "Blender VOX integration verification failed with exit code $LASTEXITCODE." }
+        & $BlenderExe --background --python (Join-Path $Root 'tests/blender/verify_asset_assembly.py')
+        if ($LASTEXITCODE -ne 0) { throw "Blender asset-assembly integration verification failed with exit code $LASTEXITCODE." }
     }
     foreach ($Deferred in @($Godot, $Visual)) {
         if ($Deferred) {

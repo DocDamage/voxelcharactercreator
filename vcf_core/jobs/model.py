@@ -93,7 +93,7 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
     required = V1_REQUIRED if version == 1 else V2_REQUIRED
     for key in sorted(required):
         value = job.get(key)
-        if key == "source":
+        if key in {"source", "schema_version"}:
             continue
         if not isinstance(value, str) or not value.strip():
             errors.append(f"{key} must be a non-empty string")
@@ -138,6 +138,12 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
             asset_ids = source.get("asset_ids")
             if not isinstance(asset_ids, list) or not asset_ids or any(not isinstance(item, str) or not SAFE_ID_PATTERN.fullmatch(item) for item in asset_ids):
                 errors.append("source.asset_ids must be a non-empty array of safe catalog IDs")
+            elif project_root:
+                from vcf_core.assets import AssetValidationError, load_registry
+                try:
+                    load_registry(project_root).resolve(asset_ids, body_template=job.get("body_template", ""))
+                except AssetValidationError as exc:
+                    errors.extend(exc.errors)
         elif source.get("mode") == "proxy" and (source.get("path") or source.get("asset_ids")):
             errors.append("proxy source must not declare path or asset_ids")
         overrides = job.get("part_overrides", {})

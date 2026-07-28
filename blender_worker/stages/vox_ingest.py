@@ -17,6 +17,7 @@ from blender_worker.geometry.vox_mesher import MeshingVoxel, mesh_voxels
 class VoxImportOptions:
     meshing_mode: str = "greedy"
     target_extent_meters: float = 5.5
+    voxel_unit_meters: float | None = None
 
 
 def import_vox_scene(path: Path, make_material, options: VoxImportOptions | None = None) -> list[bpy.types.Object]:
@@ -26,7 +27,9 @@ def import_vox_scene(path: Path, make_material, options: VoxImportOptions | None
     voxels = resolve_scene_voxels(document)
     minimum, maximum = voxel_bounds(voxels)
     extent = max(maximum[index] - minimum[index] for index in range(3))
-    unit = options.target_extent_meters / extent
+    unit = options.voxel_unit_meters if options.voxel_unit_meters is not None else options.target_extent_meters / extent
+    if unit <= 0:
+        raise ValueError("voxel_unit_meters must be greater than zero")
     root_collection = bpy.data.collections.new(f"VOX::{path.stem}")
     bpy.context.scene.collection.children.link(root_collection)
     root_collection["vcf.vox_source"] = str(path)

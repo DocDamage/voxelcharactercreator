@@ -1,6 +1,6 @@
 # Voxel Character Factory Implementation Plan
 
-Status: Phase 0-1 implemented; Phase 2+ proposed
+Status: Phases 0-2 implemented; Phase 3+ proposed
 Planning baseline: 2026-07-28
 Primary milestone: one real, editable, rigged, animated, Godot-tested voxel character built without opening Blender interactively
 
@@ -208,13 +208,13 @@ Goal: assemble one redistributable, editable heavy-sword character from modular 
 
 | ID | Size | Depends on | Deliverable and acceptance criteria |
 | --- | --- | --- | --- |
-| ASSET-201 | M | CORE-002, ADR-001 | Implement Asset Manifest v1 and registry lookup by ID/version/tags. Duplicate IDs, missing sources, incompatible bases, and unapproved licenses fail validation. |
-| ASSET-202 | M + 8-12 content days | ASSET-201, VOX-104 | Create a production male base split into head, torso, pelvis, upper/lower limbs, hands, and feet with declared pivots and palette roles. Every part passes naming, bounds, origin, and disconnected-voxel checks. |
-| ASSET-203 | M + 4-8 content days | ASSET-202 | Create modular hair, heavy-sword outfit pieces, gloves, boots, and accessories. Swapping or hiding one part requires only a job change. |
-| WEAPON-201 | M + 3-5 content days | ASSET-201 | Create an original heavy sword with primary/secondary grips, back/waist carry transforms, trail endpoints, and scale metadata. Socket visualization shows alignment without hard-coded character offsets. |
-| ASSET-204 | S | ASSET-202, ASSET-203, WEAPON-201 | Add thumbnails, authorship/license/provenance records, and source hashes for every tracked asset. CI rejects missing provenance. |
+| ASSET-201 | M | CORE-002, ADR-001 | **Implemented.** Asset Manifest v1 and a Blender-independent registry resolve latest assets by ID, version, and semantic tags. Duplicate ID/version pairs, missing sources, incompatible bases, invalid hashes, and unapproved licenses fail validation. |
+| ASSET-202 | M + 8-12 content days | ASSET-201, VOX-104 | **Implemented.** The original CC0 male base is split into head, torso, pelvis, limbs, hands, and feet. Source validation checks declared semantic names, zero-based origins, and disconnected voxel islands; placement and pivot metadata remain addressable. |
+| ASSET-203 | M + 4-8 content days | ASSET-202 | **Implemented.** Modular hair, coat, gloves, boots, and pauldrons assemble from a Job v2 registry list while remaining separate editable Blender objects. |
+| WEAPON-201 | M + 3-5 content days | ASSET-201 | **Implemented.** The original heavy sword declares primary/secondary grips, back/waist carry locations, trail endpoints, and voxel-scale metadata. Phase 3 consumes these sockets for alignment checks. |
+| ASSET-204 | S | ASSET-202, ASSET-203, WEAPON-201 | **Implemented.** Every tracked pilot source has an individual SVG thumbnail, CC0 authorship/provenance record, and SHA-256 hash. `tools/validate.py` rejects incomplete or changed records. |
 
-**Exit gate:** deleting `source_model` from the pilot job still produces a recognizable, fully editable Heavy Sword Hero from registry assets; no proxy geometry or proprietary input is used.
+**Exit gate:** passed locally on Blender 4.5.5 LTS. The Job v2 pilot contains no `source_model` and assembles 21 recognizable, editable registry objects with preserved manifests and weapon sockets; no proxy geometry or proprietary input is used. Its build remains `incomplete` until the Phase 3 rigid-bind gate passes.
 
 ### Phase 3 - Part resolution and production rigid rigging
 

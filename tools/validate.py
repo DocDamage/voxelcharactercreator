@@ -11,10 +11,16 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from vcf_core.jobs import migrate_job, validate_job
+from vcf_core.assets import AssetValidationError, load_registry
 
 
 def main() -> int:
     failures: list[str] = []
+    try:
+        registry = load_registry(ROOT)
+    except AssetValidationError as exc:
+        failures.extend(exc.errors)
+        registry = None
     jobs = sorted((ROOT / "characters").glob("*/*.json"))
     if not jobs:
         failures.append("no character jobs found")
@@ -37,7 +43,8 @@ def main() -> int:
     if failures:
         print("Validation failed:", *failures, sep="\n- ")
         return 1
-    print(f"Validated {len(jobs)} jobs; v1 jobs are readable and migrate to Job v2.")
+    asset_count = len(registry.manifests) if registry else 0
+    print(f"Validated {len(jobs)} jobs and {asset_count} registry assets; v1 jobs are readable and migrate to Job v2.")
     return 0
 
 
