@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Voxel Character Factory Job",
+  "title": "Voxel Character Factory Job v1 (deprecated; migrate with vcf_core.jobs.migrate_job)",
   "type": "object",
   "required": [
     "id",

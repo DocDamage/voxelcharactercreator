@@ -3,4 +3,9 @@ __pycache__/
 .venv/
 venv/
 exports/
+logs/
+assets/incoming/*
+!assets/incoming/.gitkeep
+assets/generated/*
+!assets/generated/.gitkeep
 

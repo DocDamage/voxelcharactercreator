@@ -1,19 +1,21 @@
 # VOX Pipeline
 
-The advanced starter includes a minimal reader for MagicaVoxel VOX files.
+Phase 1 decodes MagicaVoxel VOX files into typed, Blender-independent models before
+anything is imported. It supports `PACK`, multiple `SIZE`/`XYZI` models, `RGBA`,
+`MATL`, `LAYR`, dictionaries, and safely records unknown chunks. File, chunk, model,
+dimension, and voxel limits turn corrupt input into actionable `VoxError` messages.
 
-Supported:
+`nTRN`, `nGRP`, and `nSHP` scene graphs resolve named, layered model instances with
+visibility, frame selection, translations, and orthogonal rotations. The Blender
+adapter preserves model/layer/semantic identity in collections and custom properties,
+normalizes the visible scene to a Z=0 ground plane, and emits palette materials.
 
-- Standard `SIZE`
-- Standard `XYZI`
-- Standard `RGBA`
-- Single-model voxel files
+Meshing modes are explicit:
 
-Current limits:
+- `greedy` merges coplanar exposed faces only when material and semantic part match.
+- `surface` retains exposed quads with shared vertices.
+- `cubes` is a diagnostic mode with independent face vertices, but still removes internal faces.
 
-- Does not yet process multi-model scene graphs.
-- Does not yet merge adjacent voxels into optimized meshes.
-- Builds one mesh containing only exposed voxel faces, avoiding hidden interior geometry.
-- Does not yet classify limbs automatically.
-
-Production optimization can add greedy meshing, scene-graph support, part tags, and modular rigid-body assignment.
+Run `./tools/verify.ps1 -Performance` for the original 100k-voxel benchmark. It
+records mesh and Blender-import metrics in `logs/` without gating hardware-sensitive
+limits.

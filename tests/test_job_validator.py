@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from app.services.job_validator import validate_job
+from vcf_core.jobs import load_job, migrate_job
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,10 +48,38 @@ class JobValidatorTests(unittest.TestCase):
     def test_resolves_source_model_against_project_root(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
-            (root / "model.vox").write_bytes(b"VOX ")
+            source = root / "assets" / "incoming" / "model.vox"
+            source.parent.mkdir(parents=True)
+            source.write_bytes(b"VOX ")
             job = self.valid_job()
-            job["source_model"] = "model.vox"
+            job["source_model"] = "assets/incoming/model.vox"
             self.assertEqual([], validate_job(job, project_root=root))
+
+    def test_rejects_path_traversal_and_unknown_fields(self) -> None:
+        job = self.valid_job()
+        job["source_model"] = "../outside.vox"
+        job["unexpected"] = True
+        errors = validate_job(job, project_root=ROOT)
+        self.assertTrue(any("approved import root" in error for error in errors))
+        self.assertTrue(any("unknown job fields" in error for error in errors))
+
+    def test_migrates_v1_job_losslessly_to_v2(self) -> None:
+        original = self.valid_job()
+        original["source_model"] = None
+        migrated = migrate_job(original)
+        self.assertEqual(2, migrated["schema_version"])
+        self.assertEqual({"mode": "proxy"}, migrated["source"])
+        self.assertNotIn("source_model", migrated)
+
+    def test_rejects_unknown_future_schema(self) -> None:
+        job = self.valid_job()
+        job["schema_version"] = 99
+        self.assertTrue(any("unsupported future" in error for error in validate_job(job)))
+
+    def test_v2_rejects_unknown_vox_meshing_mode(self) -> None:
+        job = migrate_job(self.valid_job())
+        job["settings_overrides"] = {"vox_meshing_mode": "triangles"}
+        self.assertTrue(any("vox_meshing_mode" in error for error in validate_job(job)))
 
     def test_rejects_unsupported_source_extension(self) -> None:
         job = self.valid_job()

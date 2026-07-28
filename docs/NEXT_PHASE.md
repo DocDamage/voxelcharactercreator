@@ -1,10 +1,16 @@
 # Next Phase
 
-- Add direct `.vox` import/conversion.
-- Add production modular body bases.
-- Add automatic limb classification and rigid bone parenting.
-- Add weapon sockets and cape/hair chains.
-- Add sword, heavy-sword, spear, staff, katana, gunblade and dark-caster animation packs.
-- Add Ollama and OpenAI-compatible prompt-to-job adapters.
-- Add visual QA and approval dashboard.
-- Package as a Windows installer.
+The next milestone is one real, editable, rigged, animated, Godot-tested voxel character built end to end without opening Blender interactively.
+
+The dependency-ordered backlog, acceptance gates, architecture, estimates, and deferred scope are maintained in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+
+Immediate work:
+
+1. Lock the pilot, coordinate, binding, Godot, and IP decisions in an ADR.
+2. Replace the obsolete bootstrap workflow with validation CI.
+3. Extract versioned build/stage contracts from the Blender worker.
+4. Add Job v2 migrations and transactional build outputs.
+5. Complete MagicaVoxel scene-graph support and greedy meshing.
+6. Define the asset registry and begin the original Heavy Sword Hero fixture.
+
+Do not expand the UI, full cast, or image-generation workflow until the engine-tested vertical-slice gate passes.

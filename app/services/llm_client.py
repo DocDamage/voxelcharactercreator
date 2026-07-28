@@ -6,9 +6,10 @@ from copy import deepcopy
 
 SYSTEM_PROMPT = """You convert natural-language voxel character build requests into strict JSON job patches.
 Return JSON only. Allowed keys:
-body_template, rig_template, animation_profile, weapon, source_model,
+body_template, rig_template, animation_profile, weapon,
 height_voxels, palette_profile, accent_colors, export_formats, render_profile, notes.
-Never include markdown or explanations."""
+Never include markdown or explanations. source_model is deliberately excluded: input
+paths require an explicit operator change in the job editor."""
 
 def _post_json(url: str, payload: dict, headers: dict | None = None) -> dict:
     body = json.dumps(payload).encode("utf-8")
@@ -53,7 +54,7 @@ def apply_patch(job: dict, patch: dict) -> dict:
     if not isinstance(job, dict) or not isinstance(patch, dict):
         raise TypeError("job and patch must be JSON objects")
     allowed = {
-        "body_template","rig_template","animation_profile","weapon","source_model",
+        "body_template","rig_template","animation_profile","weapon",
         "height_voxels","palette_profile","accent_colors","export_formats","render_profile","notes"
     }
     updated = deepcopy(job)

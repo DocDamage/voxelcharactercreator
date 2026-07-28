@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import shutil
 import sys
 import traceback
+from datetime import UTC, datetime
 from pathlib import Path
 
 import bpy
@@ -13,7 +16,13 @@ from mathutils import Vector
 ADAPTER_DIR = Path(__file__).resolve().parent / "adapters"
 if str(ADAPTER_DIR) not in sys.path:
     sys.path.insert(0, str(ADAPTER_DIR))
-from vox_reader import read_vox
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+if str(PROJECT_DIR) not in sys.path:
+    sys.path.insert(0, str(PROJECT_DIR))
+from blender_worker.pipeline import Pipeline
+from blender_worker.stages.vox_ingest import VoxImportOptions, import_vox_scene
+from vcf_core.builds import determine_status
+from vcf_core.jobs import load_job
 
 
 def parse_args() -> argparse.Namespace:
@@ -21,6 +30,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--job", required=True)
     parser.add_argument("--project-root", required=True)
+    parser.add_argument("--fail-stage", help="Test-only: force a named stage to fail before it runs.")
     return parser.parse_args(blender_args)
 
 
@@ -132,67 +142,10 @@ def build_proxy(job: dict, armature) -> None:
         bind(weapon, armature, "weapon_socket.R")
 
 
-def import_vox(path: Path):
-    """Import a single-model VOX file as one surface-only mesh."""
-    model = read_vox(path)
-    size_x, size_y, size_z = model["size"]
-    voxels = model["voxels"]
-    if not voxels:
-        raise ValueError("VOX model contains no voxels")
-
-    occupied = {(x, y, z) for x, y, z, _color in voxels}
-    directions = [
-        ((-1, 0, 0), ((0, 0, 0), (0, 0, 1), (0, 1, 1), (0, 1, 0))),
-        ((1, 0, 0), ((1, 0, 0), (1, 1, 0), (1, 1, 1), (1, 0, 1))),
-        ((0, -1, 0), ((0, 0, 0), (1, 0, 0), (1, 0, 1), (0, 0, 1))),
-        ((0, 1, 0), ((0, 1, 0), (0, 1, 1), (1, 1, 1), (1, 1, 0))),
-        ((0, 0, -1), ((0, 0, 0), (0, 1, 0), (1, 1, 0), (1, 0, 0))),
-        ((0, 0, 1), ((0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1))),
-    ]
-    unit = 5.5 / max(size_x, size_y, size_z)
-    origin = (-size_x / 2, -size_y / 2, -2 / unit)
-    vertices = []
-    faces = []
-    face_colors = []
-    for x, y, z, color_index in voxels:
-        for (dx, dy, dz), corners in directions:
-            if (x + dx, y + dy, z + dz) in occupied:
-                continue
-            start = len(vertices)
-            vertices.extend(
-                (
-                    (x + cx + origin[0]) * unit,
-                    (y + cy + origin[1]) * unit,
-                    (z + cz + origin[2]) * unit,
-                )
-                for cx, cy, cz in corners
-            )
-            faces.append((start, start + 1, start + 2, start + 3))
-            face_colors.append(color_index)
-
-    mesh = bpy.data.meshes.new("VOX_Mesh")
-    mesh.from_pydata(vertices, [], faces)
-    mesh.update()
-    obj = bpy.data.objects.new(path.stem, mesh)
-    bpy.context.collection.objects.link(obj)
-
-    used_colors = sorted(set(face_colors))
-    material_slots = {}
-    for slot, color_index in enumerate(used_colors):
-        red, green, blue, alpha = model["palette"][(color_index - 1) % 256]
-        voxel_material = material(f"VOX_{color_index:03d}", f"#{red:02X}{green:02X}{blue:02X}")
-        voxel_material.diffuse_color = (red / 255, green / 255, blue / 255, alpha / 255)
-        obj.data.materials.append(voxel_material)
-        material_slots[color_index] = slot
-    for polygon, color_index in zip(mesh.polygons, face_colors):
-        polygon.material_index = material_slots[color_index]
-    return obj
-
-
-def import_source(path: Path):
+def import_source(path: Path, vox_meshing_mode: str = "greedy"):
     suffix = path.suffix.lower()
     if suffix == ".vox":
-        return import_vox(path)
+        return import_vox_scene(path, material, VoxImportOptions(meshing_mode=vox_meshing_mode))
     if suffix in {".glb", ".gltf"}:
         return bpy.ops.import_scene.gltf(filepath=str(path))
     if suffix == ".fbx":
@@ -244,44 +197,81 @@ def main() -> None:
     arguments = parse_args()
     root = Path(arguments.project_root).resolve()
     job_path = Path(arguments.job).resolve()
-    job = json.loads(job_path.read_text(encoding="utf-8"))
+    job = load_job(job_path, root)
     slug = job["id"]
     character_slug = slug.split("_", 1)[1] if "_" in slug else slug
-    output = root / "exports" / job["game"] / character_slug
-    output.mkdir(parents=True, exist_ok=True)
-    report = {"job": slug, "status": "started", "checks": {}, "warnings": []}
+    final_output = root / "exports" / job["game"] / character_slug
+    job_hash = hashlib.sha256(job_path.read_bytes()).hexdigest()
+    run_id = f"{datetime.now(UTC).strftime('%Y%m%dT%H%M%S.%fZ')}-{job_hash[:12]}"
+    run_dir = root / "exports" / ".runs" / slug / run_id
+    output = run_dir / "artifacts"
+    output.mkdir(parents=True, exist_ok=False)
+    report = {
+        "schema_version": 2,
+        "run_id": run_id,
+        "job": slug,
+        "job_schema_version": job["schema_version"],
+        "status": "started",
+        "input_hashes": {"job": job_hash},
+        "tool_versions": {"blender": bpy.app.version_string},
+        "stages": [],
+        "checks": {},
+        "diagnostics": [],
+        "artifacts": [],
+    }
+    pipeline = Pipeline(report, fail_stage=arguments.fail_stage)
     try:
-        clear_scene()
-        armature = create_rig()
-        source = job.get("source_model")
-        if source:
-            source_path = Path(source)
-            if not source_path.is_absolute():
-                source_path = root / source_path
-            if not source_path.is_file():
-                raise FileNotFoundError(source_path)
-            import_source(source_path)
+        pipeline.run("prepare", clear_scene)
+        armature = pipeline.run("rig", create_rig)
+        source = job["source"]
+        if source["mode"] == "model":
+            source_path = root / source["path"]
+            overrides = job.get("settings_overrides", {})
+            vox_meshing_mode = overrides.get("vox_meshing_mode", "greedy") if isinstance(overrides, dict) else "greedy"
+            if vox_meshing_mode not in {"greedy", "surface", "cubes"}:
+                raise ValueError("settings_overrides.vox_meshing_mode must be greedy, surface, or cubes")
+            pipeline.run("ingest", lambda: import_source(source_path, vox_meshing_mode))
             report["checks"]["source_imported"] = True
-            report["warnings"].append("Automatic limb classification is not included; imported geometry is not rig-bound.")
-        else:
-            build_proxy(job, armature)
+            report["diagnostics"].append({
+                "code": "RIG_UNBOUND_SOURCE", "severity": "error", "stage": "rig",
+                "message": "Imported geometry is not rig-bound by the compatibility worker.",
+                "corrective_action": "Add explicit part mappings and run the rigid-bind stage.",
+            })
+            report["status"] = determine_status(
+                uses_proxy=False, has_unbound_geometry=True, blocking_checks_passed=True
+            ).value
+        elif source["mode"] == "proxy":
+            pipeline.run("assemble_proxy", lambda: build_proxy(job, armature))
             report["checks"]["proxy_generated"] = True
-            report["warnings"].append("No source model supplied; generated a pipeline test proxy.")
+            report["diagnostics"].append({
+                "code": "PROXY_GEOMETRY", "severity": "warning", "stage": "assemble_proxy",
+                "message": "No approved source asset was supplied; a pipeline proxy was generated.",
+                "corrective_action": "Use an approved original asset or registry assembly for a production build.",
+            })
+            report["status"] = determine_status(
+                uses_proxy=True, has_unbound_geometry=False, blocking_checks_passed=True
+            ).value
+        else:
+            raise ValueError("Asset-registry assembly is not implemented by the compatibility worker")
 
-        animate(armature)
+        pipeline.run("animate", lambda: animate(armature))
         preview = output / f"{slug}_preview.png"
-        configure_render(preview, int(job.get("render_resolution", 768)))
-        bpy.context.scene.frame_set(1)
-        bpy.ops.render.render(write_still=True)
-        bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
+        def render_and_save() -> None:
+            configure_render(preview, int(job.get("render_resolution", 768)))
+            bpy.context.scene.frame_set(1)
+            bpy.ops.render.render(write_still=True)
+            bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
+        pipeline.run("render", render_and_save)
 
         formats = job.get("export_formats", ["glb"])
-        if "glb" in formats:
-            bpy.ops.export_scene.gltf(filepath=str(output / f"{slug}.glb"), export_format="GLB", export_animations=True)
-        if "fbx" in formats:
-            bpy.ops.export_scene.fbx(
-                filepath=str(output / f"{slug}.fbx"), use_selection=False, add_leaf_bones=False, bake_anim=True
-            )
+        def export() -> None:
+            if "glb" in formats:
+                bpy.ops.export_scene.gltf(filepath=str(output / f"{slug}.glb"), export_format="GLB", export_animations=True)
+            if "fbx" in formats:
+                bpy.ops.export_scene.fbx(
+                    filepath=str(output / f"{slug}.fbx"), use_selection=False, add_leaf_bones=False, bake_anim=True
+                )
+        pipeline.run("export", export)
         report["checks"].update(
             {
                 "armature_exists": "VCF_Rig" in bpy.data.objects,
@@ -290,16 +280,42 @@ def main() -> None:
                 "fbx_exported": (output / f"{slug}.fbx").exists() if "fbx" in formats else None,
             }
         )
-        report["status"] = "complete"
+        for artifact in sorted(path for path in output.iterdir() if path.is_file()):
+            report["artifacts"].append({
+                "name": artifact.name,
+                "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
+                "size_bytes": artifact.stat().st_size,
+            })
+        if report["status"] == "prototype":
+            final_output.parent.mkdir(parents=True, exist_ok=True)
+            backup = final_output.with_name(f".{final_output.name}.previous-{run_id}")
+            if final_output.exists():
+                final_output.replace(backup)
+            try:
+                output.replace(final_output)
+            except Exception:
+                if backup.exists() and not final_output.exists():
+                    backup.replace(final_output)
+                raise
+            if backup.exists():
+                shutil.rmtree(backup)
+            report["promoted_output"] = str(final_output.relative_to(root))
     except Exception as exc:
         report["status"] = "failed"
         report["error"] = str(exc)
         report["traceback"] = traceback.format_exc()
         raise
     finally:
-        (output / f"{slug}_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        (run_dir / "build_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        if report["status"] == "prototype" and final_output.exists():
+            (final_output / f"{slug}_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(report, indent=2))
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception:
+        # Blender can otherwise exit successfully after logging a Python traceback,
+        # which makes external orchestration report a false-green build.
+        sys.exit(1)
