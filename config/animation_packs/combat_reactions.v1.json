@@ -1,0 +1,1292 @@
+{
+  "schema_version": 1,
+  "pack_id": "combat_reactions",
+  "frame_rate": 30,
+  "compatibility_tags": [
+    "humanoid",
+    "combat_reactions"
+  ],
+  "required_bones": [
+    "root",
+    "pelvis",
+    "spine",
+    "head",
+    "upper_arm.L",
+    "upper_arm.R",
+    "forearm.L",
+    "forearm.R",
+    "hand.L",
+    "hand.R",
+    "thigh.L",
+    "thigh.R",
+    "shin.L",
+    "shin.R",
+    "foot.L",
+    "foot.R"
+  ],
+  "actions": [
+    {
+      "name": "hit_front",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              -0.45,
+              0,
+              0
+            ],
+            "head": [
+              0.18000000000000002,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "hit_back",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.45,
+              0,
+              0
+            ],
+            "head": [
+              -0.18000000000000002,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "hit_left",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0.5
+            ],
+            "head": [
+              -0.048,
+              0,
+              -0.15
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "hit_right",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              -0.5
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.15
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "block_break",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "guard_break",
+          "frame": 10
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "parry",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "parry_window",
+          "frame": 9
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "stagger",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "stun_enter",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "stun_start",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "stun_idle",
+      "frame_start": 1,
+      "frame_end": 30,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0.08,
+              0,
+              -0.06
+            ],
+            "head": [
+              -0.03,
+              0,
+              0.04
+            ],
+            "upper_arm.L": [
+              0.26,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.34,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 15,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 30,
+          "bones": {
+            "spine": [
+              0.08,
+              0,
+              -0.06
+            ],
+            "head": [
+              -0.03,
+              0,
+              0.04
+            ],
+            "upper_arm.L": [
+              0.26,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.34,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "stun_recover",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "stun_end",
+          "frame": 18
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "knockback",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              -0.45,
+              0,
+              0
+            ],
+            "head": [
+              0.18000000000000002,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "launch_react",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              -0.45,
+              0,
+              0
+            ],
+            "head": [
+              0.18000000000000002,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "air_hit",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ground_hit",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "damage_react",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "recover_quick",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "recover_slow",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.12,
+              0,
+              0
+            ],
+            "head": [
+              -0.048,
+              0,
+              0.0
+            ],
+            "upper_arm.L": [
+              0.3,
+              0,
+              0
+            ],
+            "upper_arm.R": [
+              0.3,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

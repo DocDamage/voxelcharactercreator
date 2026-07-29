@@ -4,7 +4,7 @@ param(
     [string]$Job,
     [string]$Blender = $env:VCF_BLENDER,
     [switch]$NoCache,
-    [ValidateSet('prepare','ingest','assemble_proxy','assemble_assets','resolve_parts','rig','align_sockets','rigid_bind','animate','qa','render','export','godot_import')]
+    [ValidateSet('prepare','ingest','assemble_proxy','assemble_assets','resolve_parts','rig','align_sockets','rigid_bind','secondary_motion','animate','qa','render','optimize','export','godot_import')]
     [string]$RetryStage
 )
 

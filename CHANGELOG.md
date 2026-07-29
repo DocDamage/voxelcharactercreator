@@ -2,7 +2,14 @@
 
 ## Unreleased
 
-Version: `0.4.0-factory`
+Version: `0.5.0-animation-player`
+
+- Expanded all eight weapon families to exactly 24 validated animations each: 16 shared gameplay states and eight type-specific moves.
+- Added an out-of-process Godot animation player with play/pause, restart, loop control, timeline scrubbing, speed control, orbit/zoom camera, authored event display, frame stepping, and skeleton/socket overlays.
+- Added **Play Animations** to the desktop Preview & Validation dashboard and a headless player smoke test to Godot verification.
+- Added a separate 24-clip humanoid traversal pack covering slide, roll, double jump, four air attacks, dash, ladders, wall movement, swimming, rope movement, grappling, and ledges while preserving exactly 24 clips in each type pack.
+- Added four reusable shared packs: 16-directional locomotion, 16 traversal transitions, 12 interactions, and 16 combat reactions. Production characters now export 108 uniquely named actions.
+- Added a playable Godot traversal sandbox and reference CharacterBody3D controller for those mechanics.
 
 - Completed Phase 6 with five original CC0 body archetypes and a shared registry/rig/build path.
 - Added sword/shield, spear, staff, katana, gunblade, firearm, and caster Animation Pack v1 families.

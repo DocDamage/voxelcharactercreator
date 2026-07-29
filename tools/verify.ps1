@@ -93,6 +93,8 @@ try {
         if ($LASTEXITCODE -ne 0) { throw "Godot GLB import failed with exit code $LASTEXITCODE." }
         & $GodotExe --headless --path $GodotProject --script (Join-Path $GodotProject 'verify_import.gd')
         if ($LASTEXITCODE -ne 0) { throw "Godot scene verification failed with exit code $LASTEXITCODE." }
+        python tools/validate_animation_player.py --glb $Export --report (Join-Path $Root 'exports/original/heavy_sword_hero/original_heavy_sword_hero_report.json') --godot $GodotExe
+        if ($LASTEXITCODE -ne 0) { throw "Animation player verification failed with exit code $LASTEXITCODE." }
     }
 }
 finally {

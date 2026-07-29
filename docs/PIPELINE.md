@@ -90,4 +90,6 @@ material batching, compression policy, and incremental previews. Preview hashes
 cover render-affecting job data, sources, and manifests. Queue concurrency stays
 at one without measurements and is bounded at four based on CPU and measured
 peak Blender memory. Rendered diagnostics met mapping/approval needs, so no
-embedded viewer was added.
+embedded viewer was added. A standalone Godot animation player now consumes the
+promoted GLB and Build Report action/event metadata without becoming part of the
+deterministic build worker.

@@ -8,7 +8,12 @@
   "rig_template": "humanoid_female",
   "animation_profile": "sword_shield",
   "animation_packs": [
-    "sword_shield_core"
+    "sword_shield_core",
+    "humanoid_traversal",
+    "directional_locomotion",
+    "traversal_transitions",
+    "interaction_core",
+    "combat_reactions"
   ],
   "export_profile": "godot_character",
   "weapon": "fhr_sword_shield",

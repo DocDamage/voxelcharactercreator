@@ -11,7 +11,8 @@ Windows-first starter for running Blender as an invisible character-processing b
 - Proxy voxel-character generation for pipeline testing and a registry-assembled original Heavy Sword Hero fixture
 - VOX, GLB, GLTF, FBX and OBJ source import
 - Versioned fitted humanoid rig with deterministic semantic part resolution and rigid binding
-- Versioned production animation pack (`idle`, `walk`, `run`, `heavy_sword_attack_1`) with events and validation
+- Eight versioned style families with exactly 24 clips per type, plus a 24-clip universal traversal pack
+- Out-of-process Godot animation player with clip selection, scrubbing, looping, speed, orbit camera, events, and rig/socket overlays
 - Transparent, fixed-angle diagnostic, and eight-angle turntable previews
 - GLB and FBX export
 - Godot 4.6.2 headless import gate and JSON Build Report v2
@@ -114,9 +115,11 @@ The Godot Mono build must be launched from its real installation directory so it
 can locate its `.NET` assemblies. The build and verification wrappers resolve
 WinGet symlinks to the adjacent `*_console.exe` automatically.
 
-The current Phase 4 action set is intentionally small: `idle`, `walk`, `run`, and
-`heavy_sword_attack_1`. Add new clips as versioned Animation Pack v1 data under
-`config/animation_packs/`; incompatible bone requirements fail before export.
+Each weapon type contains 16 shared gameplay clips and eight type-specific moves.
+Production jobs add 24 traversal clips plus 60 shared locomotion, transition,
+interaction, and reaction clips for 108 exported actions per character.
+After building, open **Preview & Validation** and click **Play Animations**.
+See [docs/ANIMATIONS.md](docs/ANIMATIONS.md) for the complete catalog and controls.
 
 For transactional-output regression testing, the worker accepts the test-only
 `--fail-stage <stage>` switch; failed runs are retained under `exports/.runs/` and

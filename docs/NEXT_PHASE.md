@@ -14,7 +14,9 @@ Immediate Phase 7 work:
 3. Keep reference analysis and similarity scoring advisory and reviewable.
 4. Define packaging, signing, migration, update, and rollback strategy.
 
-Additional attacks, guard, damage, death, victory, and archetype-specific
-movement should continue to use Animation Pack v1. Rendered previews remain
-sufficient for mapping/approval, so Phase 6 intentionally did not add an embedded
-viewer; Godot stays an out-of-process automated gate.
+Every current type now has 24 Animation Pack v1 clips. Production humanoids add
+24 universal traversal clips and 60 shared locomotion, transition, interaction,
+and reaction clips for 108 actions total; the out-of-process Godot player includes
+a reference mechanics sandbox. Future converted characters should refine poses and timing through
+the same contracts. The player remains separate from the desktop process; Godot
+also continues to serve as the automated import gate.

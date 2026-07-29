@@ -1,0 +1,1327 @@
+{
+  "schema_version": 1,
+  "pack_id": "traversal_transitions",
+  "frame_rate": 30,
+  "compatibility_tags": [
+    "humanoid",
+    "traversal_transitions"
+  ],
+  "required_bones": [
+    "root",
+    "pelvis",
+    "spine",
+    "head",
+    "upper_arm.L",
+    "upper_arm.R",
+    "forearm.L",
+    "forearm.R",
+    "hand.L",
+    "hand.R",
+    "thigh.L",
+    "thigh.R",
+    "shin.L",
+    "shin.R",
+    "foot.L",
+    "foot.R"
+  ],
+  "actions": [
+    {
+      "name": "jump_start",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              -0.18,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "fall_sustain",
+      "frame_start": 1,
+      "frame_end": 30,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 15,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 30,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "land_soft",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "land",
+          "frame": 12
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "land_hard",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [
+        {
+          "name": "land_hard",
+          "frame": 14
+        }
+      ],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ladder_mount",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ladder_dismount",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "wall_hang_enter",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "wall_corner_left",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "wall_corner_right",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "wall_climb_exit",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "swim_dive",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "swim_surface",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "swim_turn_left",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "swim_turn_right",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "swim_exit",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "grapple_land",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": false,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "pelvis",
+        "spine",
+        "head",
+        "upper_arm.L",
+        "upper_arm.R",
+        "forearm.L",
+        "forearm.R",
+        "hand.L",
+        "hand.R",
+        "thigh.L",
+        "thigh.R",
+        "shin.L",
+        "shin.R",
+        "foot.L",
+        "foot.R"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0.28,
+              0,
+              0
+            ],
+            "upper_arm.L": [
+              -0.8,
+              0,
+              -0.2
+            ],
+            "upper_arm.R": [
+              -0.8,
+              0,
+              0.2
+            ],
+            "thigh.L": [
+              0.28,
+              0,
+              0
+            ],
+            "thigh.R": [
+              -0.28,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

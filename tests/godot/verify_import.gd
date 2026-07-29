@@ -27,7 +27,7 @@ func verify() -> void:
 		for action in player.get_animation_list(): actions[String(action).get_file()] = true
 	for required in config["required_actions"]:
 		if not actions.has(required):
-			fail("GODOT_ACTION_MISSING", "Missing action: " + required)
+			fail("GODOT_ACTION_MISSING", "Missing action: " + required + "; imported: " + ", ".join(actions.keys()))
 			return
 	var material_count := 0
 	var bounds := AABB()

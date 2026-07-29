@@ -8,7 +8,12 @@
   "rig_template": "humanoid_mage",
   "animation_profile": "staff",
   "animation_packs": [
-    "staff_core"
+    "staff_core",
+    "humanoid_traversal",
+    "directional_locomotion",
+    "traversal_transitions",
+    "interaction_core",
+    "combat_reactions"
   ],
   "export_profile": "godot_character",
   "weapon": "mgr_staff",

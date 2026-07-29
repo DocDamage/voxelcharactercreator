@@ -14,7 +14,9 @@ ROOT = Path(__file__).resolve().parents[1]
 class Phase4ContractTests(unittest.TestCase):
     def test_production_animation_pack_has_required_actions_and_events(self):
         pack = load_animation_pack(ROOT / "config/animation_packs/heavy_sword_core.v1.json")
-        self.assertEqual({"idle", "walk", "run", "heavy_sword_attack_1"}, {action.name for action in pack.actions})
+        names = {action.name for action in pack.actions}
+        self.assertEqual(24, len(names))
+        self.assertTrue({"idle", "walk", "run", "jump", "dodge", "guard", "guard_hit", "damage_light", "damage_heavy", "knockdown", "death", "victory", "crouch_idle", "backstep", "fall", "get_up", "heavy_sword_attack_1", "heavy_sword_attack_2", "heavy_sword_attack_3", "heavy_sword_charge", "heavy_sword_overhead_smash", "heavy_sword_wide_sweep", "heavy_sword_launcher", "heavy_sword_limit_break"}.issubset(names))
         attack = next(action for action in pack.actions if action.name == "heavy_sword_attack_1")
         self.assertEqual(["trail_start", "hit_start", "hit_end", "trail_end"], [event["name"] for event in attack.events])
         self.assertTrue(all(action.poses for action in pack.actions))

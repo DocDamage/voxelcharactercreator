@@ -59,7 +59,13 @@ Report v2.
   equipment with undo/redo before an atomic save.
 - **Duplicate as Variant** creates a schema-valid job with `variant_of` set.
 - **Preview & Validation** browses current renders, the captured before-build
-  preview, diagnostics, and failed-stage errors.
+preview, diagnostics, and failed-stage errors.
+- **Play Animations** imports the promoted GLB into the standalone Godot player
+  and exposes all 108 exported clips, their authored events, timeline, loop setting,
+playback speed, orbit camera, and skeleton/socket diagnostics.
+  Enabling **Traversal sandbox** activates the reference controller and test
+  course for jump/double-jump, slide, roll, dash, air attacks, ladders, walls,
+  swimming, rope swing, ledges, and grapple movement.
 - **Describe Changes** asks the configured LLM for structured changes and
   diagnostics. Source paths and executable instructions are rejected. The app
   validates the resulting Job v2, shows the field-level diff, and applies it only
@@ -81,3 +87,7 @@ Parallel claims are atomic and limited to four. Keep concurrency at one until
 representative performance reports contain peak-memory measurements; the
 factory recommendation uses half the logical CPUs, available memory after a
 2 GB reserve, and a hard four-worker ceiling.
+
+The animation player requires a successful GLB build and the configured Godot
+executable. It runs out of process, so closing or restarting it cannot mutate the
+job, Blender source, queue, or promoted export.

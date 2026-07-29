@@ -14,6 +14,7 @@ from vcf_core.factory import (
 from vcf_core.jobs import load_job
 from vcf_core.operator import BuildQueue
 from vcf_core.rigging import get_rig_template
+from vcf_core.viewer import player_config, prepare_player
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,13 +30,46 @@ class Phase6FactoryTests(unittest.TestCase):
             self.assertGreaterEqual(len(registry.resolve(job["source"]["asset_ids"], body_template=job["body_template"])), 16)
             self.assertEqual(15, len(get_rig_template(job["rig_template"]).required_roles))
 
-    def test_all_seven_weapon_animation_families_are_versioned(self) -> None:
+    def test_all_weapon_animation_families_are_versioned(self) -> None:
         families = {"sword_shield", "spear", "staff", "katana", "gunblade", "firearm", "caster"}
         for family in families:
             pack = load_animation_pack(ROOT / "config" / "animation_packs" / f"{family}_core.v1.json")
             self.assertIn(family, pack.compatibility_tags)
+            self.assertEqual(24, len(pack.actions))
             self.assertTrue({"idle", "walk", "run"}.issubset({action.name for action in pack.actions}))
-            self.assertIn(f"{family}_attack_1", {action.name for action in pack.actions})
+            self.assertTrue(any(action.name.startswith(family + "_") for action in pack.actions))
+
+    def test_shared_animation_packs_have_stable_unique_catalogs(self) -> None:
+        expected = {
+            "directional_locomotion": {"walk_backward", "strafe_left", "strafe_right", "run_backward", "run_strafe_left", "run_strafe_right", "sprint", "sprint_start", "sprint_stop", "turn_left_90", "turn_right_90", "turn_left_180", "turn_right_180", "crouch_enter", "crouch_walk", "crouch_exit"},
+            "traversal_transitions": {"jump_start", "fall_sustain", "land_soft", "land_hard", "ladder_mount", "ladder_dismount", "wall_hang_enter", "wall_corner_left", "wall_corner_right", "wall_climb_exit", "swim_dive", "swim_surface", "swim_turn_left", "swim_turn_right", "swim_exit", "grapple_land"},
+            "interaction_core": {"weapon_draw", "weapon_sheath", "weapon_swap", "pickup", "item_use", "interact", "push", "pull", "carry_idle", "carry_walk", "lever_use", "door_open"},
+            "combat_reactions": {"hit_front", "hit_back", "hit_left", "hit_right", "block_break", "parry", "stagger", "stun_enter", "stun_idle", "stun_recover", "knockback", "launch_react", "air_hit", "ground_hit", "recover_quick", "recover_slow"},
+        }
+        for pack_id, expected_names in expected.items():
+            pack = load_animation_pack(ROOT / "config" / "animation_packs" / f"{pack_id}.v1.json")
+            self.assertEqual(expected_names, {action.name for action in pack.actions})
+
+        required_packs = {"humanoid_traversal", *expected}
+        for path in [ROOT / "characters" / "original" / "heavy_sword_hero.json", *sorted((ROOT / "characters" / "original").glob("phase6_*.json"))]:
+            job = load_job(path, ROOT)
+            self.assertTrue(required_packs.issubset(job["animation_packs"]))
+            actions = [
+                action.name
+                for pack_id in job["animation_packs"]
+                for action in load_animation_pack(ROOT / "config" / "animation_packs" / f"{pack_id}.v1.json").actions
+            ]
+            self.assertEqual(108, len(actions))
+            self.assertEqual(len(actions), len(set(actions)))
+
+    def test_universal_traversal_pack_has_exactly_24_mechanics_clips(self) -> None:
+        pack = load_animation_pack(ROOT / "config" / "animation_packs" / "humanoid_traversal.v1.json")
+        names = {action.name for action in pack.actions}
+        self.assertEqual(24, len(names))
+        self.assertEqual({"slide","dodge_roll","double_jump","airborne_idle","air_attack_light","air_attack_heavy","air_attack_spin","air_attack_plunge","dash","ladder_idle","ladder_climb","wall_hang","wall_jump","wall_climb","swim_idle","swim_forward","rope_swing","rope_release","grapple_fire","grapple_pull","grapple_swing","grapple_release","ledge_grab","ledge_climb"}, names)
+        for name in BODY_ARCHETYPES:
+            job = load_job(ROOT / "characters" / "original" / f"phase6_{name}.json", ROOT)
+            self.assertIn("humanoid_traversal", job["animation_packs"])
 
     def test_secondary_motion_requires_rigid_fallback(self) -> None:
         valid = [{"chain_id":"cape","kind":"cape","segments":["cape.01"],"parent_bone":"spine","stiffness":.5,"damping":.4,"max_angle_degrees":30,"fallback":"rigid"}]
@@ -67,6 +101,17 @@ class Phase6FactoryTests(unittest.TestCase):
             self.assertEqual(2, len(queue.claim_pending(2)))
             self.assertEqual(3, len([item for item in queue.items if item.status == "pending"]))
             with self.assertRaises(ValueError): queue.claim_pending(5)
+
+    def test_animation_player_receives_actions_and_events(self) -> None:
+        report = {"job":"hero", "animation":{"actions":[{"name":"attack","loop":False,"frame_start":1,"frame_end":20,"events":[{"name":"hit_start","frame":10}]}]}}
+        value = player_config(report)
+        self.assertEqual("attack", value["actions"][0]["name"])
+        self.assertEqual("hit_start", value["actions"][0]["events"][0]["name"])
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder); source = root / "hero.glb"; source.write_bytes(b"glTF")
+            project = prepare_player(root, source, report)
+            self.assertTrue((project / "imported" / "character.glb").is_file())
+            self.assertEqual("hero", json.loads((project / "imported" / "player_config.json").read_text())["character"])
 
 
 if __name__ == "__main__": unittest.main()

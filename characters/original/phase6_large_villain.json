@@ -8,7 +8,12 @@
   "rig_template": "humanoid_large",
   "animation_profile": "katana",
   "animation_packs": [
-    "katana_core"
+    "katana_core",
+    "humanoid_traversal",
+    "directional_locomotion",
+    "traversal_transitions",
+    "interaction_core",
+    "combat_reactions"
   ],
   "export_profile": "godot_character",
   "weapon": "lvr_katana",

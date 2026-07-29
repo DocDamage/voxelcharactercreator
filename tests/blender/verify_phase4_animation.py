@@ -24,7 +24,10 @@ def main():
     armature, _ = create_fitted_rig(objects, resolutions, job)
     align_weapon_to_primary_grip(objects, armature, resolutions); rigid_bind(objects, armature, resolutions)
     actions, animation_checks = apply_animation_packs(armature, job, ROOT)
-    assert {action.name for action in actions} == {"idle", "walk", "run", "heavy_sword_attack_1"}
+    assert len(actions) == 108
+    assert {"idle", "walk", "run", "jump", "dodge", "guard", "damage_light", "death", "victory", "heavy_sword_attack_1", "heavy_sword_attack_2", "heavy_sword_attack_3", "heavy_sword_charge"}.issubset({action.name for action in actions})
+    assert {"slide", "dodge_roll", "double_jump", "air_attack_light", "air_attack_heavy", "air_attack_spin", "air_attack_plunge", "dash", "ladder_climb", "wall_hang", "wall_jump", "wall_climb", "swim_forward", "rope_swing", "grapple_fire", "grapple_pull", "ledge_climb"}.issubset({action.name for action in actions})
+    assert {"walk_backward", "sprint", "turn_left_180", "crouch_walk", "jump_start", "land_hard", "ladder_mount", "swim_dive", "weapon_draw", "pickup", "carry_walk", "door_open", "hit_front", "parry", "stun_idle", "air_hit", "recover_quick"}.issubset({action.name for action in actions})
     assert all(animation_checks.values()), animation_checks
     qa_checks, diagnostics = validate_character(objects, armature, actions, load_export_profile(ROOT, job["export_profile"]))
     assert not diagnostics, diagnostics

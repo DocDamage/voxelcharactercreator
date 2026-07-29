@@ -26,6 +26,7 @@ from vcf_core.assets import load_registry
 from vcf_core.editing import JobEditor, duplicate_variant
 from vcf_core.operator import BuildQueue, STAGES, atomic_write_json, run_preflight
 from vcf_core.factory import measured_parallelism
+from vcf_core.viewer import AnimationPlayerError, launch_player
 
 
 SETTINGS = ROOT / "config" / "settings.json"
@@ -497,6 +498,10 @@ class App(tk.Tk):
         panes = ttk.Panedwindow(window, orient=tk.HORIZONTAL); panes.pack(fill="both", expand=True, padx=10, pady=10)
         left = ttk.Frame(panes); right = ttk.Frame(panes); panes.add(left, weight=1); panes.add(right, weight=3)
         files = sorted(output.glob("*.png")) + sorted((ROOT / "exports" / ".history" / job["id"]).glob("*.png"))
+        glb = output / f"{job['id']}.glb"
+        player_button = ttk.Button(left, text="Play Animations", command=lambda: self.open_animation_player(glb, output / f"{job['id']}_report.json", window))
+        player_button.pack(fill="x", pady=(0, 8))
+        if not glb.is_file(): player_button.state(["disabled"])
         listing = tk.Listbox(left, exportselection=False); listing.pack(fill="both", expand=True)
         for image_path in files: listing.insert(tk.END, image_path.name)
         image_label = ttk.Label(right, text="Select a current or before-build render"); image_label.pack(fill="both", expand=True)
@@ -514,6 +519,18 @@ class App(tk.Tk):
         for item in report.get("diagnostics", []): dashboard.insert("", tk.END, values=(f"{item.get('severity', '')} {item.get('code', '')}", item.get("message", "")))
         for stage in report.get("stages", []):
             if stage.get("status") == "failed": dashboard.insert("", tk.END, values=("ERROR " + stage.get("name", ""), stage.get("error", "Stage failed")))
+
+    def open_animation_player(self, glb: Path, report_path: Path, parent) -> None:
+        try: report = json.loads(report_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError): report = {}
+        def launch() -> None:
+            try:
+                launch_player(ROOT, glb, report, str(self.settings.get("godot_path", "")))
+            except AnimationPlayerError as exc:
+                self.after(0, lambda: messagebox.showerror("Animation player", str(exc), parent=parent))
+            except Exception as exc:
+                self.after(0, lambda: messagebox.showerror("Animation player", f"Could not launch Godot: {exc}", parent=parent))
+        threading.Thread(target=launch, daemon=True).start()
 
     def open_exports(self) -> None:
         path = ROOT / "exports"

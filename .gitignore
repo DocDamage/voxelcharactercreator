@@ -11,4 +11,7 @@ assets/generated/*
 tests/godot/imported/*
 !tests/godot/imported/.gitkeep
 tests/godot/.godot/
+tools/animation_player/imported/*
+!tools/animation_player/imported/.gitkeep
+tools/animation_player/.godot/
 

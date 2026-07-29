@@ -46,10 +46,10 @@ The original assessment predates several fixes. Planning starts from the actual 
 | Other input | GLB, GLTF, FBX, OBJ | Normalize units, axes, origins, and part metadata |
 | Geometry | Proxy path, 24-part pilot, five reusable archetypes, generated LODs, and palette batching | Expand the original fixture corpus during Phase 7 conversions |
 | Rigging | Fitted humanoid aliases across five proportions, semantic rigid binding, sockets, baked segment chains, and rigid fallback | Add new topology only when a converted character proves it necessary |
-| Animation | Animation Pack v1 with core pilot actions plus seven weapon-family packs | Phase 7 reaction and archetype-specific content |
+| Animation | Eight 24-clip type packs, a 24-clip traversal pack, four shared production packs, standalone player, and reference mechanics sandbox | Phase 7 character-specific timing and pose refinement |
 | Export | Versioned profiles, atomic artifacts, semantic hash, LOD/material batching, compression policy, and generic Godot gate | Phase 7 platform packaging and converted-character tuning |
 | Job editing | Canonical Job v2, atomic undoable operator editors, variants, and validated review-before-apply LLM proposals | Expand only as new archetypes prove contract needs |
-| Tests | 61 standard-library tests plus five Phase 6 Blender/Godot builds and visual/performance modes | Phase 7 converted-character completion matrices |
+| Tests | 64 standard-library tests plus five Phase 6 Blender/Godot builds and visual/performance modes | Phase 7 converted-character completion matrices |
 | Repository | Source and draft PR exist | Real CI, policy docs, license decision, release workflow |
 
 Build cancellation, basic Blender detection, direct single-model VOX import, LLM job patching, and initial tests are complete and must not be reopened as unfinished work.
@@ -302,11 +302,11 @@ atomic edits, variants, preflight, and reviewable LLM proposals.
 
 1. Female heroic, male heavy, mage/robe, large-villain, and child/small original CC0 bases use the same Job v2, Asset Manifest v1, resolver, fitted-rig, QA, export, and Godot path.
 2. Hair, cape, coat-tail, skirt, and robe chains validate as bounded segment rigs, export deterministic baked curves, and always declare a rigid fallback.
-3. Sword/shield, spear, staff, katana, gunblade, firearm, and caster Animation Pack v1 families provide locomotion, combat events, and family attacks.
+3. Heavy sword, sword/shield, spear, staff, katana, gunblade, firearm, and caster Animation Pack v1 families provide exactly 24 clips each: 16 shared gameplay states and eight family moves. Production humanoids compose those with 24 universal traversal clips and 60 reusable directional-locomotion, traversal-transition, interaction, and combat-reaction clips for 108 uniquely named actions.
 4. Export optimization generates reviewed descending LODs, batches palette-equivalent materials, records engine compression policy, reuses content-addressed previews, and exposes atomic queue claims with a conservative memory/CPU-based recommendation capped at four.
-5. Fixed rendered views continue to support mapping and approval. The viewer gate therefore resolved to **no embedded viewer**; Godot remains an out-of-process import verifier.
+5. Fixed renders remain the mapping/approval surface. A standalone Godot player provides interactive animation review without embedding an engine into Tk; Godot also remains the automated import verifier.
 
-**Exit gate — passed locally:** all five archetype jobs completed the same headless Blender 4.5.5 LTS and Godot 4.6.2 path, exceeding the four-archetype requirement. Five weapon families build in those jobs and all seven packs pass normal-Python contract validation. No archetype-specific Blender branch is present.
+**Exit gate — passed locally:** all five archetype jobs completed the same headless Blender 4.5.5 LTS and Godot 4.6.2 path, exceeding the four-archetype requirement. Five weapon families build in those jobs and all 13 packs pass normal-Python contract validation. No archetype-specific Blender branch is present.
 
 ### Phase 7 - Pilot ten, automation, and scale
 

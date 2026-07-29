@@ -21,3 +21,5 @@ Reusable-factory changes must also run
 `python tools/generate_phase6_assets.py --check` and the Phase 6 unit tests.
 Changes to archetype placement, secondary rigs, optimization, or generic Godot
 gating should be exercised by at least four `phase6_*.json` headless builds.
+Animation changes must retain exactly 24 unique validated clips per family and
+pass `tools/validate_animation_player.py` through `verify.ps1 -Godot`.
