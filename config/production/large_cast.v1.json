@@ -1,0 +1,1931 @@
+{
+  "schema_version": 1,
+  "characters": [
+    {
+      "id": "cast_001",
+      "job_path": "characters/cast/cast_001.json",
+      "topology": "quadruped",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_002",
+      "job_path": "characters/cast/cast_002.json",
+      "topology": "flying",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_003",
+      "job_path": "characters/cast/cast_003.json",
+      "topology": "multi_arm",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_004",
+      "job_path": "characters/cast/cast_004.json",
+      "topology": "boss",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_005",
+      "job_path": "characters/cast/cast_005.json",
+      "topology": "quadruped",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_006",
+      "job_path": "characters/cast/cast_006.json",
+      "topology": "flying",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_007",
+      "job_path": "characters/cast/cast_007.json",
+      "topology": "multi_arm",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_008",
+      "job_path": "characters/cast/cast_008.json",
+      "topology": "boss",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_009",
+      "job_path": "characters/cast/cast_009.json",
+      "topology": "quadruped",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_010",
+      "job_path": "characters/cast/cast_010.json",
+      "topology": "flying",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_011",
+      "job_path": "characters/cast/cast_011.json",
+      "topology": "multi_arm",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_012",
+      "job_path": "characters/cast/cast_012.json",
+      "topology": "boss",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_013",
+      "job_path": "characters/cast/cast_013.json",
+      "topology": "quadruped",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_014",
+      "job_path": "characters/cast/cast_014.json",
+      "topology": "flying",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_015",
+      "job_path": "characters/cast/cast_015.json",
+      "topology": "multi_arm",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_016",
+      "job_path": "characters/cast/cast_016.json",
+      "topology": "boss",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_017",
+      "job_path": "characters/cast/cast_017.json",
+      "topology": "quadruped",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_018",
+      "job_path": "characters/cast/cast_018.json",
+      "topology": "flying",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_019",
+      "job_path": "characters/cast/cast_019.json",
+      "topology": "multi_arm",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_020",
+      "job_path": "characters/cast/cast_020.json",
+      "topology": "boss",
+      "batch": "batch_01",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_021",
+      "job_path": "characters/cast/cast_021.json",
+      "topology": "quadruped",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_022",
+      "job_path": "characters/cast/cast_022.json",
+      "topology": "flying",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_023",
+      "job_path": "characters/cast/cast_023.json",
+      "topology": "multi_arm",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_024",
+      "job_path": "characters/cast/cast_024.json",
+      "topology": "boss",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_025",
+      "job_path": "characters/cast/cast_025.json",
+      "topology": "quadruped",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_026",
+      "job_path": "characters/cast/cast_026.json",
+      "topology": "flying",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_027",
+      "job_path": "characters/cast/cast_027.json",
+      "topology": "multi_arm",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_028",
+      "job_path": "characters/cast/cast_028.json",
+      "topology": "boss",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_029",
+      "job_path": "characters/cast/cast_029.json",
+      "topology": "quadruped",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_030",
+      "job_path": "characters/cast/cast_030.json",
+      "topology": "flying",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_031",
+      "job_path": "characters/cast/cast_031.json",
+      "topology": "multi_arm",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_032",
+      "job_path": "characters/cast/cast_032.json",
+      "topology": "boss",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_033",
+      "job_path": "characters/cast/cast_033.json",
+      "topology": "quadruped",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_034",
+      "job_path": "characters/cast/cast_034.json",
+      "topology": "flying",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_035",
+      "job_path": "characters/cast/cast_035.json",
+      "topology": "multi_arm",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_036",
+      "job_path": "characters/cast/cast_036.json",
+      "topology": "boss",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_037",
+      "job_path": "characters/cast/cast_037.json",
+      "topology": "quadruped",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_038",
+      "job_path": "characters/cast/cast_038.json",
+      "topology": "flying",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_039",
+      "job_path": "characters/cast/cast_039.json",
+      "topology": "multi_arm",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_040",
+      "job_path": "characters/cast/cast_040.json",
+      "topology": "boss",
+      "batch": "batch_02",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_041",
+      "job_path": "characters/cast/cast_041.json",
+      "topology": "quadruped",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_042",
+      "job_path": "characters/cast/cast_042.json",
+      "topology": "flying",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_043",
+      "job_path": "characters/cast/cast_043.json",
+      "topology": "multi_arm",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_044",
+      "job_path": "characters/cast/cast_044.json",
+      "topology": "boss",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_045",
+      "job_path": "characters/cast/cast_045.json",
+      "topology": "quadruped",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_046",
+      "job_path": "characters/cast/cast_046.json",
+      "topology": "flying",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_047",
+      "job_path": "characters/cast/cast_047.json",
+      "topology": "multi_arm",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_048",
+      "job_path": "characters/cast/cast_048.json",
+      "topology": "boss",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_049",
+      "job_path": "characters/cast/cast_049.json",
+      "topology": "quadruped",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_050",
+      "job_path": "characters/cast/cast_050.json",
+      "topology": "flying",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_051",
+      "job_path": "characters/cast/cast_051.json",
+      "topology": "multi_arm",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_052",
+      "job_path": "characters/cast/cast_052.json",
+      "topology": "boss",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_053",
+      "job_path": "characters/cast/cast_053.json",
+      "topology": "quadruped",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_054",
+      "job_path": "characters/cast/cast_054.json",
+      "topology": "flying",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_055",
+      "job_path": "characters/cast/cast_055.json",
+      "topology": "multi_arm",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_056",
+      "job_path": "characters/cast/cast_056.json",
+      "topology": "boss",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_057",
+      "job_path": "characters/cast/cast_057.json",
+      "topology": "quadruped",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_058",
+      "job_path": "characters/cast/cast_058.json",
+      "topology": "flying",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_059",
+      "job_path": "characters/cast/cast_059.json",
+      "topology": "multi_arm",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_060",
+      "job_path": "characters/cast/cast_060.json",
+      "topology": "boss",
+      "batch": "batch_03",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_061",
+      "job_path": "characters/cast/cast_061.json",
+      "topology": "quadruped",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_062",
+      "job_path": "characters/cast/cast_062.json",
+      "topology": "flying",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_063",
+      "job_path": "characters/cast/cast_063.json",
+      "topology": "multi_arm",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_064",
+      "job_path": "characters/cast/cast_064.json",
+      "topology": "boss",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_065",
+      "job_path": "characters/cast/cast_065.json",
+      "topology": "quadruped",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_066",
+      "job_path": "characters/cast/cast_066.json",
+      "topology": "flying",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_067",
+      "job_path": "characters/cast/cast_067.json",
+      "topology": "multi_arm",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_068",
+      "job_path": "characters/cast/cast_068.json",
+      "topology": "boss",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_069",
+      "job_path": "characters/cast/cast_069.json",
+      "topology": "quadruped",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_070",
+      "job_path": "characters/cast/cast_070.json",
+      "topology": "flying",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_071",
+      "job_path": "characters/cast/cast_071.json",
+      "topology": "multi_arm",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_072",
+      "job_path": "characters/cast/cast_072.json",
+      "topology": "boss",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_073",
+      "job_path": "characters/cast/cast_073.json",
+      "topology": "quadruped",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_074",
+      "job_path": "characters/cast/cast_074.json",
+      "topology": "flying",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_075",
+      "job_path": "characters/cast/cast_075.json",
+      "topology": "multi_arm",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_076",
+      "job_path": "characters/cast/cast_076.json",
+      "topology": "boss",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_077",
+      "job_path": "characters/cast/cast_077.json",
+      "topology": "quadruped",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_078",
+      "job_path": "characters/cast/cast_078.json",
+      "topology": "flying",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_079",
+      "job_path": "characters/cast/cast_079.json",
+      "topology": "multi_arm",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_080",
+      "job_path": "characters/cast/cast_080.json",
+      "topology": "boss",
+      "batch": "batch_04",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_081",
+      "job_path": "characters/cast/cast_081.json",
+      "topology": "quadruped",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_082",
+      "job_path": "characters/cast/cast_082.json",
+      "topology": "flying",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_083",
+      "job_path": "characters/cast/cast_083.json",
+      "topology": "multi_arm",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_084",
+      "job_path": "characters/cast/cast_084.json",
+      "topology": "boss",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_085",
+      "job_path": "characters/cast/cast_085.json",
+      "topology": "quadruped",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_086",
+      "job_path": "characters/cast/cast_086.json",
+      "topology": "flying",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_087",
+      "job_path": "characters/cast/cast_087.json",
+      "topology": "multi_arm",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_088",
+      "job_path": "characters/cast/cast_088.json",
+      "topology": "boss",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_089",
+      "job_path": "characters/cast/cast_089.json",
+      "topology": "quadruped",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_090",
+      "job_path": "characters/cast/cast_090.json",
+      "topology": "flying",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_091",
+      "job_path": "characters/cast/cast_091.json",
+      "topology": "multi_arm",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_092",
+      "job_path": "characters/cast/cast_092.json",
+      "topology": "boss",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_093",
+      "job_path": "characters/cast/cast_093.json",
+      "topology": "quadruped",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_094",
+      "job_path": "characters/cast/cast_094.json",
+      "topology": "flying",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_095",
+      "job_path": "characters/cast/cast_095.json",
+      "topology": "multi_arm",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_096",
+      "job_path": "characters/cast/cast_096.json",
+      "topology": "boss",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_097",
+      "job_path": "characters/cast/cast_097.json",
+      "topology": "quadruped",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_098",
+      "job_path": "characters/cast/cast_098.json",
+      "topology": "flying",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_099",
+      "job_path": "characters/cast/cast_099.json",
+      "topology": "multi_arm",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_100",
+      "job_path": "characters/cast/cast_100.json",
+      "topology": "boss",
+      "batch": "batch_05",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_101",
+      "job_path": "characters/cast/cast_101.json",
+      "topology": "quadruped",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_102",
+      "job_path": "characters/cast/cast_102.json",
+      "topology": "flying",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_103",
+      "job_path": "characters/cast/cast_103.json",
+      "topology": "multi_arm",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_104",
+      "job_path": "characters/cast/cast_104.json",
+      "topology": "boss",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_105",
+      "job_path": "characters/cast/cast_105.json",
+      "topology": "quadruped",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_106",
+      "job_path": "characters/cast/cast_106.json",
+      "topology": "flying",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_107",
+      "job_path": "characters/cast/cast_107.json",
+      "topology": "multi_arm",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_108",
+      "job_path": "characters/cast/cast_108.json",
+      "topology": "boss",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_109",
+      "job_path": "characters/cast/cast_109.json",
+      "topology": "quadruped",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_110",
+      "job_path": "characters/cast/cast_110.json",
+      "topology": "flying",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_111",
+      "job_path": "characters/cast/cast_111.json",
+      "topology": "multi_arm",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    },
+    {
+      "id": "cast_112",
+      "job_path": "characters/cast/cast_112.json",
+      "topology": "boss",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.5
+    },
+    {
+      "id": "cast_113",
+      "job_path": "characters/cast/cast_113.json",
+      "topology": "quadruped",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.75
+    },
+    {
+      "id": "cast_114",
+      "job_path": "characters/cast/cast_114.json",
+      "topology": "flying",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.0
+    },
+    {
+      "id": "cast_115",
+      "job_path": "characters/cast/cast_115.json",
+      "topology": "multi_arm",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.25
+    },
+    {
+      "id": "cast_116",
+      "job_path": "characters/cast/cast_116.json",
+      "topology": "boss",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 7.5
+    },
+    {
+      "id": "cast_117",
+      "job_path": "characters/cast/cast_117.json",
+      "topology": "quadruped",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.5
+    },
+    {
+      "id": "cast_118",
+      "job_path": "characters/cast/cast_118.json",
+      "topology": "flying",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 5.75
+    },
+    {
+      "id": "cast_119",
+      "job_path": "characters/cast/cast_119.json",
+      "topology": "multi_arm",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.0
+    },
+    {
+      "id": "cast_120",
+      "job_path": "characters/cast/cast_120.json",
+      "topology": "boss",
+      "batch": "batch_06",
+      "owner": "production",
+      "state": "ready",
+      "checks": {
+        "parts": "pending",
+        "rig": "pending",
+        "animation": "pending",
+        "export": "pending",
+        "godot": "pending"
+      },
+      "measured_hours": 6.25
+    }
+  ],
+  "governance": {
+    "max_batch_size": 20,
+    "resume": true,
+    "duplicate_policy": "reject",
+    "release_requires_all_checks": true
+  }
+}

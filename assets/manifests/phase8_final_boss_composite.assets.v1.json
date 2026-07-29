@@ -1,0 +1,233 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "boss_core",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/final_boss_composite/boss_core.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "core"
+      ],
+      "compatible_bases": [
+        "final_boss_composite"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "4e64280e032ef15ba718cf2c7cc1a84745a74d43fb3086a16130d8917d75e2a0",
+      "thumbnail_path": "assets/original/phase8/final_boss_composite/thumbnails/boss_core.svg",
+      "placement_voxels": [
+        -9,
+        -7,
+        3
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "boss_crown",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/final_boss_composite/boss_crown.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "final_boss_composite"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "38faae18fd2042097d69f70f3053fdd0ea59d7bb1793ca00983e665c5e407a3c",
+      "thumbnail_path": "assets/original/phase8/final_boss_composite/thumbnails/boss_crown.svg",
+      "placement_voxels": [
+        -5,
+        -4,
+        21
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "boss_torso_upper",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/final_boss_composite/boss_torso_upper.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "torso_upper"
+      ],
+      "compatible_bases": [
+        "final_boss_composite"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "5e2ad6e665582b733c69de6b3d6e520369b1345e08be518fbe3425183545915b",
+      "thumbnail_path": "assets/original/phase8/final_boss_composite/thumbnails/boss_torso_upper.svg",
+      "placement_voxels": [
+        -11,
+        -5,
+        15
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "boss_torso_lower",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/final_boss_composite/boss_torso_lower.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "torso_lower"
+      ],
+      "compatible_bases": [
+        "final_boss_composite"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "0f90804aea05ff3556f8d995516f17e96cb2c94d222a038358f0ecc261aa6a51",
+      "thumbnail_path": "assets/original/phase8/final_boss_composite/thumbnails/boss_torso_lower.svg",
+      "placement_voxels": [
+        -10,
+        -6,
+        -4
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "boss_wing_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/final_boss_composite/boss_wing_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "appendage_l"
+      ],
+      "compatible_bases": [
+        "final_boss_composite"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "7a9d062a0fbf5616a836bde82e4bbb939671ad7ac8ecac5012cf30c80ff43804",
+      "thumbnail_path": "assets/original/phase8/final_boss_composite/thumbnails/boss_wing_l.svg",
+      "placement_voxels": [
+        9,
+        -2,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "boss_wing_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/final_boss_composite/boss_wing_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "appendage_r"
+      ],
+      "compatible_bases": [
+        "final_boss_composite"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "fda93f381c02c6d7bad2e3f04288f8f79080aa94d51962d8adcd0f225a9f241e",
+      "thumbnail_path": "assets/original/phase8/final_boss_composite/thumbnails/boss_wing_r.svg",
+      "placement_voxels": [
+        -24,
+        -2,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    }
+  ]
+}

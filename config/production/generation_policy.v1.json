@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "review_required",
+  "approved_output_roots": [
+    "assets/generated",
+    "assets/incoming"
+  ],
+  "required_provenance": [
+    "generator",
+    "prompt_sha256",
+    "output_sha256",
+    "author",
+    "license",
+    "reviewer"
+  ],
+  "prohibited_bypasses": [
+    "job",
+    "manifest",
+    "license",
+    "approval"
+  ]
+}

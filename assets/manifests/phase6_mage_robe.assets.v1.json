@@ -1,0 +1,645 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_head",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_head.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "e9bae62aef2823ab5b5d92703999a05bfabf92d093a58984cd8703224bd0b7ae",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_head.svg",
+      "placement_voxels": [
+        -4,
+        -3,
+        22
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_torso",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_torso.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "torso"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "d2f15d45c8247c626c168ba32a688520a63cd160940f31f58d4912614eac1474",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_torso.svg",
+      "placement_voxels": [
+        -6,
+        -3,
+        12
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_pelvis",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_pelvis.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "pelvis"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "4487b9bac685a5b552b62f2f44339d096d172d502eb68f8bb9150ac4ac1027f3",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_pelvis.svg",
+      "placement_voxels": [
+        -5,
+        -3,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_upper_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_upper_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_l"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "e20f05ac451c5cdd38d7cc18cbea0bd96be54c577aa358f507df2f5a5727e903",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_upper_arm_l.svg",
+      "placement_voxels": [
+        6,
+        -2,
+        14
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_upper_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_upper_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_r"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "193d7791fd904f028ad923216d0a8a97aa0f4daf7f7cd15189a8e1dd854c982e",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_upper_arm_r.svg",
+      "placement_voxels": [
+        -10,
+        -2,
+        14
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_lower_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_lower_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_l"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "ffc3a0358adefd2c445dda73f22d96405cec045a80db1afb219d1f243909a048",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_lower_arm_l.svg",
+      "placement_voxels": [
+        8,
+        -2,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_lower_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_lower_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_r"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "126644b937f9ea25e804f713b09f0f494c9d67437cf7223239043c1d5f380bc9",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_lower_arm_r.svg",
+      "placement_voxels": [
+        -12,
+        -2,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_hand_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_hand_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_l"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "85b2447048c74c5813f380f42d274ba9f338f2c291bd2e746c7e0e7ac31583b7",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_hand_l.svg",
+      "placement_voxels": [
+        8,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_hand_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_hand_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_r"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "4d04ea21c70326fa7bf42629ca9796d817b275cb1a5962fe46bb540b90364fa4",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_hand_r.svg",
+      "placement_voxels": [
+        -12,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_upper_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_upper_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_l"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "5eece3202a78bf36f5017f48773601c3fe4cb32077d856534fad3ca00f3d25ea",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_upper_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -3,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_upper_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_upper_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_r"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "d6315fa343c65e91c33047b0f787f5b1f4a039c94045b82286e21c3072e721a6",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_upper_leg_r.svg",
+      "placement_voxels": [
+        -6,
+        -3,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_lower_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_lower_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_l"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "b708de626ba3c38f5b5d2dc79f7c02850f1e87be9b4b096e45d6ae5ee59891f7",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_lower_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -3,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_lower_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_lower_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_r"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "8d1a7db1c1df4da8b53497b0d725907c64f4411d9f193ef5931c52dd58cece44",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_lower_leg_r.svg",
+      "placement_voxels": [
+        -6,
+        -3,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_foot_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_foot_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_l"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "82d962928a948868520a92388bb3abcee65b633da8e94d80c185609764ad7b60",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_foot_l.svg",
+      "placement_voxels": [
+        1,
+        -5,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_foot_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/mage_robe/mgr_foot_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_r"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "10577b9a67aed28f41b598c3a243b08d0d0c8c576733f9d35c4759fd1949564e",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_foot_r.svg",
+      "placement_voxels": [
+        -6,
+        -5,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mgr_staff",
+      "version": "1.0.0",
+      "kind": "weapon",
+      "source_path": "assets/original/phase6/mage_robe/mgr_staff.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "weapon"
+      ],
+      "compatible_bases": [
+        "mage_robe"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "blade"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "dfde67faee3209d3677a4ddd23794de7d9709be2b19ecc93a36fdb856250d8d8",
+      "thumbnail_path": "assets/original/phase6/mage_robe/thumbnails/mgr_staff.svg",
+      "placement_voxels": [
+        -14,
+        -1,
+        3
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      },
+      "sockets": {
+        "primary_grip": [
+          1,
+          1,
+          2
+        ],
+        "secondary_grip": [
+          1,
+          1,
+          4
+        ],
+        "back_carry": [
+          1,
+          1,
+          8
+        ],
+        "waist_carry": [
+          1,
+          1,
+          5
+        ],
+        "trail_base": [
+          1,
+          1,
+          3
+        ],
+        "trail_tip": [
+          1,
+          1,
+          20
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,645 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "csm_head",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_head.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "9aa22e66e8367e17f243920287efa51abfa6005168a295798e8cdd4402e3e45a",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_head.svg",
+      "placement_voxels": [
+        -3,
+        -3,
+        15
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_torso",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_torso.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "torso"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "b7c8fe414b40e22b191e82361899bd28fb0775e2c2225e1135033dd46830a640",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_torso.svg",
+      "placement_voxels": [
+        -5,
+        -3,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_pelvis",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_pelvis.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "pelvis"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "4a86ad3bccf5c3c1d57018847a754dea85a2dfaa53eb4428f2e58d4e58bc9648",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_pelvis.svg",
+      "placement_voxels": [
+        -4,
+        -2,
+        6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_upper_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_upper_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_l"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "567dd654c680172fbdd574dfe3ce04a736b939a2519c011b2e9dd4503d2f0b0f",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_upper_arm_l.svg",
+      "placement_voxels": [
+        5,
+        -2,
+        10
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_upper_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_upper_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_r"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "3cdd4a3b092e6716b4b39c9990fd1885b084d8e410b10c8b65be2de01e4f142f",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_upper_arm_r.svg",
+      "placement_voxels": [
+        -8,
+        -2,
+        10
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_lower_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_lower_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_l"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "711d81299c2c0bee9cd28a977917d9e11953a31161e8d0a00580ebf3468b780e",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_lower_arm_l.svg",
+      "placement_voxels": [
+        6,
+        -2,
+        6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_lower_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_lower_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_r"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "e3f4766e312419f017c5ca471fffa863933de7049ec0125228f3a623ca42c0fc",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_lower_arm_r.svg",
+      "placement_voxels": [
+        -9,
+        -2,
+        6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_hand_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_hand_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_l"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "81c1401dcbb72d251cefe21beda539b43d7ef10917201e88864f34205f1744d7",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_hand_l.svg",
+      "placement_voxels": [
+        6,
+        -2,
+        4
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_hand_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_hand_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_r"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "85983e42c674e42e6578c2b5a83b3e42309d0e010c10a2167e8af75671132070",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_hand_r.svg",
+      "placement_voxels": [
+        -9,
+        -2,
+        4
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_upper_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_upper_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_l"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "94a90c8195bb5a36b1260fba35ec5d061e986164cf21e82c1497cdebbaac7326",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_upper_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -2,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_upper_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_upper_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_r"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "727d065e6e021c0f283c677aa70ae7d82fc1aa2ae89791ecf2c56fde42673318",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_upper_leg_r.svg",
+      "placement_voxels": [
+        -5,
+        -2,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_lower_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_lower_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_l"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "13829d633024fc273d1a5f125e86f47106aca48bfa8780546596c6c4f5742d1f",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_lower_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -2,
+        -4
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_lower_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_lower_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_r"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "828620132f7601b3e7dbb7b2f6b07cea6e93f7f79af0043aff1dccbbc5fbd7da",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_lower_leg_r.svg",
+      "placement_voxels": [
+        -5,
+        -2,
+        -4
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_foot_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_foot_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_l"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "13d3cd7e1a8d43e8894956d53fca80e8b24933ce79237412e160a6bd18e5371a",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_foot_l.svg",
+      "placement_voxels": [
+        1,
+        -4,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_foot_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/child_small/csm_foot_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_r"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "81729130d5640d986b47edde9dc05d76f477d372761bdaddb41baada671d29c4",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_foot_r.svg",
+      "placement_voxels": [
+        -5,
+        -4,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "csm_caster",
+      "version": "1.0.0",
+      "kind": "weapon",
+      "source_path": "assets/original/phase6/child_small/csm_caster.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "weapon"
+      ],
+      "compatible_bases": [
+        "child_small"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "blade"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "41bf764672b5e47f67faea57cfbebefb7a8b098310900ac4a1625e4e29eaebb6",
+      "thumbnail_path": "assets/original/phase6/child_small/thumbnails/csm_caster.svg",
+      "placement_voxels": [
+        -14,
+        -1,
+        3
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      },
+      "sockets": {
+        "primary_grip": [
+          1,
+          1,
+          2
+        ],
+        "secondary_grip": [
+          1,
+          1,
+          4
+        ],
+        "back_carry": [
+          1,
+          1,
+          8
+        ],
+        "waist_carry": [
+          1,
+          1,
+          5
+        ],
+        "trail_base": [
+          1,
+          1,
+          3
+        ],
+        "trail_tip": [
+          1,
+          1,
+          8
+        ]
+      }
+    }
+  ]
+}

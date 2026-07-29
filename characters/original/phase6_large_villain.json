@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "id": "phase6_large_villain",
+  "name": "Large Katana Villain",
+  "game": "original",
+  "role": "villain",
+  "body_template": "large_villain",
+  "rig_template": "humanoid_large",
+  "animation_profile": "katana",
+  "animation_packs": [
+    "katana_core",
+    "humanoid_traversal",
+    "directional_locomotion",
+    "traversal_transitions",
+    "interaction_core",
+    "combat_reactions"
+  ],
+  "export_profile": "godot_character",
+  "weapon": "lvr_katana",
+  "source": {
+    "mode": "assembly",
+    "asset_ids": [
+      "lvr_head",
+      "lvr_torso",
+      "lvr_pelvis",
+      "lvr_upper_arm_l",
+      "lvr_upper_arm_r",
+      "lvr_lower_arm_l",
+      "lvr_lower_arm_r",
+      "lvr_hand_l",
+      "lvr_hand_r",
+      "lvr_upper_leg_l",
+      "lvr_upper_leg_r",
+      "lvr_lower_leg_l",
+      "lvr_lower_leg_r",
+      "lvr_foot_l",
+      "lvr_foot_r",
+      "lvr_katana"
+    ]
+  },
+  "asset_assembly": "phase6_large_villain",
+  "height_voxels": 44,
+  "palette_profile": "phase6_factory",
+  "accent_colors": [
+    "#6E2635",
+    "#C7CDD4"
+  ],
+  "export_formats": [
+    "glb"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 512,
+  "target_height_meters": 2.35,
+  "settings_overrides": {
+    "secondary_motion": [
+      {
+        "chain_id": "garment_tail",
+        "kind": "coat_tail",
+        "segments": [
+          "tail.01",
+          "tail.02",
+          "tail.03"
+        ],
+        "parent_bone": "pelvis",
+        "stiffness": 0.65,
+        "damping": 0.35,
+        "max_angle_degrees": 30,
+        "fallback": "rigid"
+      }
+    ],
+    "optimization": {
+      "lod_ratios": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    }
+  },
+  "notes": "Original CC0 Phase 6 reusable-factory acceptance fixture."
+}

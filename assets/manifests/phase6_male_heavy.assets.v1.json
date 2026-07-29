@@ -1,0 +1,645 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_head",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_head.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "81d68b521e3fe41cf376c454d2f5fe00bf93bd6d91887badab6d608a2a468c3a",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_head.svg",
+      "placement_voxels": [
+        -5,
+        -3,
+        22
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_torso",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_torso.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "torso"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "92a883a9e37489de79087009cf97d06a384c0ea6ca4c42b1d69bddefbc2d9bf9",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_torso.svg",
+      "placement_voxels": [
+        -8,
+        -3,
+        13
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_pelvis",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_pelvis.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "pelvis"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "c4b5d19c557606c17b0b5b0de47b84f4672b0a50b2d40f310b3bb51262fe0c15",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_pelvis.svg",
+      "placement_voxels": [
+        -7,
+        -4,
+        10
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_upper_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_upper_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_l"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "e9465e29a1d8cb7ba937fc086492916e566b1205cf5b307a9d375d9bb5634265",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_upper_arm_l.svg",
+      "placement_voxels": [
+        8,
+        -2,
+        15
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_upper_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_upper_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_r"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "b2f5df6bfe0704a2e6f913de03292f40a0af2c31d586a5d1ab795a7e09f10827",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_upper_arm_r.svg",
+      "placement_voxels": [
+        -13,
+        -2,
+        15
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_lower_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_lower_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_l"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "0fb30eac9b5f9b92de53b162c68b9151174b41d9876c372cb1746367e6b950f1",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_lower_arm_l.svg",
+      "placement_voxels": [
+        10,
+        -2,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_lower_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_lower_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_r"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "c550e3e53518397244ee1f774b3dd72cf0d3b855261c4c3c4c1483a091d3c73e",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_lower_arm_r.svg",
+      "placement_voxels": [
+        -15,
+        -2,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_hand_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_hand_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_l"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "e5740e5edec2cfabf4c5f1805d93ce8cfba9b35970dbd3aeced22721985f0a55",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_hand_l.svg",
+      "placement_voxels": [
+        10,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_hand_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_hand_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_r"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "46440c7aa01b57b9216eeafac482b5b24bfe47763d501ff03cadf0746c71244f",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_hand_r.svg",
+      "placement_voxels": [
+        -15,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_upper_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_upper_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_l"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "59f0acdbaf635bb861324b17d20790f0aeb11627f74ce6dbcaaab3b1777b562e",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_upper_leg_l.svg",
+      "placement_voxels": [
+        2,
+        -4,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_upper_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_upper_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_r"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "05424a5cfc7c92989453ffa7389ac54b0dc6046becbeddf6e5398e731849ef90",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_upper_leg_r.svg",
+      "placement_voxels": [
+        -8,
+        -4,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_lower_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_lower_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_l"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "f3b0f65da30d6d82cbd8475b61ee14c687004fdefa0861eef6449ecf19b325c2",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_lower_leg_l.svg",
+      "placement_voxels": [
+        2,
+        -4,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_lower_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_lower_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_r"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "823b0f9db9c213d7d1aab7ed12f242d3b6c993fc5a2ce93baadc3855670c2713",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_lower_leg_r.svg",
+      "placement_voxels": [
+        -8,
+        -4,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_foot_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_foot_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_l"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "10b178a888286af470bbe0821dce5382270cfdb4fb47a2d7b7c668ec448280e4",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_foot_l.svg",
+      "placement_voxels": [
+        2,
+        -6,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_foot_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase6/male_heavy/mhy_foot_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_r"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "15bbfdd0f0b648812a1d437ce74b0b0ebdd18054292218da0baad2e870a2bb81",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_foot_r.svg",
+      "placement_voxels": [
+        -8,
+        -6,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "mhy_spear",
+      "version": "1.0.0",
+      "kind": "weapon",
+      "source_path": "assets/original/phase6/male_heavy/mhy_spear.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "weapon"
+      ],
+      "compatible_bases": [
+        "male_heavy"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "blade"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 6 reusable-factory fixture created for this repository; public-domain dedication.",
+      "source_sha256": "84ae62040acb053bb4d346aeaf57c445eaa0e4b8e5db2368612877e1b69bddb7",
+      "thumbnail_path": "assets/original/phase6/male_heavy/thumbnails/mhy_spear.svg",
+      "placement_voxels": [
+        -14,
+        -1,
+        3
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      },
+      "sockets": {
+        "primary_grip": [
+          1,
+          1,
+          2
+        ],
+        "secondary_grip": [
+          1,
+          1,
+          4
+        ],
+        "back_carry": [
+          1,
+          1,
+          8
+        ],
+        "waist_carry": [
+          1,
+          1,
+          5
+        ],
+        "trail_base": [
+          1,
+          1,
+          3
+        ],
+        "trail_tip": [
+          1,
+          1,
+          22
+        ]
+      }
+    }
+  ]
+}

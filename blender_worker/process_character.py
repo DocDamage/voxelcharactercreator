@@ -1,9 +1,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import shutil
+import subprocess
 import sys
 import traceback
+from datetime import UTC, datetime
 from pathlib import Path
 
 import bpy
@@ -13,7 +17,36 @@ from mathutils import Vector
 ADAPTER_DIR = Path(__file__).resolve().parent / "adapters"
 if str(ADAPTER_DIR) not in sys.path:
     sys.path.insert(0, str(ADAPTER_DIR))
-from vox_reader import read_vox
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+if str(PROJECT_DIR) in sys.path:
+    sys.path.remove(str(PROJECT_DIR))
+sys.path.insert(0, str(PROJECT_DIR))
+from blender_worker.pipeline import Pipeline
+from blender_worker.stages.animation import apply_animation_packs
+from blender_worker.stages.asset_assembly import assemble_assets
+from blender_worker.stages.export import export_character
+from blender_worker.stages.godot import _find_godot, verify_godot_import
+from blender_worker.stages.part_resolution import render_part_map_preview, resolve_scene_parts
+from blender_worker.stages.quality import character_content_hash, render_view_set, validate_character
+from blender_worker.stages.rigging import align_weapon_to_primary_grip, create_fitted_rig, render_joint_pose_preview, rigid_bind
+from blender_worker.stages.secondary_motion import bake_secondary_motion, bake_spring_motion, create_secondary_motion_rig
+from blender_worker.stages.deformation import apply_part_transforms, apply_socket_overrides, bind_with_fallback
+from blender_worker.stages.optimization import optimize_for_export
+from vcf_core.factory import parse_optimization, preview_fingerprint
+from blender_worker.stages.vox_ingest import VoxImportOptions, import_vox_scene
+from vcf_core.builds import (
+    BLOCKING_QA_CHECKS,
+    determine_status,
+    implementation_hash,
+    require_matching_input_provenance,
+    safe_output_directory,
+    successful_build_status,
+    summarize_blocking_checks,
+)
+from vcf_core.assets import load_registry
+from vcf_core.jobs import load_job
+from vcf_core.export_profiles import load_export_profile
+from vcf_core.operator import BuildCache, STAGES
 
 
 def parse_args() -> argparse.Namespace:
@@ -21,6 +54,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--job", required=True)
     parser.add_argument("--project-root", required=True)
+    parser.add_argument(
+        "--input-root",
+        help="Immutable project-layout snapshot used for jobs, assets, configuration, and worker provenance.",
+    )
+    parser.add_argument("--fail-stage", help="Test-only: force a named stage to fail before it runs.")
+    parser.add_argument("--retry-stage", choices=STAGES, help="Record the failed stage being retried; deterministic prerequisites are replayed.")
+    parser.add_argument("--no-cache", action="store_true", help="Bypass the content-addressed completed-build cache.")
     return parser.parse_args(blender_args)
 
 
@@ -132,67 +172,10 @@ def build_proxy(job: dict, armature) -> None:
         bind(weapon, armature, "weapon_socket.R")
 
 
-def import_vox(path: Path):
-    """Import a single-model VOX file as one surface-only mesh."""
-    model = read_vox(path)
-    size_x, size_y, size_z = model["size"]
-    voxels = model["voxels"]
-    if not voxels:
-        raise ValueError("VOX model contains no voxels")
-
-    occupied = {(x, y, z) for x, y, z, _color in voxels}
-    directions = [
-        ((-1, 0, 0), ((0, 0, 0), (0, 0, 1), (0, 1, 1), (0, 1, 0))),
-        ((1, 0, 0), ((1, 0, 0), (1, 1, 0), (1, 1, 1), (1, 0, 1))),
-        ((0, -1, 0), ((0, 0, 0), (1, 0, 0), (1, 0, 1), (0, 0, 1))),
-        ((0, 1, 0), ((0, 1, 0), (0, 1, 1), (1, 1, 1), (1, 1, 0))),
-        ((0, 0, -1), ((0, 0, 0), (0, 1, 0), (1, 1, 0), (1, 0, 0))),
-        ((0, 0, 1), ((0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1))),
-    ]
-    unit = 5.5 / max(size_x, size_y, size_z)
-    origin = (-size_x / 2, -size_y / 2, -2 / unit)
-    vertices = []
-    faces = []
-    face_colors = []
-    for x, y, z, color_index in voxels:
-        for (dx, dy, dz), corners in directions:
-            if (x + dx, y + dy, z + dz) in occupied:
-                continue
-            start = len(vertices)
-            vertices.extend(
-                (
-                    (x + cx + origin[0]) * unit,
-                    (y + cy + origin[1]) * unit,
-                    (z + cz + origin[2]) * unit,
-                )
-                for cx, cy, cz in corners
-            )
-            faces.append((start, start + 1, start + 2, start + 3))
-            face_colors.append(color_index)
-
-    mesh = bpy.data.meshes.new("VOX_Mesh")
-    mesh.from_pydata(vertices, [], faces)
-    mesh.update()
-    obj = bpy.data.objects.new(path.stem, mesh)
-    bpy.context.collection.objects.link(obj)
-
-    used_colors = sorted(set(face_colors))
-    material_slots = {}
-    for slot, color_index in enumerate(used_colors):
-        red, green, blue, alpha = model["palette"][(color_index - 1) % 256]
-        voxel_material = material(f"VOX_{color_index:03d}", f"#{red:02X}{green:02X}{blue:02X}")
-        voxel_material.diffuse_color = (red / 255, green / 255, blue / 255, alpha / 255)
-        obj.data.materials.append(voxel_material)
-        material_slots[color_index] = slot
-    for polygon, color_index in zip(mesh.polygons, face_colors):
-        polygon.material_index = material_slots[color_index]
-    return obj
-
-
-def import_source(path: Path):
+def import_source(path: Path, vox_meshing_mode: str = "greedy"):
     suffix = path.suffix.lower()
     if suffix == ".vox":
-        return import_vox(path)
+        return import_vox_scene(path, material, VoxImportOptions(meshing_mode=vox_meshing_mode))
     if suffix in {".glb", ".gltf"}:
         return bpy.ops.import_scene.gltf(filepath=str(path))
     if suffix == ".fbx":
@@ -209,7 +192,8 @@ def animate(armature) -> None:
     bpy.context.view_layer.objects.active = armature
     bpy.ops.object.mode_set(mode="POSE")
     for frame, value in ((1, -0.025), (20, 0.025), (40, -0.025)):
-        bone = armature.pose.bones["spine"]
+        bone_by_role = armature.get("vcf.bone_by_role", {})
+        bone = armature.pose.bones[str(bone_by_role.get("torso", "spine"))]
         bone.rotation_mode = "XYZ"
         bone.rotation_euler[1] = value
         bone.keyframe_insert("rotation_euler", frame=frame)
@@ -227,10 +211,18 @@ def configure_render(path: Path, resolution: int) -> None:
     scene.render.film_transparent = True
     scene.render.image_settings.file_format = "PNG"
     scene.render.filepath = str(path)
-    bpy.ops.object.camera_add(location=(8.5, -11, 5.5))
+    visible_meshes = [obj for obj in bpy.context.scene.objects if obj.type == "MESH" and not obj.hide_render]
+    if not visible_meshes:
+        raise ValueError("RENDER_MISSING_GEOMETRY: no visible mesh objects are available for preview")
+    corners = [obj.matrix_world @ Vector(corner) for obj in visible_meshes for corner in obj.bound_box]
+    minimum = Vector(tuple(min(corner[index] for corner in corners) for index in range(3)))
+    maximum = Vector(tuple(max(corner[index] for corner in corners) for index in range(3)))
+    target = (minimum + maximum) / 2
+    extent = max(maximum[index] - minimum[index] for index in range(3))
+    bpy.ops.object.camera_add(location=target + Vector((extent * 1.6, -extent * 2.2, extent * 0.8)))
     camera = bpy.context.object
     scene.camera = camera
-    camera.rotation_euler = (Vector((0, 0, 0.7)) - camera.location).to_track_quat("-Z", "Y").to_euler()
+    camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
     camera.data.lens = 56
     for location, energy, size in [((4, -5, 8), 1200, 5), ((-4, -2, 4), 700, 4), ((0, 4, 6), 900, 3)]:
         bpy.ops.object.light_add(type="AREA", location=location)
@@ -240,66 +232,336 @@ def configure_render(path: Path, resolution: int) -> None:
     scene.world.color = (0.025, 0.025, 0.035)
 
 
+def mesh_extent(objects) -> float:
+    corners=[obj.matrix_world@Vector(corner) for obj in objects if obj.type=="MESH" for corner in obj.bound_box]
+    return max(max(point[axis] for point in corners)-min(point[axis] for point in corners) for axis in range(3))
+
+
 def main() -> None:
     arguments = parse_args()
     root = Path(arguments.project_root).resolve()
+    input_root = Path(arguments.input_root).resolve() if arguments.input_root else root
+    require_matching_input_provenance(PROJECT_DIR, input_root)
     job_path = Path(arguments.job).resolve()
-    job = json.loads(job_path.read_text(encoding="utf-8"))
+    input_characters = (input_root / "characters").resolve()
+    try:
+        job_path.relative_to(input_characters)
+    except ValueError as exc:
+        raise ValueError("--job must be inside --input-root/characters") from exc
+    job = load_job(job_path, input_root)
     slug = job["id"]
     character_slug = slug.split("_", 1)[1] if "_" in slug else slug
-    output = root / "exports" / job["game"] / character_slug
-    output.mkdir(parents=True, exist_ok=True)
-    report = {"job": slug, "status": "started", "checks": {}, "warnings": []}
+    final_output = safe_output_directory(root, job["game"], character_slug)
+    job_hash = hashlib.sha256(job_path.read_bytes()).hexdigest()
+    run_id = f"{datetime.now(UTC).strftime('%Y%m%dT%H%M%S.%fZ')}-{job_hash[:12]}"
+    run_dir = root / "exports" / ".runs" / slug / run_id
+    output = run_dir / "artifacts"
+    output.mkdir(parents=True, exist_ok=False)
+    report = {
+        "schema_version": 2,
+        "run_id": run_id,
+        "job": slug,
+        "job_schema_version": job["schema_version"],
+        "status": "started",
+        "input_hashes": {"job": job_hash, "implementation": implementation_hash(input_root)},
+        "tool_versions": {"blender": bpy.app.version_string},
+        "stages": [],
+        "checks": {},
+        "diagnostics": [],
+        "artifacts": [],
+        "retry_from_stage": arguments.retry_stage,
+    }
+    cache = BuildCache(root)
+    cache_versions = {"blender": bpy.app.version_string}
+    godot_executable = _find_godot()
+    if godot_executable:
+        version_result = subprocess.run([str(godot_executable), "--version"], capture_output=True, text=True, timeout=15, check=False)
+        if version_result.returncode == 0:
+            cache_versions["godot"] = version_result.stdout.strip().splitlines()[0]
+    cache_key = BuildCache(input_root).key(job_path, cache_versions)
+    cache_read_enabled = not arguments.no_cache and not arguments.retry_stage
+    bypass_reason = "retry" if arguments.retry_stage else "no_cache"
+    report["cache"] = {"enabled": cache_read_enabled, "key": cache_key, "decision": f"bypass_{bypass_reason}" if not cache_read_enabled else "miss"}
+    cached = cache.get(cache_key) if cache_read_enabled else None
+    expected_promoted = str(final_output.relative_to(root))
+    if cached and cached.get("promoted_output") == expected_promoted:
+        cached_stages = [stage.get("name") for stage in cached.get("stages", []) if stage.get("name")]
+        report.update({
+            "status": cached["status"],
+            "cache": {"enabled": True, "key": cache_key, "decision": "hit", "source_run_id": cached.get("run_id")},
+            "stages": [{"name": name, "status": "cached", "cache": "hit", "duration_seconds": 0.0} for name in cached_stages],
+            "checks": cached.get("checks", {}), "artifacts": cached.get("artifacts", []),
+            "blocking_checks": cached.get("blocking_checks", {}),
+            "content_hash": cached.get("content_hash"), "promoted_output": cached.get("promoted_output"),
+        })
+        (run_dir / "build_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        (final_output / f"{slug}_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print("VCF_EVENT " + json.dumps({"type": "cache", "status": "hit", "source_run_id": report["cache"]["source_run_id"]}), flush=True)
+        print(json.dumps(report, indent=2))
+        return
+    pipeline = Pipeline(report, fail_stage=arguments.fail_stage, cache_enabled=cache_read_enabled)
+    source_mode = job["source"]["mode"]
+    uses_proxy = source_mode == "proxy"
+    has_unbound_geometry = source_mode == "model"
+    required_blocking_checks: set[str] = set()
     try:
-        clear_scene()
-        armature = create_rig()
-        source = job.get("source_model")
-        if source:
-            source_path = Path(source)
-            if not source_path.is_absolute():
-                source_path = root / source_path
-            if not source_path.is_file():
-                raise FileNotFoundError(source_path)
-            import_source(source_path)
+        pipeline.run("prepare", clear_scene)
+        source = job["source"]
+        assembly_objects: list[bpy.types.Object] = []
+        if source["mode"] == "model":
+            armature = pipeline.run("rig", create_rig)
+            source_path = input_root / source["path"]
+            overrides = job.get("settings_overrides", {})
+            vox_meshing_mode = overrides.get("vox_meshing_mode", "greedy") if isinstance(overrides, dict) else "greedy"
+            if vox_meshing_mode not in {"greedy", "surface", "cubes"}:
+                raise ValueError("settings_overrides.vox_meshing_mode must be greedy, surface, or cubes")
+            pipeline.run("ingest", lambda: import_source(source_path, vox_meshing_mode))
             report["checks"]["source_imported"] = True
-            report["warnings"].append("Automatic limb classification is not included; imported geometry is not rig-bound.")
-        else:
-            build_proxy(job, armature)
+            required_blocking_checks.add("source_imported")
+            report["diagnostics"].append({
+                "code": "RIG_UNBOUND_SOURCE", "severity": "error", "stage": "rig",
+                "message": "Imported geometry is not rig-bound by the compatibility worker.",
+                "corrective_action": "Add explicit part mappings and run the rigid-bind stage.",
+            })
+            report["status"] = determine_status(
+                uses_proxy=False, has_unbound_geometry=True, blocking_checks_passed=True
+            ).value
+        elif source["mode"] == "proxy":
+            armature = pipeline.run("rig", create_rig)
+            pipeline.run("assemble_proxy", lambda: build_proxy(job, armature))
             report["checks"]["proxy_generated"] = True
-            report["warnings"].append("No source model supplied; generated a pipeline test proxy.")
+            required_blocking_checks.add("proxy_generated")
+            report["diagnostics"].append({
+                "code": "PROXY_GEOMETRY", "severity": "warning", "stage": "assemble_proxy",
+                "message": "No approved source asset was supplied; a pipeline proxy was generated.",
+                "corrective_action": "Use an approved original asset or registry assembly for a production build.",
+            })
+            report["status"] = determine_status(
+                uses_proxy=True, has_unbound_geometry=False, blocking_checks_passed=True
+            ).value
+        elif source["mode"] == "assembly":
+            registry = load_registry(input_root)
+            assembly_objects = pipeline.run("assemble_assets", lambda: apply_part_transforms(assemble_assets(job, registry, input_root, material), job.get("settings_overrides", {})))
+            resolutions, trace = pipeline.run("resolve_parts", lambda: resolve_scene_parts(assembly_objects, job))
+            report["part_resolution"] = trace
+            armature, rig_checks = pipeline.run("rig", lambda: create_fitted_rig(assembly_objects, resolutions, job))
+            rig_checks.update(apply_socket_overrides(armature, job.get("settings_overrides", {})))
+            socket_checks = pipeline.run("align_sockets", lambda: align_weapon_to_primary_grip(assembly_objects, armature, resolutions))
+            binding_checks = pipeline.run("rigid_bind", lambda: bind_with_fallback(assembly_objects, armature, resolutions, job.get("settings_overrides", {}), rigid_bind))
+            secondary_chains = pipeline.run("secondary_motion", lambda: create_secondary_motion_rig(armature, job.get("settings_overrides", {})))
+            bound = all(obj.parent == armature and obj.get("vcf.bind_mode") in {"rigid", "deform"} for obj in assembly_objects)
+            report["checks"].update({
+                "registry_assets_resolved": {obj.get("vcf.asset_id") for obj in assembly_objects} == set(source["asset_ids"]),
+                "registry_asset_count": len(assembly_objects),
+                "registry_editable_objects": all("vcf.asset_id" in obj for obj in assembly_objects),
+                "part_resolution_complete": len(resolutions) == len(assembly_objects),
+                "rigid_binding_complete": bound,
+                **rig_checks,
+                **socket_checks,
+                **binding_checks,
+            })
+            required_blocking_checks.update({
+                "registry_assets_resolved", "registry_editable_objects", "part_resolution_complete",
+                "rigid_binding_complete", "deformation_fallback_available", *rig_checks,
+            })
+            weapon_checks_required = bool(job.get("weapon"))
+            required_socket_checks = {
+                "weapon_present", "weapon_socket_metadata_complete", "weapon_socket_bones_present",
+                "primary_grip_aligned", "carry_alignment_declared", "carry_alignment_valid", "weapon_body_clear",
+            }
+            if weapon_checks_required:
+                required_blocking_checks.update(required_socket_checks)
+            blocking_socket_checks = not weapon_checks_required or (
+                bool(socket_checks.get("weapon_present"))
+                and all(bool(socket_checks.get(key)) for key in required_socket_checks - {"weapon_present"})
+            )
+            blocking_assembly_checks = all(bool(report["checks"][key]) for key in (
+                "registry_assets_resolved", "registry_editable_objects", "part_resolution_complete", "rigid_binding_complete",
+            ))
+            report["status"] = determine_status(
+                uses_proxy=False,
+                has_unbound_geometry=not bound,
+                blocking_checks_passed=blocking_assembly_checks and all(rig_checks.values()) and blocking_socket_checks,
+            ).value
+        else:
+            raise ValueError("Asset-registry assembly is not implemented by the compatibility worker")
 
-        animate(armature)
+        if assembly_objects:
+            actions, animation_checks = pipeline.run("animate", lambda: apply_animation_packs(armature, job, input_root))
+            report["checks"].update(bake_secondary_motion(armature, actions, secondary_chains))
+            report["checks"].update(bake_spring_motion(armature, actions, job.get("settings_overrides", {})))
+            report["checks"].update(animation_checks)
+            required_blocking_checks.update({
+                "secondary_motion_baked", "secondary_rigid_fallback",
+                "spring_motion_baked", "spring_motion_rigid_fallback", *animation_checks,
+            })
+            report["animation"] = {
+                "packs": list(armature.get("vcf.animation_packs", ())),
+                "actions": [
+                    {"name": action.name, "frame_start": action.get("vcf.frame_start"), "frame_end": action.get("vcf.frame_end"), "loop": action.get("vcf.loop"), "root_motion": action.get("vcf.root_motion"), "events": json.loads(action.get("vcf.events", "[]"))}
+                    for action in actions
+                ],
+            }
+        else:
+            pipeline.run("animate", lambda: animate(armature))
+            actions = [armature.animation_data.action]
+        export_profile = load_export_profile(input_root, job.get("export_profile", "godot_character"))
+        report["export_profile"] = {"id": export_profile.profile_id, "engine": export_profile.engine, "scale": export_profile.scale, "forward_axis": export_profile.forward_axis, "up_axis": export_profile.up_axis}
+        if assembly_objects:
+            qa_checks, qa_diagnostics = pipeline.run("qa", lambda: validate_character(assembly_objects, armature, actions, export_profile, {action.name for action in actions}))
+            report["checks"].update(qa_checks)
+            required_blocking_checks.update(BLOCKING_QA_CHECKS)
+            report["diagnostics"].extend(qa_diagnostics)
+            if qa_diagnostics:
+                raise ValueError("QA_BLOCKING_FAILURE: " + ", ".join(item["code"] for item in qa_diagnostics))
         preview = output / f"{slug}_preview.png"
-        configure_render(preview, int(job.get("render_resolution", 768)))
-        bpy.context.scene.frame_set(1)
-        bpy.ops.render.render(write_still=True)
-        bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
+        def render_and_save() -> None:
+            preview_inputs = []
+            if assembly_objects:
+                preview_inputs = [input_root / manifest.source_path for manifest in registry.resolve(source["asset_ids"], body_template=job["body_template"])]
+                preview_inputs.extend(sorted((input_root / "assets" / "manifests").glob("*.json")))
+            fingerprint = preview_fingerprint(job, preview_inputs)
+            previous_fingerprint = final_output / ".preview_fingerprint"
+            reusable = bool(
+                assembly_objects and parse_optimization(job.get("settings_overrides", {})).incremental_previews
+                and previous_fingerprint.is_file() and previous_fingerprint.read_text(encoding="utf-8").strip() == fingerprint
+            )
+            if reusable:
+                previous = sorted(final_output.glob(f"{slug}*.png"))
+                for path in previous:
+                    shutil.copy2(path, output / path.name)
+                reusable = bool(previous)
+            report["incremental_previews"] = {"fingerprint": fingerprint, "reused": reusable}
+            (output / ".preview_fingerprint").write_text(fingerprint + "\n", encoding="utf-8")
+            if reusable:
+                bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
+                report["visual_previews"] = [path.name for path in sorted(output.glob(f"{slug}*.png")) if path.name != preview.name]
+                return
+            configure_render(preview, int(job.get("render_resolution", 768)))
+            bpy.context.scene.frame_set(1)
+            bpy.ops.render.render(write_still=True)
+            if assembly_objects:
+                render_part_map_preview(assembly_objects, output / f"{slug}_part_map.png")
+                render_joint_pose_preview(armature, output / f"{slug}_joint_pose.png")
+                view_paths = render_view_set(output, slug, armature)
+                report["visual_previews"] = [path.name for path in view_paths]
+            bpy.ops.wm.save_as_mainfile(filepath=str(output / f"{slug}_processed.blend"))
+        pipeline.run("render", render_and_save)
 
         formats = job.get("export_formats", ["glb"])
-        if "glb" in formats:
-            bpy.ops.export_scene.gltf(filepath=str(output / f"{slug}.glb"), export_format="GLB", export_animations=True)
-        if "fbx" in formats:
-            bpy.ops.export_scene.fbx(
-                filepath=str(output / f"{slug}.fbx"), use_selection=False, add_leaf_bones=False, bake_anim=True
-            )
+        export_objects = assembly_objects or [obj for obj in bpy.context.scene.objects if obj.type == "MESH"]
+        if assembly_objects:
+            optimization = parse_optimization(job.get("settings_overrides", {}))
+            export_objects, optimization_metrics = pipeline.run("optimize", lambda: optimize_for_export(assembly_objects, optimization))
+            report["optimization"] = optimization_metrics
+        def export() -> None:
+            export_character(output, slug, formats, export_objects, armature, export_profile)
+        pipeline.run("export", export)
+        if assembly_objects and export_profile.engine == "godot":
+            required_blocking_checks.add("godot_import_passed")
+            if "glb" in formats:
+                godot_checks = pipeline.run("godot_import", lambda: verify_godot_import(input_root, output / f"{slug}.glb", [action.name for action in actions], job.get("target_height_meters"), len(armature.data.bones), mesh_extent(assembly_objects)))
+                report["checks"].update(godot_checks)
+                report["tool_versions"]["godot"] = godot_checks["godot_version"]
         report["checks"].update(
             {
                 "armature_exists": "VCF_Rig" in bpy.data.objects,
                 "preview_rendered": preview.exists(),
+                "part_map_rendered": (output / f"{slug}_part_map.png").exists() if assembly_objects else None,
+                "joint_pose_rendered": (output / f"{slug}_joint_pose.png").exists() if assembly_objects else None,
+                "view_set_rendered": all((output / f"{slug}_{name}.png").exists() for name in ("front", "side", "rear", "three_quarter", "skeleton", "socket")) if assembly_objects else None,
+                "turntable_rendered": all((output / f"{slug}_turntable_{index:02d}.png").exists() for index in range(8)) if assembly_objects else None,
                 "glb_exported": (output / f"{slug}.glb").exists() if "glb" in formats else None,
                 "fbx_exported": (output / f"{slug}.fbx").exists() if "fbx" in formats else None,
             }
         )
-        report["status"] = "complete"
+        required_blocking_checks.update({"armature_exists", "preview_rendered"})
+        if assembly_objects:
+            required_blocking_checks.update({
+                "part_map_rendered", "joint_pose_rendered", "view_set_rendered", "turntable_rendered",
+            })
+        required_blocking_checks.update(f"{extension}_exported" for extension in formats)
+        expected = {f"{slug}_processed.blend", f"{slug}_preview.png", *(f"{slug}.{extension}" for extension in formats)}
+        if assembly_objects:
+            expected.update({f"{slug}_part_map.png", f"{slug}_joint_pose.png", *(f"{slug}_{name}.png" for name in ("front", "side", "rear", "three_quarter", "skeleton", "socket")), *(f"{slug}_turntable_{index:02d}.png" for index in range(8))})
+            report["content_hash"] = character_content_hash(assembly_objects, armature, actions)
+        missing_artifacts = sorted(name for name in expected if not (output / name).is_file())
+        report["checks"]["artifact_completeness"] = not missing_artifacts
+        required_blocking_checks.add("artifact_completeness")
+        if missing_artifacts:
+            raise ValueError("QA_ARTIFACT_MISSING: " + ", ".join(missing_artifacts))
+        for artifact in sorted(path for path in output.iterdir() if path.is_file()):
+            report["artifacts"].append({
+                "name": artifact.name,
+                "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
+                "size_bytes": artifact.stat().st_size,
+            })
+        blocking_summary = summarize_blocking_checks(report["checks"], required_blocking_checks)
+        report["blocking_checks"] = blocking_summary
+        report["status"] = determine_status(
+            uses_proxy=uses_proxy,
+            has_unbound_geometry=has_unbound_geometry,
+            blocking_checks_passed=blocking_summary["passed"],
+        ).value
+        if not blocking_summary["passed"]:
+            details = []
+            if blocking_summary["failed"]:
+                details.append("failed: " + ", ".join(blocking_summary["failed"]))
+            if blocking_summary["missing"]:
+                details.append("missing: " + ", ".join(blocking_summary["missing"]))
+            report["diagnostics"].append({
+                "code": "FINAL_BLOCKING_CHECK_FAILED", "severity": "error", "stage": "qa",
+                "message": "Final completion gate did not pass (" + "; ".join(details) + ").",
+                "corrective_action": "Resolve every failed or missing blocking check before promoting this build.",
+            })
+        if report["status"] in {"prototype", "complete"}:
+            final_output.parent.mkdir(parents=True, exist_ok=True)
+            backup = final_output.with_name(f".{final_output.name}.previous-{run_id}")
+            if final_output.exists():
+                final_output.replace(backup)
+            try:
+                output.replace(final_output)
+            except Exception:
+                if backup.exists() and not final_output.exists():
+                    backup.replace(final_output)
+                raise
+            report["promoted_output"] = str(final_output.relative_to(root))
+            if backup.exists():
+                try:
+                    shutil.rmtree(backup)
+                except OSError as exc:
+                    report["diagnostics"].append({
+                        "code": "OUTPUT_BACKUP_CLEANUP_FAILED", "severity": "warning", "stage": "export",
+                        "message": f"The previous output backup could not be removed: {exc}",
+                        "corrective_action": "Remove the preserved .previous output after confirming the promoted build.",
+                    })
+            try:
+                cache.put(cache_key, report)
+            except (OSError, ValueError) as exc:
+                report["cache"]["write_error"] = str(exc)
+                report["diagnostics"].append({
+                    "code": "CACHE_WRITE_FAILED", "severity": "warning", "stage": "export",
+                    "message": f"The build was promoted, but its optional cache record could not be saved: {exc}",
+                    "corrective_action": "Check exports/.cache permissions; the next build will run uncached.",
+                })
     except Exception as exc:
         report["status"] = "failed"
         report["error"] = str(exc)
         report["traceback"] = traceback.format_exc()
         raise
     finally:
-        (output / f"{slug}_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        (run_dir / "build_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        if report["status"] in {"prototype", "complete"} and final_output.exists():
+            (final_output / f"{slug}_report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(report, indent=2))
+    if not successful_build_status(report["status"]):
+        raise RuntimeError(f"BUILD_NOT_PROMOTABLE: final status is {report['status']}")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception:
+        # Blender can otherwise exit successfully after logging a Python traceback,
+        # which makes external orchestration report a false-green build.
+        sys.exit(1)

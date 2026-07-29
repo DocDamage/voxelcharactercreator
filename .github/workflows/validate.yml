@@ -1,0 +1,38 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Python ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11'
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements-validation.txt
+      - name: Compile Python
+        run: python -m compileall -q app blender_worker tools tests vcf_core
+      - name: Check pilot asset drift
+        run: python tools/generate_pilot_assets.py --check
+      - name: Check Phase 6 asset drift
+        run: python tools/generate_phase6_assets.py --check
+      - name: Check Phase 8 contract drift
+        run: python tools/generate_phase8_contracts.py --check
+      - name: Validate jobs and contracts
+        run: python tools/validate.py
+      - name: Scan for committed secrets
+        run: python tools/scan_secrets.py
+      - name: Run unit tests
+        run: python -m unittest discover -v

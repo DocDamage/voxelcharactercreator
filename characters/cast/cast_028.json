@@ -1,0 +1,127 @@
+{
+  "schema_version": 2,
+  "id": "cast_028",
+  "name": "Original Cast Model 028",
+  "variant_of": "phase8_final_boss_composite",
+  "game": "cast",
+  "target_height_meters": 4.15,
+  "accent_colors": [
+    "#37B89C",
+    "#AD5483"
+  ],
+  "settings_overrides": {
+    "deformation": {
+      "mode": "rigid",
+      "max_influences": 4,
+      "normalize_weights": true,
+      "secondary_solver": "none",
+      "bake": true,
+      "fallback": "rigid"
+    },
+    "optimization": {
+      "lod_ratios": [
+        1,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    },
+    "spring_motion": [
+      {
+        "chain_id": "appendages",
+        "bones": [
+          "appendage_l",
+          "appendage_r"
+        ],
+        "stiffness": 0.7,
+        "damping": 0.4,
+        "max_angle_degrees": 12,
+        "solver": "deterministic_spring",
+        "bake": true,
+        "fallback": "rigid"
+      }
+    ],
+    "boss_composition": {
+      "composition_id": "original_final_boss",
+      "attachments": [
+        {
+          "id": "core",
+          "asset_id": "boss_core",
+          "parent": null,
+          "socket": "phase_root"
+        },
+        {
+          "id": "crown",
+          "asset_id": "boss_crown",
+          "parent": "core",
+          "socket": "head_socket"
+        },
+        {
+          "id": "wing_l",
+          "asset_id": "boss_wing_l",
+          "parent": "core",
+          "socket": "wing_socket_l"
+        },
+        {
+          "id": "wing_r",
+          "asset_id": "boss_wing_r",
+          "parent": "core",
+          "socket": "wing_socket_r"
+        }
+      ],
+      "phases": [
+        {
+          "phase_id": "sealed",
+          "enabled": [
+            "core",
+            "crown"
+          ]
+        },
+        {
+          "phase_id": "awakened",
+          "enabled": [
+            "core",
+            "crown",
+            "wing_l",
+            "wing_r"
+          ]
+        },
+        {
+          "phase_id": "desperate",
+          "enabled": [
+            "core",
+            "wing_l",
+            "wing_r"
+          ]
+        }
+      ],
+      "budgets": {
+        "max_bones": 192,
+        "max_objects": 64,
+        "max_triangles": 250000
+      }
+    },
+    "part_transforms": {
+      "boss_wing_l": {
+        "location": [
+          -0.037500000000000006,
+          0,
+          0.018750000000000003
+        ],
+        "rotation_degrees": [
+          0,
+          10.0,
+          0
+        ],
+        "scale": [
+          0.945,
+          1,
+          1.055
+        ]
+      }
+    }
+  },
+  "notes": "Original CC0 full-cast production model with deterministic reviewed proportions."
+}

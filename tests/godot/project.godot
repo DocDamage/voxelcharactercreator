@@ -1,0 +1,12 @@
+; Minimal headless GLB import gate. Generated imports stay untracked.
+config_version=5
+
+[application]
+config/name="VCF Phase 4 Import Gate"
+
+[display]
+window/size/viewport_width=320
+window/size/viewport_height=240
+
+[rendering]
+renderer/rendering_method="gl_compatibility"

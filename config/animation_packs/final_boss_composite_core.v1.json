@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "pack_id": "final_boss_composite_core",
+  "frame_rate": 30,
+  "compatibility_tags": [
+    "final_boss_composite",
+    "boss"
+  ],
+  "required_bones": [
+    "root",
+    "core",
+    "head",
+    "torso_upper",
+    "torso_lower",
+    "appendage_l",
+    "appendage_r"
+  ],
+  "actions": [
+    {
+      "name": "idle",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "core"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "core": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "core": [
+              0,
+              0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "core": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "boss_move",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "core"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "core": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "core": [
+              0,
+              0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "core": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

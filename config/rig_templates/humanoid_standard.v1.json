@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "template_id": "humanoid_standard",
+  "required_roles": ["head", "torso", "pelvis", "upper_arm_l", "upper_arm_r", "lower_arm_l", "lower_arm_r", "hand_l", "hand_r", "upper_leg_l", "upper_leg_r", "lower_leg_l", "lower_leg_r", "foot_l", "foot_r"],
+  "bone_by_role": {
+    "head": "head", "hair": "head", "torso": "spine", "coat": "spine", "cape": "spine", "cloth": "spine", "pelvis": "pelvis", "accessory": "pelvis",
+    "upper_arm_l": "upper_arm.L", "upper_arm_r": "upper_arm.R", "lower_arm_l": "forearm.L", "lower_arm_r": "forearm.R", "hand_l": "hand.L", "hand_r": "hand.R", "glove_l": "hand.L", "glove_r": "hand.R", "pauldron_l": "upper_arm.L", "pauldron_r": "upper_arm.R",
+    "upper_leg_l": "thigh.L", "upper_leg_r": "thigh.R", "lower_leg_l": "shin.L", "lower_leg_r": "shin.R", "foot_l": "foot.L", "foot_r": "foot.R", "boot_l": "foot.L", "boot_r": "foot.R", "weapon": "weapon_socket.R", "shield": "off_hand_socket.L"
+  },
+  "normalized_joints": {
+    "root": [0, 0, 0], "pelvis": [0, 0, 0.43], "spine": [0, 0, 0.58], "neck": [0, 0, 0.78], "head": [0, 0, 0.91],
+    "shoulder.L": [0.18, 0, 0.75], "elbow.L": [0.31, 0, 0.57], "wrist.L": [0.38, 0, 0.43], "shoulder.R": [-0.18, 0, 0.75], "elbow.R": [-0.31, 0, 0.57], "wrist.R": [-0.38, 0, 0.43],
+    "hip.L": [0.10, 0, 0.40], "knee.L": [0.11, 0, 0.20], "ankle.L": [0.11, 0, 0.04], "hip.R": [-0.10, 0, 0.40], "knee.R": [-0.11, 0, 0.20], "ankle.R": [-0.11, 0, 0.04]
+  },
+  "sockets": {
+    "weapon_socket.R": {"bone": "hand.R", "offset": [0, 0, 0]}, "off_hand_socket.L": {"bone": "hand.L", "offset": [0, 0, 0]}, "back_socket": {"bone": "spine", "offset": [0, 0.16, 0.10]}, "waist_socket": {"bone": "pelvis", "offset": [0, 0.13, 0]}, "effect_socket": {"bone": "hand.R", "offset": [0, -0.08, 0]}, "projectile_socket": {"bone": "hand.R", "offset": [0, -0.18, 0]}
+  },
+  "tolerances": {"ground_meters": 0.002, "symmetry_meters": 0.03, "socket_alignment_meters": 0.001, "min_limb_scale": 0.5, "max_limb_scale": 1.5},
+  "bind_modes": ["rigid"],
+  "scale_policy": "target_height"
+}

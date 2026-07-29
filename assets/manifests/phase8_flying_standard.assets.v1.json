@@ -1,0 +1,195 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "p8_flying_body",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/flying_standard/p8_flying_body.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "body"
+      ],
+      "compatible_bases": [
+        "flying_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "ebd37fb6471abae7c9fdbe024461ab6e1f50c60d6c3cacacd6e9053006ea5198",
+      "thumbnail_path": "assets/original/phase8/flying_standard/thumbnails/p8_flying_body.svg",
+      "placement_voxels": [
+        -5,
+        -5,
+        6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_flying_head",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/flying_standard/p8_flying_head.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "flying_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "ff2a550a1c94cc4bade04c09fecd43c81d5e002c66b3be9d3dc46387ad045bca",
+      "thumbnail_path": "assets/original/phase8/flying_standard/thumbnails/p8_flying_head.svg",
+      "placement_voxels": [
+        -3,
+        -10,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_flying_wing_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/flying_standard/p8_flying_wing_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "wing_l"
+      ],
+      "compatible_bases": [
+        "flying_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "b46cf80b794bb639650f53896fa3b2191a1c49b2197936209f2b3abb60f8bbb4",
+      "thumbnail_path": "assets/original/phase8/flying_standard/thumbnails/p8_flying_wing_l.svg",
+      "placement_voxels": [
+        5,
+        -2,
+        10
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_flying_wing_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/flying_standard/p8_flying_wing_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "wing_r"
+      ],
+      "compatible_bases": [
+        "flying_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "8b17c2102e08c1778bcc68c65b07e09e69d26fe09058874dfd6f84cd083cf6dd",
+      "thumbnail_path": "assets/original/phase8/flying_standard/thumbnails/p8_flying_wing_r.svg",
+      "placement_voxels": [
+        -19,
+        -2,
+        10
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_flying_tail",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/flying_standard/p8_flying_tail.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "tail"
+      ],
+      "compatible_bases": [
+        "flying_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "db532df39a2e0e22da4ab8c2f30e22f15da605690227c8dec085c96a36ee3374",
+      "thumbnail_path": "assets/original/phase8/flying_standard/thumbnails/p8_flying_tail.svg",
+      "placement_voxels": [
+        -2,
+        5,
+        7
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    }
+  ]
+}

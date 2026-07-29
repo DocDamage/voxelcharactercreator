@@ -2,5 +2,19 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+.env
+.env.*
+!.env.example
 exports/
+logs/
+assets/incoming/*
+!assets/incoming/.gitkeep
+assets/generated/*
+!assets/generated/.gitkeep
+tests/godot/imported/*
+!tests/godot/imported/.gitkeep
+tests/godot/.godot/
+tools/animation_player/imported/*
+!tools/animation_player/imported/.gitkeep
+tools/animation_player/.godot/
 

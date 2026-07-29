@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "id": "phase8_quadruped_standard",
+  "name": "Original Quadruped",
+  "game": "original",
+  "role": "support",
+  "body_template": "quadruped_standard",
+  "rig_template": "quadruped_standard",
+  "animation_profile": "quadruped_standard",
+  "animation_packs": [
+    "quadruped_standard_core"
+  ],
+  "export_profile": "godot_character",
+  "source": {
+    "mode": "assembly",
+    "asset_ids": [
+      "p8_quadruped_body",
+      "p8_quadruped_head",
+      "p8_quadruped_front_leg_l",
+      "p8_quadruped_front_leg_r",
+      "p8_quadruped_rear_leg_l",
+      "p8_quadruped_rear_leg_r",
+      "p8_quadruped_tail"
+    ]
+  },
+  "height_voxels": 64,
+  "palette_profile": "phase8_original",
+  "accent_colors": [
+    "#4C78A8",
+    "#F2CF5B"
+  ],
+  "export_formats": [
+    "glb"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 512,
+  "target_height_meters": 2.0,
+  "settings_overrides": {
+    "deformation": {
+      "mode": "rigid",
+      "max_influences": 4,
+      "normalize_weights": true,
+      "secondary_solver": "none",
+      "bake": true,
+      "fallback": "rigid"
+    },
+    "optimization": {
+      "lod_ratios": [
+        1,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    }
+  },
+  "notes": "Original CC0 Phase 8 advanced-topology acceptance fixture."
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "id": "original_heavy_sword_hero",
+  "name": "Heavy Sword Hero",
+  "game": "original",
+  "role": "hero",
+  "body_template": "male_heroic",
+  "rig_template": "humanoid_standard",
+  "animation_profile": "heavy_sword",
+  "animation_packs": ["heavy_sword_core", "humanoid_traversal", "directional_locomotion", "traversal_transitions", "interaction_core", "combat_reactions"],
+  "export_profile": "godot_character",
+  "weapon": "hsh_heavy_sword",
+  "source": {
+    "mode": "assembly",
+    "asset_ids": [
+      "hsh_head", "hsh_torso", "hsh_pelvis", "hsh_upper_arm_l", "hsh_upper_arm_r",
+      "hsh_lower_arm_l", "hsh_lower_arm_r", "hsh_hand_l", "hsh_hand_r", "hsh_upper_leg_l",
+      "hsh_upper_leg_r", "hsh_lower_leg_l", "hsh_lower_leg_r", "hsh_foot_l", "hsh_foot_r",
+      "hsh_hair", "hsh_coat", "hsh_glove_l", "hsh_glove_r", "hsh_boot_l", "hsh_boot_r",
+      "hsh_pauldron_l", "hsh_pauldron_r", "hsh_heavy_sword"
+    ]
+  },
+  "asset_assembly": "heavy_sword_hero",
+  "height_voxels": 44,
+  "palette_profile": "heavy_sword_hero",
+  "accent_colors": ["#27354A", "#5E2936", "#C8D1D8"],
+  "export_formats": ["glb", "fbx"],
+  "render_profile": "character_preview",
+  "render_resolution": 768,
+  "target_height_meters": 4.56,
+  "notes": "Original CC0 modular Phase 2 fixture; no proprietary source input."
+}

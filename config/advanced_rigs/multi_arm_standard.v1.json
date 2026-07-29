@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "template_id": "multi_arm_standard",
+  "topology": "multi_arm",
+  "required_roles": [
+    "torso",
+    "head",
+    "arm_upper_l",
+    "arm_upper_r",
+    "arm_lower_l",
+    "arm_lower_r",
+    "pelvis"
+  ],
+  "bones": {
+    "root": null,
+    "spine": "root",
+    "neck": "spine",
+    "head": "neck",
+    "arm_upper_l": "spine",
+    "arm_upper_r": "spine",
+    "arm_lower_l": "spine",
+    "arm_lower_r": "spine",
+    "pelvis": "spine"
+  },
+  "role_bones": {
+    "torso": "spine",
+    "head": "head",
+    "arm_upper_l": "arm_upper_l",
+    "arm_upper_r": "arm_upper_r",
+    "arm_lower_l": "arm_lower_l",
+    "arm_lower_r": "arm_lower_r",
+    "pelvis": "pelvis"
+  },
+  "sockets": {
+    "weapon_upper_l": {
+      "bone": "arm_upper_l",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "weapon_upper_r": {
+      "bone": "arm_upper_r",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "weapon_lower_l": {
+      "bone": "arm_lower_l",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "weapon_lower_r": {
+      "bone": "arm_lower_r",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "engine_checks": [
+    "parts",
+    "rig",
+    "animation",
+    "export",
+    "godot"
+  ],
+  "max_bones": 96,
+  "fallback_template": "humanoid_standard"
+}

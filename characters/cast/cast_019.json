@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "cast_019",
+  "name": "Original Cast Model 019",
+  "variant_of": "phase8_multi_arm_standard",
+  "game": "cast",
+  "target_height_meters": 1.85,
+  "accent_colors": [
+    "#36A235",
+    "#ACD6F8"
+  ],
+  "settings_overrides": {
+    "deformation": {
+      "mode": "rigid",
+      "max_influences": 4,
+      "normalize_weights": true,
+      "secondary_solver": "none",
+      "bake": true,
+      "fallback": "rigid"
+    },
+    "optimization": {
+      "lod_ratios": [
+        1,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    },
+    "part_transforms": {
+      "p8_multi_arm_arm_lower_r": {
+        "location": [
+          0.025,
+          0,
+          0.0125
+        ],
+        "rotation_degrees": [
+          0,
+          17.5,
+          0
+        ],
+        "scale": [
+          0.995,
+          1,
+          1.005
+        ]
+      }
+    }
+  },
+  "notes": "Original CC0 full-cast production model with deterministic reviewed proportions."
+}

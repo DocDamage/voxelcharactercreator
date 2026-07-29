@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "template_id": "quadruped_standard",
+  "topology": "quadruped",
+  "required_roles": [
+    "body",
+    "head",
+    "front_leg_l",
+    "front_leg_r",
+    "rear_leg_l",
+    "rear_leg_r",
+    "tail"
+  ],
+  "bones": {
+    "root": null,
+    "spine": "root",
+    "neck": "spine",
+    "head": "neck",
+    "front_leg_l": "spine",
+    "front_leg_r": "spine",
+    "rear_leg_l": "spine",
+    "rear_leg_r": "spine",
+    "tail": "spine"
+  },
+  "role_bones": {
+    "body": "spine",
+    "head": "head",
+    "front_leg_l": "front_leg_l",
+    "front_leg_r": "front_leg_r",
+    "rear_leg_l": "rear_leg_l",
+    "rear_leg_r": "rear_leg_r",
+    "tail": "tail"
+  },
+  "sockets": {
+    "rider_socket": {
+      "bone": "spine",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "effect_socket": {
+      "bone": "head",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "engine_checks": [
+    "parts",
+    "rig",
+    "animation",
+    "export",
+    "godot"
+  ],
+  "max_bones": 96,
+  "fallback_template": "humanoid_standard"
+}

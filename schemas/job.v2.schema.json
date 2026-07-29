@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://voxelcharacterfactory.dev/schemas/job.v2.schema.json",
+  "title": "Voxel Character Factory Job v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "name"],
+  "allOf": [
+    {
+      "if": {"not": {"required": ["variant_of"]}},
+      "then": {"required": ["game", "role", "body_template", "rig_template", "animation_profile", "source"]}
+    }
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"},
+    "name": {"type": "string", "minLength": 1},
+    "game": {"type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"},
+    "role": {"enum": ["hero", "villain", "support", "boss"]},
+    "body_template": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "rig_template": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "animation_profile": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "weapon": {"type": ["string", "null"]},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": {"enum": ["proxy", "model", "assembly"]},
+        "path": {"type": "string"},
+        "asset_ids": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"}, "minItems": 1, "uniqueItems": true}
+      },
+      "allOf": [
+        {"if": {"properties": {"mode": {"const": "proxy"}}}, "then": {"not": {"anyOf": [{"required": ["path"]}, {"required": ["asset_ids"]}]}}},
+        {"if": {"properties": {"mode": {"const": "model"}}}, "then": {"required": ["path"], "not": {"required": ["asset_ids"]}}},
+        {"if": {"properties": {"mode": {"const": "assembly"}}}, "then": {"required": ["asset_ids"], "not": {"required": ["path"]}}}
+      ]
+    },
+    "asset_assembly": {"type": "string"},
+    "variant_of": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "part_overrides": {
+      "type": "object",
+      "propertyNames": {"enum": ["head", "torso", "pelvis", "upper_arm_l", "upper_arm_r", "lower_arm_l", "lower_arm_r", "hand_l", "hand_r", "upper_leg_l", "upper_leg_r", "lower_leg_l", "lower_leg_r", "foot_l", "foot_r", "hair", "coat", "cape", "cloth", "glove_l", "glove_r", "boot_l", "boot_r", "pauldron_l", "pauldron_r", "weapon", "shield", "accessory"]},
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "animation_packs": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"}, "uniqueItems": true},
+    "export_profile": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "target_height_meters": {"type": "number", "exclusiveMinimum": 0},
+    "settings_overrides": {
+      "type": "object",
+      "properties": {
+        "vox_meshing_mode": {"enum": ["greedy", "surface", "cubes"]},
+        "limb_length_overrides": {
+          "type": "object",
+          "propertyNames": {"enum": ["upper_arm.L", "upper_arm.R", "forearm.L", "forearm.R", "hand.L", "hand.R", "thigh.L", "thigh.R", "shin.L", "shin.R", "foot.L", "foot.R"]},
+          "additionalProperties": {"type": "number", "minimum": 0.5, "maximum": 1.5}
+        },
+        "secondary_motion": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["chain_id", "kind", "segments", "parent_bone", "stiffness", "damping", "max_angle_degrees", "fallback"],
+            "properties": {
+              "chain_id": {"type": "string", "minLength": 1},
+              "kind": {"enum": ["hair", "cape", "coat_tail", "skirt", "robe"]},
+              "segments": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+              "parent_bone": {"type": "string", "minLength": 1},
+              "stiffness": {"type": "number", "minimum": 0, "maximum": 1},
+              "damping": {"type": "number", "minimum": 0, "maximum": 1},
+              "max_angle_degrees": {"type": "number", "exclusiveMinimum": 0, "maximum": 90},
+              "fallback": {"const": "rigid"}
+            }
+          }
+        },
+        "deformation": {
+          "type": "object", "additionalProperties": false,
+          "required": ["mode", "max_influences", "normalize_weights", "secondary_solver", "bake", "fallback"],
+          "properties": {
+            "mode": {"enum": ["rigid", "deform"]}, "max_influences": {"type": "integer", "minimum": 1, "maximum": 4},
+            "normalize_weights": {"const": true}, "secondary_solver": {"enum": ["none", "spring_bones"]},
+            "bake": {"type": "boolean"}, "fallback": {"const": "rigid"}
+          }
+        },
+        "spring_motion": {"type":"array","minItems":1,"maxItems":8,"items":{"type":"object","additionalProperties":false,"required":["chain_id","bones","stiffness","damping","max_angle_degrees","solver","bake","fallback"],"properties":{"chain_id":{"type":"string"},"bones":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"stiffness":{"type":"number","minimum":0,"maximum":1},"damping":{"type":"number","minimum":0,"maximum":1},"max_angle_degrees":{"type":"number","exclusiveMinimum":0,"maximum":90},"solver":{"const":"deterministic_spring"},"bake":{"const":true},"fallback":{"const":"rigid"}}}},
+        "part_transforms": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["location", "rotation_degrees", "scale"], "properties": {"location": {"$ref": "#/$defs/vector3"}, "rotation_degrees": {"$ref": "#/$defs/vector3"}, "scale": {"$ref": "#/$defs/positiveVector3"}}}},
+        "socket_overrides": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["bone", "offset"], "properties": {"bone": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"}, "offset": {"$ref": "#/$defs/vector3"}}}},
+        "boss_composition": {"type": "object"},
+        "optimization": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "lod_ratios": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}},
+            "material_batching": {"enum": ["none", "palette_atlas"]},
+            "compression": {"enum": ["none", "engine", "meshopt"]},
+            "incremental_previews": {"type": "boolean"}
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "height_voxels": {"type": "integer", "minimum": 16, "maximum": 128},
+    "palette_profile": {"type": "string"},
+    "accent_colors": {"type": "array", "items": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"}},
+    "export_formats": {"type": "array", "items": {"enum": ["glb", "fbx"]}, "uniqueItems": true, "minItems": 1},
+    "render_profile": {"type": "string"},
+    "render_resolution": {"type": "integer", "minimum": 64, "maximum": 4096},
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "vector3": {"type": "array", "prefixItems": [{"type":"number"},{"type":"number"},{"type":"number"}], "items": false, "minItems": 3, "maxItems": 3},
+    "positiveVector3": {"type": "array", "prefixItems": [{"type":"number","exclusiveMinimum":0},{"type":"number","exclusiveMinimum":0},{"type":"number","exclusiveMinimum":0}], "items": false, "minItems": 3, "maxItems": 3}
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "id": "phase6_mage_robe",
+  "name": "Robe Staff Mage",
+  "game": "original",
+  "role": "hero",
+  "body_template": "mage_robe",
+  "rig_template": "humanoid_mage",
+  "animation_profile": "staff",
+  "animation_packs": [
+    "staff_core",
+    "humanoid_traversal",
+    "directional_locomotion",
+    "traversal_transitions",
+    "interaction_core",
+    "combat_reactions"
+  ],
+  "export_profile": "godot_character",
+  "weapon": "mgr_staff",
+  "source": {
+    "mode": "assembly",
+    "asset_ids": [
+      "mgr_head",
+      "mgr_torso",
+      "mgr_pelvis",
+      "mgr_upper_arm_l",
+      "mgr_upper_arm_r",
+      "mgr_lower_arm_l",
+      "mgr_lower_arm_r",
+      "mgr_hand_l",
+      "mgr_hand_r",
+      "mgr_upper_leg_l",
+      "mgr_upper_leg_r",
+      "mgr_lower_leg_l",
+      "mgr_lower_leg_r",
+      "mgr_foot_l",
+      "mgr_foot_r",
+      "mgr_staff"
+    ]
+  },
+  "asset_assembly": "phase6_mage_robe",
+  "height_voxels": 44,
+  "palette_profile": "phase6_factory",
+  "accent_colors": [
+    "#614A8C",
+    "#C7CDD4"
+  ],
+  "export_formats": [
+    "glb"
+  ],
+  "render_profile": "character_preview",
+  "render_resolution": 512,
+  "target_height_meters": 1.82,
+  "settings_overrides": {
+    "secondary_motion": [
+      {
+        "chain_id": "garment_tail",
+        "kind": "robe",
+        "segments": [
+          "tail.01",
+          "tail.02",
+          "tail.03"
+        ],
+        "parent_bone": "pelvis",
+        "stiffness": 0.65,
+        "damping": 0.35,
+        "max_angle_degrees": 30,
+        "fallback": "rigid"
+      }
+    ],
+    "optimization": {
+      "lod_ratios": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    }
+  },
+  "notes": "Original CC0 Phase 6 reusable-factory acceptance fixture."
+}

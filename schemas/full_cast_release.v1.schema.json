@@ -1,0 +1,6 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://voxelcharacterfactory.dev/schemas/full_cast_release.v1.schema.json",
+  "title":"Full Cast Release Evidence v1","type":"object","additionalProperties":false,"required":["schema_version","characters"],
+  "properties":{"schema_version":{"const":1},"characters":{"type":"array","minItems":100,"items":{"type":"object","additionalProperties":false,"required":["id","job_path","implementation_hash","content_hash","report_sha256","artifact_count","checks","tool_versions"],"properties":{"id":{"type":"string"},"job_path":{"type":"string"},"implementation_hash":{"type":"string","pattern":"^[a-f0-9]{64}$"},"content_hash":{"type":"string","pattern":"^[a-f0-9]{64}$"},"report_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"artifact_count":{"type":"integer","minimum":20},"checks":{"type":"object"},"tool_versions":{"type":"object"}}}}}
+}

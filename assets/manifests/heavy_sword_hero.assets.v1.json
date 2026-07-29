@@ -1,0 +1,949 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_head",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_head.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "f712e2a405ca5efa7bd726a10c291bd0fdcbe528e3e5cf832e60ab018a80a9b5",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_head.svg",
+      "placement_voxels": [
+        -4,
+        -3,
+        21
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_torso",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_torso.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "torso"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "fd28aad92738c7c6af553a50eb914b6828c819fb3b9b40439f16d246925f4520",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_torso.svg",
+      "placement_voxels": [
+        -6,
+        -3,
+        12
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_pelvis",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_pelvis.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "pelvis"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "b250c57f267fe7a7e1a16ba49845caa1c3e6c89f17fe21833bf89c3a351a4e78",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_pelvis.svg",
+      "placement_voxels": [
+        -5,
+        -3,
+        9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_upper_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_upper_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "d241d590e6a20381f43e2a150ef777d59d1903ecd53039e018cd0b0f77b3de82",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_upper_arm_l.svg",
+      "placement_voxels": [
+        6,
+        -2,
+        14
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_upper_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_upper_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_arm_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "0c8c4e96fdcd9bfe5b7e0b7c37ef8a402f9b47338d985cdd568f19b29c18a8a5",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_upper_arm_r.svg",
+      "placement_voxels": [
+        -10,
+        -2,
+        14
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_lower_arm_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_lower_arm_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "adfcfe427de2b576e1a26967b1ea170cf77aed67150e9f8a2e701fdf5eb21e8e",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_lower_arm_l.svg",
+      "placement_voxels": [
+        8,
+        -2,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_lower_arm_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_lower_arm_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_arm_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "eb035738a64c3822df2e05dd4baf6ea1eedd7ab8cd9264540a2cdabd336f2fb7",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_lower_arm_r.svg",
+      "placement_voxels": [
+        -12,
+        -2,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_hand_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_hand_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "5237fe3251cba3a6ae93a600850d1fc0444a8bcf189ab4b0917fa401112f74ca",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_hand_l.svg",
+      "placement_voxels": [
+        8,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_hand_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_hand_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hand_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "1be1e5de65256a571b2c9ad436f0225adaa8e04ed7cabfe297d8e42a0d4750dd",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_hand_r.svg",
+      "placement_voxels": [
+        -12,
+        -2,
+        5
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_upper_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_upper_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "a095615c2c0321c6a5465811dc430416de27de481888b7fa1d12d64ab522db47",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_upper_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -3,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_upper_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_upper_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "upper_leg_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "5ba3e4d74f6fdf242af626e8d744ae57c3502ce05c717f5fcae6e9d0b89fb32a",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_upper_leg_r.svg",
+      "placement_voxels": [
+        -6,
+        -3,
+        1
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_lower_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_lower_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "d42352101c9e5f86e304b7cad35113e6bd9d3b1434eee0521a9ec11ba01f272d",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_lower_leg_l.svg",
+      "placement_voxels": [
+        1,
+        -3,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_lower_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_lower_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "lower_leg_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "bdcc9a086194647554bf078d139ea9bed41e05d0084dfaa6f703b778d6518d92",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_lower_leg_r.svg",
+      "placement_voxels": [
+        -6,
+        -3,
+        -6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_foot_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_foot_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "8c4a82b0a917748f25fbd3a34e0a40fbd16e7b26819678077e4d7829ec9dba84",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_foot_l.svg",
+      "placement_voxels": [
+        1,
+        -5,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_foot_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/heavy_sword_hero/hsh_foot_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "foot_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "7f9623281899ca1dd633274e75dcbfc3df2d7a3b01a070e1034790c7e83f189e",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_foot_r.svg",
+      "placement_voxels": [
+        -6,
+        -5,
+        -9
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_hair",
+      "version": "1.0.0",
+      "kind": "hair",
+      "source_path": "assets/original/heavy_sword_hero/hsh_hair.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "hair"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "hair"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "74a2138447895d504e2b851ea8a0cf7d1bed584f74867d7b1c50e45e32aba42b",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_hair.svg",
+      "placement_voxels": [
+        -5,
+        -4,
+        28
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_coat",
+      "version": "1.0.0",
+      "kind": "garment",
+      "source_path": "assets/original/heavy_sword_hero/hsh_coat.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "coat"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "7412e17f51aa6df99e6a5eead4b8f8184d98cd4be6a846e725af5413e4f482a7",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_coat.svg",
+      "placement_voxels": [
+        -7,
+        -4,
+        11
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_glove_l",
+      "version": "1.0.0",
+      "kind": "garment",
+      "source_path": "assets/original/heavy_sword_hero/hsh_glove_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "glove_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "822d6a8ea7922fcebadcdfd409d462e5f2e6b6dee21e6b426a2f2b67e2a3082e",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_glove_l.svg",
+      "placement_voxels": [
+        8,
+        -2,
+        4
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_glove_r",
+      "version": "1.0.0",
+      "kind": "garment",
+      "source_path": "assets/original/heavy_sword_hero/hsh_glove_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "glove_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "4f7016b8bd1b9c8d30d72d60f94ec4cff928874d2edd7241885016011640be36",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_glove_r.svg",
+      "placement_voxels": [
+        -12,
+        -2,
+        4
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_boot_l",
+      "version": "1.0.0",
+      "kind": "garment",
+      "source_path": "assets/original/heavy_sword_hero/hsh_boot_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "boot_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "953544e5b2caffac1af8952bc04485f15bfd103089cf30297a03f82117e269c3",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_boot_l.svg",
+      "placement_voxels": [
+        1,
+        -5,
+        -10
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_boot_r",
+      "version": "1.0.0",
+      "kind": "garment",
+      "source_path": "assets/original/heavy_sword_hero/hsh_boot_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "boot_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "e74acb1005ec6213ca8b9a2518ff3a75b4b9a33d6d3e82873933bf4be6d8060d",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_boot_r.svg",
+      "placement_voxels": [
+        -6,
+        -5,
+        -10
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_pauldron_l",
+      "version": "1.0.0",
+      "kind": "accessory",
+      "source_path": "assets/original/heavy_sword_hero/hsh_pauldron_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "pauldron_l"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "eb277e60b473a467bd834317edaeeddcd22735c63e0409fd17df77913546537f",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_pauldron_l.svg",
+      "placement_voxels": [
+        4,
+        -4,
+        21
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_pauldron_r",
+      "version": "1.0.0",
+      "kind": "accessory",
+      "source_path": "assets/original/heavy_sword_hero/hsh_pauldron_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "pauldron_r"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "95417f3c71ab828c225afb824a922cee2046b2fceef815552130171a275c1d41",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_pauldron_r.svg",
+      "placement_voxels": [
+        -10,
+        -4,
+        21
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "hsh_heavy_sword",
+      "version": "1.0.0",
+      "kind": "weapon",
+      "source_path": "assets/original/heavy_sword_hero/hsh_heavy_sword.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "heavy_sword"
+      ],
+      "compatible_bases": [
+        "male_heroic"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "blade"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Heavy Sword Hero source asset created for this repository; public-domain dedication.",
+      "source_sha256": "b17516280f2938bd665a4ff4e71ca2d9ad71f335b5fc70ed80466c1cb380b55c",
+      "thumbnail_path": "assets/original/heavy_sword_hero/thumbnails/hsh_heavy_sword.svg",
+      "placement_voxels": [
+        -18,
+        -1,
+        3
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.12,
+        "coordinate_system": "right_handed_z_up"
+      },
+      "sockets": {
+        "primary_grip": [
+          2,
+          1,
+          3
+        ],
+        "secondary_grip": [
+          2,
+          1,
+          6
+        ],
+        "back_carry": [
+          2,
+          1,
+          13
+        ],
+        "waist_carry": [
+          2,
+          1,
+          8
+        ],
+        "trail_base": [
+          2,
+          1,
+          5
+        ],
+        "trail_tip": [
+          2,
+          1,
+          17
+        ]
+      }
+    }
+  ]
+}
