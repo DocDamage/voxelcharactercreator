@@ -4,6 +4,7 @@
 
 Version: `0.5.0-animation-player`
 
+- Formalized Phase 8 around nonhuman and final-boss rigs, deforming meshes, reviewable generative image-to-voxel workflows, a full 3D character editor, and governed 100-plus-model production.
 - Expanded all eight weapon families to exactly 24 validated animations each: 16 shared gameplay states and eight type-specific moves.
 - Added an out-of-process Godot animation player with play/pause, restart, loop control, timeline scrubbing, speed control, orbit/zoom camera, authored event display, frame stepping, and skeleton/socket overlays.
 - Added **Play Animations** to the desktop Preview & Validation dashboard and a headless player smoke test to Godot verification.

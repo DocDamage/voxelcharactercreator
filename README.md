@@ -137,4 +137,5 @@ records every hit, miss, or bypass. Force a full build with:
 
 Phases 0-6 and the reusable-factory gate are complete. See the
 [implementation plan](docs/IMPLEMENTATION_PLAN.md) and [next phase](docs/NEXT_PHASE.md)
-for Phase 7 pilot-ten and production-scale work.
+for Phase 7 pilot-ten production hardening and Phase 8 advanced rigs, deforming
+meshes, generative workflows, 3D editing, and full-cast production.

@@ -14,6 +14,11 @@ Immediate Phase 7 work:
 3. Keep reference analysis and similarity scoring advisory and reviewable.
 4. Define packaging, signing, migration, update, and rollback strategy.
 
+Phase 8 follows the Phase 7 exit gate and contains the longer-term programs:
+nonhuman rigs, final-boss rigs, deforming meshes and advanced secondary motion,
+reviewable generative image-to-voxel workflows, a full 3D character editor, and
+production of a governed 100-plus-model cast.
+
 Every current type now has 24 Animation Pack v1 clips. Production humanoids add
 24 universal traversal clips and 60 shared locomotion, transition, interaction,
 and reaction clips for 108 actions total; the out-of-process Godot player includes

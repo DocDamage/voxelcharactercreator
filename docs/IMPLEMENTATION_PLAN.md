@@ -1,6 +1,6 @@
 # Voxel Character Factory Implementation Plan
 
-Status: Phases 0-6 implemented; Phase 7 proposed
+Status: Phases 0-6 implemented; Phase 7 proposed; Phase 8 planned
 Planning baseline: 2026-07-28
 Primary milestone: achieved — one real, editable, rigged, animated, Godot-tested voxel character builds without opening Blender interactively
 
@@ -32,7 +32,7 @@ The public acceptance fixture will be an original **Heavy Sword Hero**. Its prop
 - Quadruped, flying, multi-arm, and boss rigs
 - A Windows installer or updater
 
-These remain deferred to later phases now that the engine-tested character gate has passed.
+These remain deferred to Phase 8 now that the engine-tested character gate has passed.
 
 ## 2. Reconciled baseline
 
@@ -317,7 +317,23 @@ atomic edits, variants, preflight, and reviewable LLM proposals.
 5. Define the FFIV-FFX cast database and production capacity only after per-character content time is measured across the pilot ten.
 6. Package/sign Windows builds after migration, update, rollback, and dependency strategies are proven in source distributions.
 
-Nonhuman rigs, final bosses, and a 100-plus-model cast are separate programs, not acceptance criteria for the factory's first stable release.
+### Phase 8 - Advanced characters, creation tools, and full-cast production
+
+Phase 8 begins only after Phase 7 establishes measured production throughput,
+stable packaging, and completion matrices for ten converted characters.
+
+1. Add topology-specific nonhuman rig templates for quadrupeds, flying characters, and multi-arm characters, with the same semantic-resolution, validation, export, and Godot gates as humanoids.
+2. Add final-boss rig composition for oversized, multi-part, multi-phase characters, including bounded attachment hierarchies, phase variants, and engine-budget profiles.
+3. Add optional deforming-mesh skinning and advanced secondary motion while retaining rigid voxel binding as a deterministic fallback.
+4. Add reviewable generative-image and image-to-voxel workflows whose outputs become ordinary provenance-tracked assets and never bypass Job, manifest, licensing, or approval gates.
+5. Build a full 3D character editor for direct part placement, socket adjustment, rig inspection, animation preview, and validated job/asset authoring.
+6. Scale to a 100-plus-model cast with resumable production batches, catalog governance, per-character completion matrices, measured capacity planning, and release-quality consistency checks.
+
+**Exit gate:** representative nonhuman and boss characters pass the complete
+Blender/Godot pipeline; deforming meshes retain deterministic fallbacks; generated
+assets remain reviewable and provenance-tracked; the 3D editor produces canonical
+jobs without hand editing; and large-cast batches meet measured quality, recovery,
+and throughput targets.
 
 ## 6. Test and quality strategy
 
@@ -363,7 +379,8 @@ ADR-001
   -> operator UX
   -> reusable archetypes
   -> pilot ten
-  -> generation research and full-cast planning
+  -> Phase 7 pilot ten and production hardening
+  -> Phase 8 advanced rigs, creation tools, and full-cast production
 ```
 
 Repository/CI work and licensed fixture preparation can run beside the early critical path. UI expansion cannot define pipeline contracts and therefore starts after those contracts prove stable.
@@ -390,8 +407,9 @@ Do not open all later-phase tasks as active work. Create them as roadmap items a
 | Phases 0-1: foundation and VOX | 20-30 days | 0-3 days for fixtures | Medium |
 | Phases 2-4: one engine-tested character | 35-55 days | 20-35 days | Low-medium until asset and animation spikes finish |
 | Phase 5: operator workflow | 15-25 days | Minimal | Medium after contracts stabilize |
-| Phase 6: reusable factory | Implemented | Five original archetypes and seven pack contracts | Gate passed locally |
+| Phase 6: reusable factory | Implemented | Five original archetypes and 13 pack contracts | Gate passed locally |
 | Phase 7: pilot ten | 20-40 days of shared engineering | Measure from pilot throughput | Low |
+| Phase 8: advanced characters and full cast | Estimate after Phase 7 measurements | Nonhuman/boss rigs, deformation, generation, editor, and 100-plus models | Deferred until Phase 7 gate |
 
 These are person-day ranges, not calendar commitments. Run one VOX scene-graph spike, one greedy-meshing benchmark, one fitted-rig spike, and one Godot-import spike before turning the vertical slice into a dated schedule.
 
@@ -419,6 +437,6 @@ The vertical-slice milestone passed when this statement became true:
 > From a clean checkout, one documented command assembles an original modular heavy-sword voxel character, resolves and reports its parts, fits and rigid-binds its rig, attaches its weapon, applies the required animation pack, validates and renders it, exports a correctly scaled GLB, and proves that GLB loads and animates in the pinned Godot test scene—without an interactive Blender session or untracked proprietary input.
 
 That statement is demonstrably true for the original Heavy Sword Hero and the
-five reusable Phase 6 fixtures as of 2026-07-28. Full-cast planning, generative
-image workflows, nonhuman rigs, a 3D editor, and installer work remain deferred
-to their dependency-ordered phases.
+five reusable Phase 6 fixtures as of 2026-07-28. Phase 7 owns pilot-ten and
+production hardening; Phase 8 owns advanced rigs, deforming meshes, generative
+image workflows, the 3D editor, and full-cast production.
