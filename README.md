@@ -165,3 +165,7 @@ semantically distinct Blender/Godot builds. See the
 [implementation plan](docs/IMPLEMENTATION_PLAN.md) and
 [Phase 8 guide](docs/PHASE8_ADVANCED.md) for the advanced-rig, deforming-mesh,
 reviewable generation, 3D editing, and large-cast acceptance gates.
+
+The [Phase 9 release-readiness plan](docs/PHASE9_RELEASE_READINESS.md) turns the
+remaining smooth-skinning, measured motion-QA, engine-CI, and repository-license
+decisions into ordered work items with explicit acceptance gates.

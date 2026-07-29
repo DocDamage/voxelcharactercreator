@@ -18,6 +18,12 @@ Implementation details are in [PHASE8_ADVANCED.md](PHASE8_ADVANCED.md), while th
 dependency history and acceptance gates remain in
 [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
 
-Future releases can expand the original source-asset corpus and refine
-topology-specific animation. All such work continues through the same Job,
-manifest, approval, Blender QA, export, and Godot gates.
+Phase 9 is the release-readiness phase. Its prioritized workstreams replace
+rigid per-part "deform" weights with deterministic multi-bone smooth skinning,
+add measured animation-quality gates, run Blender/Godot integration on a secure
+capable CI runner, and resolve the owner-controlled repository license decision.
+
+The work items, dependencies, security constraints, measurable acceptance gates,
+and delivery order are defined in
+[PHASE9_RELEASE_READINESS.md](PHASE9_RELEASE_READINESS.md). Future content
+expansion remains outside that phase until these release-readiness gates close.
