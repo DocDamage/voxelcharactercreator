@@ -1,6 +1,6 @@
 # Voxel Character Factory Implementation Plan
 
-Status: Phases 0-6 implemented; Phase 7 proposed; Phase 8 planned
+Status: Phases 0-8 implemented
 Planning baseline: 2026-07-28
 Primary milestone: achieved — one real, editable, rigged, animated, Godot-tested voxel character builds without opening Blender interactively
 
@@ -32,7 +32,8 @@ The public acceptance fixture will be an original **Heavy Sword Hero**. Its prop
 - Quadruped, flying, multi-arm, and boss rigs
 - A Windows installer or updater
 
-These remain deferred to Phase 8 now that the engine-tested character gate has passed.
+These were out of scope for the first vertical slice and were delivered through
+the later factory, operator, and Phase 8 milestones.
 
 ## 2. Reconciled baseline
 
@@ -40,16 +41,16 @@ The original assessment predates several fixes. Planning starts from the actual 
 
 | Capability | Current state | Next required step |
 | --- | --- | --- |
-| Desktop controller | Preflight, durable stage queue, cancellation/retry/resume, editors, previews, validation dashboard, atomic bounded parallel claims | Phase 7 production-scale scheduling after representative measurements |
+| Desktop controller | Preflight, durable stage queue, cancellation/retry/resume, 3D spatial editor, previews, validation dashboard, atomic bounded parallel claims | Maintain accessibility and operator ergonomics |
 | Blender detection | Automatic/manual selection plus Blender/Godot version and capability preflight | Maintain supported-version policy as tools evolve |
 | VOX input | Typed bounded parser; multi-model scene graph, transforms/layers/material metadata, normalized greedy/surface/cubes import | Expand production fixture corpus as new exporters are supported |
 | Other input | GLB, GLTF, FBX, OBJ | Normalize units, axes, origins, and part metadata |
-| Geometry | Proxy path, 24-part pilot, five reusable archetypes, generated LODs, and palette batching | Expand the original fixture corpus during Phase 7 conversions |
+| Geometry | Proxy path, humanoid archetypes, four advanced-topology fixtures, generated LODs, and palette batching | Expand the original fixture corpus as licensed production needs prove it useful |
 | Rigging | Fitted humanoid aliases across five proportions, semantic rigid binding, sockets, baked segment chains, and rigid fallback | Add new topology only when a converted character proves it necessary |
-| Animation | Eight 24-clip type packs, a 24-clip traversal pack, four shared production packs, standalone player, and reference mechanics sandbox | Phase 7 character-specific timing and pose refinement |
-| Export | Versioned profiles, atomic artifacts, semantic hash, LOD/material batching, compression policy, and generic Godot gate | Phase 7 platform packaging and converted-character tuning |
+| Animation | Eight 24-clip type packs, advanced-topology packs, traversal/shared packs, standalone player, and reference mechanics sandbox | Character-specific timing and pose refinement |
+| Export | Versioned profiles, atomic artifacts, semantic hash, LOD/material batching, compression policy, and topology-aware Godot gate | Platform packaging and converted-character tuning |
 | Job editing | Canonical Job v2, atomic undoable operator editors, variants, and validated review-before-apply LLM proposals | Expand only as new archetypes prove contract needs |
-| Tests | 64 standard-library tests plus five Phase 6 Blender/Godot builds and visual/performance modes | Phase 7 converted-character completion matrices |
+| Tests | 144 standard-library tests plus Blender/Godot builds and visual/performance/Phase 8 modes | Expand regression fixtures with new licensed content |
 | Repository | Source and draft PR exist | Real CI, policy docs, license decision, release workflow |
 
 Build cancellation, basic Blender detection, direct single-model VOX import, LLM job patching, and initial tests are complete and must not be reopened as unfinished work.
@@ -310,17 +311,21 @@ atomic edits, variants, preflight, and reviewable LLM proposals.
 
 ### Phase 7 - Pilot ten, automation, and scale
 
-1. Convert the ten existing profiles one at a time; each uses tracked-original or user-supplied source assets and the same completion matrix as the pilot.
-2. Add variant inheritance only after two real variants prove the Job v2 design.
-3. Prototype multi-view reference analysis as a planner that outputs reviewable jobs and part requests, not raw Blender code.
-4. Add visual similarity scoring only as an advisory QA signal until false-positive rates are measured.
-5. Define the FFIV-FFX cast database and production capacity only after per-character content time is measured across the pilot ten.
-6. Package/sign Windows builds after migration, update, rollback, and dependency strategies are proven in source distributions.
+**Implemented.**
+
+1. The ten legacy profiles are compact Job v2 variants backed only by tracked-original CC0 assemblies. Each carries the same ten-check completion matrix as the pilot; no official source assets are bundled.
+2. Cycle-safe, deterministic inheritance resolves and validates the complete parent/override result. All ten conversions exercise it, and resolved parent data participates in build cache keys.
+3. Multi-view reference analysis produces review-required job proposals and semantic part requests. Its contract prohibits raw Blender code and source paths.
+4. Normalized silhouette, palette, and landmark similarity is explicitly advisory and non-blocking; reviewed outcomes calculate a measured false-positive rate.
+5. The versioned FFIV-FFX database was introduced after recording conversion effort for all ten profiles. Capacity is based on measured median and 90th-percentile effort.
+6. Deterministic Windows source distributions include update manifests. Versioned migration, atomic update, preserved rollback, and dependency policies are validated; release publication fails closed unless a real Authenticode signature and timestamp are supplied.
+
+**Exit gate — passed:** ten converted jobs resolve through original registry assets and the common completion matrix; production planning is measured and versioned; reference automation cannot bypass review; similarity cannot block a build; and the reproducible Windows source package proves migration/update/rollback policy without pretending an unsigned development artifact is a signed release.
 
 ### Phase 8 - Advanced characters, creation tools, and full-cast production
 
-Phase 8 begins only after Phase 7 establishes measured production throughput,
-stable packaging, and completion matrices for ten converted characters.
+**Implemented.** Phase 8 began after Phase 7 established measured production
+throughput, stable packaging, and completion matrices for ten converted characters.
 
 1. Add topology-specific nonhuman rig templates for quadrupeds, flying characters, and multi-arm characters, with the same semantic-resolution, validation, export, and Godot gates as humanoids.
 2. Add final-boss rig composition for oversized, multi-part, multi-phase characters, including bounded attachment hierarchies, phase variants, and engine-budget profiles.
@@ -334,6 +339,19 @@ Blender/Godot pipeline; deforming meshes retain deterministic fallbacks; generat
 assets remain reviewable and provenance-tracked; the 3D editor produces canonical
 jobs without hand editing; and large-cast batches meet measured quality, recovery,
 and throughput targets.
+
+**Gate result — passed locally:** original CC0 quadruped, flying, multi-arm, and
+three-phase composite-boss jobs each passed 13 executed Blender 4.5.5 LTS/Godot
+4.6.2 stages and promoted 20 hashed artifacts. The flying fixture exercised
+deforming Armature binding; every topology retained the validated rigid fallback.
+Generation proposals remain review-required and record prompt/output hashes,
+author, license, and reviewer. The desktop spatial editor writes canonical Job v2
+part/socket overrides consumed by the headless worker. The governed production
+plan contains 120 canonical jobs across six resumable 20-model batches. All 120
+passed the Blender/Godot pipeline; the generated release ledger records 120
+distinct semantic hashes, current implementation/job/report hashes, hashed
+artifacts, tool versions, and passed completion matrices. The independent release
+audit found no unsafe mesh-export warnings.
 
 ## 6. Test and quality strategy
 
@@ -408,8 +426,8 @@ Do not open all later-phase tasks as active work. Create them as roadmap items a
 | Phases 2-4: one engine-tested character | 35-55 days | 20-35 days | Low-medium until asset and animation spikes finish |
 | Phase 5: operator workflow | 15-25 days | Minimal | Medium after contracts stabilize |
 | Phase 6: reusable factory | Implemented | Five original archetypes and 13 pack contracts | Gate passed locally |
-| Phase 7: pilot ten | 20-40 days of shared engineering | Measure from pilot throughput | Low |
-| Phase 8: advanced characters and full cast | Estimate after Phase 7 measurements | Nonhuman/boss rigs, deformation, generation, editor, and 100-plus models | Deferred until Phase 7 gate |
+| Phase 7: pilot ten | Implemented | Ten measured profile conversions using tracked-original assemblies | Gate passed |
+| Phase 8: advanced characters and full cast | Implemented | Four original advanced-topology fixtures plus 120 report-backed canonical cast builds | Gate passed locally |
 
 These are person-day ranges, not calendar commitments. Run one VOX scene-graph spike, one greedy-meshing benchmark, one fitted-rig spike, and one Godot-import spike before turning the vertical slice into a dated schedule.
 
@@ -437,6 +455,8 @@ The vertical-slice milestone passed when this statement became true:
 > From a clean checkout, one documented command assembles an original modular heavy-sword voxel character, resolves and reports its parts, fits and rigid-binds its rig, attaches its weapon, applies the required animation pack, validates and renders it, exports a correctly scaled GLB, and proves that GLB loads and animates in the pinned Godot test scene—without an interactive Blender session or untracked proprietary input.
 
 That statement is demonstrably true for the original Heavy Sword Hero and the
-five reusable Phase 6 fixtures as of 2026-07-28. Phase 7 owns pilot-ten and
-production hardening; Phase 8 owns advanced rigs, deforming meshes, generative
-image workflows, the 3D editor, and full-cast production.
+five reusable Phase 6 fixtures as of 2026-07-28. Phase 7 subsequently completed
+pilot-ten and production hardening. Phase 8 subsequently added advanced rigs,
+deforming meshes, reviewable generation workflows, the 3D editor, and governed
+full-cast production. Its final local release audit passed 120/120 current builds
+with distinct semantic hashes and no unsafe mesh-export warnings.

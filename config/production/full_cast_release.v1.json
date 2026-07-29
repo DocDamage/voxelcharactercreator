@@ -1,0 +1,2285 @@
+{
+  "schema_version": 1,
+  "characters": [
+    {
+      "id": "cast_001",
+      "job_path": "characters/cast/cast_001.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "625702a641edc7725fb2000306e365ccd046c384c62440d05a391d5a0e0a5170",
+      "report_sha256": "e569aa5a9ef4874051c63ed91368b0258caaf805a69656d985e06a1b8afae9ac",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_002",
+      "job_path": "characters/cast/cast_002.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "9c37d2f63f28b363682aae5bacf918e8a44f9af6b1a7cdfea95a6c17c66740dd",
+      "report_sha256": "4615aa4d643c25b3fd0d7d4943a16bcca69837408edba2ce7ab8810537807d47",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_003",
+      "job_path": "characters/cast/cast_003.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "e1ee4f0cc9190ee90475666717250793b38de3c574474aa5db4d8b8b155c7f9b",
+      "report_sha256": "58d354ae0a3ce41a3c73146ba79cb1cf0df8a67562cc096f2557f2a4d7e5ce3c",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_004",
+      "job_path": "characters/cast/cast_004.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "d1a938be53dc953d99887f5edfc274281808de821bf043302faa9ce76820e679",
+      "report_sha256": "8d48ed1ef16f4c4427c6ae02f47bda6bc443777e7c8061fe18660b500ce9c6c8",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_005",
+      "job_path": "characters/cast/cast_005.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a074409142c3eab0c8dd2e6a121663318305375b57e2408b69cb1e903501da10",
+      "report_sha256": "2a3359102525e6d042066af95e839f708fa773fedfef12b583e36a7aeee9880e",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_006",
+      "job_path": "characters/cast/cast_006.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "8767d8a8cd3c099d7d7313759999d5f6f67590fd63ff0122c65e50b3c2482c89",
+      "report_sha256": "5308d241ce4f63383d0f61940e9d3b3cc947f1f2cb20d98694ea773969550645",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_007",
+      "job_path": "characters/cast/cast_007.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "f8bfd244c5630c92f2d68221ffff036ec65711daa7e5ac45e7c2043d2fe4010d",
+      "report_sha256": "2f926facd5c82d563fbf640f7c8741ae542b287d7afc8ee5ea4a740c41337508",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_008",
+      "job_path": "characters/cast/cast_008.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "363e440abbdf142e8d00fd562fbcb624224e73d31d7e5c29d547523249656b53",
+      "report_sha256": "1e357f5130a4b1d01b543816cca7977e8f8f17af5c804fbb706f695ce7f77159",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_009",
+      "job_path": "characters/cast/cast_009.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "937cabfe0ba1bdfea8c2f8101f71100b3b7b9c4ccdc7f59c964acad9685c1698",
+      "report_sha256": "a1d03be20629ca3e0a5f30b8ef3e28da44c2c9e2af08c1d48809ac680b6b3cd2",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_010",
+      "job_path": "characters/cast/cast_010.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "c72a195025dbde5dfd94c097c07665f9f7eb10769150ab34ea6e09d2c853af90",
+      "report_sha256": "8d44ee9f0d10ef20e19aa2db25d49e2e8202af92213c6c44346872b9fa4d66ce",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_011",
+      "job_path": "characters/cast/cast_011.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a3285e7709821143f12b964daaabd69700a73b6dd2ef99ed3368f2642c2b451a",
+      "report_sha256": "979dbed60a2733cd7b682cb5ab53d78bf4d40c6614a143d5df8b39656dbdcd9a",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_012",
+      "job_path": "characters/cast/cast_012.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "8e2a2cb10e827d217189cc0faa92dcb724165505db2c2994898f6a9e1d93cf04",
+      "report_sha256": "70049b5defa7ef029a6ea009cf5501a39c02c18fee42ddd51320249d886fece0",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_013",
+      "job_path": "characters/cast/cast_013.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "bcf01b290a5ea783e4ff6fad0901103f4df7e4f78a56cd579768ddda98dc40fa",
+      "report_sha256": "ae15ceaab91e0508f4edfc1ae48d28583503d1a11c210bf7949c9700f41a174e",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_014",
+      "job_path": "characters/cast/cast_014.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "bee3ed43f527af3a8905604742ceebd014fd315aad499a9e6cfc7b32095986c5",
+      "report_sha256": "f3af3d9cad0415bbff6b7a8bffb218b844f04e82ca4dc28ad9cb620be39d1a09",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_015",
+      "job_path": "characters/cast/cast_015.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "3dfb1e58e170d951d3be56aa0a6ea36688f119480cab7ec79224bb891afaab4d",
+      "report_sha256": "88507fd2444fdb70df0ddf1d7e37356e41b5f978e4229da4e7fda8aaa83ad961",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_016",
+      "job_path": "characters/cast/cast_016.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "dd8ac516b0127a0046b3c924211cd93d44f897c9cd2a4d04eaced5a836ff4f24",
+      "report_sha256": "26bbb4655c0ad8644d56b66edbf514927e99bd437203eb071f25496f507f1f00",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_017",
+      "job_path": "characters/cast/cast_017.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "9fb823490c1354edba038fc9f6db42da3d5534bf9a72db553a71a85f81443f9c",
+      "report_sha256": "2568de95f525757ba0adb2b0a23fa1df1951ebe03ee3460e8b165362d10f3aa9",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_018",
+      "job_path": "characters/cast/cast_018.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "fa3a529415842d3614a2f50ae10172476f5bcd96af79d6c2effb00e834b19df5",
+      "report_sha256": "6dcbad661a29f6035dd5c4555e1e9ec1ea1bcb266d4dc3873e75bb1609a04464",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_019",
+      "job_path": "characters/cast/cast_019.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "e9c8a447627afb19bd1d35546ce57a0618f47c22cdff71d69c5214593d283555",
+      "report_sha256": "82457605830bdbbcb0debdced4d5aeb96908468132198fa4f31eb56c9b9964e7",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_020",
+      "job_path": "characters/cast/cast_020.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a558d47dcddf24ed6d767214f185eb32db5b177701b284b1ad1cfc21000a0910",
+      "report_sha256": "655d80ffa5f312b23e751a4eaa3c54e77eeafe0489698388fffaab5fa6111c64",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_021",
+      "job_path": "characters/cast/cast_021.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "e82b04a63d8a96bf5b435375065b733bf7b25c7ad33bfe4c3156ba42547f9d13",
+      "report_sha256": "92495d07968dce2cba1afc931a5401a33026b015a6b9fdd1c6e9d01b5bd0c09c",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_022",
+      "job_path": "characters/cast/cast_022.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "9c175788638a68e3fd6774a31866f668e46f11a8a2c4c8d4860b1c48b849fa15",
+      "report_sha256": "467eaa381cc492a0b1b88d43485169a9e2deab89be6116a5d78368c251fe1cf5",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_023",
+      "job_path": "characters/cast/cast_023.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "49986ab0b6ee246f0bf78b93f3ee551620225158ef3b85bfa6c08170049642cb",
+      "report_sha256": "fa098ac6f1d826d77ddff55cd1d3e78b537e45d1395b0a465063991c5e205603",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_024",
+      "job_path": "characters/cast/cast_024.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "5fbe840bbe04eebaac730f8b8f33faa8ee8734a9f3ce8055a975da923676422a",
+      "report_sha256": "c510549a34d6138d0cbba48511a6e9dbeb53647e572149e9b4e0e126f70b5ba5",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_025",
+      "job_path": "characters/cast/cast_025.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "e14b7a940d03370cf61cc0e24ae3874a497584869c0511cb9a21425a3fd468db",
+      "report_sha256": "1f8b4b1982a04086df3c8d2d0b8bfb4461540de5e22a4f24b0bf3ef3ea44f21f",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_026",
+      "job_path": "characters/cast/cast_026.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "5929d63efbe250b2173f7a4336deeb9f4b841741d7672230ce8e5e7b4cf70d40",
+      "report_sha256": "0beddc9b7df1eb6e2d370c9238d9336293414f8bac164f7961843131d574f15a",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_027",
+      "job_path": "characters/cast/cast_027.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "d9cf831ad7a9a25d9111259401200811c8fca251033bffaf1973ee1f1c864392",
+      "report_sha256": "78ae9a850147d4fb379d44b89c6724b3887d2c9507bda9ead61547c5912b30da",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_028",
+      "job_path": "characters/cast/cast_028.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "bd4807d7a433c967d14da1dbdcf5dffb190a71284069162d14682594aa9346fe",
+      "report_sha256": "f590872150d68ccd5e66e55767eb68064e30105d74b05479cfaf55452d74380d",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_029",
+      "job_path": "characters/cast/cast_029.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a5aa4a4c02638790e3f16e2ac2c40126c35452f94b36ae63d3c6186e00ff789f",
+      "report_sha256": "76dd4522d73521cf00eba45936fe2e3758a9f531ddd42937adda93f5912d15ae",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_030",
+      "job_path": "characters/cast/cast_030.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "9e32c6f1ed473078c5422c039fbbd84d4703cd7ec84ba14216976ab51fbfaf49",
+      "report_sha256": "fd1437753986b21d8f58dd0a3bb41b4baab51291fd59fa39fa9cfb1fdac2bac7",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_031",
+      "job_path": "characters/cast/cast_031.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "2c5da6a2c7b685621d0e49659d20dfcec53d03ba25185d7dc8f1e94aabc2614e",
+      "report_sha256": "ae04673c33b66ba1825cbedea2b15f3158766fa24d715441d48e65c82fb6e84f",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_032",
+      "job_path": "characters/cast/cast_032.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "4a8f7b35471b0ca1be9f39a30617f15837535e057bf307fe61bed374619e3e57",
+      "report_sha256": "7f858b087c867f6651222de4a4d649b3d992bc9e6ccc2debefc318171c701686",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_033",
+      "job_path": "characters/cast/cast_033.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "8dad3e42815e5c9ed27ce775abeb721d95ef8511e55c77b7e40d669dd194b75e",
+      "report_sha256": "db558bed176a834cad3b4f0cf8a25b4549c90e1133557fc58028d3f1492ee821",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_034",
+      "job_path": "characters/cast/cast_034.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "45fe701e60f784c5f70f62ce5e5e62646f4b757ae1e2000a2e25ef071ee49996",
+      "report_sha256": "8ebe1a09a4e782d7993558fe5dc57d009ca9a37e5e5d86fbc1fe2a64494e62f5",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_035",
+      "job_path": "characters/cast/cast_035.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "40ff69bb9f24b6c22470fedad4d36d8c96db18f4bcb9425e3b0a2512d62906cd",
+      "report_sha256": "7e2ee3db001c047ba5b16e0285cbc8c03cf842cde90d2a4c0d12a5ea50540881",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_036",
+      "job_path": "characters/cast/cast_036.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "c4e8a6a89480436689850135fa6373dfbd2c1b9a616d25c93c035cdfd94d901c",
+      "report_sha256": "03e3904f188df7ac3c9f3f9cc63f93a49087d7c4f106ac079dd55386c657c349",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_037",
+      "job_path": "characters/cast/cast_037.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "fd4c862db2255c6e85290a3245973fbb3bc374a6fc85fed61b1dd28a169c20ee",
+      "report_sha256": "f4af292dd7f5c6c6727da546843d4053f13d34251e806d0700bbd0e3e579785c",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_038",
+      "job_path": "characters/cast/cast_038.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "33eb59f76d0740cdc92d0bc4781916285f53aa36bb08f28926a9dd5c04947a43",
+      "report_sha256": "8c5982facef5e78c8948d38ed9be6e94f8b54673227c860b1ca7e5fb8c7f0115",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_039",
+      "job_path": "characters/cast/cast_039.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "63b9c1accf28862ac82160a0a3c7bf1fa07569abb4ff85db4737f192d97ab8f8",
+      "report_sha256": "5053af8b2e4df8127e5fab6edbeea38ce7443dc7d1e479ad9a5bdfee04e5e871",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_040",
+      "job_path": "characters/cast/cast_040.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "fdfd35260ac55bd8596e31971edf6661c5c486326651277d9a15992da212f05a",
+      "report_sha256": "1b61f9116e79ef67de9bf782528c7b251ebddd0f8c3f49e02c32e1bbd3740864",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_041",
+      "job_path": "characters/cast/cast_041.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "1474841b0d47f889006d38be54865276b5e9368bc00b3ae747f369642914a67f",
+      "report_sha256": "109ebac6e682e303dae5c22ba80219338b3989c59a8bc163c218a32a2309d663",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_042",
+      "job_path": "characters/cast/cast_042.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "ba7ffb3fd5e1402d2f21dd058efc44875c36af22f3b0b185cffce8dbb7c6b07b",
+      "report_sha256": "a87a5af9c0f2365cddf7e9c86e8114385b0b28c1f0d6b6f700cc29f85d6a259d",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_043",
+      "job_path": "characters/cast/cast_043.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "357c52c31c1a95f07c46d9d24f08059525a390b183f49d4eb2f7e5d47d1da436",
+      "report_sha256": "2e6f772dd5a3d8312d1774c4aeb01e177d8cdaef272f728eb8153197d46e1b71",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_044",
+      "job_path": "characters/cast/cast_044.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "0e2f790a5a2abc03a8a25f62866fa72608ee0f49a66ed3d5ab5741a70ea599d9",
+      "report_sha256": "0b1f7fae3c2cad5e079124c5ed8a4b07c7323f7c06199fbef475d24422c53f01",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_045",
+      "job_path": "characters/cast/cast_045.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "fe3b8bcfa4c929fd22badc13c67088c935a558b918e6d4e421b986a91e2999b4",
+      "report_sha256": "0618bc7d483c29e55afe3df117d5c0fbb7a217672532a9ebd9c31f9236a7ac00",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_046",
+      "job_path": "characters/cast/cast_046.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a1d74cb7449d8f8b13cf8daa8edbe06d47ca86506034895eb58a4b2a0936bdfb",
+      "report_sha256": "aec91c51fa096eb4d77a8481ded0144bf90a65ac7561e72a42e1ebeb7125c08c",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_047",
+      "job_path": "characters/cast/cast_047.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "6de71107012cf9758d8f9228795b70516e099817305ea37f1e797e23f718a1ad",
+      "report_sha256": "d7bc4ac3e040011bdab6a36da68353c8ac91174787765399df31fdc206e80c0f",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_048",
+      "job_path": "characters/cast/cast_048.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "fd3136a35f3672a27202be093cbd38609ce0ae75f42e8344dd28e05c2d52eb12",
+      "report_sha256": "05d0bd3fa8038e3ab631d17a9196d4f79a3fe501b7a58acd2e19dc3e5d7dd503",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_049",
+      "job_path": "characters/cast/cast_049.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "4a7c080ed4508a1adf1d9870ed6e16284af5dd31a85defd53f04450ddb99853f",
+      "report_sha256": "1bf09385bea69a35b33631f0492b45f9e0a6bc460fcfa1f86c061846c59a634a",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_050",
+      "job_path": "characters/cast/cast_050.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a06bcdbed1b8b1c1105e66b41aaa8710b5e8fbb7ddf28d9adcc94c58f9d0ad47",
+      "report_sha256": "adf25a6f74350d3f73d0bedec48c1f47e26f48e6fb0f1fae42e8733ed71343d1",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_051",
+      "job_path": "characters/cast/cast_051.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "cd4c4216dd8de66b88c00e15ec79231d88a691f16fd741d47e256fe0a12e4220",
+      "report_sha256": "93acac02f6bd445ec68ab54c54a6a4beb60cbbcdc7fa5210969692c2fd54e6c3",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_052",
+      "job_path": "characters/cast/cast_052.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "cb3639145c51f0b84d5c039778a3dd64c0d7744447b976a2af4bf6f72b304a48",
+      "report_sha256": "26b962ad4627277d2d2daa7adad1728f4d4203c579bb097ec0a993dfd910fe1b",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_053",
+      "job_path": "characters/cast/cast_053.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "2d0028882bb7f4b69774cc32f5fb002a2efac419c9d6749160464e61f79b89a7",
+      "report_sha256": "993aed2218f87744df86b650fdf9b665284e7581ef75309bcbfa0b3958b91c94",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_054",
+      "job_path": "characters/cast/cast_054.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "98057b58ee6a31bb05b0f3c4f45cf3d99961003387a4a0094e3ed5b90535e78a",
+      "report_sha256": "ead47222a1928a57600a184807df813c26b27ad2591f4767aa6aa8fa9d7577a7",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_055",
+      "job_path": "characters/cast/cast_055.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a5c8faf0a7560dd7980bd09805285a75ce888e6f0267f54fc4fb039dfe43f3cb",
+      "report_sha256": "f1c6c5bddc3fe195a6390053f78a51a5887147d41bcbdad8dccf4a01fc46e8ce",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_056",
+      "job_path": "characters/cast/cast_056.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "4a98bf523e24e9cae05218c309038d61a22d03db0161d742dde72e5b75b579b3",
+      "report_sha256": "5d6268ab182e117aae09f245a59fac1c8657c9c4e9e58f133a3edcf78f3c21c3",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_057",
+      "job_path": "characters/cast/cast_057.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "bcea3f13f2031c546ae94845cd93d2daa57ba38a7621ce307040c9bd0d97f825",
+      "report_sha256": "0ab491ad9f4845f68dd3a6092626297d54c0a70ef14a806561d01e9a3713d7f5",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_058",
+      "job_path": "characters/cast/cast_058.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "1ee3842ab5751dd38596d14d83f72d4ccc2ec7a2b35fac2e23a620dba9e0a284",
+      "report_sha256": "01902ef5a3cd14f6541e6d524222530f79a942e74e996e0b6a935e386a2dafa0",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_059",
+      "job_path": "characters/cast/cast_059.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "b9f06b5a98fbb9a456ea52a3f6348da4e3777893d61785e4eb7314bfbb2a2d81",
+      "report_sha256": "254da8426a135762bf29ccb97098c1453afe36f748fd704e76dfe181e503069b",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_060",
+      "job_path": "characters/cast/cast_060.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "1b10f26b7089536ec0b8ecf9010186b78645566f13b7198b9eb54b0c545860ce",
+      "report_sha256": "5fad4c1a81e4df5428474427cc1a3cec8d51d25393a2ff3b911636811db077f0",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_061",
+      "job_path": "characters/cast/cast_061.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "8fc514951324b96045212639206d712d5e93970ccf4f4fb9bddea5d355b09481",
+      "report_sha256": "76202b393ad7663e51f45a83138ffd737925d512a812995afbcee685b91e6679",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_062",
+      "job_path": "characters/cast/cast_062.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "7633fbec32277ee945b70695d3d69211cc564ba033d5c8829ac6f2eba534f40f",
+      "report_sha256": "32f967df47346ab69fc4eae73e635015c3cd28c55f1570ab55a21f81b5077b88",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_063",
+      "job_path": "characters/cast/cast_063.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "e1ec5747c147de060dbedcd0f2e818d4d211e2b3718d0d46ed0ae9748a70e50b",
+      "report_sha256": "0790a8183252a15fadb6e5a1bf5986c948d24a353216f76127e10839ef74dce5",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_064",
+      "job_path": "characters/cast/cast_064.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "70fcc9137d9a6ec6352611daab1f25b39528170fde61e6d6e5cb3ca553c74f0c",
+      "report_sha256": "bff5d54ed221564210eea9535053b36b0882fbe86c3f4884f712b7c6463a3c5c",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_065",
+      "job_path": "characters/cast/cast_065.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "0dc92831905f60d8f8447d5a563fef2928dbf46eca5a4eed0847e7d076f84907",
+      "report_sha256": "1c23db8273e3acad080dace00b8ee320e2ed014577970ca033e86e3e0ad95cf9",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_066",
+      "job_path": "characters/cast/cast_066.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "90b0d651bbbff1f8e474cc048ff53f5923ed4db751e1ef88f934e563c1d1f939",
+      "report_sha256": "69f76abc8a2f38f2f60cabdaf76cfa129988959033b0a6f5b90a2b35d079ba64",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_067",
+      "job_path": "characters/cast/cast_067.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "641df1d05d59b27ffa5fefc46422c5e0bedb159108cc4a54c8d26b5218ff38ee",
+      "report_sha256": "b827df116b1df6edf22b638ae04128c4831292c03d53b998337802c7707016ae",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_068",
+      "job_path": "characters/cast/cast_068.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "680b083ade7b9a81ec7cf3493c73e879f896a38d907c60dd53fc3877980cd293",
+      "report_sha256": "d10964241d0b29e7963d743f170fa53b285cc6601e63266228e589326512db87",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_069",
+      "job_path": "characters/cast/cast_069.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "013832674c77db08d43454b5907d797df0ca590e568a093a7576f11877359528",
+      "report_sha256": "714329215dd6b67b898fee7b17a849496d7a546af4d8f81aa278597f9bba3f80",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_070",
+      "job_path": "characters/cast/cast_070.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "28eaebe12d453db1c3526cd2902dbb04be1717b1b57bcd51770047f5f4f197ab",
+      "report_sha256": "97c726c3ff14e88668a1fe52d345750be1f282b1eea92a901ca1ae866b0b69e9",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_071",
+      "job_path": "characters/cast/cast_071.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "3fb8591ceb4e1a036fa5ab3a8a69cb11c8475c89e1159ee4d4bacf749e973e59",
+      "report_sha256": "cd1c54d26b07e94375553def043d5ce5eeeb9810a84230fe1321ed8f95249956",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_072",
+      "job_path": "characters/cast/cast_072.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "3dd0f1fc0eafc5f29157873223d11c0ca95a7db5fbf62b8bce8266a22fce78ff",
+      "report_sha256": "591e9acbdd34907ff9e3b0823eeca3f3d554c1b58de30936cdb8b8e9bdf8ee90",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_073",
+      "job_path": "characters/cast/cast_073.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "da7f8c97ba31d9ccc261e9db5a10e7033b4545abfc498aceef5fbd7f20564452",
+      "report_sha256": "786805a0c630315d4d23eac047e3ba6c6aa1580838d379e01824c5fbfaa8e868",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_074",
+      "job_path": "characters/cast/cast_074.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "18033d60d2a23c4e8efd4350ca7730d6782aba17531cf5b1211c3ccf3144444f",
+      "report_sha256": "365b2736308915a58f0ec52a9158ce861bcc24e03f717d9653c8a78ddef6310b",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_075",
+      "job_path": "characters/cast/cast_075.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "d786f4165ac01918ea5c3ddb2825a9ebbaeb3b0023922ca790687dc151060404",
+      "report_sha256": "047a6a7b2671d6e37c2e0041b51c85e0c8394b6b04e33f3272efe2a22b798a81",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_076",
+      "job_path": "characters/cast/cast_076.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "4c97e05fed8b99211af49b77d23be955c65beb74a6b3f3962d1e816bcfec6568",
+      "report_sha256": "7e983c2dca2814a7ed13e15d2e9991028ebe56d70c7fd247dace4831d0d23099",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_077",
+      "job_path": "characters/cast/cast_077.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "ddd0a1bcdc43b83dc11f8355eabbc8f3f03be643832e5908585b5d6e96508b76",
+      "report_sha256": "42cfec3076aa2d4f08cca4d55aabde36821cbb7915e8ad70a2c11fe03b952266",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_078",
+      "job_path": "characters/cast/cast_078.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "59515806f6492b5669abd6111cd9fcac5a770748129fd913d6541195b3fdc6e4",
+      "report_sha256": "43dcdf0262737b2d6ad999ead87f0765e9a1007b4d8de1fb6d04f72de6427043",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_079",
+      "job_path": "characters/cast/cast_079.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "69b6065047ac43b7a054ba787580a6385b41ddb547ded29cf3afecbdb5f0f431",
+      "report_sha256": "a18b7c3babc496820a5a7b3e87448e1cc9c970fd3d11269435f43ca4491ac5a9",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_080",
+      "job_path": "characters/cast/cast_080.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "7f12c631d4d5421a7269380e7292ddcf9741b901aa9de61f0ab8c3bd85f2ccde",
+      "report_sha256": "dcebf3fceacb3b29387fbe5cad2a527f8a82658ff876f551214674bf97994dc6",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_081",
+      "job_path": "characters/cast/cast_081.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "c575395c1e92e6e4111c0763aef35b04104bac58ca1a7b333a322d842cef171c",
+      "report_sha256": "e1bec8a565d0eb58286200d02fdd0114c1dda08c9e5e7b1762792330409b102c",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_082",
+      "job_path": "characters/cast/cast_082.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "ad489a3b06fdd3a1b6c0bddf09eb59f8c05f1805748693e52104c3428af936e6",
+      "report_sha256": "9ab8a0cb6ca4c58836375d92506c3c7a1db53b3137359c5011ea1eaf19d1cf94",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_083",
+      "job_path": "characters/cast/cast_083.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "9571329e3570b793b6d9183b2eabb2b5da1761bc591b0d0fdbbae928df59722e",
+      "report_sha256": "168cce57cda921d00fd8f2d6329c626f982a006b4d6d31da6ba2f23f988e72d9",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_084",
+      "job_path": "characters/cast/cast_084.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "406c76382ff74b8b724ac102097775e91a8a163ca5b1b3fcfab64bc83d7432b2",
+      "report_sha256": "f6c3fa71370a13225e4fb12f78619a592032160ec638dd47599a603638b84080",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_085",
+      "job_path": "characters/cast/cast_085.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "e8c22a746ef905cb53e49eae49cb100700204313cfe7a5396f55dad08e7deeee",
+      "report_sha256": "ee546de5f5ec624266679c419711f70a74a46178e29b811f6e389526e53374f0",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_086",
+      "job_path": "characters/cast/cast_086.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "ab2050a69cfca2aa5cd382da7d4229ddf7cdca5b43c048d958738fc27927ab3a",
+      "report_sha256": "2cf6e3b5936f32ad5bd900c1a3fb4012c877f2b3f70b33bfdc9d5982b8f0a9ff",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_087",
+      "job_path": "characters/cast/cast_087.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a391bf2fa3c11909148562bffd0e21140ba3d5dc5e344f0d71a9330c38cfd9d6",
+      "report_sha256": "bf545917973cd1c1278d148a6db5e2c1ef45b9f8c30b820e3a76f18ef1bc1748",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_088",
+      "job_path": "characters/cast/cast_088.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a3558044cd62e4574d0032edf4c5411108d99435034ae845cebd1aaefb319b3f",
+      "report_sha256": "f0f76c6a3795f005da5c592213767ae7ebdde460d053a657cedfc5c788422209",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_089",
+      "job_path": "characters/cast/cast_089.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "1f6b9c4ba5172dcfe2e82f94d21b90084add36ddf699ba85291bf24f4601222c",
+      "report_sha256": "fb739955aae37141ef0bc01e6d5657ef59ec3af19d56ceff0a61a4116b4b2e6f",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_090",
+      "job_path": "characters/cast/cast_090.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "33e8ee749cffb1875ffc455a3d6303d96acccd07b7a7b4a116a442f966adfdf3",
+      "report_sha256": "820e6085dedb35118de63b3cd9fbfbdc7c42b6a797fa79b1f68496e391128bcf",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_091",
+      "job_path": "characters/cast/cast_091.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "b55fe40f4d48891cd31439a8f9721b785b4ad8315c880f49022b1b5c684b4d5b",
+      "report_sha256": "31f776ad7fd3b509933a2da8c8601de4194d5de9b58c05d05f37cb2cb576b251",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_092",
+      "job_path": "characters/cast/cast_092.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "bf2944c368b95d0c083374e08a4a0c7f064d307712c246634ea42c67f07b5cf9",
+      "report_sha256": "948150c002fb609f589f61b80f6a3dda06f3b8c97601893264b95f825b931327",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_093",
+      "job_path": "characters/cast/cast_093.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "285a5809e3ebf4c010a0f99134087ca5cb86cad07ec1c26ce340980e6fc2ce74",
+      "report_sha256": "95b3e7dbd4865fa96ec37f6125405c6f757597493be8d5db041774587dd8b1fb",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_094",
+      "job_path": "characters/cast/cast_094.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "b4ec87defba5e144ab028ce8ed8b6a22412e999857a793111fe3ee278eb57462",
+      "report_sha256": "cf41de859dea896452f0876019a8d0850f12ee3b58413e567a60f628d5ddbe92",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_095",
+      "job_path": "characters/cast/cast_095.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "6557a035efad3eb45719e83f2563dfd06edd0c31f0f69eee67e46e8f3bcb6fb1",
+      "report_sha256": "c9808437c8463b7eafc15a9a354d577a9b94dee052867a3293de0cb4845a53d7",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_096",
+      "job_path": "characters/cast/cast_096.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "5ccaf25f89be18516c792e91ad43a96a8c7620757e3d19e266b38b761642b8e1",
+      "report_sha256": "1255f4e7ae641e9f45a6225c477d62a36c34d672280a1a10e620bf16f14df645",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_097",
+      "job_path": "characters/cast/cast_097.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "3fdb4d954d845519eef15b9c5345653288ca0ef58cca678b458e4029d85981a1",
+      "report_sha256": "03a507fcc260be542c7eb00ee8983e6c53b22d519acf40c68cb168d50ccd7c08",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_098",
+      "job_path": "characters/cast/cast_098.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "301927f5ab2757de9f47f73f3eb7e6cfd35ba4c4931e9ad1f7f4af7a3f004f53",
+      "report_sha256": "5367af7b050c0fd88c47b9e2c6fd65507bea62ae256303d9c381d172dd66ffc8",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_099",
+      "job_path": "characters/cast/cast_099.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "928f6748fd7660f7fc92a3c00f4e8014b798ef4c4f1c9cc2e00ad3fb267b4bd0",
+      "report_sha256": "d203d3e294aa3655db61278e514d0b5a074e7763dfbf0c80195899df6da889ea",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_100",
+      "job_path": "characters/cast/cast_100.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "67cfd913aa8c3e658a1e5c23842d34b4f13546165466cfa08ed3f6d641cfce3b",
+      "report_sha256": "ba5c693bba739b6fb8b86d4dcf3c6e3faaef76b7d0b579efef3332476db29caa",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_101",
+      "job_path": "characters/cast/cast_101.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "f1aaf7f77c13516904ec84536ee4d8d53bc04500854b34c8726520ed9e16d273",
+      "report_sha256": "2bd046c5e23a484b2c568d068465c2bf586f53bd5f3273dc5c95af5529019989",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_102",
+      "job_path": "characters/cast/cast_102.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "f00c6b6e2f507c7fd7beef964472814d6e340e95e0141e50eb0db352ebfa1847",
+      "report_sha256": "4ce2b29bffc991f093ed8b73937f936cf2e00b89ba2f84c0538cbd625fedfa06",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_103",
+      "job_path": "characters/cast/cast_103.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "ecfa45062d69ea2bfa907274c0a4d8738097b31f7e66fa7a3bfb0d42b54a590b",
+      "report_sha256": "f8d02996d02b900c09b7bfed08f5d67b01f915ec39714c0995e716064f7bef3d",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_104",
+      "job_path": "characters/cast/cast_104.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "9699423d607a4cb7d58de882d4681ac439b027a4d238ac63878a8b9c9261da92",
+      "report_sha256": "13dd685c8b0efb447c491a3be18639009c1e5706f2076dd4bf7be8e478caae8a",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_105",
+      "job_path": "characters/cast/cast_105.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "1190fe8be7a0f316f048cef141ef4d8a028b1cc2efc3e7ac2afe706c912c02a4",
+      "report_sha256": "49bb92a7ab2543e9b755055855f681839da711f4a7449d80711855c19044e059",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_106",
+      "job_path": "characters/cast/cast_106.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "781531971164902e74f7897d841e1be233c9aff1b318578ff78f17f2e728481e",
+      "report_sha256": "5d626e52930a91b366b8d39ab05469f5eab5e4afc68c6ee097263e0297640a54",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_107",
+      "job_path": "characters/cast/cast_107.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a76b1226fca380a639c6d580324620b6eb0577cefd5e3ace99aac9fe2ea9c844",
+      "report_sha256": "3c0916b7ed0fea42988746726fb6fcc2bf318865c695bc36b73f3b1400865893",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_108",
+      "job_path": "characters/cast/cast_108.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "bdf54eda08d925d9d9df8ae10164f0b25bcefccc99e127ee1162fd9da18afa8d",
+      "report_sha256": "f63181714096e56b793e9a3a788d5930bd673e1a53ad6512ee0146605d3adc43",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_109",
+      "job_path": "characters/cast/cast_109.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "35e31f13cd79bd2221cf039750927b4b045309bf053f2a622556281207989288",
+      "report_sha256": "4e941ff19102fa977598493a1bfc806fe7c27e98be0fc97b1c2c0f2428f831f3",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_110",
+      "job_path": "characters/cast/cast_110.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "4bdc23fe753efb11782f7b3d6b5419c0147eef692249b86ea67f4d61f4b52151",
+      "report_sha256": "1828fcf692817215295172dfc40b5ef4e0379075161d4ec5e7e62628204ecb94",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_111",
+      "job_path": "characters/cast/cast_111.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "4a47fc41a53ade52f06fb3d39c5c9af4da6cba8cc7a844016526109c0ef64e25",
+      "report_sha256": "9209c9c6bcec214ffbd508eef6b40f4c9428257a5336c69e846769188b022319",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_112",
+      "job_path": "characters/cast/cast_112.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "7b2f0e6850f5fd06f21c774558d77d5d9f42fac46ffa88fe57097c9d8a5e0c79",
+      "report_sha256": "88aaef46935b9d3116228393c63a74d7568e293604ffc3b5edf8f324064602bb",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_113",
+      "job_path": "characters/cast/cast_113.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "6558a427841dbccca68844a997c760d6bc142ac05e1bdda73854cc29baf3b94a",
+      "report_sha256": "a53b357a5b8a459b022cf2538f65297ba4b42b641fe93e2126597923f04c58ac",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_114",
+      "job_path": "characters/cast/cast_114.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "96a091a2ba75093842c8f98a6d6734e2ab466752fcba885bd0a0642eafaddbba",
+      "report_sha256": "2418da4a68e4eb4ef0c8bc2f157ce564d6f2b6ba729e14bcf59b72ca14a0a8ef",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_115",
+      "job_path": "characters/cast/cast_115.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "825f861e83f44691c876124e91b586d896cefd36b364f920065f66674b46a0de",
+      "report_sha256": "2a6d2bb3fd8dd37d0886991aa0c50a53608aa36d5ca298da19489ad733e42540",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_116",
+      "job_path": "characters/cast/cast_116.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "ca82064ff8dd60858a54007ff3e805e5756f5d312e40f2e5818583aad1b306d1",
+      "report_sha256": "206f777acbdfab4d8a1db9e5b02a286dfc209df829fd6e3a606730ff08e1d3cf",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_117",
+      "job_path": "characters/cast/cast_117.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "6f3b26cc1f9659f9fb90f8ad4ae87c381162e018145db98b8b105186503ce9f6",
+      "report_sha256": "28b47a1565df75417d8879e101dec6267e6415a4dbbafbf70835f77beec736e1",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_118",
+      "job_path": "characters/cast/cast_118.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "9268472f36cb4a05af556cba0671995fb1a830aea33cf82c0bf3ff8817eb0dc6",
+      "report_sha256": "2b04e0087b2108c7c34b0b667823c6a16ec9acb0979292da7a09ffb67336d39d",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_119",
+      "job_path": "characters/cast/cast_119.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "23c36215b370254297b6b60ccf4819e15ba2bc3096a2aa61ed3ed076fe2f5805",
+      "report_sha256": "a0e760c2dafc20f060d65462ca1e049895e1ae80c8b47d3e79ea49a793b6b6ac",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    },
+    {
+      "id": "cast_120",
+      "job_path": "characters/cast/cast_120.json",
+      "implementation_hash": "66814f16bfe1cec0d090b09449ea1ce533c88147b968842fe53e303d35a39940",
+      "content_hash": "a3fa8a873980ba848a809769ea272fc205b30b5586f9d1123fb4e21a1ffe0900",
+      "report_sha256": "0920d077e0c89e5544e21bd862bda17bee277967714787c8277adfc64ff44d08",
+      "artifact_count": 20,
+      "checks": {
+        "parts": "passed",
+        "rig": "passed",
+        "animation": "passed",
+        "export": "passed",
+        "godot": "passed"
+      },
+      "tool_versions": {
+        "blender": "4.5.5 LTS",
+        "godot": "4.6.2.stable.mono.official.71f334935"
+      }
+    }
+  ]
+}

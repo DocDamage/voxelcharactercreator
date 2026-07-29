@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "cast_089",
+  "name": "Original Cast Model 089",
+  "variant_of": "phase8_quadruped_standard",
+  "game": "cast",
+  "target_height_meters": 1.9,
+  "accent_colors": [
+    "#3F178F",
+    "#B0A76A"
+  ],
+  "settings_overrides": {
+    "deformation": {
+      "mode": "rigid",
+      "max_influences": 4,
+      "normalize_weights": true,
+      "secondary_solver": "none",
+      "bake": true,
+      "fallback": "rigid"
+    },
+    "optimization": {
+      "lod_ratios": [
+        1,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    },
+    "part_transforms": {
+      "p8_quadruped_rear_leg_r": {
+        "location": [
+          0.025,
+          0,
+          0.0125
+        ],
+        "rotation_degrees": [
+          0,
+          12.5,
+          0
+        ],
+        "scale": [
+          1.0575,
+          1,
+          0.9425
+        ]
+      }
+    }
+  },
+  "notes": "Original CC0 full-cast production model with deterministic reviewed proportions."
+}

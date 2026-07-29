@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://voxelcharacterfactory.dev/schemas/large_cast.v1.schema.json",
+  "title": "Large Cast Production Plan v1",
+  "type": "object", "additionalProperties": false, "required": ["schema_version", "characters", "governance"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "characters": {"type": "array", "minItems": 100, "items": {"type": "object", "additionalProperties": false, "required": ["id", "job_path", "topology", "batch", "owner", "state", "checks", "measured_hours"], "properties": {"id":{"type":"string"},"job_path":{"type":"string"},"topology":{"enum":["quadruped","flying","multi_arm","boss"]},"batch":{"type":"string"},"owner":{"type":"string"},"state":{"enum":["ready","building","complete","failed"]},"checks":{"type":"object"},"measured_hours":{"type":"number","exclusiveMinimum":0}}}},
+    "governance": {"type": "object", "additionalProperties": false, "required": ["max_batch_size", "resume", "duplicate_policy", "release_requires_all_checks"], "properties": {"max_batch_size":{"type":"integer","minimum":1,"maximum":25},"resume":{"const":true},"duplicate_policy":{"const":"reject"},"release_requires_all_checks":{"const":true}}}
+  }
+}

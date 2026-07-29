@@ -11,6 +11,7 @@ from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 
 from vcf_core.rigging import REQUIRED_SOCKET_BONES, PartResolution, get_rig_template, standard_male_template
+from vcf_core.advanced import load_topology_rig
 
 
 def _bounds(obj: bpy.types.Object) -> tuple[Vector, Vector]:
@@ -134,6 +135,9 @@ def create_fitted_rig(objects: list[bpy.types.Object], resolutions: dict[str, Pa
     """Fit an edit-bone skeleton to semantic bounds, then validate symmetry/ground."""
     if not objects:
         raise ValueError("RIG_MISSING_GEOMETRY: no resolved objects were supplied")
+    advanced_path=Path(__file__).resolve().parents[2]/"config"/"advanced_rigs"/f"{job['rig_template']}.v1.json"
+    if advanced_path.is_file():
+        return create_topology_rig(objects,resolutions,job,load_topology_rig(advanced_path))
     by_role = {role: next(obj for obj in objects if obj.name == resolution.candidate) for role, resolution in resolutions.items()}
     template = get_rig_template(job["rig_template"])
     measurement_objects = [by_role[role] for role in template.required_roles]
@@ -208,6 +212,31 @@ def create_fitted_rig(objects: list[bpy.types.Object], resolutions: dict[str, Pa
     if not all(checks.values()):
         raise ValueError("RIG_FIT_INVALID: " + ", ".join(name for name, passed in checks.items() if not passed))
     return armature, checks
+
+
+def create_topology_rig(objects: list[bpy.types.Object], resolutions: dict[str, PartResolution], job: dict, template) -> tuple[bpy.types.Object, dict[str, Any]]:
+    """Fit an arbitrary acyclic topology to manifest-resolved part centers."""
+    by_role={role:next(obj for obj in objects if obj.name==resolution.candidate) for role,resolution in resolutions.items()}
+    scale=_scale_to_target(objects,job.get("target_height_meters"),list(by_role.values()))
+    low,high=_combined_bounds(list(by_role.values())); center=(low+high)/2; role_by_bone={bone:role for role,bone in template.role_bones.items()}
+    data=bpy.data.armatures.new("VCF_Rig"); armature=bpy.data.objects.new("VCF_Rig",data); bpy.context.collection.objects.link(armature); bpy.context.view_layer.objects.active=armature; armature.select_set(True); bpy.ops.object.mode_set(mode="EDIT")
+    try:
+        pending=dict(template.bones)
+        while pending:
+            progressed=False
+            for name,parent_name in list(pending.items()):
+                if parent_name is not None and data.edit_bones.get(parent_name) is None:continue
+                role=role_by_bone.get(name); point=_center(by_role[role]) if role else center.copy(); parent=data.edit_bones.get(parent_name) if parent_name else None
+                if parent and role is None:point=parent.tail.copy()
+                tail=point+Vector((0,0,max((high.z-low.z)*.04,.02))); _add_bone(data.edit_bones,name,point,tail,parent); pending.pop(name); progressed=True
+            if not progressed:raise ValueError("RIG_TOPOLOGY_CYCLE: advanced template hierarchy cannot be constructed")
+        for name,(parent_name,offset) in template.sockets.items():
+            parent=data.edit_bones.get(parent_name); head=parent.tail+Vector(offset); _add_bone(data.edit_bones,name,head,head+Vector((0,-.02,0)),parent)
+    finally:bpy.ops.object.mode_set(mode="OBJECT")
+    armature["vcf.rig_template"]=template.template_id; armature["vcf.topology"]=template.topology; armature["vcf.fit_scale"]=scale; armature["vcf.bone_by_role"]=template.role_bones; armature["vcf.template_sockets_applied"]=sorted(template.sockets)
+    existing=set(armature.data.bones.keys()); checks={"rig_required_bones_present":set(template.bones).issubset(existing),"rig_template_sockets_applied":set(template.sockets).issubset(existing),"rig_required_role_count":len(resolutions)==len(template.required_roles),"rig_grounded":abs(min(_bounds(obj)[0].z for obj in objects))<=.002,"rig_topology_valid":not template.validate()}
+    if not all(checks.values()):raise ValueError("RIG_TOPOLOGY_INVALID: "+", ".join(name for name,passed in checks.items() if not passed))
+    return armature,checks
 
 
 def rigid_bind(objects: list[bpy.types.Object], armature: bpy.types.Object, resolutions: dict[str, PartResolution]) -> None:
@@ -333,7 +362,15 @@ def render_joint_pose_preview(armature: bpy.types.Object, path: Path) -> None:
         "upper_leg_l": (0.35, 0.0, 0.0), "lower_leg_l": (-0.55, 0.0, 0.0), "foot_l": (0.2, 0.0, 0.0),
         "upper_leg_r": (-0.3, 0.0, 0.0), "lower_leg_r": (0.5, 0.0, 0.0), "foot_r": (-0.2, 0.0, 0.0),
     }
-    angles = {str(bone_by_role[role]): angle for role, angle in role_angles.items()}
+    angles = {str(bone_by_role[role]): angle for role, angle in role_angles.items() if role in bone_by_role and str(bone_by_role[role]) in pose.bones}
+    if not angles:
+        # Advanced topologies pose their first non-root semantic bone so the
+        # diagnostic remains meaningful without assuming humanoid limbs.
+        for role in bone_by_role.keys():
+            name = str(bone_by_role[role])
+            if name in pose.bones and name != "root":
+                angles[name] = (0.0, 0.12, 0.0)
+                break
     saved = {name: (pose.bones[name].rotation_mode, pose.bones[name].rotation_euler.copy()) for name in angles}
     try:
         for name, angle in angles.items():

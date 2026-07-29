@@ -1,0 +1,271 @@
+{
+  "catalog_schema_version": 1,
+  "assets": [
+    {
+      "schema_version": 1,
+      "asset_id": "p8_quadruped_body",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/quadruped_standard/p8_quadruped_body.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "body"
+      ],
+      "compatible_bases": [
+        "quadruped_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "297157eefc0e9ef1a4e710b727ebb233b3cae7f256189846827072d0bbfc61fc",
+      "thumbnail_path": "assets/original/phase8/quadruped_standard/thumbnails/p8_quadruped_body.svg",
+      "placement_voxels": [
+        -6,
+        -9,
+        6
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_quadruped_head",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/quadruped_standard/p8_quadruped_head.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "head"
+      ],
+      "compatible_bases": [
+        "quadruped_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "47f94ed8e8b1719196d36c7119cdba5f68c746553154f1677c891e723830d95b",
+      "thumbnail_path": "assets/original/phase8/quadruped_standard/thumbnails/p8_quadruped_head.svg",
+      "placement_voxels": [
+        -4,
+        -16,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_quadruped_front_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/quadruped_standard/p8_quadruped_front_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "front_leg_l"
+      ],
+      "compatible_bases": [
+        "quadruped_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "5916ffc70a8cf1491371ba53017185c4972fd31db4339bf3ed181c1d200f547d",
+      "thumbnail_path": "assets/original/phase8/quadruped_standard/thumbnails/p8_quadruped_front_leg_l.svg",
+      "placement_voxels": [
+        3,
+        -6,
+        0
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_quadruped_front_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/quadruped_standard/p8_quadruped_front_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "front_leg_r"
+      ],
+      "compatible_bases": [
+        "quadruped_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "5129897662435031429d98f1d7064d858ee67e38ac5faeeb301ed6af30e7ecf3",
+      "thumbnail_path": "assets/original/phase8/quadruped_standard/thumbnails/p8_quadruped_front_leg_r.svg",
+      "placement_voxels": [
+        -7,
+        -6,
+        0
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_quadruped_rear_leg_l",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/quadruped_standard/p8_quadruped_rear_leg_l.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "rear_leg_l"
+      ],
+      "compatible_bases": [
+        "quadruped_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "25df2f4c5d36782cd657d5463e60c223581d6aa54e5c51066cd66c49b90d5cf5",
+      "thumbnail_path": "assets/original/phase8/quadruped_standard/thumbnails/p8_quadruped_rear_leg_l.svg",
+      "placement_voxels": [
+        3,
+        5,
+        0
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_quadruped_rear_leg_r",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/quadruped_standard/p8_quadruped_rear_leg_r.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "rear_leg_r"
+      ],
+      "compatible_bases": [
+        "quadruped_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "44a97f36fefe56b381197bb41ea1e8b1a70598ac1475e2c70feb7c3b722d44c6",
+      "thumbnail_path": "assets/original/phase8/quadruped_standard/thumbnails/p8_quadruped_rear_leg_r.svg",
+      "placement_voxels": [
+        -7,
+        5,
+        0
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    },
+    {
+      "schema_version": 1,
+      "asset_id": "p8_quadruped_tail",
+      "version": "1.0.0",
+      "kind": "body_part",
+      "source_path": "assets/original/phase8/quadruped_standard/p8_quadruped_tail.vox",
+      "format": "vox",
+      "semantic_tags": [
+        "tail"
+      ],
+      "compatible_bases": [
+        "quadruped_standard"
+      ],
+      "pivots": {
+        "origin": [
+          0,
+          0,
+          0
+        ]
+      },
+      "palette_roles": [
+        "primary"
+      ],
+      "author": "Voxel Character Factory contributors",
+      "license": "CC0-1.0",
+      "provenance": "Original Phase 8 topology acceptance fixture created for this repository; public-domain dedication.",
+      "source_sha256": "9c358646aa89f5e1b470b1c165af37e38bf86f5a47cf3dd9a82eb908ddbd57b6",
+      "thumbnail_path": "assets/original/phase8/quadruped_standard/thumbnails/p8_quadruped_tail.svg",
+      "placement_voxels": [
+        -1,
+        9,
+        8
+      ],
+      "scale_metadata": {
+        "voxel_unit_meters": 0.08,
+        "coordinate_system": "right_handed_z_up"
+      }
+    }
+  ]
+}

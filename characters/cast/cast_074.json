@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "id": "cast_074",
+  "name": "Original Cast Model 074",
+  "variant_of": "phase8_flying_standard",
+  "game": "cast",
+  "target_height_meters": 1.95,
+  "accent_colors": [
+    "#3D478E",
+    "#AFD62D"
+  ],
+  "settings_overrides": {
+    "deformation": {
+      "mode": "deform",
+      "max_influences": 4,
+      "normalize_weights": true,
+      "secondary_solver": "spring_bones",
+      "bake": true,
+      "fallback": "rigid"
+    },
+    "optimization": {
+      "lod_ratios": [
+        1,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    },
+    "spring_motion": [
+      {
+        "chain_id": "wings",
+        "bones": [
+          "wing_l",
+          "wing_r"
+        ],
+        "stiffness": 0.55,
+        "damping": 0.35,
+        "max_angle_degrees": 18,
+        "solver": "deterministic_spring",
+        "bake": true,
+        "fallback": "rigid"
+      },
+      {
+        "chain_id": "tail",
+        "bones": [
+          "tail"
+        ],
+        "stiffness": 0.4,
+        "damping": 0.5,
+        "max_angle_degrees": 24,
+        "solver": "deterministic_spring",
+        "bake": true,
+        "fallback": "rigid"
+      }
+    ],
+    "part_transforms": {
+      "p8_flying_tail": {
+        "location": [
+          0.0125,
+          0,
+          0.00625
+        ],
+        "rotation_degrees": [
+          0,
+          5.0,
+          0
+        ],
+        "scale": [
+          1.0325,
+          1,
+          0.9675
+        ]
+      }
+    }
+  },
+  "notes": "Original CC0 full-cast production model with deterministic reviewed proportions."
+}

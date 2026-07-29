@@ -4,12 +4,18 @@
   "title": "Voxel Character Factory Job v2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "id", "name", "game", "role", "body_template", "rig_template", "animation_profile", "source"],
+  "required": ["schema_version", "id", "name"],
+  "allOf": [
+    {
+      "if": {"not": {"required": ["variant_of"]}},
+      "then": {"required": ["game", "role", "body_template", "rig_template", "animation_profile", "source"]}
+    }
+  ],
   "properties": {
     "schema_version": {"const": 2},
     "id": {"type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"},
     "name": {"type": "string", "minLength": 1},
-    "game": {"type": "string", "minLength": 1},
+    "game": {"type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"},
     "role": {"enum": ["hero", "villain", "support", "boss"]},
     "body_template": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
     "rig_template": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
@@ -31,7 +37,7 @@
       ]
     },
     "asset_assembly": {"type": "string"},
-    "variant_of": {"type": "string"},
+    "variant_of": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
     "part_overrides": {
       "type": "object",
       "propertyNames": {"enum": ["head", "torso", "pelvis", "upper_arm_l", "upper_arm_r", "lower_arm_l", "lower_arm_r", "hand_l", "hand_r", "upper_leg_l", "upper_leg_r", "lower_leg_l", "lower_leg_r", "foot_l", "foot_r", "hair", "coat", "cape", "cloth", "glove_l", "glove_r", "boot_l", "boot_r", "pauldron_l", "pauldron_r", "weapon", "shield", "accessory"]},
@@ -66,6 +72,19 @@
             }
           }
         },
+        "deformation": {
+          "type": "object", "additionalProperties": false,
+          "required": ["mode", "max_influences", "normalize_weights", "secondary_solver", "bake", "fallback"],
+          "properties": {
+            "mode": {"enum": ["rigid", "deform"]}, "max_influences": {"type": "integer", "minimum": 1, "maximum": 4},
+            "normalize_weights": {"const": true}, "secondary_solver": {"enum": ["none", "spring_bones"]},
+            "bake": {"type": "boolean"}, "fallback": {"const": "rigid"}
+          }
+        },
+        "spring_motion": {"type":"array","minItems":1,"maxItems":8,"items":{"type":"object","additionalProperties":false,"required":["chain_id","bones","stiffness","damping","max_angle_degrees","solver","bake","fallback"],"properties":{"chain_id":{"type":"string"},"bones":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"stiffness":{"type":"number","minimum":0,"maximum":1},"damping":{"type":"number","minimum":0,"maximum":1},"max_angle_degrees":{"type":"number","exclusiveMinimum":0,"maximum":90},"solver":{"const":"deterministic_spring"},"bake":{"const":true},"fallback":{"const":"rigid"}}}},
+        "part_transforms": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["location", "rotation_degrees", "scale"], "properties": {"location": {"$ref": "#/$defs/vector3"}, "rotation_degrees": {"$ref": "#/$defs/vector3"}, "scale": {"$ref": "#/$defs/positiveVector3"}}}},
+        "socket_overrides": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false, "required": ["bone", "offset"], "properties": {"bone": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"}, "offset": {"$ref": "#/$defs/vector3"}}}},
+        "boss_composition": {"type": "object"},
         "optimization": {
           "type": "object", "additionalProperties": false,
           "properties": {
@@ -85,5 +104,9 @@
     "render_profile": {"type": "string"},
     "render_resolution": {"type": "integer", "minimum": 64, "maximum": 4096},
     "notes": {"type": "string"}
+  },
+  "$defs": {
+    "vector3": {"type": "array", "prefixItems": [{"type":"number"},{"type":"number"},{"type":"number"}], "items": false, "minItems": 3, "maxItems": 3},
+    "positiveVector3": {"type": "array", "prefixItems": [{"type":"number","exclusiveMinimum":0},{"type":"number","exclusiveMinimum":0},{"type":"number","exclusiveMinimum":0}], "items": false, "minItems": 3, "maxItems": 3}
   }
 }

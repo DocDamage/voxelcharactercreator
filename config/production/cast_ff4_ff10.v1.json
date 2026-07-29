@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "characters": [
+    {"id":"ff4_cecil","display_name":"Cecil Harvey","game":"ff4","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff4_kain","display_name":"Kain Highwind","game":"ff4","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff4_rydia","display_name":"Rydia","game":"ff4","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff4_golbez","display_name":"Golbez","game":"ff4","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff5_bartz","display_name":"Bartz Klauser","game":"ff5","production_state":"backlog","asset_policy":"user_supplied_required"},
+    {"id":"ff5_lenna","display_name":"Lenna Charlotte Tycoon","game":"ff5","production_state":"backlog","asset_policy":"user_supplied_required"},
+    {"id":"ff6_terra","display_name":"Terra Branford","game":"ff6","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff6_kefka","display_name":"Kefka Palazzo","game":"ff6","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff7_cloud","display_name":"Cloud Strife","game":"ff7","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff7_sephiroth","display_name":"Sephiroth","game":"ff7","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff8_squall","display_name":"Squall Leonhart","game":"ff8","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff8_ultimecia","display_name":"Ultimecia","game":"ff8","production_state":"converted","asset_policy":"tracked_original"},
+    {"id":"ff9_zidane","display_name":"Zidane Tribal","game":"ff9","production_state":"backlog","asset_policy":"user_supplied_required"},
+    {"id":"ff9_garnet","display_name":"Garnet Til Alexandros XVII","game":"ff9","production_state":"backlog","asset_policy":"user_supplied_required"},
+    {"id":"ff10_tidus","display_name":"Tidus","game":"ff10","production_state":"backlog","asset_policy":"user_supplied_required"},
+    {"id":"ff10_yuna","display_name":"Yuna","game":"ff10","production_state":"backlog","asset_policy":"user_supplied_required"}
+  ]
+}

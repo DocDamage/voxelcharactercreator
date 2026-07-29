@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "cast_109",
+  "name": "Original Cast Model 109",
+  "variant_of": "phase8_quadruped_standard",
+  "game": "cast",
+  "target_height_meters": 1.975,
+  "accent_colors": [
+    "#41823B",
+    "#B1BE66"
+  ],
+  "settings_overrides": {
+    "deformation": {
+      "mode": "rigid",
+      "max_influences": 4,
+      "normalize_weights": true,
+      "secondary_solver": "none",
+      "bake": true,
+      "fallback": "rigid"
+    },
+    "optimization": {
+      "lod_ratios": [
+        1,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    },
+    "part_transforms": {
+      "p8_quadruped_rear_leg_l": {
+        "location": [
+          0.0125,
+          0,
+          0.00625
+        ],
+        "rotation_degrees": [
+          0,
+          2.5,
+          0
+        ],
+        "scale": [
+          0.9825,
+          1,
+          1.0175
+        ]
+      }
+    }
+  },
+  "notes": "Original CC0 full-cast production model with deterministic reviewed proportions."
+}

@@ -113,13 +113,33 @@ def parse_optimization(settings: dict[str, Any]) -> OptimizationPolicy:
 
 
 def preview_fingerprint(job: dict[str, Any], inputs: Iterable[Path]) -> str:
-    """Hash only render-affecting inputs so unchanged previews can be reused."""
-    digest = hashlib.sha256(json.dumps({
-        "source": job.get("source"), "palette": job.get("palette_profile"),
-        "colors": job.get("accent_colors"), "parts": job.get("part_overrides"),
-        "rig": job.get("rig_template"), "render": job.get("render_profile"),
-        "resolution": job.get("render_resolution"),
-    }, sort_keys=True, separators=(",", ":")).encode())
+    """Hash resolved visual state while excluding animation/export-only changes."""
+    settings = job.get("settings_overrides", {})
+    if isinstance(settings, dict):
+        # Optimization is applied after previews are rendered. Everything else
+        # in settings_overrides can affect assembled geometry, rig/socket views,
+        # deformation, or the diagnostic pose and must invalidate cached images.
+        render_settings: Any = {key: value for key, value in settings.items() if key != "optimization"}
+    else:
+        # Invalid jobs are rejected before a build, but retaining the raw value
+        # makes this helper deterministic and fail-safe for standalone callers.
+        render_settings = settings
+    render_state = {
+        "source": job.get("source"),
+        "asset_assembly": job.get("asset_assembly"),
+        "body_template": job.get("body_template"),
+        "weapon": job.get("weapon"),
+        "height_voxels": job.get("height_voxels"),
+        "target_height_meters": job.get("target_height_meters"),
+        "palette_profile": job.get("palette_profile"),
+        "accent_colors": job.get("accent_colors"),
+        "part_overrides": job.get("part_overrides"),
+        "rig_template": job.get("rig_template"),
+        "render_profile": job.get("render_profile"),
+        "render_resolution": job.get("render_resolution"),
+        "settings_overrides": render_settings,
+    }
+    digest = hashlib.sha256(json.dumps(render_state, sort_keys=True, separators=(",", ":")).encode())
     for path in sorted(inputs, key=lambda item: str(item)):
         digest.update(str(path).encode()); digest.update(path.read_bytes())
     return digest.hexdigest()

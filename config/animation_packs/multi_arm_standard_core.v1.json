@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "pack_id": "multi_arm_standard_core",
+  "frame_rate": 30,
+  "compatibility_tags": [
+    "multi_arm_standard",
+    "multi_arm"
+  ],
+  "required_bones": [
+    "root",
+    "spine",
+    "neck",
+    "head",
+    "arm_upper_l",
+    "arm_upper_r",
+    "arm_lower_l",
+    "arm_lower_r",
+    "pelvis"
+  ],
+  "actions": [
+    {
+      "name": "idle",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "spine"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0,
+              0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "multi_arm_move",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "spine"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0,
+              0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

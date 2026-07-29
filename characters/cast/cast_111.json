@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "cast_111",
+  "name": "Original Cast Model 111",
+  "variant_of": "phase8_multi_arm_standard",
+  "game": "cast",
+  "target_height_meters": 2.025,
+  "accent_colors": [
+    "#41C019",
+    "#B1DA4C"
+  ],
+  "settings_overrides": {
+    "deformation": {
+      "mode": "rigid",
+      "max_influences": 4,
+      "normalize_weights": true,
+      "secondary_solver": "none",
+      "bake": true,
+      "fallback": "rigid"
+    },
+    "optimization": {
+      "lod_ratios": [
+        1,
+        0.5,
+        0.25
+      ],
+      "material_batching": "palette_atlas",
+      "compression": "engine",
+      "incremental_previews": true
+    },
+    "part_transforms": {
+      "p8_multi_arm_pelvis": {
+        "location": [
+          0.037500000000000006,
+          0,
+          0.018750000000000003
+        ],
+        "rotation_degrees": [
+          0,
+          7.5,
+          0
+        ],
+        "scale": [
+          1.0075,
+          1,
+          0.9925
+        ]
+      }
+    }
+  },
+  "notes": "Original CC0 full-cast production model with deterministic reviewed proportions."
+}

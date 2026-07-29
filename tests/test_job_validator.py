@@ -63,6 +63,14 @@ class JobValidatorTests(unittest.TestCase):
         self.assertTrue(any("approved import root" in error for error in errors))
         self.assertTrue(any("unknown job fields" in error for error in errors))
 
+    def test_rejects_game_output_path_traversal(self) -> None:
+        job = self.valid_job()
+        job["game"] = "../../outside"
+        self.assertIn(
+            "game must contain only lowercase letters, numbers, and underscores",
+            validate_job(job, project_root=ROOT),
+        )
+
     def test_migrates_v1_job_losslessly_to_v2(self) -> None:
         original = self.valid_job()
         original["source_model"] = None

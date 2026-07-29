@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "template_id": "final_boss_composite",
+  "topology": "boss",
+  "required_roles": [
+    "core",
+    "head",
+    "torso_upper",
+    "torso_lower",
+    "appendage_l",
+    "appendage_r"
+  ],
+  "bones": {
+    "root": null,
+    "core": "root",
+    "head": "core",
+    "torso_upper": "core",
+    "torso_lower": "core",
+    "appendage_l": "core",
+    "appendage_r": "core"
+  },
+  "role_bones": {
+    "core": "core",
+    "head": "head",
+    "torso_upper": "torso_upper",
+    "torso_lower": "torso_lower",
+    "appendage_l": "appendage_l",
+    "appendage_r": "appendage_r"
+  },
+  "sockets": {
+    "phase_root": {
+      "bone": "core",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "effect_socket": {
+      "bone": "head",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "engine_checks": [
+    "parts",
+    "rig",
+    "animation",
+    "export",
+    "godot"
+  ],
+  "max_bones": 192,
+  "fallback_template": "humanoid_standard"
+}

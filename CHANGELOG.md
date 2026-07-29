@@ -2,7 +2,32 @@
 
 ## Unreleased
 
-Version: `0.5.0-animation-player`
+Version: `0.6.0-phase8`
+
+- Hardened the desktop operator experience with a searchable/filterable character library, scrollable grouped controls, dirty-document prompts, safe list refresh, full-catalog build confirmation, keyboard shortcuts, and an expanded validation dashboard.
+- Preserved compact Job v2 inheritance across asset, override, and fallback spatial editing instead of flattening resolved parents into child jobs.
+- Made cancellation stop active and pending work even when queue persistence fails, closed pre-launch races, hardened corrupt-queue recovery, added guarded retry/resume preflight, and ensured shutdown terminates every tracked worker.
+- Moved machine-specific settings to the per-user application-data directory, exposed Blender/Godot and optional LLM configuration in-app, and made LLM proposals non-blocking with stale-edit detection and a scrollable review gate.
+- Added fast metadata-only catalog startup, complete render-affecting preview fingerprints, Draft 2020-12 metaschema checks, generator drift checks in CI, and fail-closed Windows verification wrappers.
+- Restricted source packages to Git-indexed files by default, added explicit labeling for untracked development snapshots, and added a pre-package secret scan.
+- Added per-batch immutable input snapshots so Blender consumes the exact jobs, assets, configuration, code, and Godot gates that passed preflight.
+- Guarded concurrent 3D editor sessions, made editor completion path-aware, handled folder-launch errors, and expanded prefixed-credential detection across all indexed paths.
+- Made queue transitions transactional on persistence failures and protected active input snapshots with per-process leases across concurrent app instances.
+- Enforced canonical output namespaces, exact cache artifact sets and hashes, matching executed-code provenance, strict final completion gates, and nonzero exits for incomplete builds.
+- Applied every published schema to its governed instances (including migrated Job v1 inputs) and scanned both staged Git blobs and tracked working-tree bytes for quoted or unquoted credentials.
+
+- Completed Phase 8 with data-driven quadruped, flying, multi-arm, and composite-boss rigs and original CC0 fixtures.
+- Added bounded multi-phase boss composition and topology-aware Blender/Godot gates.
+- Added optional deform binding, advanced secondary-motion policy, and mandatory rigid fallback.
+- Added review-required generated-asset provenance, the 3D Character Editor, and a governed 120-model production catalog.
+- Built and independently audited all 120 canonical cast jobs with distinct semantic hashes, current report/artifact hashes, passed completion matrices, and no unsafe mesh-export warnings.
+- Added `tools/verify.ps1 -Phase8` for the four advanced fixtures and `tools/verify.ps1 -FullCast` for the resumable 120-model release gate.
+
+- Completed Phase 7 by converting all ten legacy profiles into compact Job v2 variants backed by tracked-original CC0 assemblies and the shared completion matrix.
+- Added deterministic, cycle-safe variant resolution and inherited-build cache invalidation.
+- Added reviewable multi-view reference planning, explicitly advisory visual-similarity scoring, and false-positive measurement.
+- Added the measured pilot-ten capacity model and governed FFIV-FFX production database.
+- Added deterministic Windows source packaging plus fail-closed migration, update, rollback, dependency, Authenticode, and timestamp policies.
 
 - Formalized Phase 8 around nonhuman and final-boss rigs, deforming meshes, reviewable generative image-to-voxel workflows, a full 3D character editor, and governed 100-plus-model production.
 - Expanded all eight weapon families to exactly 24 validated animations each: 16 shared gameplay states and eight type-specific moves.

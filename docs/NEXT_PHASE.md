@@ -1,27 +1,23 @@
 # Next Phase
 
-Phases 0-6 are implemented and verified on Blender 4.5.5 LTS and Godot 4.6.2.
-Five Phase 6 archetypes build through the same registry, rig, animation, QA,
-optimization, export, and engine-import path.
+Phases 0-8 are implemented. Ten legacy profiles resolve as Job v2 variants of
+tracked-original assemblies, and four original advanced-topology fixtures cover
+quadruped, flying, multi-arm, and composite final-boss production.
 
-The dependency-ordered backlog, acceptance gates, architecture, estimates, and
-deferred scope are maintained in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+Phase 8 also added deform binding with rigid fallback, reviewable generated-asset
+provenance, the desktop 3D Character Editor, and a governed 120-model cast in six
+resumable batches. The release ledger is backed by 120/120 passing Blender/Godot
+reports with distinct semantic hashes. Its reproducible acceptance commands are:
 
-Immediate Phase 7 work:
+```powershell
+./tools/verify.ps1 -Phase8
+./tools/verify.ps1 -FullCast
+```
 
-1. Convert the ten metadata profiles one at a time using original or user-supplied assets.
-2. Measure content-production time and promote only proven variant/schema needs.
-3. Keep reference analysis and similarity scoring advisory and reviewable.
-4. Define packaging, signing, migration, update, and rollback strategy.
+Implementation details are in [PHASE8_ADVANCED.md](PHASE8_ADVANCED.md), while the
+dependency history and acceptance gates remain in
+[IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
 
-Phase 8 follows the Phase 7 exit gate and contains the longer-term programs:
-nonhuman rigs, final-boss rigs, deforming meshes and advanced secondary motion,
-reviewable generative image-to-voxel workflows, a full 3D character editor, and
-production of a governed 100-plus-model cast.
-
-Every current type now has 24 Animation Pack v1 clips. Production humanoids add
-24 universal traversal clips and 60 shared locomotion, transition, interaction,
-and reaction clips for 108 actions total; the out-of-process Godot player includes
-a reference mechanics sandbox. Future converted characters should refine poses and timing through
-the same contracts. The player remains separate from the desktop process; Godot
-also continues to serve as the automated import gate.
+Future releases can expand the original source-asset corpus and refine
+topology-specific animation. All such work continues through the same Job,
+manifest, approval, Blender QA, export, and Godot gates.

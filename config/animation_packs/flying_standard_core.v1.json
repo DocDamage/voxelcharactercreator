@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "pack_id": "flying_standard_core",
+  "frame_rate": 30,
+  "compatibility_tags": [
+    "flying_standard",
+    "flying"
+  ],
+  "required_bones": [
+    "root",
+    "spine",
+    "neck",
+    "head",
+    "wing_l",
+    "wing_r",
+    "tail"
+  ],
+  "actions": [
+    {
+      "name": "idle",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "spine"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0,
+              0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "flying_move",
+      "frame_start": 1,
+      "frame_end": 24,
+      "loop": true,
+      "root_motion": "none",
+      "required_bones": [
+        "root",
+        "spine"
+      ],
+      "events": [],
+      "poses": [
+        {
+          "frame": 1,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 12,
+          "bones": {
+            "spine": [
+              0,
+              0.05,
+              0
+            ]
+          }
+        },
+        {
+          "frame": 24,
+          "bones": {
+            "spine": [
+              0,
+              -0.05,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

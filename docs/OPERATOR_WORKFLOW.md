@@ -7,6 +7,11 @@ and proposal review.
 
 ## Before a build
 
+Use the library search box and game filter to narrow the 140-character catalog.
+The editor keeps the open document active even if a filter hides its row, marks
+unsaved JSON with `*`, and offers Save/Discard/Cancel before selection changes or
+shutdown. `Ctrl+S` saves, `Ctrl+F` focuses search, and `F5` validates the open job.
+
 Use **Preflight** or start a build. The same check runs in both paths and reports
 the detected Blender/Godot versions, LLM availability, writable output paths,
 canonical job errors, and corrupt VOX inputs. Every issue includes a corrective
@@ -21,8 +26,25 @@ a build, the item becomes `interrupted` on the next launch. **Resume Batch**
 requeues interrupted, failed, and cancelled items. **Retry Failed Stage** records
 the failed stage and replays deterministic prerequisites before that stage; this
 avoids restoring an invalid partial Blender session. Cancelling terminates the
-worker, marks the item cancelled, and relies on transactional promotion to keep
-the last successful output untouched.
+active workers, cancels all not-yet-claimed items, stops workers from claiming
+more jobs, and relies on transactional promotion to keep the last successful
+output untouched. Retry and resume repeat canonical validation and preflight
+before any queue state changes. A corrupt queue file is preserved beside the
+new queue as `queue.json.corrupt-*` instead of being silently overwritten.
+Re-selecting a job that is already pending does not duplicate it. Pending
+recovered work can also be cancelled while no worker is active.
+One desktop app owns the project queue at a time. A second instance exits with an
+actionable message, and a restarted app waits for any surviving Blender worker
+from the prior session instead of rewriting its queue or inputs.
+
+Each launch batch freezes its tool/cache settings and copies jobs, inheritance
+parents, registered assets, configuration, worker code, and Godot gate scripts
+into an ignored immutable input snapshot. Preflight runs against that exact
+snapshot, and every Blender worker executes the snapshotted code and data while
+promoting artifacts only to the real project output. Snapshots are removed after
+completion or cancellation; retry and resume always create and validate a new one.
+Process leases keep a snapshot safe across multiple app instances and during a
+slow worker shutdown. Abandoned owned snapshots are reclaimed after 24 hours.
 
 The worker emits `VCF_EVENT` JSON lines for stage start/pass/failure. The desktop
 app uses them for determinate progress and durable queue updates. Failed Build
@@ -36,6 +58,9 @@ source assets, manifests, versioned JSON configuration, and tool versions. A hit
 keeps the already promoted output and creates a new run report whose prior stages
 are marked `cached` with zero duration. Misses and bypasses are recorded on every
 executed stage. Failed and partial runs are never cached.
+Before reuse, the cache rechecks the completion gate, canonical output namespace,
+exact artifact file set, byte sizes, and SHA-256 hashes. Any mismatch forces a
+fresh build, so stale files from a different export profile cannot leak into a hit.
 
 Disable reuse in Settings or run a fully evaluated command:
 
@@ -57,6 +82,9 @@ Report v2.
 - **Asset & Equipment Editor** selects compatible registry assets and equipment.
 - **Part & Palette Overrides** edits semantic mappings, accent colors, and
   equipment with undo/redo before an atomic save.
+- **3D Editor** uses the built GLB when Godot is available, or a guarded
+  orthographic transform/socket editor before the first build. Both preserve
+  compact variant inheritance and refuse to overwrite a file changed elsewhere.
 - **Duplicate as Variant** creates a schema-valid job with `variant_of` set.
 - **Preview & Validation** browses current renders, the captured before-build
 preview, diagnostics, and failed-stage errors.
@@ -67,9 +95,14 @@ playback speed, orbit camera, and skeleton/socket diagnostics.
   course for jump/double-jump, slide, roll, dash, air attacks, ladders, walls,
   swimming, rope swing, ledges, and grapple movement.
 - **Describe Changes** asks the configured LLM for structured changes and
-  diagnostics. Source paths and executable instructions are rejected. The app
-  validates the resulting Job v2, shows the field-level diff, and applies it only
-  after explicit operator confirmation.
+  diagnostics without blocking the desktop. Source paths and executable
+  instructions are rejected. The app rejects stale proposals if the job changes,
+  validates the resulting Job v2, shows a scrollable field-level diff, and applies
+  it only after explicit operator confirmation.
+
+Settings stores machine-specific paths and optional provider configuration in
+`%APPDATA%\VoxelCharacterFactory\settings.json` on Windows. API keys remain in
+the environment and are never written by the app.
 
 Raw JSON remains available as an expert editor, but routine pilot correction no
 longer requires it or an interactive Blender session.

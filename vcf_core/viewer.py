@@ -16,18 +16,21 @@ class AnimationPlayerError(RuntimeError):
     pass
 
 
-def find_godot(configured: str = "") -> Path | None:
+def _godot_pair(configured: str = "") -> tuple[Path | None,Path | None]:
     value = configured or os.environ.get("VCF_GODOT", "") or shutil.which("godot.exe") or shutil.which("godot4") or shutil.which("godot") or ""
     if not value:
-        return None
+        return None,None
     path = Path(value).resolve()
     if not path.is_file():
-        return None
+        return None,None
     if path.name.lower().endswith("_console.exe"):
         gui = path.with_name(path.name[:-12] + ".exe")
-        if gui.is_file():
-            return gui
-    return path
+        return (gui if gui.is_file() else path),path
+    consoles=sorted(path.parent.glob("*console.exe")) if os.name=="nt" else []
+    return path,(consoles[0] if consoles else path)
+
+def find_godot(configured: str = "") -> Path | None:return _godot_pair(configured)[0]
+def find_godot_console(configured: str = "") -> Path | None:return _godot_pair(configured)[1]
 
 
 def player_config(report: dict[str, Any]) -> dict[str, Any]:
@@ -59,13 +62,13 @@ def prepare_player(root: Path, glb: Path, report: dict[str, Any]) -> Path:
 
 
 def launch_player(root: Path, glb: Path, report: dict[str, Any], configured_godot: str = "") -> subprocess.Popen[str]:
-    executable = find_godot(configured_godot)
-    if executable is None:
+    executable = find_godot(configured_godot);console=find_godot_console(configured_godot)
+    if executable is None or console is None:
         raise AnimationPlayerError("Godot was not found. Set it in Settings or VCF_GODOT.")
     project = prepare_player(root, glb, report)
     flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
     imported = subprocess.run(
-        [str(executable), "--headless", "--editor", "--path", str(project), "--import", "--quit"],
+        [str(console), "--headless", "--editor", "--path", str(project), "--import", "--quit"],
         capture_output=True, text=True, timeout=120, creationflags=flags, check=False,
     )
     if imported.returncode:

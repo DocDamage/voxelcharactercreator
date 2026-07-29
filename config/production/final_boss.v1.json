@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "composition_id": "original_final_boss",
+  "attachments": [
+    {
+      "id": "core",
+      "asset_id": "boss_core",
+      "parent": null,
+      "socket": "phase_root"
+    },
+    {
+      "id": "crown",
+      "asset_id": "boss_crown",
+      "parent": "core",
+      "socket": "head_socket"
+    },
+    {
+      "id": "wing_l",
+      "asset_id": "boss_wing_l",
+      "parent": "core",
+      "socket": "wing_socket_l"
+    },
+    {
+      "id": "wing_r",
+      "asset_id": "boss_wing_r",
+      "parent": "core",
+      "socket": "wing_socket_r"
+    }
+  ],
+  "phases": [
+    {
+      "phase_id": "sealed",
+      "enabled": [
+        "core",
+        "crown"
+      ]
+    },
+    {
+      "phase_id": "awakened",
+      "enabled": [
+        "core",
+        "crown",
+        "wing_l",
+        "wing_r"
+      ]
+    },
+    {
+      "phase_id": "desperate",
+      "enabled": [
+        "core",
+        "wing_l",
+        "wing_r"
+      ]
+    }
+  ],
+  "budgets": {
+    "max_bones": 192,
+    "max_objects": 64,
+    "max_triangles": 250000
+  }
+}

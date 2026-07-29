@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from copy import deepcopy
 from pathlib import Path
 
 from vcf_core.animation import load_animation_pack
@@ -85,8 +86,43 @@ class Phase6FactoryTests(unittest.TestCase):
             parse_optimization({"optimization":{"lod_ratios":[.5,1]}})
 
     def test_preview_fingerprint_ignores_animation_only_changes(self) -> None:
-        first = {"source":{"mode":"proxy"},"render_resolution":128,"animation_packs":["a"]}
-        second = {**first, "animation_packs":["b"]}
+        first = {"source":{"mode":"proxy"},"render_resolution":128,"animation_profile":"sword","animation_packs":["a"]}
+        second = {**first, "animation_profile":"staff", "animation_packs":["b"]}
+        self.assertEqual(preview_fingerprint(first, []), preview_fingerprint(second, []))
+
+    def test_preview_fingerprint_invalidates_resolved_geometry_and_rig_settings(self) -> None:
+        first = {
+            "source": {"mode": "assembly", "asset_ids": ["body"]},
+            "body_template": "male_heavy",
+            "rig_template": "humanoid_heavy",
+            "target_height_meters": 2.0,
+            "settings_overrides": {
+                "part_transforms": {"head": {"location": [0, 0, 0], "rotation_degrees": [0, 0, 0], "scale": [1, 1, 1]}},
+                "socket_overrides": {"effect_socket": {"bone": "head", "offset": [0, 0, 0.1]}},
+                "limb_length_overrides": {"upper_arm.L": 1.0},
+                "deformation": {"mode": "deform", "max_influences": 4, "normalize_weights": True, "secondary_solver": "none", "bake": True, "fallback": "rigid"},
+                "secondary_motion": [{"chain_id": "cape", "kind": "cape", "segments": ["cape.01"], "parent_bone": "spine", "stiffness": 0.5, "damping": 0.4, "max_angle_degrees": 30, "fallback": "rigid"}],
+            },
+        }
+        changes = {
+            "target height": lambda job: job.update(target_height_meters=2.1),
+            "editor transform": lambda job: job["settings_overrides"]["part_transforms"]["head"]["location"].__setitem__(2, 0.25),
+            "socket offset": lambda job: job["settings_overrides"]["socket_overrides"]["effect_socket"]["offset"].__setitem__(2, 0.2),
+            "limb length": lambda job: job["settings_overrides"]["limb_length_overrides"].update({"upper_arm.L": 1.2}),
+            "deformation": lambda job: job["settings_overrides"]["deformation"].update({"mode": "rigid"}),
+            "secondary motion": lambda job: job["settings_overrides"]["secondary_motion"][0].update({"stiffness": 0.7}),
+        }
+        original = preview_fingerprint(first, [])
+        for name, change in changes.items():
+            with self.subTest(name=name):
+                second = deepcopy(first)
+                change(second)
+                self.assertNotEqual(original, preview_fingerprint(second, []))
+
+    def test_preview_fingerprint_ignores_post_render_optimization_changes(self) -> None:
+        first = {"source": {"mode": "assembly", "asset_ids": ["body"]}, "settings_overrides": {"optimization": {"lod_ratios": [1, .5]}}}
+        second = deepcopy(first)
+        second["settings_overrides"]["optimization"]["lod_ratios"] = [1, .25]
         self.assertEqual(preview_fingerprint(first, []), preview_fingerprint(second, []))
 
     def test_parallelism_is_conservative_without_measurements_and_bounded_with_them(self) -> None:

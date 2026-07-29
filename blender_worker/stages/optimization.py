@@ -24,8 +24,13 @@ def optimize_for_export(objects: list[bpy.types.Object], policy: OptimizationPol
             duplicate = source.copy(); duplicate.data = source.data.copy(); duplicate.name = f"{source.name}_LOD{int(ratio * 100):02d}"
             bpy.context.collection.objects.link(duplicate)
             modifier = duplicate.modifiers.new("VCF_LOD", "DECIMATE"); modifier.ratio = ratio
-            bpy.context.view_layer.objects.active = duplicate; duplicate.select_set(True)
-            try: bpy.ops.object.modifier_apply(modifier=modifier.name)
+            bpy.ops.object.select_all(action="DESELECT"); bpy.context.view_layer.objects.active = duplicate; duplicate.select_set(True)
+            try:
+                # Deform-bound sources already carry an Armature modifier. LOD
+                # simplification operates on bind-pose geometry before skinning.
+                while duplicate.modifiers.find(modifier.name)>0:bpy.ops.object.modifier_move_up(modifier=modifier.name)
+                bpy.ops.object.modifier_apply(modifier=modifier.name)
+                duplicate.data.validate(clean_customdata=True); duplicate.data.update()
             finally: duplicate.select_set(False)
             duplicate["vcf.lod_ratio"] = ratio; lods.append(duplicate)
     return [*objects, *lods], {"lod_levels": list(policy.lod_ratios), "lod_object_count": len(lods), "material_batch_count": len(canonical), "compression_policy": policy.compression}

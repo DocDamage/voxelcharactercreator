@@ -10,6 +10,7 @@ from typing import Any
 CURRENT_JOB_SCHEMA_VERSION = 2
 V1_REQUIRED = {"id", "name", "game", "role", "body_template", "rig_template", "animation_profile"}
 V2_REQUIRED = V1_REQUIRED | {"schema_version", "source"}
+VARIANT_REQUIRED = {"schema_version", "id", "name", "variant_of"}
 ROLES = {"hero", "villain", "support", "boss"}
 EXPORT_FORMATS = {"glb", "fbx"}
 SOURCE_FORMATS = {".vox", ".glb", ".gltf", ".fbx", ".obj"}
@@ -83,6 +84,51 @@ def migrate_job(job: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+def _job_catalog(project_root: Path) -> dict[str, Path]:
+    catalog: dict[str, Path] = {}
+    for path in sorted((project_root / "characters").glob("*/*.json")):
+        try:
+            value = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        identifier = value.get("id") if isinstance(value, dict) else None
+        if isinstance(identifier, str):
+            if identifier in catalog:
+                raise JobValidationError([f"duplicate character job id: {identifier}"])
+            catalog[identifier] = path
+    return catalog
+
+
+def resolve_job(job: dict[str, Any], project_root: Path, *, _seen: tuple[str, ...] = ()) -> dict[str, Any]:
+    """Resolve a Job v2 variant against a repository character job.
+
+    Variant files may contain only identity plus fields they override. Resolution is
+    deterministic, rejects cycles, and always returns a complete canonical Job v2.
+    """
+    value = migrate_job(job)
+    parent_id = value.get("variant_of")
+    if not parent_id:
+        return value
+    if not isinstance(parent_id, str) or not SAFE_ID_PATTERN.fullmatch(parent_id):
+        raise JobValidationError(["variant_of must be a safe character job ID"])
+    child_id = value.get("id", "<unknown>")
+    if child_id in _seen or parent_id in (*_seen, child_id):
+        chain = " -> ".join((*_seen, str(child_id), parent_id))
+        raise JobValidationError([f"variant inheritance cycle: {chain}"])
+    parent_path = _job_catalog(project_root).get(parent_id)
+    if parent_path is None:
+        raise JobValidationError([f"variant_of references unknown character job: {parent_id}"])
+    try:
+        parent_raw = json.loads(parent_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise JobValidationError([f"could not read variant parent {parent_path}: {exc}"]) from exc
+    parent = resolve_job(parent_raw, project_root, _seen=(*_seen, str(child_id)))
+    resolved = deepcopy(parent)
+    resolved.update(value)
+    resolved["schema_version"] = CURRENT_JOB_SCHEMA_VERSION
+    return resolved
+
+
 def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migrate: bool = True) -> list[str]:
     if not isinstance(job, dict):
         return ["job must be a JSON object"]
@@ -94,7 +140,8 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
     unknown = sorted(set(job) - allowed)
     if unknown:
         errors.append(f"unknown job fields: {', '.join(unknown)}")
-    required = V1_REQUIRED if version == 1 else V2_REQUIRED
+    is_variant = version == CURRENT_JOB_SCHEMA_VERSION and "variant_of" in job
+    required = V1_REQUIRED if version == 1 else (VARIANT_REQUIRED if is_variant else V2_REQUIRED)
     for key in sorted(required):
         value = job.get(key)
         if key in {"source", "schema_version"}:
@@ -104,7 +151,14 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
     job_id = job.get("id")
     if isinstance(job_id, str) and job_id and not SLUG_PATTERN.fullmatch(job_id):
         errors.append("id must contain only lowercase letters, numbers, and underscores")
-    if job.get("role") not in ROLES:
+    game = job.get("game")
+    if game is not None and (
+        not isinstance(game, str) or not SLUG_PATTERN.fullmatch(game)
+    ):
+        errors.append("game must contain only lowercase letters, numbers, and underscores")
+    if not is_variant and job.get("role") not in ROLES:
+        errors.append(f"role must be one of: {', '.join(sorted(ROLES))}")
+    elif is_variant and "role" in job and job.get("role") not in ROLES:
         errors.append(f"role must be one of: {', '.join(sorted(ROLES))}")
     height = job.get("height_voxels", 44)
     if isinstance(height, bool) or not isinstance(height, int) or not 16 <= height <= 128:
@@ -132,7 +186,9 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
         _safe_path(job.get("source_model"), "source_model", project_root, errors)
     else:
         source = job.get("source")
-        if not isinstance(source, dict) or set(source) - {"mode", "path", "asset_ids"}:
+        if is_variant and source is None:
+            pass
+        elif not isinstance(source, dict) or set(source) - {"mode", "path", "asset_ids"}:
             errors.append("source must be an object with mode and optional path or asset_ids")
         elif source.get("mode") not in {"proxy", "model", "assembly"}:
             errors.append("source.mode must be one of: proxy, model, assembly")
@@ -151,7 +207,10 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
                 errors.append("source.asset_ids must be a non-empty array of safe catalog IDs")
             elif len(asset_ids) != len(set(asset_ids)):
                 errors.append("source.asset_ids must not contain duplicates")
-            elif project_root:
+            elif project_root and not is_variant:
+                # A compact variant may inherit body_template from its parent.
+                # Its fully resolved job is validated below, where registry
+                # compatibility can be checked against that effective template.
                 from vcf_core.assets import AssetValidationError, load_registry
                 try:
                     load_registry(project_root).resolve(asset_ids, body_template=job.get("body_template", ""))
@@ -174,7 +233,12 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
             errors.append("settings_overrides.vox_meshing_mode must be greedy, surface, or cubes")
         if isinstance(settings, dict):
             from vcf_core.factory import FactoryValidationError, parse_optimization, validate_secondary_motion
+            from vcf_core.advanced import validate_boss_composition, validate_deformation, validate_editor_settings, validate_spring_motion
             errors.extend(validate_secondary_motion(settings.get("secondary_motion")))
+            errors.extend(validate_deformation(settings.get("deformation")))
+            errors.extend(validate_boss_composition(settings.get("boss_composition")))
+            errors.extend(validate_spring_motion(settings.get("spring_motion")))
+            errors.extend(validate_editor_settings(settings))
             try:
                 parse_optimization(settings)
             except FactoryValidationError as exc:
@@ -210,7 +274,22 @@ def validate_job(job: dict[str, Any], project_root: Path | None = None, *, migra
             try:
                 get_rig_template(rig_template)
             except PartResolutionError as exc:
+                advanced_path = project_root / "config" / "advanced_rigs" / f"{rig_template}.v1.json" if project_root else None
+                if advanced_path and advanced_path.is_file():
+                    from vcf_core.advanced import AdvancedValidationError, load_topology_rig
+                    try: load_topology_rig(advanced_path)
+                    except AdvancedValidationError as advanced_exc: errors.extend(advanced_exc.errors)
+                else:
+                    errors.extend(exc.errors)
+        if is_variant and project_root and not errors:
+            try:
+                resolved = resolve_job(job, project_root)
+            except JobValidationError as exc:
                 errors.extend(exc.errors)
+            else:
+                inherited = deepcopy(resolved)
+                inherited.pop("variant_of", None)
+                errors.extend(validate_job(inherited, project_root))
     return errors
 
 
@@ -222,4 +301,4 @@ def load_job(path: Path, project_root: Path | None = None) -> dict[str, Any]:
     errors = validate_job(job, project_root)
     if errors:
         raise JobValidationError(errors)
-    return migrate_job(job)
+    return resolve_job(job, project_root) if project_root else migrate_job(job)

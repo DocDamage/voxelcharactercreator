@@ -9,6 +9,7 @@ import bpy
 from mathutils import Vector
 
 from vcf_core.factory import SecondaryMotionChain, validate_secondary_motion
+from vcf_core.advanced import validate_spring_motion
 
 
 def create_secondary_motion_rig(armature: bpy.types.Object, settings: dict[str, Any]) -> list[SecondaryMotionChain]:
@@ -55,3 +56,21 @@ def bake_secondary_motion(armature: bpy.types.Object, actions: list[bpy.types.Ac
                 for frame, factor in ((start, 0.0), (start + span // 2, amplitude * (1.0 - chain.damping)), (end, 0.0)):
                     bone.rotation_euler = (factor, 0.0, 0.0); bone.keyframe_insert("rotation_euler", frame=frame, group=name)
     return {"secondary_chain_count": len(chains), "secondary_bone_count": sum(len(chain.segments) for chain in chains), "secondary_motion_baked": all(any(chain.segments for chain in chains) for _action in actions) if chains else True, "secondary_rigid_fallback": all(chain.fallback == "rigid" for chain in chains)}
+
+
+def bake_spring_motion(armature: bpy.types.Object, actions: list[bpy.types.Action], settings: dict[str, Any]) -> dict[str, Any]:
+    chains=settings.get("spring_motion",[])
+    if not chains:return {"spring_motion_requested":False,"spring_motion_applied":False,"spring_motion_baked":True,"spring_motion_rigid_fallback":True}
+    errors=validate_spring_motion(chains)
+    if errors:raise ValueError("SPRING_MOTION_INVALID: "+"; ".join(errors))
+    missing=sorted({bone for chain in chains for bone in chain["bones"] if bone not in armature.pose.bones})
+    if missing:raise ValueError("SPRING_MOTION_BONE_MISSING: "+", ".join(missing))
+    for action in actions:
+        armature.animation_data.action=action; start,end=int(action.get("vcf.frame_start",1)),int(action.get("vcf.frame_end",2)); span=max(1,end-start)
+        for chain in chains:
+            for index,name in enumerate(chain["bones"],1):
+                bone=armature.pose.bones[name]; bone.rotation_mode="XYZ"; amplitude=radians(float(chain["max_angle_degrees"]))*(1-float(chain["stiffness"]))*((1-float(chain["damping"]))**index)
+                lag=max(1,round(span*float(chain["damping"])*index*.1)); frames=((start,0.0),(min(end,start+span//3+lag),amplitude),(min(end,start+2*span//3+lag),-amplitude),(end,0.0))
+                for frame,value in frames:bone.rotation_euler=(value,0,0);bone.keyframe_insert("rotation_euler",frame=frame,group=name)
+    armature["vcf.spring_motion"]=[{"chain_id":chain["chain_id"],"bones":chain["bones"],"fallback":"rigid"} for chain in chains]
+    return {"spring_motion_requested":True,"spring_motion_applied":True,"spring_motion_baked":True,"spring_motion_rigid_fallback":True,"spring_motion_chain_count":len(chains),"spring_motion_bone_count":sum(len(chain["bones"]) for chain in chains)}

@@ -5,7 +5,7 @@ func _initialize() -> void:
 
 func verify() -> void:
 	var resource = ResourceLoader.load("res://imported/character.glb")
-	var config := {"required_actions":["idle","walk","run"], "min_extent":0.25, "max_extent":20.0}
+	var config := {"required_actions":["idle","walk","run"], "min_extent":0.25, "max_extent":20.0, "min_bones":16}
 	var config_file := FileAccess.open("res://imported/gate_config.json", FileAccess.READ)
 	if config_file != null:
 		var parsed = JSON.parse_string(config_file.get_as_text())
@@ -19,8 +19,8 @@ func verify() -> void:
 	var players: Array[Node] = []
 	var meshes: Array[Node] = []
 	collect(instance, skeletons, players, meshes)
-	if skeletons.is_empty() or skeletons[0].get_bone_count() < 16:
-		fail("GODOT_SKELETON_INVALID", "Expected an imported humanoid Skeleton3D")
+	if skeletons.is_empty() or skeletons[0].get_bone_count() < int(config.get("min_bones", 1)):
+		fail("GODOT_SKELETON_INVALID", "Imported Skeleton3D does not satisfy the topology bone contract")
 		return
 	var actions: Dictionary = {}
 	for player in players:

@@ -10,12 +10,18 @@ import json
 import bpy
 from mathutils import Vector
 
+from vcf_core.builds import QA_BUDGET_CHECKS, summarize_blocking_checks
+
 
 def validate_character(objects: list[bpy.types.Object], armature: bpy.types.Object, actions: list[bpy.types.Action], profile, required_actions: set[str] | None = None) -> tuple[dict[str, Any], list[dict[str, str]]]:
     meshes = [obj for obj in objects if obj.type == "MESH"]
     materials = {material.name for obj in meshes for material in obj.data.materials if material}
     faces = sum(len(obj.data.polygons) for obj in meshes)
-    detached = [obj.name for obj in meshes if obj.parent != armature or obj.parent_type != "BONE" or obj.parent_bone not in armature.data.bones]
+    detached = [obj.name for obj in meshes if obj.parent != armature or (
+        (obj.get("vcf.bind_mode") == "rigid" and (obj.parent_type != "BONE" or obj.parent_bone not in armature.data.bones))
+        or (obj.get("vcf.bind_mode") == "deform" and not any(modifier.type == "ARMATURE" and modifier.object == armature for modifier in obj.modifiers))
+        or obj.get("vcf.bind_mode") not in {"rigid", "deform"}
+    )]
     invalid_pivots = [obj.name for obj in meshes if not all(abs(float(axis)) < 1_000_000 for axis in obj.location)]
     lowest = min((obj.matrix_world @ Vector(corner)).z for obj in meshes for corner in obj.bound_box)
     required_actions = required_actions or {"idle", "walk", "run"}
@@ -36,7 +42,7 @@ def validate_character(objects: list[bpy.types.Object], armature: bpy.types.Obje
         (not invalid_pivots, "QA_INVALID_PIVOT", f"Invalid pivots: {', '.join(invalid_pivots)}", "Reset or declare the source pivot."),
         (lowest >= -0.002, "QA_GROUND_PENETRATION", f"Lowest point is {lowest:.6f}m", "Re-ground the assembled character."),
         (checks["qa_animation_presence"], "QA_MISSING_ACTION", "One or more required actions are absent.", "Apply the production animation pack."),
-        (checks["qa_object_budget"] and checks["qa_face_budget"] and checks["qa_material_budget"], "QA_PROFILE_BUDGET", "Export profile budget exceeded.", "Reduce geometry/material count or select a larger reviewed profile."),
+        (summarize_blocking_checks(checks, QA_BUDGET_CHECKS)["passed"], "QA_PROFILE_BUDGET", "Export profile budget exceeded.", "Reduce geometry/material/color count or select a larger reviewed profile."),
     ):
         if not passed: diagnostics.append({"code": code, "severity": "error", "stage": "qa", "message": message, "corrective_action": action})
     checks.update({"qa_object_count": len(meshes), "qa_face_count": faces, "qa_material_count": len(materials), "qa_ground_min_meters": round(lowest, 6)})
@@ -47,7 +53,8 @@ def character_content_hash(objects: list[bpy.types.Object], armature: bpy.types.
     """Hash semantic scene content while excluding container/render metadata."""
     payload = {
         "objects": [{
-            "name": obj.name, "role": obj.get("vcf.semantic_role"), "parent_bone": obj.parent_bone,
+            "name": obj.name, "role": obj.get("vcf.semantic_role"), "parent_bone": obj.parent_bone or obj.get("vcf.parent_bone"), "bind_mode": obj.get("vcf.bind_mode"),
+            "matrix_world": [round(float(value), 6) for row in obj.matrix_world for value in row],
             "vertices": [[round(axis, 6) for axis in vertex.co] for vertex in obj.data.vertices],
             "polygons": [list(polygon.vertices) for polygon in obj.data.polygons],
         } for obj in sorted(objects, key=lambda item: item.name)],

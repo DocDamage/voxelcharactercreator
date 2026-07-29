@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "template_id": "flying_standard",
+  "topology": "flying",
+  "required_roles": [
+    "body",
+    "head",
+    "wing_l",
+    "wing_r",
+    "tail"
+  ],
+  "bones": {
+    "root": null,
+    "spine": "root",
+    "neck": "spine",
+    "head": "neck",
+    "wing_l": "spine",
+    "wing_r": "spine",
+    "tail": "spine"
+  },
+  "role_bones": {
+    "body": "spine",
+    "head": "head",
+    "wing_l": "wing_l",
+    "wing_r": "wing_r",
+    "tail": "tail"
+  },
+  "sockets": {
+    "flight_root": {
+      "bone": "root",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "effect_socket": {
+      "bone": "head",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "engine_checks": [
+    "parts",
+    "rig",
+    "animation",
+    "export",
+    "godot"
+  ],
+  "max_bones": 96,
+  "fallback_template": "humanoid_standard"
+}
